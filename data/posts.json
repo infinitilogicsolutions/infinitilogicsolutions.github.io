@@ -4,83 +4,49 @@
     "type": "blog",
     "title": "Launching InfinitiLogicSolutions v1",
     "slug": "launching-infinitilogicsolutions-v1",
-    "date": "2026-01-08",
+    "date": "2026-01-08T00:00:00.000Z",
     "summary": "Announcing the initial release of InfinitiLogicSolutions, a lightweight portfolio and blog with PWA and offline support.",
-    "contentHtml": "<p>I'm excited to share the initial release of InfinitiLogicSolutions v1 - a lightweight portfolio and blog built to be fast, simple, and dependable.</p><p>This first version focuses on the essentials:</p><ul><li>Clean multi-page experience (Home, About, Projects, Blog, Post)</li><li>PWA install support so it can live on your home screen</li><li>Offline-ready reading once cached</li><li>A simple content pipeline that keeps updates easy</li></ul><p>Why this matters: I wanted a space that feels professional but stays minimal - a place to ship projects, share ideas, and keep everything accessible without bloat. Hosting is handled on GitHub Pages, which keeps it free and reliable.</p><p>Next up: improving offline cache updates and adding notifications when new projects or posts go live.</p><p>If you're building something similar or want to compare notes on PWA and offline-first design, I'd love to connect.</p><p>#PWA #GitHubPages #WebDevelopment #JavaScript #OfflineFirst #Portfolio</p>",
+    "contentHtml": "<p>I&#39;m excited to share the initial release of InfinitiLogicSolutions v1 - a lightweight portfolio and blog built to be fast, simple, and dependable.</p>\n<p>This first version focuses on the essentials:</p>\n<ul>\n<li>Clean multi-page experience (Home, About, Projects, Blog, Post)</li>\n<li>PWA install support so it can live on your home screen</li>\n<li>Offline-ready reading once cached</li>\n<li>A simple content pipeline that keeps updates easy</li>\n</ul>\n<p>Why this matters: I wanted a space that feels professional but stays minimal - a place to ship projects, share ideas, and keep everything accessible without bloat. Hosting is handled on GitHub Pages, which keeps it free and reliable.</p>\n<p>Next up: improving offline cache updates and adding notifications when new projects or posts go live.</p>\n<p>If you&#39;re building something similar or want to compare notes on PWA and offline-first design, I&#39;d love to connect.</p>\n<p>#PWA #GitHubPages #WebDevelopment #JavaScript #OfflineFirst #Portfolio</p>",
     "coverImage": "",
-    "tags": ["Announcement", "PWA", "GitHub Pages", "Offline-First", "JavaScript"],
-    "active": true
+    "tags": [
+      "Announcement",
+      "PWA",
+      "GitHub Pages",
+      "Offline-First",
+      "JavaScript"
+    ]
   },
   {
     "id": 1,
-    "type": "project",
-    "title": "Personal Portfolio Website",
-    "slug": "personal-portfolio-website",
-    "date": "2026-01-01",
-    "summary": "A lightweight portfolio and blog that runs offline once cached, installs as a PWA, and stays free to host on GitHub Pages.",
-    "contentHtml": "<h2>Goal</h2><p>Build a fast, lightweight portfolio plus blog that is free to host on GitHub Pages, installs as a PWA on mobile, and keeps working offline once cached.</p><h2>Technologies and Tools Used</h2><ul><li>HTML, CSS, JavaScript</li><li>PWA (Service Worker + Web App Manifest)</li><li>Markdown to JSON content pipeline</li><li>Created using ChatGPT Codex</li></ul><h2>Features</h2><ul><li>Multi-page layout (Home, About, Projects, Blog, Post)</li><li>Dynamic project/blog listings powered by JSON</li><li>Tag filters and sorting for blog posts</li><li>Installable PWA (add to home screen)</li><li>Offline reading once cached</li><li>Share links and update prompts</li></ul><h2>Challenges</h2><ul><li>Making offline behavior reliable across pages and sessions</li><li>Balancing cache freshness with fast load times</li><li>Keeping the stack lightweight without a framework</li></ul><h2>Future Updates</h2><ul><li>In-app notifications when a new project or blog post is published</li><li>Smarter background cache updates</li><li>Optional analytics and performance tuning</li></ul>",
+    "type": "blog",
+    "title": "Getting Started with Modern JavaScript",
+    "slug": "getting-started-modern-javascript",
+    "date": "2026-01-03T00:00:00.000Z",
+    "summary": "A comprehensive guide to modern JavaScript features including ES6+, async/await, and modules.",
+    "contentHtml": "<p>JavaScript has evolved significantly over the years. This guide will help you understand the most important modern features that every developer should know.</p>\n<h2>ES6+ Features</h2>\n<p>Modern JavaScript (ES6 and beyond) introduced many powerful features that make code more readable and maintainable:</p>\n<ul>\n<li><strong>Arrow Functions:</strong> Concise syntax for writing functions</li>\n<li><strong>Destructuring:</strong> Extract values from arrays and objects easily</li>\n<li><strong>Spread Operator:</strong> Expand arrays and objects</li>\n<li><strong>Template Literals:</strong> String interpolation and multi-line strings</li>\n</ul>\n<h2>Async/Await</h2>\n<p>One of the most significant improvements is the async/await syntax, which makes asynchronous code look and behave more like synchronous code:</p>\n<pre><code class=\"language-javascript\">async function fetchData() {\n  try {\n    const response = await fetch(&#39;api/data&#39;);\n    const data = await response.json();\n    return data;\n  } catch (error) {\n    console.error(&#39;Error:&#39;, error);\n  }\n}\n</code></pre>\n<h2>Modules</h2>\n<p>ES6 modules allow you to organize code into reusable pieces. You can export functions, objects, or values from one file and import them in another.</p>\n<h2>Conclusion</h2>\n<p>Mastering these modern JavaScript features will make you a more effective developer. Start using them in your projects today!</p>",
     "coverImage": "",
-    "tags": ["PWA", "GitHub Pages", "Offline-First", "JavaScript", "Static Site"],
-    "active": true
+    "tags": [
+      "JavaScript",
+      "ES6",
+      "Tutorial",
+      "Web Development"
+    ]
   },
   {
     "id": 2,
     "type": "project",
-    "title": "Task Management App",
-    "slug": "task-management-app",
-    "date": "2025-12-15",
-    "summary": "A full-featured task management application with drag-and-drop functionality, categories, and local storage persistence.",
-    "contentHtml": "<p>A powerful yet simple task management application that helps users organize their work efficiently.</p><h2>Key Features</h2><ul><li>Drag and drop tasks between categories</li><li>Local storage for data persistence</li><li>Priority levels and due dates</li><li>Search and filter functionality</li><li>Dark mode support</li></ul><h2>Technical Details</h2><p>Built using modern JavaScript ES6+ features, with a focus on clean code architecture and user experience. The drag-and-drop interface uses the HTML5 Drag and Drop API.</p><p>All data is stored locally using the browser's localStorage API, ensuring privacy and offline functionality.</p>",
+    "title": "Personal Portfolio Website",
+    "slug": "personal-portfolio-website",
+    "date": "2026-01-01T00:00:00.000Z",
+    "summary": "A lightweight portfolio and blog that runs offline once cached, installs as a PWA, and stays free to host on GitHub Pages.",
+    "contentHtml": "<h2>Goal</h2>\n<p>Build a fast, lightweight portfolio plus blog that is free to host on GitHub Pages, installs as a PWA on mobile, and keeps working offline once cached.</p>\n<h2>Technologies and Tools Used</h2>\n<ul>\n<li>HTML, CSS, JavaScript</li>\n<li>PWA (Service Worker + Web App Manifest)</li>\n<li>Markdown to JSON content pipeline</li>\n<li>Created using ChatGPT Codex</li>\n</ul>\n<h2>Features</h2>\n<ul>\n<li>Multi-page layout (Home, About, Projects, Blog, Post)</li>\n<li>Dynamic project/blog listings powered by JSON</li>\n<li>Tag filters and sorting for blog posts</li>\n<li>Installable PWA (add to home screen)</li>\n<li>Offline reading once cached</li>\n<li>Share links and update prompts</li>\n</ul>\n<h2>Challenges</h2>\n<ul>\n<li>Making offline behavior reliable across pages and sessions</li>\n<li>Balancing cache freshness with fast load times</li>\n<li>Keeping the stack lightweight without a framework</li>\n</ul>\n<h2>Future Updates</h2>\n<ul>\n<li>In-app notifications when a new project or blog post is published</li>\n<li>Smarter background cache updates</li>\n<li>Optional analytics and performance tuning</li>\n</ul>",
     "coverImage": "",
-    "tags": ["JavaScript", "Productivity", "LocalStorage", "Drag-and-Drop"],
-    "active": false
-  },
-  {
-    "id": 3,
-    "type": "project",
-    "title": "Weather Dashboard",
-    "slug": "weather-dashboard",
-    "date": "2025-11-20",
-    "summary": "A beautiful weather dashboard that displays current conditions and forecasts using a third-party weather API.",
-    "contentHtml": "<p>This weather dashboard provides users with real-time weather information in an intuitive, visually appealing interface.</p><h2>Features</h2><ul><li>Current weather conditions</li><li>5-day forecast</li><li>Location search</li><li>Temperature unit conversion (°C/°F)</li><li>Beautiful weather icons and gradients</li></ul><h2>API Integration</h2><p>The app integrates with the OpenWeatherMap API to fetch accurate, up-to-date weather data. Error handling ensures a smooth user experience even when the API is unavailable.</p><h2>Design</h2><p>The UI features dynamic backgrounds that change based on weather conditions, creating an immersive experience.</p>",
-    "coverImage": "",
-    "tags": ["JavaScript", "API", "Weather", "UI/UX"],
-    "active": false
-  },
-  {
-    "id": 4,
-    "type": "blog",
-    "title": "Getting Started with Modern JavaScript",
-    "slug": "getting-started-modern-javascript",
-    "date": "2026-01-03",
-    "summary": "A comprehensive guide to modern JavaScript features including ES6+, async/await, and modules.",
-    "contentHtml": "<p>JavaScript has evolved significantly over the years. This guide will help you understand the most important modern features that every developer should know.</p><h2>ES6+ Features</h2><p>Modern JavaScript (ES6 and beyond) introduced many powerful features that make code more readable and maintainable:</p><ul><li><strong>Arrow Functions:</strong> Concise syntax for writing functions</li><li><strong>Destructuring:</strong> Extract values from arrays and objects easily</li><li><strong>Spread Operator:</strong> Expand arrays and objects</li><li><strong>Template Literals:</strong> String interpolation and multi-line strings</li></ul><h2>Async/Await</h2><p>One of the most significant improvements is the async/await syntax, which makes asynchronous code look and behave more like synchronous code:</p><pre><code>async function fetchData() {\n  try {\n    const response = await fetch('api/data');\n    const data = await response.json();\n    return data;\n  } catch (error) {\n    console.error('Error:', error);\n  }\n}</code></pre><h2>Modules</h2><p>ES6 modules allow you to organize code into reusable pieces. You can export functions, objects, or values from one file and import them in another.</p><h2>Conclusion</h2><p>Mastering these modern JavaScript features will make you a more effective developer. Start using them in your projects today!</p>",
-    "coverImage": "",
-    "tags": ["JavaScript", "ES6", "Tutorial", "Web Development"],
-    "active": false
-  },
-  {
-    "id": 5,
-    "type": "blog",
-    "title": "Building Responsive Websites in 2026",
-    "slug": "building-responsive-websites-2026",
-    "date": "2025-12-28",
-    "summary": "Best practices and techniques for creating websites that look great on all devices, from mobile phones to large desktop screens.",
-    "contentHtml": "<p>In today's multi-device world, responsive design is no longer optional—it's essential. Here's how to build websites that work beautifully on any screen size.</p><h2>Mobile-First Approach</h2><p>Start designing for mobile devices first, then progressively enhance for larger screens. This ensures your site works well on the smallest devices and scales up gracefully.</p><h2>CSS Grid and Flexbox</h2><p>Modern CSS layout tools like Grid and Flexbox make responsive design much easier:</p><ul><li><strong>Flexbox:</strong> Perfect for one-dimensional layouts (rows or columns)</li><li><strong>CSS Grid:</strong> Ideal for two-dimensional layouts</li></ul><h2>Media Queries</h2><p>Use media queries to apply different styles based on screen size, orientation, or device capabilities. Common breakpoints include:</p><ul><li>Mobile: 320px - 767px</li><li>Tablet: 768px - 1023px</li><li>Desktop: 1024px and up</li></ul><h2>Performance Considerations</h2><p>Responsive images are crucial for performance. Use the <code>srcset</code> attribute to serve appropriately sized images based on the user's device.</p><h2>Testing</h2><p>Always test on real devices when possible. Browser dev tools are helpful, but nothing beats testing on actual phones and tablets.</p>",
-    "coverImage": "",
-    "tags": ["CSS", "Responsive Design", "Web Development", "Mobile-First"],
-    "active": false
-  },
-  {
-    "id": 6,
-    "type": "blog",
-    "title": "The Power of CSS Custom Properties",
-    "slug": "css-custom-properties",
-    "date": "2025-12-10",
-    "summary": "Learn how CSS variables (custom properties) can make your stylesheets more maintainable and enable powerful theming capabilities.",
-    "contentHtml": "<p>CSS Custom Properties, also known as CSS variables, are a game-changer for writing maintainable stylesheets.</p><h2>What Are CSS Custom Properties?</h2><p>CSS Custom Properties allow you to store values that you want to reuse throughout your stylesheet. They're defined using the <code>--</code> prefix and accessed using the <code>var()</code> function.</p><pre><code>:root {\n  --primary-color: #667eea;\n  --spacing-unit: 1rem;\n}\n\n.button {\n  background: var(--primary-color);\n  padding: var(--spacing-unit);\n}</code></pre><h2>Benefits</h2><ul><li><strong>Maintainability:</strong> Change values in one place</li><li><strong>Theming:</strong> Easily create light/dark themes</li><li><strong>Runtime Updates:</strong> Change values with JavaScript</li><li><strong>Scoping:</strong> Different values in different parts of your site</li></ul><h2>Dynamic Theming</h2><p>You can change CSS Custom Properties at runtime using JavaScript, enabling dynamic themes without reloading the page:</p><pre><code>document.documentElement.style\n  .setProperty('--primary-color', '#764ba2');</code></pre><h2>Browser Support</h2><p>CSS Custom Properties are supported in all modern browsers. For older browsers, you can provide fallback values.</p>",
-    "coverImage": "",
-    "tags": ["CSS", "CSS Variables", "Tutorial", "Theming"],
-    "active": false
+    "tags": [
+      "PWA",
+      "GitHub Pages",
+      "Offline-First",
+      "JavaScript",
+      "Static Site"
+    ]
   }
 ]
