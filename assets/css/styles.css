@@ -11,6 +11,7 @@
     --primary-color: #667eea;
     --secondary-color: #764ba2;
     --brand-font: 'Cinzel', 'Times New Roman', serif;
+    --heading-font: var(--brand-font);
     --text-color: #333;
     --text-light: #666;
     --bg-color: #ffffff;
@@ -31,8 +32,9 @@ body {
 
 /* Typography - Google Style */
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Google Sans', 'Roboto', sans-serif;
+    font-family: var(--heading-font);
     font-weight: 500;
+    letter-spacing: 0.02em;
 }
 
 /* Home Page Hero */
@@ -67,7 +69,7 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 2.5rem;
     font-weight: 400;
     text-shadow: none;
-    font-family: 'Google Sans', 'Roboto', sans-serif;
+    font-family: var(--heading-font);
     line-height: 1.4;
 }
 
@@ -242,7 +244,7 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 2rem;
     color: var(--text-color);
     text-align: center;
-    font-family: 'Google Sans', 'Roboto', sans-serif;
+    font-family: var(--heading-font);
     font-weight: 500;
 }
 
@@ -465,7 +467,7 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
     color: var(--text-color);
-    font-family: 'Google Sans', 'Roboto', sans-serif;
+    font-family: var(--heading-font);
     font-weight: 500;
 }
 
@@ -767,20 +769,25 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     .hero-title {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
         line-height: 1.3;
     }
 
     .blog-name {
-        font-size: 2.5rem;
-        letter-spacing: 0.08em;
-        animation: typing 3s steps(22) 1s forwards, blink-caret 0.75s step-end infinite, shimmer 3s ease-in-out infinite 4s;
+        font-size: 2.1rem;
+        letter-spacing: 0.04em;
+        white-space: normal;
+        width: auto;
+        border-right: none;
+        animation: fadeInUp 0.6s ease;
     }
 
     .down-arrow {
+        position: static;
         width: 50px;
         height: 50px;
-        bottom: 2rem;
+        margin-top: 1.5rem;
+        bottom: auto;
     }
 
     .down-arrow svg {
@@ -882,6 +889,20 @@ h1, h2, h3, h4, h5, h6 {
     /* Post Pages Mobile */
     .post-article, .about-content {
         padding: 1.5rem;
+    }
+
+    .about-content h1 {
+        font-size: 1.9rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .about-content h2 {
+        font-size: 1.35rem;
+        margin-top: 1.5rem;
+    }
+
+    .about-section {
+        font-size: 1rem;
     }
 
     .post-title {
