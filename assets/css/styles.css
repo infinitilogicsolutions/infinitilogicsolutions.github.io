@@ -76,20 +76,16 @@ h1, h2, h3, h4, h5, h6 {
 .blog-name {
     display: inline-block;
     font-size: 4.5rem;
-    font-weight: 500;
-    background: linear-gradient(135deg, #D4AF37 0%, #FFD700 50%, #D4AF37 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    font-family: var(--brand-font);
-    letter-spacing: 0.08em;
+    font-weight: 600;
+    font-family: "Google Sans", "Product Sans", Arial, sans-serif;
+    letter-spacing: 0.02em;
     text-transform: none;
     position: relative;
     overflow: hidden;
-    border-right: 3px solid #D4AF37;
-    white-space: nowrap;
-    animation: typing 4s steps(22) 1s forwards, blink-caret 0.75s step-end infinite, shimmer 3s ease-in-out infinite 5s;
-    width: 0;
+    border-right: none;
+    white-space: normal;
+    animation: fadeInUp 0.8s ease;
+    width: auto;
 }
 
 @keyframes typing {
@@ -191,8 +187,26 @@ h1, h2, h3, h4, h5, h6 {
     text-decoration: none;
     transition: var(--transition);
     font-family: var(--brand-font);
-    letter-spacing: 0.06em;
+    letter-spacing: 0;
 }
+
+.brand-text {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    font-family: "Google Sans", "Product Sans", Arial, sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+.nav-logo .brand-text {
+    flex-wrap: nowrap;
+}
+
+.g-blue { color: #4285F4; }
+.g-red { color: #DB4437; }
+.g-yellow { color: #F4B400; }
+.g-green { color: #0F9D58; }
 
 .nav-logo:hover {
     color: var(--secondary-color);
@@ -775,7 +789,7 @@ h1, h2, h3, h4, h5, h6 {
 
     .blog-name {
         font-size: 2.1rem;
-        letter-spacing: 0.04em;
+        letter-spacing: 0.02em;
         white-space: normal;
         width: auto;
         border-right: none;

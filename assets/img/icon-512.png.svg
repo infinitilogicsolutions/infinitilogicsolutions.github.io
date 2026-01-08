@@ -1,10 +1,42 @@
-<svg width="512" height="512" xmlns="http://www.w3.org/2000/svg">
+<svg width="512" height="512" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    <linearGradient id="bgGradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="50%" stop-color="#e2e8f0"/>
+      <stop offset="100%" stop-color="#f1f5f9"/>
     </linearGradient>
+    <linearGradient id="glassGradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.6"/>
+      <stop offset="60%" stop-color="#ffffff" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <pattern id="binaryPattern" width="8" height="8" patternUnits="userSpaceOnUse">
+      <text x="0" y="4" font-family="Menlo, Monaco, monospace" font-size="3">
+        <tspan fill="#4285F4" opacity="0.95">0</tspan>
+        <tspan fill="#DB4437" opacity="0.95">1</tspan>
+      </text>
+      <text x="0" y="8" font-family="Menlo, Monaco, monospace" font-size="3">
+        <tspan fill="#F4B400" opacity="0.9">1</tspan>
+        <tspan fill="#0F9D58" opacity="0.9">0</tspan>
+      </text>
+    </pattern>
+    <mask id="infinityMask">
+      <rect width="200" height="200" fill="black"/>
+      <path d="M40 95 C 40 65 75 65 100 95 C 125 125 160 125 160 95 C 160 65 125 65 100 95 C 75 125 40 125 40 95 Z"
+            stroke="white" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    </mask>
   </defs>
-  <rect width="512" height="512" rx="110" fill="url(#grad2)" />
-  <text x="256" y="350" font-family="Arial, sans-serif" font-size="280" font-weight="bold" fill="white" text-anchor="middle">M</text>
+  <rect width="200" height="200" rx="40" fill="url(#bgGradient)"/>
+  <rect width="200" height="200" rx="40" fill="url(#glassGradient)"/>
+  <rect width="200" height="200" rx="40" fill="none" stroke="#e2e8f0" stroke-width="2"/>
+  <g mask="url(#infinityMask)">
+    <rect x="10" y="26" width="180" height="140" fill="url(#binaryPattern)"/>
+  </g>
+  <text x="100" y="160"
+        font-family="Google Sans, 'Product Sans', Arial, sans-serif"
+        font-size="14"
+        letter-spacing="1"
+        text-anchor="middle">
+    <tspan fill="#4285F4">I</tspan><tspan fill="#DB4437">n</tspan><tspan fill="#F4B400">f</tspan><tspan fill="#4285F4">i</tspan><tspan fill="#0F9D58">n</tspan><tspan fill="#DB4437">i</tspan><tspan fill="#4285F4">t</tspan><tspan fill="#F4B400">i</tspan><tspan fill="#4285F4">L</tspan><tspan fill="#DB4437">o</tspan><tspan fill="#F4B400">g</tspan><tspan fill="#4285F4">i</tspan><tspan fill="#0F9D58">c</tspan><tspan fill="#DB4437">S</tspan><tspan fill="#4285F4">o</tspan><tspan fill="#F4B400">l</tspan><tspan fill="#4285F4">u</tspan><tspan fill="#0F9D58">t</tspan><tspan fill="#DB4437">i</tspan><tspan fill="#4285F4">o</tspan><tspan fill="#F4B400">n</tspan><tspan fill="#4285F4">s</tspan>
+  </text>
 </svg>

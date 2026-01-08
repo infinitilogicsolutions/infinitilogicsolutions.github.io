@@ -32,11 +32,4 @@
   <g mask="url(#infinityMask)">
     <rect x="10" y="26" width="180" height="140" fill="url(#binaryPattern)"/>
   </g>
-  <text x="100" y="160"
-        font-family="Google Sans, 'Product Sans', Arial, sans-serif"
-        font-size="14"
-        letter-spacing="1"
-        text-anchor="middle">
-    <tspan fill="#4285F4">I</tspan><tspan fill="#DB4437">n</tspan><tspan fill="#F4B400">f</tspan><tspan fill="#4285F4">i</tspan><tspan fill="#0F9D58">n</tspan><tspan fill="#DB4437">i</tspan><tspan fill="#4285F4">t</tspan><tspan fill="#F4B400">i</tspan><tspan fill="#4285F4">L</tspan><tspan fill="#DB4437">o</tspan><tspan fill="#F4B400">g</tspan><tspan fill="#4285F4">i</tspan><tspan fill="#0F9D58">c</tspan><tspan fill="#DB4437">S</tspan><tspan fill="#4285F4">o</tspan><tspan fill="#F4B400">l</tspan><tspan fill="#4285F4">u</tspan><tspan fill="#0F9D58">t</tspan><tspan fill="#DB4437">i</tspan><tspan fill="#4285F4">o</tspan><tspan fill="#F4B400">n</tspan><tspan fill="#4285F4">s</tspan>
-  </text>
 </svg>
