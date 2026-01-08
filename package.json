@@ -1,0 +1,21 @@
+{
+  "name": "my-blog",
+  "version": "1.0.0",
+  "description": "A simple HTML blog with markdown-to-JSON automation",
+  "scripts": {
+    "generate": "node scripts/generate-json.js",
+    "preview": "python3 -m http.server 8000"
+  },
+  "dependencies": {
+    "marked": "^11.1.1",
+    "js-yaml": "^4.1.0"
+  },
+  "devDependencies": {},
+  "keywords": [
+    "blog",
+    "markdown",
+    "static-site"
+  ],
+  "author": "",
+  "license": "MIT"
+}

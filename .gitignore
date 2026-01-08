@@ -1,0 +1,35 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor directories
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.http-server.log
+
+# Environment variables
+.env
+.env.local
+
+# Build output
+dist/
+build/
+
+# Caches
+.cache/
+.parcel-cache/
+.npm/

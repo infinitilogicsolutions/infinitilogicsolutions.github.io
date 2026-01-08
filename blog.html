@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Blog posts and articles">
+    <meta name="theme-color" content="#667eea">
+    <title>Blog - InfinitiLogicSolutions</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">InfinitiLogicSolutions</a>
+            <ul class="nav-menu">
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="projects.html" class="nav-link">Projects</a></li>
+                <li><a href="blog.html" class="nav-link active">Blog</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <h1 class="page-title">Blog</h1>
+        
+        <div class="filters-container">
+            <div class="filter-group">
+                <label for="tagFilter">Filter by Tag:</label>
+                <select id="tagFilter" class="filter-select">
+                    <option value="all">All Tags</option>
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label for="dateFilter">Filter by Date:</label>
+                <select id="dateFilter" class="filter-select">
+                    <option value="all">All Time</option>
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label for="sortBy">Sort by:</label>
+                <select id="sortBy" class="filter-select">
+                    <option value="date-desc">Newest First</option>
+                    <option value="date-asc">Oldest First</option>
+                    <option value="title-asc">Title (A-Z)</option>
+                    <option value="title-desc">Title (Z-A)</option>
+                </select>
+            </div>
+            
+            <button id="resetFilters" class="btn btn-secondary">Reset All</button>
+        </div>
+        
+        <div id="activeFilters" class="active-filters"></div>
+        
+        <div id="blogGrid" class="cards-list">
+            <div class="loading">Loading blog posts...</div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 InfinitiLogicSolutions. All rights reserved.</p>
+    </footer>
+
+    <script src="assets/js/app.js"></script>
+    <script>
+        loadBlogPosts();
+    </script>
+    <script src="assets/js/pwa.js"></script>
+    <script src="assets/js/notifications.js"></script>
+</body>
+</html>

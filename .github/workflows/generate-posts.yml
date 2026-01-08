@@ -1,0 +1,51 @@
+name: Generate Posts JSON
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'posts/**/*.md'
+  schedule:
+    # Runs every night at 2 AM UTC (adjust to your timezone)
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+
+jobs:
+  generate-json:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      
+      - name: Install dependencies
+        run: |
+          npm install marked js-yaml
+      
+      - name: Generate posts.json
+        run: node scripts/generate-json.js
+      
+      - name: Check for changes
+        id: check_changes
+        run: |
+          if git diff --quiet data/posts.json; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+      
+      - name: Commit and push if changed
+        if: steps.check_changes.outputs.changed == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add data/posts.json
+          git commit -m "🤖 Auto-generate posts.json from markdown files"
+          git push

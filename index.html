@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Personal blog and portfolio">
+    <meta name="theme-color" content="#667eea">
+    <title>InfinitiLogicSolutions</title>
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- iOS Support -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="InfinitiLogicSolutions">
+    <link rel="apple-touch-icon" href="assets/img/icon-192.png">
+    
+    <!-- Google Fonts - Google Developers Style -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body class="home-page">
+    <div class="hero-container">
+        <div class="logo-wrapper">
+            <img src="assets/img/logo.svg" alt="Site Logo" class="hero-logo">
+            <h1 class="hero-title">Welcome to<br><span class="blog-name">InfinitiLogicSolutions</span></h1>
+        </div>
+        <button class="down-arrow" id="downArrow" aria-label="Go to About">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+        </button>
+    </div>
+
+    <script>
+        document.getElementById('downArrow').addEventListener('click', () => {
+            window.location.href = 'about.html';
+        });
+    </script>
+    <script src="assets/js/pwa.js"></script>
+    <script src="assets/js/notifications.js"></script>
+</body>
+</html>

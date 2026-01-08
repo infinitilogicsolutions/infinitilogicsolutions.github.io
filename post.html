@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Read articles and posts">
+    <meta name="theme-color" content="#667eea">
+    <title>Post - InfinitiLogicSolutions</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">InfinitiLogicSolutions</a>
+            <ul class="nav-menu">
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="projects.html" class="nav-link">Projects</a></li>
+                <li><a href="blog.html" class="nav-link">Blog</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <article id="postContent" class="post-article">
+            <div class="loading">Loading post...</div>
+        </article>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 InfinitiLogicSolutions. All rights reserved.</p>
+    </footer>
+
+    <script src="assets/js/app.js"></script>
+    <script>
+        loadSinglePost();
+    </script>
+    <script src="assets/js/pwa.js"></script>
+    <script src="assets/js/notifications.js"></script>
+</body>
+</html>
