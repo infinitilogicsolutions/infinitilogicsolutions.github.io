@@ -7,6 +7,7 @@ date: 2026-01-08
 summary: Announcing the initial release of InfinitiLogicSolutions, a lightweight portfolio and blog with PWA and offline support.
 tags: [Announcement, PWA, GitHub Pages, Offline-First, JavaScript]
 coverImage:
+active: true
 ---
 
 I'm excited to share the initial release of InfinitiLogicSolutions v1 - a lightweight portfolio and blog built to be fast, simple, and dependable.

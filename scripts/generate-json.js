@@ -41,6 +41,10 @@ function processMarkdownFile(filePath) {
     const filename = path.basename(filePath);
     const slug = frontmatter.slug || generateSlug(filename);
     
+    const isActive = frontmatter.active === undefined
+        ? true
+        : String(frontmatter.active).toLowerCase() !== 'false';
+
     return {
         id: frontmatter.id,
         type: frontmatter.type || 'blog',
@@ -50,7 +54,8 @@ function processMarkdownFile(filePath) {
         summary: frontmatter.summary || '',
         contentHtml: contentHtml.trim(),
         coverImage: frontmatter.coverImage || '',
-        tags: frontmatter.tags || []
+        tags: frontmatter.tags || [],
+        active: isActive
     };
 }
 

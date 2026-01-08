@@ -14,7 +14,8 @@
       "GitHub Pages",
       "Offline-First",
       "JavaScript"
-    ]
+    ],
+    "active": true
   },
   {
     "id": 1,
@@ -30,7 +31,8 @@
       "ES6",
       "Tutorial",
       "Web Development"
-    ]
+    ],
+    "active": true
   },
   {
     "id": 2,
@@ -47,6 +49,7 @@
       "Offline-First",
       "JavaScript",
       "Static Site"
-    ]
+    ],
+    "active": true
   }
 ]

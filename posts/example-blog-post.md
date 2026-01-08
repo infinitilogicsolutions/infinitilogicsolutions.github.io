@@ -7,6 +7,7 @@ date: 2026-01-03
 summary: A comprehensive guide to modern JavaScript features including ES6+, async/await, and modules.
 tags: [JavaScript, ES6, Tutorial, Web Development]
 coverImage: 
+active: false
 ---
 
 JavaScript has evolved significantly over the years. This guide will help you understand the most important modern features that every developer should know.
