@@ -1,11 +1,11 @@
 {
   "name": "InfinitiLogicSolutions",
   "short_name": "InfinitiLogicSolutions",
-  "description": "Personal blog and portfolio",
+  "description": "Weekend projects and AI experiments",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#667eea",
+  "theme_color": "#2662d9",
   "orientation": "portrait-primary",
   "icons": [
     {
