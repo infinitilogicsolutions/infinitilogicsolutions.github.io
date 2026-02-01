@@ -10,6 +10,7 @@ A modern, responsive personal blog and portfolio website built with HTML, CSS, a
 - 📝 Simple JSON-based content management
 - 🔗 Shareable post URLs with Web Share API support
 - ✨ Smooth animations and transitions
+- ⌨️ Looping typewriter logo animation with underscore cursor
 - 🎯 SEO-friendly structure
 
 ## Structure
@@ -26,7 +27,10 @@ Blog/
   │   ├── css/
   │   │   └── styles.css  # All styles
   │   ├── js/
-  │   │   └── app.js      # All JavaScript logic
+  │   │   ├── app.js          # Post rendering logic
+  │   │   ├── typewriter.js   # Animated logo typing loop
+  │   │   ├── pwa.js          # PWA enhancements
+  │   │   └── notifications.js # Web notifications helper
   │   └── img/
   │       └── logo.png    # Your logo
   └── data/
@@ -136,7 +140,7 @@ Update CSS custom properties in `assets/css/styles.css`:
 
 ### Hero Page (index.html)
 
-Full-screen centered logo with animated down arrow that navigates to About page.
+Full-screen centered logo with animated down arrow that navigates to About page. The brand name types in a loop with an underscore cursor.
 
 ### Projects Page
 
@@ -179,7 +183,7 @@ Full-screen centered logo with animated down arrow that navigates to About page.
 
 ## What's Next
 
-- Learn how to include testing into the application.
+- Connect this project to an MCP server to run tests.
 
 ## Future Enhancements (Optional)
 
