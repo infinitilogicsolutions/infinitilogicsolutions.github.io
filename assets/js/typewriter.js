@@ -3,31 +3,6 @@
   if (!elements.length) return;
 
   const defaultText = 'InfinitiLogicSolutions';
-  const defaultColors = [
-    'g-blue',
-    'g-red',
-    'g-yellow',
-    'g-blue',
-    'g-green',
-    'g-red',
-    'g-blue',
-    'g-red',
-    'g-yellow',
-    'g-blue',
-    'g-green',
-    'g-red',
-    'g-blue',
-    'g-red',
-    'g-yellow',
-    'g-blue',
-    'g-green',
-    'g-red',
-    'g-blue',
-    'g-red',
-    'g-yellow',
-    'g-blue'
-  ];
-
   const reduceMotion = window.matchMedia
     && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -36,33 +11,13 @@
   const pauseAfterTyping = 900;
   const pauseBeforeTyping = 300;
 
-  const createLetter = (char, colorClass) => {
-    const span = document.createElement('span');
-    if (colorClass) {
-      span.classList.add(colorClass);
-    }
-    span.textContent = char;
-    return span;
-  };
-
-  const renderFullText = (textSpan, text, colors) => {
-    textSpan.textContent = '';
-    for (let i = 0; i < text.length; i += 1) {
-      textSpan.appendChild(createLetter(text[i], colors[i % colors.length]));
-    }
-  };
-
   elements.forEach((element, index) => {
     const text = (element.dataset.text || element.textContent || defaultText).trim() || defaultText;
-    const parsedColors = element.dataset.colors
-      ? element.dataset.colors.split(',').map((item) => item.trim()).filter(Boolean)
-      : defaultColors;
-    const colors = parsedColors.length ? parsedColors : defaultColors;
 
     element.textContent = '';
 
     const textSpan = document.createElement('span');
-    textSpan.className = 'typewriter-text';
+    textSpan.className = 'typewriter-text gradient-text';
 
     const cursor = document.createElement('span');
     cursor.className = 'typing-cursor';
@@ -73,7 +28,7 @@
     element.appendChild(cursor);
 
     if (reduceMotion) {
-      renderFullText(textSpan, text, colors);
+      textSpan.textContent = text;
       cursor.style.display = 'none';
       return;
     }
@@ -84,7 +39,7 @@
     const tick = () => {
       if (!deleting) {
         if (currentIndex < text.length) {
-          textSpan.appendChild(createLetter(text[currentIndex], colors[currentIndex % colors.length]));
+          textSpan.textContent = text.slice(0, currentIndex + 1);
           currentIndex += 1;
           if (currentIndex === text.length) {
             deleting = true;
@@ -101,8 +56,8 @@
       }
 
       if (currentIndex > 0) {
-        textSpan.removeChild(textSpan.lastChild);
         currentIndex -= 1;
+        textSpan.textContent = text.slice(0, currentIndex);
         setTimeout(tick, deleteSpeed);
         return;
       }

@@ -8,3 +8,8 @@
 - expanded `agent.md` with commit-message guidance
 - added looping typewriter animation for the brand logo across pages
 - introduced `assets/js/typewriter.js` and updated styles for the underscore cursor
+- replaced page layouts with the BlogReplit-inspired design across all pages
+- swapped in compiled Tailwind CSS plus `assets/css/custom.css` overrides
+- updated `assets/js/app.js` to render the new card layouts and compute read time
+- added Replit assets (favicon, opengraph, logo)
+- refreshed PWA theme colors and cache manifest

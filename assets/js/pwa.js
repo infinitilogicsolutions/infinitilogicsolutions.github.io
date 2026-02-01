@@ -31,7 +31,7 @@ function showUpdateNotification() {
       position: fixed;
       bottom: 20px;
       right: 20px;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: linear-gradient(135deg, #2662d9 0%, #2eb8a1 100%);
       color: white;
       padding: 1rem 1.5rem;
       border-radius: 8px;
@@ -48,7 +48,7 @@ function showUpdateNotification() {
       </div>
       <button onclick="window.location.reload()" style="
         background: white;
-        color: #667eea;
+        color: #2662d9;
         border: none;
         padding: 0.5rem 1rem;
         border-radius: 4px;
@@ -95,7 +95,7 @@ function showInstallPromotion() {
     position: fixed;
     bottom: 20px;
     left: 20px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #2662d9 0%, #2eb8a1 100%);
     color: white;
     border: none;
     padding: 1rem 1.5rem;
@@ -169,7 +169,7 @@ window.addEventListener('offline', () => {
 
 function showToast(message, type = 'info') {
   const toast = document.createElement('div');
-  const bgColor = type === 'success' ? '#10b981' : type === 'error' ? '#ef4444' : '#667eea';
+  const bgColor = type === 'success' ? '#10b981' : type === 'error' ? '#ef4444' : '#2662d9';
   
   toast.style.cssText = `
     position: fixed;
@@ -227,7 +227,7 @@ async function refreshCache() {
 
 // Add click event to logo for cache refresh
 window.addEventListener('DOMContentLoaded', () => {
-  const logo = document.querySelector('.hero-logo, .nav-logo, img[alt*="Logo"]');
+  const logo = document.querySelector('.hero-logo, .nav-logo, img[alt*="Logo"], img[alt*="InfinitiLogic"]');
   if (logo) {
     logo.style.cursor = 'pointer';
     logo.addEventListener('click', (e) => {

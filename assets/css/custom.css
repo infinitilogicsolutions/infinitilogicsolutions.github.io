@@ -1,0 +1,113 @@
+/* Custom overrides for the Replit-inspired layout and dynamic content */
+
+.post-content h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.post-content p {
+  color: hsl(var(--muted-foreground));
+  line-height: 1.8;
+  margin: 1.25rem 0;
+}
+
+.post-content ul,
+.post-content ol {
+  color: hsl(var(--muted-foreground));
+  margin: 1.25rem 0;
+  padding-left: 1.5rem;
+}
+
+.post-content ul {
+  list-style: disc;
+}
+
+.post-content ol {
+  list-style: decimal;
+}
+
+.post-content li {
+  margin: 0.5rem 0;
+}
+
+.post-content a {
+  color: hsl(var(--primary));
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.post-content pre {
+  background: hsl(var(--muted));
+  color: hsl(var(--foreground));
+  border-radius: 0.75rem;
+  padding: 1rem 1.25rem;
+  overflow: auto;
+  margin: 1.5rem 0;
+}
+
+.post-content code {
+  font-family: var(--font-mono);
+}
+
+.post-content img {
+  border-radius: 1rem;
+  margin: 1.5rem 0;
+}
+
+.blog-category-pill {
+  border: 1px solid hsl(var(--border));
+  background: hsl(var(--card));
+  color: hsl(var(--muted-foreground));
+}
+
+.blog-category-pill[data-active="true"] {
+  border-color: transparent;
+  color: #fff;
+  background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
+  box-shadow: 0 10px 25px rgba(38, 98, 217, 0.25);
+}
+
+.post-detail .post-summary {
+  border-bottom: 1px solid hsl(var(--border));
+  padding-bottom: 2rem;
+}
+
+.share-button {
+  border: 1px solid hsl(var(--border));
+  background: hsl(var(--muted));
+  transition: all 0.2s ease;
+}
+
+.share-button:hover {
+  background: hsl(var(--background));
+  color: hsl(var(--primary));
+}
+
+.brand-text {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.15em;
+}
+
+.typewriter-text {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.typing-cursor {
+  display: inline-block;
+  margin-left: 0.15em;
+  color: hsl(var(--muted-foreground));
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}

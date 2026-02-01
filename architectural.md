@@ -1,7 +1,7 @@
 # Architecture
 
 ## Overview
-This is a static HTML/CSS/JS blog and portfolio site intended to run from GitHub Pages or any static host. Content is rendered client-side from `data/posts.json`, which is generated from markdown sources or edited directly.
+This is a static HTML/CSS/JS blog and portfolio site intended to run from GitHub Pages or any static host. Content is rendered client-side from `data/posts.json`, which is generated from markdown sources or edited directly. The UI is a Replit-inspired layout implemented with compiled Tailwind CSS utilities.
 
 ## File Tree
 ```
@@ -19,6 +19,8 @@ Blog/
   ├── projects.html
   ├── manifest.json
   ├── service-worker.js
+  ├── favicon.png
+  ├── opengraph.jpg
   ├── package.json
   ├── package-lock.json
   ├── data/
@@ -29,12 +31,15 @@ Blog/
   │   └── generate-json.js
   ├── assets/
   │   ├── css/
+  │   │   ├── styles.css
+  │   │   └── custom.css
   │   ├── js/
   │   │   ├── app.js
   │   │   ├── typewriter.js
   │   │   ├── notifications.js
   │   │   └── pwa.js
   │   └── img/
+  │       └── circuit_infinity_tech_logo.png
   └── node_modules/ (generated)
 ```
 
@@ -45,20 +50,24 @@ Blog/
 
 ## Runtime Behavior
 - Pages are static HTML: `index.html`, `about.html`, `projects.html`, `blog.html`, `post.html`.
-- `assets/js/app.js` loads `data/posts.json` and renders cards or full post content.
+- `assets/js/app.js` loads `data/posts.json` and renders:
+  - Home: recent project cards.
+  - Projects: featured and additional project grids.
+  - Blog: category pills and post list.
+  - Post: full article view with computed read time and share links.
 - `post.html` reads a `slug` query parameter and renders a single post/project.
-- Sharing uses the Web Share API with clipboard fallbacks.
-- `assets/js/typewriter.js` animates the brand text across the hero and navigation logos in a looping typewriter effect.
+- Share buttons use the Web Share API with clipboard fallback.
+- Layout styling is provided by the compiled Tailwind output in `assets/css/styles.css` plus local overrides in `assets/css/custom.css`.
 
 ## Data Model
 Each post entry is a JSON object with:
 - `id`, `type` (`blog` or `project`), `title`, `slug`, `date`, `summary`
 - `contentHtml` (rendered HTML from markdown)
-- Optional `coverImage`
+- Optional `coverImage`, `tags`, `category`, `featured`
 
 ## PWA and Offline
 - `manifest.json` defines app metadata and icons.
-- `service-worker.js` provides basic caching for offline use (if enabled).
+- `service-worker.js` provides basic caching for offline use.
 
 ## Constraints and Assumptions
 - No server-side rendering or database.

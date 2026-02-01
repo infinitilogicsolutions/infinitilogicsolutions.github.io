@@ -1,40 +1,42 @@
 # My Blog
 
-A modern, responsive personal blog and portfolio website built with HTML, CSS, and JavaScript. Designed to be hosted for free on GitHub Pages.
+A modern, responsive personal blog and portfolio website built with HTML, CSS, and JavaScript. Designed to be hosted for free on GitHub Pages. The UI mirrors the BlogReplit design while keeping the original Markdown-to-JSON content pipeline.
 
 ## Features
 
-- 🎨 Beautiful, modern design with gradient accents
-- 📱 Fully responsive (mobile, tablet, desktop)
-- 🚀 Fast and lightweight (no frameworks required)
-- 📝 Simple JSON-based content management
-- 🔗 Shareable post URLs with Web Share API support
-- ✨ Smooth animations and transitions
-- ⌨️ Looping typewriter logo animation with underscore cursor
-- 🎯 SEO-friendly structure
+- Replit-inspired layout with bold typography and gradient accents
+- Fully responsive (mobile, tablet, desktop)
+- Fast, framework-free runtime
+- JSON-driven content for blog and projects
+- Computed read time and category pills
+- Shareable post URLs with Web Share API support
+- PWA support with offline caching
 
 ## Structure
 
 ```
 Blog/
-  ├── index.html          # Hero page with centered logo
+  ├── index.html          # Home page
   ├── about.html          # About page
   ├── projects.html       # Projects showcase
-  ├── blog.html           # Blog posts (with expand cards)
+  ├── blog.html           # Blog listing
   ├── post.html           # Single post view (shareable)
   ├── 404.html            # Custom 404 page
   ├── assets/
   │   ├── css/
-  │   │   └── styles.css  # All styles
+  │   │   ├── styles.css  # Compiled Tailwind styles (Replit design)
+  │   │   └── custom.css  # Local overrides for dynamic content
   │   ├── js/
   │   │   ├── app.js          # Post rendering logic
-  │   │   ├── typewriter.js   # Animated logo typing loop
   │   │   ├── pwa.js          # PWA enhancements
   │   │   └── notifications.js # Web notifications helper
   │   └── img/
-  │       └── logo.png    # Your logo
-  └── data/
-      └── posts.json      # Content database
+  │       └── circuit_infinity_tech_logo.png
+  ├── data/
+  │   └── posts.json      # Content database
+  ├── posts/              # Markdown sources
+  └── scripts/
+      └── generate-json.js
 ```
 
 ## Project Docs
@@ -49,19 +51,19 @@ Blog/
 
 You can manage content in two ways:
 
-**Option A: Markdown Files (Recommended)** 📝
+**Option A: Markdown Files (Recommended)**
 - Write posts in `posts/*.md` using Markdown
 - Push to GitHub
 - GitHub Actions automatically generates `data/posts.json`
 - See `posts/README.md` for full documentation
 
-**Option B: Direct JSON Editing** ✏️
+**Option B: Direct JSON Editing**
 - Manually edit `data/posts.json`
 - Immediate local changes (no build step)
 
 ### 1. Add Your Logo
 
-Replace `assets/img/logo.png` with your own logo image (recommended size: 400x400px or similar).
+Replace `assets/img/circuit_infinity_tech_logo.png` with your own logo image if desired.
 
 ### 2. Customize Content
 
@@ -82,7 +84,7 @@ summary: Brief description
 Your content here in **Markdown**!
 ```
 
-3. Commit and push - GitHub Actions handles the rest!
+3. Commit and push - GitHub Actions handles the rest.
 
 See `posts/README.md` for detailed instructions.
 
@@ -99,25 +101,15 @@ Edit `data/posts.json` to add your own projects and blog posts. Each entry shoul
   "date": "2026-01-05",
   "summary": "Brief description",
   "contentHtml": "<p>Full HTML content</p>",
+  "tags": ["AI", "Tutorial"],
   "coverImage": "path/to/image.jpg" (optional)
 }
 ```
 
-### 3. Update About Page
+### 3. Customize Colors
 
-Edit `about.html` to add your personal information, bio, and social links.
-
-### 4. Customize Colors
-
-Update CSS custom properties in `assets/css/styles.css`:
-
-```css
-:root {
-  --primary-color: #667eea;
-  --secondary-color: #764ba2;
-  /* ... other variables ... */
-}
-```
+Global colors are defined in the compiled Tailwind output at `assets/css/styles.css` (look for `:root`).
+Use `assets/css/custom.css` for smaller overrides and content styling.
 
 ## Deploying to GitHub Pages
 
@@ -138,66 +130,50 @@ Update CSS custom properties in `assets/css/styles.css`:
 
 ## Features Explained
 
-### Hero Page (index.html)
+### Home Page
 
-Full-screen centered logo with animated down arrow that navigates to About page. The brand name types in a loop with an underscore cursor.
+- Hero section with gradient background
+- "How I Work" feature cards
+- Recent projects grid populated from `data/posts.json`
 
 ### Projects Page
 
-- Displays all items with `type: "project"`
-- Click card → navigate to full post page
-- Great for showcasing your work portfolio
+- Featured projects grid (top two projects by date unless `featured: true` is set)
+- Additional projects grid for the rest
 
 ### Blog Page
 
-- Displays all items with `type: "blog"`
-- Click card → expands inline to show full content
-- "Open Full Page" button for shareable link
-- Share button to share via Web Share API or copy link
+- Category pills generated from tags
+- Blog cards with computed read time
 
-### Post Page (Shareable)
+### Post Page
 
-- Dedicated page for each post/project
-- Accessed via `post.html?slug=your-slug`
-- Perfect for sharing on social media
-- Back button returns to appropriate section
-
-### Share Functionality
-
-1. **Web Share API** (mobile): Native share dialog
-2. **Fallback**: Copy link to clipboard
-3. **Final fallback**: Show link in prompt
-
-## Browser Support
-
-- All modern browsers (Chrome, Firefox, Safari, Edge)
-- Responsive design works on all devices
-- Graceful fallbacks for older browsers
+- Full post view with share links
+- Read time computed from content length
+- Back link routes to Blog or Projects based on type
 
 ## Performance
 
-- No external dependencies
+- No external JS frameworks at runtime
 - Minimal JavaScript
 - Optimized CSS with modern features
 - Fast load times
 
 ## What's Next
 
-- Connect this project to an MCP server to run tests.
+- Add more blog content.
 
 ## Future Enhancements (Optional)
 
-- Add PWA support with `manifest.json` and service worker
-- Implement dark mode toggle
 - Add RSS feed
+- Implement dark mode toggle
 - Add comments system (via third-party service)
 - Add search functionality
-- Implement tags/categories filtering
 
 ## License
 
-MIT License - Feel free to use this for your own blog!
+MIT License - Feel free to use this for your own blog.
 
 ## Credits
 
-Built with ❤️ using vanilla HTML, CSS, and JavaScript.
+Built with vanilla HTML, CSS, and JavaScript.
