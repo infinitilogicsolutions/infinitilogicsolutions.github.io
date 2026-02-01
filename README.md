@@ -11,6 +11,7 @@ A modern, responsive personal blog and portfolio website built with HTML, CSS, a
 - Computed read time and category pills
 - Shareable post URLs with Web Share API support
 - PWA support with offline caching
+- iOS home screen icon sizes for proper "Add to Home Screen" rendering
 
 ## Structure
 
@@ -31,7 +32,10 @@ Blog/
   │   │   ├── pwa.js          # PWA enhancements
   │   │   └── notifications.js # Web notifications helper
   │   └── img/
-  │       └── circuit_infinity_tech_logo.png
+  │       ├── circuit_infinity_tech_logo.png
+  │       ├── apple-touch-icon-*.png
+  │       ├── icon-192.png
+  │       └── icon-512.png
   ├── data/
   │   └── posts.json      # Content database
   ├── posts/              # Markdown sources
@@ -63,7 +67,7 @@ You can manage content in two ways:
 
 ### 1. Add Your Logo
 
-Replace `assets/img/circuit_infinity_tech_logo.png` with your own logo image if desired.
+Replace `assets/img/circuit_infinity_tech_logo.png` with your own logo image if desired. For a matching iOS home screen icon, regenerate `assets/img/apple-touch-icon-*.png` (and the manifest icons `assets/img/icon-192.png` and `assets/img/icon-512.png`) from the same source.
 
 ### 2. Customize Content
 
@@ -161,7 +165,7 @@ Use `assets/css/custom.css` for smaller overrides and content styling.
 
 ## What's Next
 
-- Add more blog content.
+- Share the site on LinkedIn Pages and document the best sharing flow (post format, preview image, and link tracking).
 
 ## Future Enhancements (Optional)
 

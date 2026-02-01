@@ -39,7 +39,10 @@ Blog/
   │   │   ├── notifications.js
   │   │   └── pwa.js
   │   └── img/
-  │       └── circuit_infinity_tech_logo.png
+  │       ├── circuit_infinity_tech_logo.png
+  │       ├── apple-touch-icon-*.png
+  │       ├── icon-192.png
+  │       └── icon-512.png
   └── node_modules/ (generated)
 ```
 
@@ -67,7 +70,8 @@ Each post entry is a JSON object with:
 
 ## PWA and Offline
 - `manifest.json` defines app metadata and icons.
-- `service-worker.js` provides basic caching for offline use.
+- `index.html` declares iOS home screen icons via `apple-touch-icon` tags.
+- `service-worker.js` provides basic caching for offline use, including icon assets.
 
 ## Constraints and Assumptions
 - No server-side rendering or database.
