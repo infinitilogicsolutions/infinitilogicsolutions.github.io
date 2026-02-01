@@ -1,77 +1,308 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="About me - Personal blog and portfolio">
-    <meta name="theme-color" content="#667eea">
-    <title>About - InfinitiLogicSolutions</title>
-    <link rel="manifest" href="manifest.json">
-    <link rel="stylesheet" href="assets/css/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  <meta name="description" content="About InfinitiLogicSolutions">
+  <meta name="theme-color" content="#2662d9">
+  <title>About - InfinitiLogicSolutions</title>
+
+  <link rel="manifest" href="manifest.json">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="InfinitiLogicSolutions">
+  <link rel="apple-touch-icon" href="assets/img/icon-192.png">
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Inter:wght@300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/custom.css">
 </head>
-<body>
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="index.html" class="nav-logo" aria-label="InfinitiLogicSolutions">
-                <span class="brand-text typewriter" aria-hidden="true" data-text="InfinitiLogicSolutions">InfinitiLogicSolutions</span>
-            </a>
-            <ul class="nav-menu">
-                <li><a href="about.html" class="nav-link active">About</a></li>
-                <li><a href="projects.html" class="nav-link">Projects</a></li>
-                <li><a href="blog.html" class="nav-link">Blog</a></li>
-            </ul>
-        </div>
+<body class="min-h-screen flex flex-col">
+  <header class="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border/50">
+    <nav class="max-w-5xl mx-auto px-6 py-3 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
+        <img src="assets/img/circuit_infinity_tech_logo.png" alt="InfinitiLogicSolutions" class="w-8 h-8">
+        <span class="font-display text-lg font-bold gradient-text hidden sm:inline brand-text typewriter" data-text="InfinitiLogicSolutions">InfinitiLogicSolutions</span>
+      </a>
+      <ul class="flex items-center gap-1">
+        <li>
+          <a href="index.html" class="relative px-4 py-2 text-sm font-medium transition-colors rounded-full text-muted-foreground hover:text-foreground">Home</a>
+        </li>
+        <li>
+          <a href="about.html" class="relative px-4 py-2 text-sm font-medium transition-colors rounded-full text-primary bg-primary/10" aria-current="page">About</a>
+        </li>
+        <li>
+          <a href="projects.html" class="relative px-4 py-2 text-sm font-medium transition-colors rounded-full text-muted-foreground hover:text-foreground">Projects</a>
+        </li>
+        <li>
+          <a href="blog.html" class="relative px-4 py-2 text-sm font-medium transition-colors rounded-full text-muted-foreground hover:text-foreground">Blog</a>
+        </li>
+      </ul>
     </nav>
+  </header>
 
-    <main class="container">
-        <article class="about-content">
-            <h1>About InfinitiLogicSolutions</h1>
-            <div class="about-section">
-                <p>InfinitiLogicSolutions is a professional, single-person studio where I design, build, and ship AI-assisted projects with care and focus.</p>
+  <main class="flex-1 pt-20">
+    <section class="max-w-5xl mx-auto px-6 py-24 relative">
+      <div class="absolute top-10 right-10 w-72 h-72 bg-secondary/10 rounded-full blur-3xl -z-10"></div>
+      <div class="absolute bottom-0 left-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl -z-10"></div>
 
-                <h2>Origin Story</h2>
-                <p>InfinitiLogicSolutions was born over the holidays of 2025 as a fun place to park projects that can be created using AI tools.</p>
+      <div>
+        <p class="font-mono text-sm text-secondary mb-4">About</p>
+        <h1 class="text-4xl md:text-5xl font-display font-bold tracking-tight mb-8">
+          The Story Behind <span class="gradient-text">InfinitiLogicSolutions</span>
+        </h1>
+      </div>
 
-                <h2>What You'll Find Here</h2>
-                <p>Here I share my thoughts (including the random ones) under the blog, along with updates on projects completed here. I will try to keep the site free as much as possible.</p>
-                <ul>
-                    <li><strong>Projects:</strong> Focused builds, experiments, and deliverables with clear outcomes</li>
-                    <li><strong>Blog:</strong> Notes, reflections, and progress updates as things evolve</li>
-                </ul>
+      <div class="grid md:grid-cols-3 gap-12 md:gap-16">
+        <div class="md:col-span-2 space-y-6">
+          <p class="text-lg text-muted-foreground leading-relaxed">
+            InfinitiLogicSolutions is a <span class="text-foreground font-medium">one-person operation</span> born out of a simple idea:
+            what if I used my weekends to build useful tools instead of just consuming content?
+          </p>
+          <p class="text-lg text-muted-foreground leading-relaxed">
+            With the rise of <span class="text-primary font-medium">AI tools like ChatGPT and Claude</span>,
+            I found myself able to prototype and build things faster than ever before.
+            What used to take months can now be done in a weekend.
+          </p>
+          <p class="text-lg text-muted-foreground leading-relaxed">
+            This is not a startup or a business plan. It is a <span class="text-secondary font-medium">hobby that produces real tools</span>.
+            Every project here was built on Saturday mornings with coffee, curiosity, and AI assistance.
+          </p>
+        </div>
 
-                <h2>Current Team</h2>
-                <ul>
-                    <li>Anthropic Claude</li>
-                    <li>ChatGPT Codex</li>
-                    <li>OpenAI</li>
-                </ul>
-
-                <h2>Get In Touch</h2>
-                <p>Feel free to connect with me:</p>
-                <div class="social-links">
-                    <a href="https://github.com/infinitilogicsolutions" class="social-link" aria-label="GitHub" rel="noreferrer">
-                        <svg viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                        </svg>
-                        <span>GitHub</span>
-                    </a>
-                    <a href="mailto:infinitilogic.solution@gmail.com" class="social-link" aria-label="Email">
-                        <svg viewBox="0 0 24 24" aria-hidden="true">
-                            <rect x="2" y="4" width="20" height="16" rx="2"></rect>
-                            <polyline points="22 6 12 13 2 6"></polyline>
-                        </svg>
-                        <span>infinitilogic.solution@gmail.com</span>
-                    </a>
-                </div>
+        <div class="space-y-4">
+          <div class="flex items-center gap-3 p-4 bg-card rounded-xl border border-border">
+            <div class="p-2 bg-primary/10 rounded-lg">
+              <svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5 text-primary" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M12 6v6l4 2"></path>
+              </svg>
             </div>
-        </article>
-    </main>
+            <span class="text-muted-foreground">Weekend Builder</span>
+          </div>
+          <div class="flex items-center gap-3 p-4 bg-card rounded-xl border border-border">
+            <div class="p-2 bg-secondary/10 rounded-lg">
+              <svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5 text-secondary" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 8V4H8"></path>
+                <rect x="4" y="8" width="16" height="12" rx="2"></rect>
+                <path d="M2 14h2"></path>
+                <path d="M20 14h2"></path>
+                <path d="M15 13v2"></path>
+                <path d="M9 13v2"></path>
+              </svg>
+            </div>
+            <span class="text-muted-foreground">AI Enthusiast</span>
+          </div>
+          <div class="flex items-center gap-3 p-4 bg-card rounded-xl border border-border">
+            <div class="p-2 bg-blue-500/10 rounded-lg">
+              <svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5 text-blue-500" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 21s8-4.5 8-11.8A8 8 0 0 0 4 9.2C4 16.5 12 21 12 21z"></path>
+                <circle cx="12" cy="9" r="2.5"></circle>
+              </svg>
+            </div>
+            <span class="text-muted-foreground">Remote / Anywhere</span>
+          </div>
+          <div class="flex items-center gap-3 p-4 bg-card rounded-xl border border-border">
+            <div class="p-2 bg-amber-500/10 rounded-lg">
+              <svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5 text-amber-500" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10 2v2"></path>
+                <path d="M14 2v2"></path>
+                <path d="M8 6h8"></path>
+                <path d="M6 6h12"></path>
+                <path d="M6 8a6 6 0 0 0 12 0"></path>
+                <path d="M6 8v7a6 6 0 0 0 12 0V8"></path>
+              </svg>
+            </div>
+            <span class="text-muted-foreground">Fueled by Coffee</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <footer class="footer">
-        <p>&copy; 2026 InfinitiLogicSolutions. All rights reserved.</p>
-    </footer>
-    <script src="assets/js/typewriter.js"></script>
-    <script src="assets/js/pwa.js"></script>
-    <script src="assets/js/notifications.js"></script>
+    <section class="border-t border-border bg-card">
+      <div class="max-w-5xl mx-auto px-6 py-24">
+        <div>
+          <h2 class="font-display text-3xl font-semibold mb-4">Tools and Technologies</h2>
+          <p class="text-muted-foreground mb-12">What I use to build things</p>
+
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="group">
+              <div class="flex items-center justify-between mb-2">
+                <span class="font-medium">Python</span>
+                <span class="text-sm text-muted-foreground">90%</span>
+              </div>
+              <div class="h-2 bg-muted rounded-full overflow-hidden">
+                <div class="h-full bg-gradient-to-r from-primary to-secondary rounded-full" style="width: 90%;"></div>
+              </div>
+            </div>
+
+            <div class="group">
+              <div class="flex items-center justify-between mb-2">
+                <span class="font-medium">JavaScript and TypeScript</span>
+                <span class="text-sm text-muted-foreground">85%</span>
+              </div>
+              <div class="h-2 bg-muted rounded-full overflow-hidden">
+                <div class="h-full bg-gradient-to-r from-primary to-secondary rounded-full" style="width: 85%;"></div>
+              </div>
+            </div>
+
+            <div class="group">
+              <div class="flex items-center justify-between mb-2">
+                <span class="font-medium">AI and ML Tools</span>
+                <span class="text-sm text-muted-foreground">88%</span>
+              </div>
+              <div class="h-2 bg-muted rounded-full overflow-hidden">
+                <div class="h-full bg-gradient-to-r from-primary to-secondary rounded-full" style="width: 88%;"></div>
+              </div>
+            </div>
+
+            <div class="group">
+              <div class="flex items-center justify-between mb-2">
+                <span class="font-medium">React</span>
+                <span class="text-sm text-muted-foreground">82%</span>
+              </div>
+              <div class="h-2 bg-muted rounded-full overflow-hidden">
+                <div class="h-full bg-gradient-to-r from-primary to-secondary rounded-full" style="width: 82%;"></div>
+              </div>
+            </div>
+
+            <div class="group">
+              <div class="flex items-center justify-between mb-2">
+                <span class="font-medium">Node.js</span>
+                <span class="text-sm text-muted-foreground">80%</span>
+              </div>
+              <div class="h-2 bg-muted rounded-full overflow-hidden">
+                <div class="h-full bg-gradient-to-r from-primary to-secondary rounded-full" style="width: 80%;"></div>
+              </div>
+            </div>
+
+            <div class="group">
+              <div class="flex items-center justify-between mb-2">
+                <span class="font-medium">PostgreSQL</span>
+                <span class="text-sm text-muted-foreground">75%</span>
+              </div>
+              <div class="h-2 bg-muted rounded-full overflow-hidden">
+                <div class="h-full bg-gradient-to-r from-primary to-secondary rounded-full" style="width: 75%;"></div>
+              </div>
+            </div>
+
+            <div class="group">
+              <div class="flex items-center justify-between mb-2">
+                <span class="font-medium">Cloud Services</span>
+                <span class="text-sm text-muted-foreground">78%</span>
+              </div>
+              <div class="h-2 bg-muted rounded-full overflow-hidden">
+                <div class="h-full bg-gradient-to-r from-primary to-secondary rounded-full" style="width: 78%;"></div>
+              </div>
+            </div>
+
+            <div class="group">
+              <div class="flex items-center justify-between mb-2">
+                <span class="font-medium">Automation</span>
+                <span class="text-sm text-muted-foreground">92%</span>
+              </div>
+              <div class="h-2 bg-muted rounded-full overflow-hidden">
+                <div class="h-full bg-gradient-to-r from-primary to-secondary rounded-full" style="width: 92%;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-t border-border">
+      <div class="max-w-5xl mx-auto px-6 py-24">
+        <div>
+          <h2 class="font-display text-3xl font-semibold mb-4">The Journey</h2>
+          <p class="text-muted-foreground mb-12">How this all started</p>
+
+          <div class="relative">
+            <div class="absolute left-[7px] top-3 bottom-3 w-0.5 bg-gradient-to-b from-primary via-secondary to-blue-500"></div>
+
+            <div class="space-y-8">
+              <div class="relative pl-10">
+                <div class="absolute left-0 top-1.5 w-4 h-4 bg-primary rounded-full border-4 border-background"></div>
+                <div class="p-6 bg-card rounded-2xl border border-border hover:border-primary/30 transition-colors">
+                  <span class="font-mono text-sm text-muted-foreground px-3 py-1 bg-muted rounded-full">2024</span>
+                  <h3 class="font-display text-xl font-medium mt-3 mb-2">AI Tool Experiments</h3>
+                  <p class="text-muted-foreground">Exploring GPT, Claude, and other AI tools for practical automation.</p>
+                </div>
+              </div>
+
+              <div class="relative pl-10">
+                <div class="absolute left-0 top-1.5 w-4 h-4 bg-secondary rounded-full border-4 border-background"></div>
+                <div class="p-6 bg-card rounded-2xl border border-border hover:border-primary/30 transition-colors">
+                  <span class="font-mono text-sm text-muted-foreground px-3 py-1 bg-muted rounded-full">2023</span>
+                  <h3 class="font-display text-xl font-medium mt-3 mb-2">Started InfinitiLogicSolutions</h3>
+                  <p class="text-muted-foreground">Began building weekend projects as a creative outlet.</p>
+                </div>
+              </div>
+
+              <div class="relative pl-10">
+                <div class="absolute left-0 top-1.5 w-4 h-4 bg-blue-500 rounded-full border-4 border-background"></div>
+                <div class="p-6 bg-card rounded-2xl border border-border hover:border-primary/30 transition-colors">
+                  <span class="font-mono text-sm text-muted-foreground px-3 py-1 bg-muted rounded-full">2020+</span>
+                  <h3 class="font-display text-xl font-medium mt-3 mb-2">Day Job and Side Projects</h3>
+                  <p class="text-muted-foreground">Balancing a full-time career with passion for building things.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-border mt-auto">
+    <div class="max-w-5xl mx-auto px-6 py-12">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-3">
+          <img src="assets/img/circuit_infinity_tech_logo.png" alt="InfinitiLogicSolutions" class="w-10 h-10">
+          <div>
+            <p class="font-display font-semibold gradient-text">InfinitiLogicSolutions</p>
+            <p class="text-sm text-muted-foreground">Weekend projects powered by curiosity and AI</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-4">
+          <a href="#" class="p-2 text-muted-foreground hover:text-primary transition-colors" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+            </svg>
+          </a>
+          <a href="#" class="p-2 text-muted-foreground hover:text-primary transition-colors" aria-label="Twitter">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2-2.3-.1-4.2-1.5-4.9-3.6.7.1 1.5.1 2.2-.1C3 12.7 1.6 10.6 2 8.2c.8.4 1.6.6 2.5.6C2.8 7.7 2 5.1 3.5 3.6 5.8 6.2 9.1 7.7 12.7 7.5c-.7-3.1 2-5.2 4.6-3.8 1.1-.2 2.2-.6 3.1-1.2-.3 1.1-1.1 2-2 2.6 1-.1 2-.4 3-.8z"></path>
+            </svg>
+          </a>
+          <a href="#" class="p-2 text-muted-foreground hover:text-primary transition-colors" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+              <rect width="4" height="12" x="2" y="9"></rect>
+              <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+          </a>
+          <a href="#" class="p-2 text-muted-foreground hover:text-primary transition-colors" aria-label="Email">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="mt-8 pt-8 border-t border-border text-center">
+        <p class="text-sm text-muted-foreground">© 2026 InfinitiLogicSolutions. Built on weekends with AI assistance.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/typewriter.js"></script>
+  <script src="assets/js/pwa.js"></script>
+  <script src="assets/js/notifications.js"></script>
 </body>
 </html>

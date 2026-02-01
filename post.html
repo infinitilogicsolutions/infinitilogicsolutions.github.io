@@ -1,44 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Read articles and posts">
-    <meta name="theme-color" content="#667eea">
-    <title>Post - InfinitiLogicSolutions</title>
-    <link rel="manifest" href="manifest.json">
-    <link rel="stylesheet" href="assets/css/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  <meta name="description" content="Post - InfinitiLogicSolutions">
+  <meta name="theme-color" content="#2662d9">
+  <title>Post - InfinitiLogicSolutions</title>
+
+  <link rel="manifest" href="manifest.json">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="InfinitiLogicSolutions">
+  <link rel="apple-touch-icon" href="assets/img/icon-192.png">
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Inter:wght@300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/custom.css">
 </head>
-<body>
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="index.html" class="nav-logo" aria-label="InfinitiLogicSolutions">
-                <span class="brand-text typewriter" aria-hidden="true" data-text="InfinitiLogicSolutions">InfinitiLogicSolutions</span>
-            </a>
-            <ul class="nav-menu">
-                <li><a href="about.html" class="nav-link">About</a></li>
-                <li><a href="projects.html" class="nav-link">Projects</a></li>
-                <li><a href="blog.html" class="nav-link">Blog</a></li>
-            </ul>
-        </div>
+<body class="min-h-screen flex flex-col">
+  <header class="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border/50">
+    <nav class="max-w-5xl mx-auto px-6 py-3 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
+        <img src="assets/img/circuit_infinity_tech_logo.png" alt="InfinitiLogicSolutions" class="w-8 h-8">
+        <span class="font-display text-lg font-bold gradient-text hidden sm:inline brand-text typewriter" data-text="InfinitiLogicSolutions">InfinitiLogicSolutions</span>
+      </a>
+      <ul class="flex items-center gap-1">
+        <li>
+          <a href="index.html" class="relative px-4 py-2 text-sm font-medium transition-colors rounded-full text-muted-foreground hover:text-foreground">Home</a>
+        </li>
+        <li>
+          <a href="about.html" class="relative px-4 py-2 text-sm font-medium transition-colors rounded-full text-muted-foreground hover:text-foreground">About</a>
+        </li>
+        <li>
+          <a href="projects.html" class="relative px-4 py-2 text-sm font-medium transition-colors rounded-full text-muted-foreground hover:text-foreground">Projects</a>
+        </li>
+        <li>
+          <a href="blog.html" class="relative px-4 py-2 text-sm font-medium transition-colors rounded-full text-muted-foreground hover:text-foreground">Blog</a>
+        </li>
+      </ul>
     </nav>
+  </header>
 
-    <main class="container">
-        <article id="postContent" class="post-article">
-            <div class="loading">Loading post...</div>
-        </article>
-    </main>
+  <main class="flex-1 pt-20">
+    <article class="max-w-3xl mx-auto px-6 py-24">
+      <div id="postContent" class="post-detail">
+        <p class="text-muted-foreground">Loading post...</p>
+      </div>
+    </article>
+  </main>
 
-    <footer class="footer">
-        <p>&copy; 2026 InfinitiLogicSolutions. All rights reserved.</p>
-    </footer>
+  <footer class="border-t border-border mt-auto">
+    <div class="max-w-5xl mx-auto px-6 py-12">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-3">
+          <img src="assets/img/circuit_infinity_tech_logo.png" alt="InfinitiLogicSolutions" class="w-10 h-10">
+          <div>
+            <p class="font-display font-semibold gradient-text">InfinitiLogicSolutions</p>
+            <p class="text-sm text-muted-foreground">Weekend projects powered by curiosity and AI</p>
+          </div>
+        </div>
 
-    <script src="assets/js/app.js"></script>
-    <script>
-        loadSinglePost();
-    </script>
-    <script src="assets/js/typewriter.js"></script>
-    <script src="assets/js/pwa.js"></script>
-    <script src="assets/js/notifications.js"></script>
+        <div class="flex items-center gap-4">
+          <a href="#" class="p-2 text-muted-foreground hover:text-primary transition-colors" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+            </svg>
+          </a>
+          <a href="#" class="p-2 text-muted-foreground hover:text-primary transition-colors" aria-label="Twitter">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2-2.3-.1-4.2-1.5-4.9-3.6.7.1 1.5.1 2.2-.1C3 12.7 1.6 10.6 2 8.2c.8.4 1.6.6 2.5.6C2.8 7.7 2 5.1 3.5 3.6 5.8 6.2 9.1 7.7 12.7 7.5c-.7-3.1 2-5.2 4.6-3.8 1.1-.2 2.2-.6 3.1-1.2-.3 1.1-1.1 2-2 2.6 1-.1 2-.4 3-.8z"></path>
+            </svg>
+          </a>
+          <a href="#" class="p-2 text-muted-foreground hover:text-primary transition-colors" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+              <rect width="4" height="12" x="2" y="9"></rect>
+              <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+          </a>
+          <a href="#" class="p-2 text-muted-foreground hover:text-primary transition-colors" aria-label="Email">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="mt-8 pt-8 border-t border-border text-center">
+        <p class="text-sm text-muted-foreground">© 2026 InfinitiLogicSolutions. Built on weekends with AI assistance.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/typewriter.js"></script>
+  <script src="assets/js/pwa.js"></script>
+  <script src="assets/js/notifications.js"></script>
 </body>
 </html>

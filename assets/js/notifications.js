@@ -153,7 +153,7 @@ style.textContent = `
         transform: translateX(450px);
         transition: transform 0.3s ease;
         overflow: hidden;
-        border-left: 4px solid #667eea;
+        border-left: 4px solid #2662d9;
     }
 
     .new-post-notification.show {
@@ -203,7 +203,7 @@ style.textContent = `
     }
 
     .notification-btn.primary {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: linear-gradient(135deg, #2662d9 0%, #2eb8a1 100%);
         color: white;
     }
 

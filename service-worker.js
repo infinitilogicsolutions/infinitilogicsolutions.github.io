@@ -1,5 +1,5 @@
-const CACHE_NAME = 'my-blog-v1';
-const DYNAMIC_CACHE = 'my-blog-dynamic-v1';
+const CACHE_NAME = 'my-blog-v2';
+const DYNAMIC_CACHE = 'my-blog-dynamic-v2';
 
 // Assets to cache on install
 const STATIC_ASSETS = [
@@ -9,13 +9,22 @@ const STATIC_ASSETS = [
   '/blog.html',
   '/projects.html',
   '/post.html',
+  '/404.html',
   '/assets/css/styles.css',
+  '/assets/css/custom.css',
   '/assets/js/app.js',
-  '/assets/img/logo.svg',
+  '/assets/js/typewriter.js',
+  '/assets/js/pwa.js',
+  '/assets/js/notifications.js',
+  '/assets/img/circuit_infinity_tech_logo.png',
   '/assets/img/apple-touch-icon-180.png',
   '/assets/img/apple-touch-icon-167.png',
   '/assets/img/apple-touch-icon-152.png',
   '/assets/img/apple-touch-icon-120.png',
+  '/assets/img/icon-192.png',
+  '/assets/img/icon-512.png',
+  '/favicon.png',
+  '/opengraph.jpg',
   '/data/posts.json',
   '/manifest.json'
 ];
