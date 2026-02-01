@@ -30,6 +30,10 @@ Blog/
   ├── assets/
   │   ├── css/
   │   ├── js/
+  │   │   ├── app.js
+  │   │   ├── typewriter.js
+  │   │   ├── notifications.js
+  │   │   └── pwa.js
   │   └── img/
   └── node_modules/ (generated)
 ```
@@ -44,6 +48,7 @@ Blog/
 - `assets/js/app.js` loads `data/posts.json` and renders cards or full post content.
 - `post.html` reads a `slug` query parameter and renders a single post/project.
 - Sharing uses the Web Share API with clipboard fallbacks.
+- `assets/js/typewriter.js` animates the brand text across the hero and navigation logos in a looping typewriter effect.
 
 ## Data Model
 Each post entry is a JSON object with:

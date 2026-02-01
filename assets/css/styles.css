@@ -199,6 +199,26 @@ h1, h2, h3, h4, h5, h6 {
     letter-spacing: 0.02em;
 }
 
+.brand-text.typewriter {
+    white-space: nowrap;
+}
+
+.typewriter-text {
+    display: inline-flex;
+    align-items: baseline;
+    white-space: nowrap;
+}
+
+.typing-cursor {
+    display: inline-block;
+    margin-left: 0.08em;
+    animation: typing-cursor-blink 1s step-end infinite;
+}
+
+.nav-logo .brand-text.typewriter {
+    min-width: 22ch;
+}
+
 .nav-logo .brand-text {
     flex-wrap: nowrap;
 }
@@ -207,6 +227,11 @@ h1, h2, h3, h4, h5, h6 {
 .g-red { color: #DB4437; }
 .g-yellow { color: #F4B400; }
 .g-green { color: #0F9D58; }
+
+@keyframes typing-cursor-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
 
 .nav-logo:hover {
     color: var(--secondary-color);
