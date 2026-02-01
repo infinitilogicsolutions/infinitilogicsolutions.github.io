@@ -9,7 +9,7 @@ A modern, responsive personal blog and portfolio website built with HTML, CSS, a
 - Fast, framework-free runtime
 - JSON-driven content for blog and projects
 - Computed read time and category pills
-- Shareable post URLs with Web Share API support
+- Social share buttons (X, LinkedIn, Facebook) plus Web Share API + copy link fallback
 - PWA support with offline caching
 - iOS home screen icon sizes for proper "Add to Home Screen" rendering
 
@@ -149,10 +149,11 @@ Use `assets/css/custom.css` for smaller overrides and content styling.
 
 - Category pills generated from tags
 - Blog cards with computed read time
+- Quick-share actions on each blog card
 
 ### Post Page
 
-- Full post view with share links
+- Full post view with social share links and copy-to-clipboard
 - Read time computed from content length
 - Back link routes to Blog or Projects based on type
 
@@ -165,7 +166,7 @@ Use `assets/css/custom.css` for smaller overrides and content styling.
 
 ## What's Next
 
-- Share the site on LinkedIn Pages and document the best sharing flow (post format, preview image, and link tracking).
+- Enable social media sharing for blog posts (X, LinkedIn, Facebook, and native share sheet).
 
 ## Future Enhancements (Optional)
 
