@@ -12,6 +12,10 @@ const STATIC_ASSETS = [
   '/assets/css/styles.css',
   '/assets/js/app.js',
   '/assets/img/logo.svg',
+  '/assets/img/apple-touch-icon-180.png',
+  '/assets/img/apple-touch-icon-167.png',
+  '/assets/img/apple-touch-icon-152.png',
+  '/assets/img/apple-touch-icon-120.png',
   '/data/posts.json',
   '/manifest.json'
 ];

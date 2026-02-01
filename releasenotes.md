@@ -1,6 +1,8 @@
 # release notes
 
 ## 2026-02-01
+- added iOS home screen icon sizes and wired apple-touch-icon tags on the homepage
+- cached iOS touch icons in the service worker for offline availability
 - added `agent.md` with workflow checklist
 - added `architectural.md` with system overview
 - added file tree to `architectural.md`

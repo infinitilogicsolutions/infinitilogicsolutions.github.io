@@ -35,6 +35,7 @@ Blog/
   │   │   ├── notifications.js
   │   │   └── pwa.js
   │   └── img/
+  │       ├── apple-touch-icon-*.png
   └── node_modules/ (generated)
 ```
 
@@ -58,7 +59,8 @@ Each post entry is a JSON object with:
 
 ## PWA and Offline
 - `manifest.json` defines app metadata and icons.
-- `service-worker.js` provides basic caching for offline use (if enabled).
+- `index.html` declares iOS home screen icons via `apple-touch-icon` tags.
+- `service-worker.js` provides basic caching for offline use (if enabled), including PWA icon assets.
 
 ## Constraints and Assumptions
 - No server-side rendering or database.

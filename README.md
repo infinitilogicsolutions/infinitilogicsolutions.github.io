@@ -12,6 +12,7 @@ A modern, responsive personal blog and portfolio website built with HTML, CSS, a
 - ✨ Smooth animations and transitions
 - ⌨️ Looping typewriter logo animation with underscore cursor
 - 🎯 SEO-friendly structure
+- 🍎 iOS home screen icon sizes for proper "Add to Home Screen" rendering
 
 ## Structure
 
@@ -32,7 +33,8 @@ Blog/
   │   │   ├── pwa.js          # PWA enhancements
   │   │   └── notifications.js # Web notifications helper
   │   └── img/
-  │       └── logo.png    # Your logo
+  │       ├── logo.svg                # Primary logo (SVG)
+  │       └── apple-touch-icon-*.png  # iOS home screen icons
   └── data/
       └── posts.json      # Content database
 ```
@@ -61,7 +63,7 @@ You can manage content in two ways:
 
 ### 1. Add Your Logo
 
-Replace `assets/img/logo.png` with your own logo image (recommended size: 400x400px or similar).
+Replace `assets/img/logo.svg` with your own logo image (SVG recommended). If you want a polished iOS home screen icon, regenerate the `assets/img/apple-touch-icon-*.png` files from your logo.
 
 ### 2. Customize Content
 
@@ -183,7 +185,7 @@ Full-screen centered logo with animated down arrow that navigates to About page.
 
 ## What's Next
 
-- Connect this project to an MCP server to run tests.
+- Share the site on LinkedIn Pages and document the best sharing flow (post format, preview image, and link tracking).
 
 ## Future Enhancements (Optional)
 
