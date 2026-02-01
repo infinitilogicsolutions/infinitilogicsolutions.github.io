@@ -33,6 +33,12 @@ Blog/
       └── posts.json      # Content database
 ```
 
+## Project Docs
+
+- `agent.md` - workflow checklist for new missions
+- `architectural.md` - architectural overview of the application and file tree
+- `releasenotes.md` - change log for notable updates
+
 ## Getting Started
 
 ### Choose Your Workflow
@@ -170,6 +176,10 @@ Full-screen centered logo with animated down arrow that navigates to About page.
 - Minimal JavaScript
 - Optimized CSS with modern features
 - Fast load times
+
+## What's Next
+
+- Learn how to include testing into the application.
 
 ## Future Enhancements (Optional)
 
