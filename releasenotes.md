@@ -16,3 +16,4 @@
 - added social share actions to blog cards and expanded post sharing links
 - added Replit assets (favicon, opengraph, logo)
 - refreshed PWA theme colors and cache manifest
+- configured the nightly posts generator to push via deploy key when rulesets require bypass

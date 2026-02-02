@@ -19,6 +19,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          persist-credentials: false
       
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -40,7 +41,16 @@ jobs:
           else
             echo "changed=true" >> $GITHUB_OUTPUT
           fi
-      
+
+      - name: Configure deploy key for push
+        if: steps.check_changes.outputs.changed == 'true'
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.DEPLOY_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+          git remote set-url origin git@github.com:${GITHUB_REPOSITORY}.git
+
       - name: Commit and push if changed
         if: steps.check_changes.outputs.changed == 'true'
         run: |

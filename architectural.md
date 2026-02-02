@@ -50,6 +50,7 @@ Blog/
 - Source: Markdown files in `posts/` with frontmatter metadata.
 - Generator: `scripts/generate-json.js` converts markdown into `data/posts.json`.
 - Alternative: Direct edits to `data/posts.json` for quick changes.
+- Automation: GitHub Actions runs nightly and uses the `DEPLOY_KEY` secret to push updates when branch rulesets block direct pushes.
 
 ## Runtime Behavior
 - Pages are static HTML: `index.html`, `about.html`, `projects.html`, `blog.html`, `post.html`.
