@@ -82,6 +82,45 @@ function sortByDateDesc(a, b) {
   return new Date(b.date) - new Date(a.date);
 }
 
+function buildPostUrl(slug) {
+  const url = new URL('post.html', window.location.href);
+  url.searchParams.set('slug', slug);
+  return url.toString();
+}
+
+function buildShareLinks(post) {
+  const url = buildPostUrl(post.slug);
+  const encodedUrl = encodeURIComponent(url);
+  const encodedTitle = encodeURIComponent(post.title || '');
+
+  return {
+    url,
+    twitter: `https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`,
+    linkedIn: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`,
+    facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`
+  };
+}
+
+function bindShareCopyButtons(container) {
+  if (!container) return;
+
+  const buttons = container.querySelectorAll('[data-share-copy="true"]');
+  buttons.forEach((button) => {
+    button.addEventListener('click', (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+
+      const slug = button.dataset.shareSlug;
+      const encodedTitle = button.dataset.shareTitle || '';
+      const title = encodedTitle ? decodeURIComponent(encodedTitle) : '';
+
+      if (slug) {
+        sharePost(slug, title);
+      }
+    });
+  });
+}
+
 function createRecentProjectCard(project, index) {
   const category = getCategory(project);
   const year = formatYear(project.date);
@@ -176,42 +215,71 @@ function createBlogCard(post, index) {
   const color = getBlogColor(index);
   const readTime = computeReadTime(post.contentHtml || '');
   const date = formatDateShort(post.date);
+  const shareLinks = buildShareLinks(post);
+  const shareTitle = encodeURIComponent(post.title || '');
 
   return `
     <article class="group">
-      <a href="post.html?slug=${post.slug}">
-        <div class="cursor-pointer p-6 bg-card rounded-2xl border border-border hover:border-primary/30 transition-all hover:shadow-xl hover:shadow-primary/5">
-          <div class="flex flex-col md:flex-row md:items-start gap-6">
-            <div class="w-16 h-16 ${color} rounded-xl flex items-center justify-center shrink-0">
-              <span class="font-display text-2xl font-bold text-white">${index + 1}</span>
+      <div class="p-6 bg-card rounded-2xl border border-border hover:border-primary/30 transition-all hover:shadow-xl hover:shadow-primary/5">
+        <div class="flex flex-col md:flex-row md:items-start gap-6">
+          <div class="w-16 h-16 ${color} rounded-xl flex items-center justify-center shrink-0">
+            <span class="font-display text-2xl font-bold text-white">${index + 1}</span>
+          </div>
+          <div class="flex-1">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="text-xs font-mono px-2 py-1 bg-primary/10 text-primary rounded-full uppercase tracking-wider">${category}</span>
+              <span class="text-sm text-muted-foreground flex items-center gap-1">
+                <svg viewBox="0 0 24 24" aria-hidden="true" class="w-3.5 h-3.5" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path d="M12 6v6l4 2"></path>
+                </svg>
+                ${readTime}
+              </span>
             </div>
-            <div class="flex-1">
-              <div class="flex items-center gap-3 mb-3">
-                <span class="text-xs font-mono px-2 py-1 bg-primary/10 text-primary rounded-full uppercase tracking-wider">${category}</span>
-                <span class="text-sm text-muted-foreground flex items-center gap-1">
-                  <svg viewBox="0 0 24 24" aria-hidden="true" class="w-3.5 h-3.5" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <path d="M12 6v6l4 2"></path>
-                  </svg>
-                  ${readTime}
-                </span>
-              </div>
-              <h2 class="font-display text-2xl font-semibold mb-2 group-hover:text-primary transition-colors">${post.title}</h2>
-              <p class="text-muted-foreground mb-4">${post.summary || ''}</p>
-              <div class="flex items-center justify-between">
-                <span class="text-sm text-muted-foreground">${date}</span>
-                <span class="text-sm font-medium flex items-center gap-1 text-primary opacity-0 group-hover:opacity-100 transition-opacity">
+            <h2 class="font-display text-2xl font-semibold mb-2">
+              <a href="post.html?slug=${post.slug}" class="group-hover:text-primary transition-colors">${post.title}</a>
+            </h2>
+            <p class="text-muted-foreground mb-4">${post.summary || ''}</p>
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+              <span class="text-sm text-muted-foreground">${date}</span>
+              <div class="flex flex-wrap items-center gap-3">
+                <a href="post.html?slug=${post.slug}" class="text-sm font-medium flex items-center gap-1 text-primary">
                   Read Article
                   <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M5 12h14"></path>
                     <path d="m13 6 6 6-6 6"></path>
                   </svg>
-                </span>
+                </a>
+                <div class="flex items-center gap-2">
+                  <a href="${shareLinks.twitter}" target="_blank" rel="noreferrer" class="p-2 rounded-full share-button" aria-label="Share on X">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2-2.3-.1-4.2-1.5-4.9-3.6.7.1 1.5.1 2.2-.1C3 12.7 1.6 10.6 2 8.2c.8.4 1.6.6 2.5.6C2.8 7.7 2 5.1 3.5 3.6 5.8 6.2 9.1 7.7 12.7 7.5c-.7-3.1 2-5.2 4.6-3.8 1.1-.2 2.2-.6 3.1-1.2-.3 1.1-1.1 2-2 2.6 1-.1 2-.4 3-.8z"></path>
+                    </svg>
+                  </a>
+                  <a href="${shareLinks.linkedIn}" target="_blank" rel="noreferrer" class="p-2 rounded-full share-button" aria-label="Share on LinkedIn">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                      <rect width="4" height="12" x="2" y="9"></rect>
+                      <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
+                  </a>
+                  <a href="${shareLinks.facebook}" target="_blank" rel="noreferrer" class="p-2 rounded-full share-button" aria-label="Share on Facebook">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                    </svg>
+                  </a>
+                  <button class="p-2 rounded-full share-button" type="button" aria-label="Copy link" data-share-copy="true" data-share-slug="${post.slug}" data-share-title="${shareTitle}">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                      <rect x="2" y="2" width="13" height="13" rx="2"></rect>
+                    </svg>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </a>
+      </div>
     </article>
   `;
 }
@@ -314,6 +382,7 @@ function renderBlogPosts(posts, category) {
   }
 
   container.innerHTML = filtered.map((post, index) => createBlogCard(post, index)).join('');
+  bindShareCopyButtons(container);
 }
 
 async function loadProjects() {
@@ -385,9 +454,8 @@ async function loadSinglePost() {
 
   document.title = `${post.title} - InfinitiLogicSolutions`;
 
-  const shareUrl = `${window.location.origin}${window.location.pathname.replace(/\/[^/]*$/, '')}/post.html?slug=${post.slug}`;
-  const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(shareUrl)}`;
-  const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`;
+  const shareLinks = buildShareLinks(post);
+  const shareTitle = encodeURIComponent(post.title || '');
 
   container.innerHTML = `
     <div>
@@ -435,19 +503,24 @@ async function loadSinglePost() {
       <div class="flex items-center justify-between mt-12 pt-8 border-t border-border">
         <p class="text-sm text-muted-foreground">Share this article</p>
         <div class="flex items-center gap-2">
-          <a href="${twitterUrl}" target="_blank" rel="noreferrer" class="p-2 rounded-full share-button" aria-label="Share on Twitter">
+          <a href="${shareLinks.twitter}" target="_blank" rel="noreferrer" class="p-2 rounded-full share-button" aria-label="Share on X">
             <svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2-2.3-.1-4.2-1.5-4.9-3.6.7.1 1.5.1 2.2-.1C3 12.7 1.6 10.6 2 8.2c.8.4 1.6.6 2.5.6C2.8 7.7 2 5.1 3.5 3.6 5.8 6.2 9.1 7.7 12.7 7.5c-.7-3.1 2-5.2 4.6-3.8 1.1-.2 2.2-.6 3.1-1.2-.3 1.1-1.1 2-2 2.6 1-.1 2-.4 3-.8z"></path>
             </svg>
           </a>
-          <a href="${linkedInUrl}" target="_blank" rel="noreferrer" class="p-2 rounded-full share-button" aria-label="Share on LinkedIn">
+          <a href="${shareLinks.linkedIn}" target="_blank" rel="noreferrer" class="p-2 rounded-full share-button" aria-label="Share on LinkedIn">
             <svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
               <rect width="4" height="12" x="2" y="9"></rect>
               <circle cx="4" cy="4" r="2"></circle>
             </svg>
           </a>
-          <button class="p-2 rounded-full share-button" type="button" aria-label="Copy link" data-share-copy="true">
+          <a href="${shareLinks.facebook}" target="_blank" rel="noreferrer" class="p-2 rounded-full share-button" aria-label="Share on Facebook">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+            </svg>
+          </a>
+          <button class="p-2 rounded-full share-button" type="button" aria-label="Copy link" data-share-copy="true" data-share-slug="${post.slug}" data-share-title="${shareTitle}">
             <svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <rect x="9" y="9" width="13" height="13" rx="2"></rect>
               <rect x="2" y="2" width="13" height="13" rx="2"></rect>
@@ -458,14 +531,11 @@ async function loadSinglePost() {
     </div>
   `;
 
-  const copyButton = container.querySelector('[data-share-copy="true"]');
-  if (copyButton) {
-    copyButton.addEventListener('click', () => sharePost(post.slug, post.title));
-  }
+  bindShareCopyButtons(container);
 }
 
 async function sharePost(slug, title) {
-  const url = `${window.location.origin}${window.location.pathname.replace(/\/[^/]*$/, '')}/post.html?slug=${slug}`;
+  const url = buildPostUrl(slug);
 
   if (navigator.share) {
     try {

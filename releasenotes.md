@@ -13,6 +13,7 @@
 - replaced page layouts with the BlogReplit-inspired design across all pages
 - swapped in compiled Tailwind CSS plus `assets/css/custom.css` overrides
 - updated `assets/js/app.js` to render the new card layouts and compute read time
+- added social share actions to blog cards and expanded post sharing links
 - added Replit assets (favicon, opengraph, logo)
 - refreshed PWA theme colors and cache manifest
 - configured the nightly posts generator to push via deploy key when rulesets require bypass

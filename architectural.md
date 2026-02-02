@@ -57,10 +57,10 @@ Blog/
 - `assets/js/app.js` loads `data/posts.json` and renders:
   - Home: recent project cards.
   - Projects: featured and additional project grids.
-  - Blog: category pills and post list.
-  - Post: full article view with computed read time and share links.
+  - Blog: category pills, post list, and social share actions per card.
+  - Post: full article view with computed read time and social share links.
 - `post.html` reads a `slug` query parameter and renders a single post/project.
-- Share buttons use the Web Share API with clipboard fallback.
+- Share buttons generate X/LinkedIn/Facebook share URLs and use the Web Share API with clipboard fallback.
 - Layout styling is provided by the compiled Tailwind output in `assets/css/styles.css` plus local overrides in `assets/css/custom.css`.
 
 ## Data Model
