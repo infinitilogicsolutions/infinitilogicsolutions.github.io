@@ -1,5 +1,17 @@
 [
   {
+    "id": 8,
+    "type": "blog",
+    "title": "Daily Change Log — February 2, 2026",
+    "slug": "daily-changelog-2026-02-02",
+    "date": "2026-02-02T00:00:00.000Z",
+    "summary": "A quick recap of today’s updates: social sharing, CODEOWNERS, and automated post generation.",
+    "contentHtml": "<p>Today was all about making the blog easier to share and the publishing pipeline more reliable. Here’s the quick rundown.</p>\n<h2>Social sharing on posts</h2>\n<ul>\n<li>Added share actions for <strong>X</strong>, <strong>LinkedIn</strong>, and <strong>Facebook</strong> on blog cards.</li>\n<li>Added a <strong>copy link</strong> button everywhere sharing appears.</li>\n<li>Expanded the post page share section to include Facebook and unified all share URL logic.</li>\n</ul>\n<h2>Safer automation for nightly publishing</h2>\n<ul>\n<li>Updated the GitHub Actions workflow to push <code>data/posts.json</code> using a <strong>deploy key</strong> instead of the default token.</li>\n<li>Documented the <code>DEPLOY_KEY</code> setup so the nightly generator can still push even with strict branch rules enabled.</li>\n</ul>\n<h2>Repo hygiene updates</h2>\n<ul>\n<li>Added a <strong>CODEOWNERS</strong> file to make ownership explicit.</li>\n<li>Updated docs and release notes to reflect the new sharing and automation behavior.</li>\n</ul>\n<h2>What this means for readers</h2>\n<p>Sharing a post is now one click from the blog list or the post itself, and the nightly publishing job should keep content in sync even with branch protections enabled.</p>\n<p>Thanks for following along — more improvements coming soon.</p>",
+    "coverImage": "",
+    "tags": [],
+    "active": true
+  },
+  {
     "id": 7,
     "type": "blog",
     "title": "Launching InfinitiLogicSolutions v1",
