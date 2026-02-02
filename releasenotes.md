@@ -15,3 +15,4 @@
 - updated `assets/js/app.js` to render the new card layouts and compute read time
 - added Replit assets (favicon, opengraph, logo)
 - refreshed PWA theme colors and cache manifest
+- configured the nightly posts generator to push via deploy key when rulesets require bypass
