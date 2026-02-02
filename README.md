@@ -60,6 +60,7 @@ You can manage content in two ways:
 - Push to GitHub
 - GitHub Actions automatically generates `data/posts.json`
 - See `posts/README.md` for full documentation
+  - If branch rules require PRs, configure a deploy key bypass and store the private key in the `DEPLOY_KEY` repo secret.
 
 **Option B: Direct JSON Editing**
 - Manually edit `data/posts.json`
@@ -165,7 +166,7 @@ Use `assets/css/custom.css` for smaller overrides and content styling.
 
 ## What's Next
 
-- Share the site on LinkedIn Pages and document the best sharing flow (post format, preview image, and link tracking).
+- Update logo on iOS devices.
 
 ## Future Enhancements (Optional)
 
