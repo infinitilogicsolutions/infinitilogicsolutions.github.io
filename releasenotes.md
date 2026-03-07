@@ -1,5 +1,10 @@
 # release notes
 
+## 2026-03-07
+- generate per-post HTML pages with Open Graph/Twitter metadata for rich social previews
+- update share links to point at `posts/<slug>.html` for consistent LinkedIn context
+- expand the posts generator workflow to publish the new HTML pages
+
 ## 2026-02-01
 - added iOS home screen icon sizes and wired apple-touch-icon tags on the homepage
 - cached iOS touch icons in the service worker for offline availability

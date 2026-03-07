@@ -6,7 +6,7 @@ This directory contains your blog posts and projects written in **Markdown** for
 
 1. **Write** a new `.md` file in this directory
 2. **Commit and push** to GitHub
-3. **GitHub Actions automatically** converts all markdown files to `data/posts.json`
+3. **GitHub Actions automatically** converts all markdown files to `data/posts.json` and `posts/*.html`
 4. Your site updates automatically! ✨
 
 ## 📋 Markdown File Format
@@ -230,6 +230,7 @@ schedule:
            ↓
 4. Script converts all .md → data/posts.json
    (Only includes posts where date <= today)
+   Also generates `posts/<slug>.html` for social preview metadata
            ↓
 5. Bot commits posts.json (if changed)
            ↓

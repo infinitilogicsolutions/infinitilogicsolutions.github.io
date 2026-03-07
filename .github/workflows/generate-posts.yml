@@ -30,13 +30,13 @@ jobs:
         run: |
           npm install marked js-yaml
       
-      - name: Generate posts.json
+      - name: Generate posts content
         run: node scripts/generate-json.js
       
       - name: Check for changes
         id: check_changes
         run: |
-          if git diff --quiet data/posts.json; then
+          if git diff --quiet; then
             echo "changed=false" >> $GITHUB_OUTPUT
           else
             echo "changed=true" >> $GITHUB_OUTPUT
@@ -56,6 +56,6 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add data/posts.json
-          git commit -m "🤖 Auto-generate posts.json from markdown files"
+          git add -A data/posts.json posts
+          git commit -m "🤖 Auto-generate posts content"
           git push

@@ -26,7 +26,8 @@ Blog/
   ├── data/
   │   └── posts.json
   ├── posts/
-  │   └── *.md
+  │   ├── *.md
+  │   └── *.html
   ├── scripts/
   │   └── generate-json.js
   ├── assets/
@@ -49,6 +50,7 @@ Blog/
 ## Content Pipeline
 - Source: Markdown files in `posts/` with frontmatter metadata.
 - Generator: `scripts/generate-json.js` converts markdown into `data/posts.json`.
+- Output: `posts/<slug>.html` pages with Open Graph/Twitter metadata for social previews.
 - Alternative: Direct edits to `data/posts.json` for quick changes.
 - Automation: GitHub Actions runs nightly and uses the `DEPLOY_KEY` secret to push updates when branch rulesets block direct pushes.
 
@@ -60,6 +62,7 @@ Blog/
   - Blog: category pills, post list, and social share actions per card.
   - Post: full article view with computed read time and social share links.
 - `post.html` reads a `slug` query parameter and renders a single post/project.
+- `posts/<slug>.html` pages include static meta tags for social previews and set a post slug for client-side rendering.
 - Share buttons generate X/LinkedIn/Facebook share URLs and use the Web Share API with clipboard fallback.
 - Layout styling is provided by the compiled Tailwind output in `assets/css/styles.css` plus local overrides in `assets/css/custom.css`.
 

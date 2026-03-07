@@ -10,6 +10,7 @@ A modern, responsive personal blog and portfolio website built with HTML, CSS, a
 - JSON-driven content for blog and projects
 - Computed read time and category pills
 - Social share buttons (X, LinkedIn, Facebook) plus Web Share API + copy link fallback
+- Per-post static pages with Open Graph/Twitter metadata for rich social previews
 - PWA support with offline caching
 - iOS home screen icon sizes for proper "Add to Home Screen" rendering
 
@@ -38,7 +39,7 @@ Blog/
   │       └── icon-512.png
   ├── data/
   │   └── posts.json      # Content database
-  ├── posts/              # Markdown sources
+  ├── posts/              # Markdown sources + generated post pages
   └── scripts/
       └── generate-json.js
 ```
@@ -58,7 +59,7 @@ You can manage content in two ways:
 **Option A: Markdown Files (Recommended)**
 - Write posts in `posts/*.md` using Markdown
 - Push to GitHub
-- GitHub Actions automatically generates `data/posts.json`
+- GitHub Actions automatically generates `data/posts.json` and `posts/*.html`
 - See `posts/README.md` for full documentation
   - If branch rules require PRs, configure a deploy key bypass and store the private key in the `DEPLOY_KEY` repo secret.
 
@@ -167,7 +168,7 @@ Use `assets/css/custom.css` for smaller overrides and content styling.
 
 ## What's Next
 
-- Update logo on iOS devices.
+- Device fingerprinting for the site.
 
 ## Future Enhancements (Optional)
 
