@@ -5,6 +5,7 @@ title: "Daily Change Log — February 2, 2026"
 slug: daily-changelog-2026-02-02
 date: 2026-02-02
 summary: "A quick recap of today’s updates: social sharing, CODEOWNERS, and automated post generation."
+coverImage: assets/img/og/default.jpg
 ---
 
 Today was all about making the blog easier to share and the publishing pipeline more reliable. Here’s the quick rundown.

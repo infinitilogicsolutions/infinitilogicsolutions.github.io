@@ -12,6 +12,7 @@ tags:
   - Browser APIs
   - Security
   - Developer Experience
+coverImage: assets/img/og/webmcp.png
 active: true
 ---
 

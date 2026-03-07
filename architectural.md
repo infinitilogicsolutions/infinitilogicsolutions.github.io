@@ -41,6 +41,7 @@ Blog/
   │   │   └── pwa.js
   │   └── img/
   │       ├── circuit_infinity_tech_logo.png
+  │       ├── og/
   │       ├── apple-touch-icon-*.png
   │       ├── icon-192.png
   │       └── icon-512.png
@@ -51,6 +52,7 @@ Blog/
 - Source: Markdown files in `posts/` with frontmatter metadata.
 - Generator: `scripts/generate-json.js` converts markdown into `data/posts.json`.
 - Output: `posts/<slug>.html` pages with Open Graph/Twitter metadata for social previews.
+- Cover images default to `opengraph.jpg` when a post omits `coverImage`.
 - Alternative: Direct edits to `data/posts.json` for quick changes.
 - Automation: GitHub Actions runs nightly and uses the `DEPLOY_KEY` secret to push updates when branch rulesets block direct pushes.
 

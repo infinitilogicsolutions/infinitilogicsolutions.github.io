@@ -120,6 +120,8 @@ function processMarkdownFile(filePath) {
         ? true
         : String(frontmatter.active).toLowerCase() !== 'false';
 
+    const coverImage = frontmatter.coverImage ? String(frontmatter.coverImage).trim() : '';
+
     return {
         id: frontmatter.id,
         type: frontmatter.type || 'blog',
@@ -128,7 +130,7 @@ function processMarkdownFile(filePath) {
         date: frontmatter.date,
         summary: frontmatter.summary || '',
         contentHtml: contentHtml.trim(),
-        coverImage: frontmatter.coverImage || '',
+        coverImage: coverImage || 'opengraph.jpg',
         tags: frontmatter.tags || [],
         active: isActive
     };

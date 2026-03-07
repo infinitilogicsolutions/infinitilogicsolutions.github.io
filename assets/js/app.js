@@ -221,13 +221,14 @@ function createBlogCard(post, index) {
   const shareLinks = buildShareLinks(post);
   const shareTitle = encodeURIComponent(post.title || '');
   const postUrl = buildPostUrl(post.slug);
+  const coverImage = post.coverImage || 'opengraph.jpg';
 
   return `
     <article class="group">
       <div class="p-6 bg-card rounded-2xl border border-border hover:border-primary/30 transition-all hover:shadow-xl hover:shadow-primary/5">
         <div class="flex flex-col md:flex-row md:items-start gap-6">
-          <div class="w-16 h-16 ${color} rounded-xl flex items-center justify-center shrink-0">
-            <span class="font-display text-2xl font-bold text-white">${index + 1}</span>
+          <div class="blog-cover">
+            <img src="${coverImage}" alt="" class="blog-cover-img" loading="lazy">
           </div>
           <div class="flex-1">
             <div class="flex items-center gap-3 mb-3">
