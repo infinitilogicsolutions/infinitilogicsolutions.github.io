@@ -1,5 +1,24 @@
 [
   {
+    "id": 9,
+    "type": "blog",
+    "title": "WebMCP: The Future of Web Interaction or Just Hype? Why It's Not Production-Ready Yet",
+    "slug": "webmcp-future-or-hype-not-production-ready-yet",
+    "date": "2026-03-07T00:00:00.000Z",
+    "summary": "WebMCP makes websites feel like native tools for AI agents, but as of March 2026 it's still an early preview with serious browser, security, and scalability gaps.",
+    "contentHtml": "<p>WebMCP promises a cleaner way for AI agents to interact with websites: no brittle scraping, no guessing UI selectors, just direct tool calls exposed by the site itself. It&#39;s a compelling vision. It&#39;s also, today, more demo than dependable.</p>\n<h2>A glimpse of the future</h2>\n<p>Imagine logging into your bank portal where an assistant doesn&#39;t hunt for buttons — it calls <code>transferFunds(amount, toAccount)</code> with your authenticated session and permission context intact. WebMCP frames every website as a first-class MCP server, enabling agentic workflows like booking flights, managing dashboards, or syncing CRM data without fragile automation. Developers define tools with JSON-RPC schemas, and the browser hands the agent a clean, typed interface.</p>\n<h2>Surprisingly easy to adapt</h2>\n<p>The on-ramp is lightweight: add a script tag, declare tools in JavaScript, and handle invocations. No backend rewrite required.</p>\n<pre><code class=\"language-javascript\">navigator.modelContext.tools = {\n  getUserInfo: {\n    description: &quot;Fetch user profile&quot;,\n    parameters: {\n      type: &quot;object&quot;,\n      properties: {\n        userId: { type: &quot;string&quot; }\n      }\n    }\n  }\n};\n</code></pre>\n<p>From there, you can test locally with Chrome flags, deploy to static hosting like GitHub Pages, and have agents invoke the tool immediately. That low friction makes WebMCP perfect for experiments across blogs, e-commerce catalogs, and internal portals.</p>\n<h2>Why it&#39;s not ready for prime time</h2>\n<p>As of March 2026, WebMCP remains an early preview draft. The core idea is strong, but the production story is missing key pillars:</p>\n<ul>\n<li><strong>Immature browser support:</strong> Limited to Chrome Canary/Dev behind flags, with no parity in Firefox or Safari. That excludes a huge share of end users.</li>\n<li><strong>Security shortfalls:</strong> Tools run in the user JavaScript context and inherit session access. Without hardened auditing, revocation, and permission controls, a malicious tool or injection bug can turn into a serious breach.</li>\n<li><strong>No headless or scalability story:</strong> Requires a live browser, which doesn&#39;t fit CI/CD or server agents. Tool calls are single-response with no built-in streaming or pagination, so complex workflows time out fast.</li>\n<li><strong>Ecosystem gaps:</strong> Polyfills and third-party bridges exist, but discovery and error handling are inconsistent, raising failure risk for real applications.</li>\n</ul>\n<table>\n<thead>\n<tr>\n<th>Promise</th>\n<th>Reality</th>\n<th>Impact</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>Universal Access</td>\n<td>Chrome-only preview</td>\n<td>Narrow deployment</td>\n</tr>\n<tr>\n<td>Secure Execution</td>\n<td>Prompt-based only</td>\n<td>Trust breaches</td>\n</tr>\n<tr>\n<td>Effortless Scaling</td>\n<td>Single-response limit</td>\n<td>Workflow breaks</td>\n</tr>\n</tbody></table>\n<h2>Path forward</h2>\n<p>WebMCP could redefine web portals as agent-ready hubs — but it needs W3C standardization, multi-browser support, and security hardening before anyone should ship it in production. For now, hybrid MCP gateways or traditional APIs remain the reliable bridge. The potential is real, but so is the caution.</p>\n<h2>Key resources</h2>\n<ul>\n<li><a href=\"https://webmachinelearning.github.io/webmcp\">Official spec</a></li>\n<li><a href=\"https://developer.chrome.com/blog/webmcp-epp\">Chrome early preview announcement</a></li>\n<li><a href=\"https://github.com/webmachinelearning/webmcp\">GitHub repository</a></li>\n<li><a href=\"https://www.descope.com/blog/post/mcp-vulnerabilities\">Security considerations</a></li>\n</ul>",
+    "coverImage": "",
+    "tags": [
+      "WebMCP",
+      "AI Agents",
+      "Web Standards",
+      "Browser APIs",
+      "Security",
+      "Developer Experience"
+    ],
+    "active": true
+  },
+  {
     "id": 8,
     "type": "blog",
     "title": "Daily Change Log — February 2, 2026",
