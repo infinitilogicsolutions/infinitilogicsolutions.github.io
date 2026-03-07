@@ -5,6 +5,81 @@ const yaml = require('js-yaml');
 
 const POSTS_DIR = path.join(__dirname, '..', 'posts');
 const OUTPUT_FILE = path.join(__dirname, '..', 'data', 'posts.json');
+const POST_TEMPLATE_FILE = path.join(__dirname, '..', 'post.html');
+const SITE_URL = (process.env.SITE_URL || 'https://infinitilogicsolutions.github.io/').replace(/\/?$/, '/');
+
+function escapeHtml(value) {
+    return String(value || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+}
+
+function normalizeMetaContent(value) {
+    return escapeHtml(String(value || '').replace(/\s+/g, ' ').trim());
+}
+
+function toAbsoluteUrl(value) {
+    if (!value) return new URL('opengraph.jpg', SITE_URL).toString();
+    if (/^https?:\/\//i.test(value)) return value;
+    const clean = value.startsWith('/') ? value.slice(1) : value;
+    return new URL(clean, SITE_URL).toString();
+}
+
+function formatPublishedTime(value) {
+    if (!value) return '';
+    const date = value instanceof Date ? value : new Date(value);
+    return Number.isNaN(date.getTime()) ? '' : date.toISOString();
+}
+
+function rewriteAssetPaths(html) {
+    return html
+        .replace(/href="manifest\.json"/g, 'href="/manifest.json"')
+        .replace(/href="favicon\.png"/g, 'href="/favicon.png"')
+        .replace(/href="opengraph\.jpg"/g, 'href="/opengraph.jpg"')
+        .replace(/href="index\.html"/g, 'href="/index.html"')
+        .replace(/href="about\.html"/g, 'href="/about.html"')
+        .replace(/href="projects\.html"/g, 'href="/projects.html"')
+        .replace(/href="blog\.html"/g, 'href="/blog.html"')
+        .replace(/href="post\.html"/g, 'href="/post.html"')
+        .replace(/href="assets\//g, 'href="/assets/')
+        .replace(/src="assets\//g, 'src="/assets/');
+}
+
+function buildPostPage(template, post) {
+    const title = normalizeMetaContent(post.title || 'Post');
+    const description = normalizeMetaContent(post.summary || 'Latest updates from InfinitiLogicSolutions.');
+    const postUrl = new URL(`posts/${post.slug}.html`, SITE_URL).toString();
+    const imageUrl = toAbsoluteUrl(post.coverImage || 'opengraph.jpg');
+    const ogType = post.type === 'blog' ? 'article' : 'website';
+    const publishedTime = ogType === 'article' ? formatPublishedTime(post.date) : '';
+
+    let html = template;
+
+    html = html.replace(/<title>.*?<\/title>/, `<title>${title} - InfinitiLogicSolutions</title>`);
+    html = html.replace(/<meta name="description" content="[^"]*">/, `<meta name="description" content="${description}">`);
+
+    const metaBlock = `
+  <link rel="canonical" href="${postUrl}">
+  <meta property="og:type" content="${ogType}">
+  <meta property="og:site_name" content="InfinitiLogicSolutions">
+  <meta property="og:title" content="${title}">
+  <meta property="og:description" content="${description}">
+  <meta property="og:url" content="${postUrl}">
+  <meta property="og:image" content="${imageUrl}">
+  ${publishedTime ? `<meta property="article:published_time" content="${publishedTime}">` : ''}
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="${title}">
+  <meta name="twitter:description" content="${description}">
+  <meta name="twitter:image" content="${imageUrl}">`;
+
+    html = html.replace('</head>', `${metaBlock}\n</head>`);
+    html = html.replace(/<body([^>]*)>/, `<body$1 data-post-slug="${escapeHtml(post.slug)}">`);
+
+    return rewriteAssetPaths(html);
+}
 
 // Function to parse frontmatter
 function parseFrontmatter(content) {
@@ -110,6 +185,23 @@ function generatePostsJson() {
     
     // Sort posts by date (newest first)
     publishedPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    // Generate per-post HTML pages for social previews
+    const template = fs.readFileSync(POST_TEMPLATE_FILE, 'utf-8');
+    const expectedFiles = new Set(publishedPosts.map((post) => `${post.slug}.html`));
+    const existingHtmlFiles = fs.readdirSync(POSTS_DIR).filter((file) => file.endsWith('.html'));
+
+    existingHtmlFiles.forEach((file) => {
+        if (!expectedFiles.has(file)) {
+            fs.unlinkSync(path.join(POSTS_DIR, file));
+        }
+    });
+
+    for (const post of publishedPosts) {
+        const html = buildPostPage(template, post);
+        const outputPath = path.join(POSTS_DIR, `${post.slug}.html`);
+        fs.writeFileSync(outputPath, html);
+    }
     
     // Write to JSON file
     const outputDir = path.dirname(OUTPUT_FILE);

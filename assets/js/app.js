@@ -1,7 +1,7 @@
 // Fetch posts data
 async function fetchPosts() {
   try {
-    const response = await fetch('data/posts.json');
+    const response = await fetch('/data/posts.json');
     if (!response.ok) throw new Error('Failed to load posts');
     return await response.json();
   } catch (error) {
@@ -83,9 +83,9 @@ function sortByDateDesc(a, b) {
 }
 
 function buildPostUrl(slug) {
-  const url = new URL('post.html', window.location.href);
-  url.searchParams.set('slug', slug);
-  return url.toString();
+  if (!slug) return '';
+  const siteRoot = window.location.origin;
+  return new URL(`/posts/${slug}.html`, siteRoot).toString();
 }
 
 function buildShareLinks(post) {
@@ -125,9 +125,10 @@ function createRecentProjectCard(project, index) {
   const category = getCategory(project);
   const year = formatYear(project.date);
   const gradient = getProjectGradient(index);
+  const postUrl = buildPostUrl(project.slug);
 
   return `
-    <a href="post.html?slug=${project.slug}">
+    <a href="${postUrl}">
       <div class="cursor-pointer">
         <div class="aspect-[4/3] bg-gradient-to-br ${gradient} rounded-2xl mb-4 flex items-center justify-center relative overflow-hidden group-hover:scale-[1.02] transition-transform">
           <span class="font-display text-6xl font-bold text-white/20">${String(index + 1).padStart(2, '0')}</span>
@@ -147,10 +148,11 @@ function createFeaturedProjectCard(project, index) {
   const category = getCategory(project);
   const year = formatYear(project.date);
   const gradient = getProjectGradient(index);
+  const postUrl = buildPostUrl(project.slug);
 
   return `
     <article class="group">
-      <a href="post.html?slug=${project.slug}">
+      <a href="${postUrl}">
         <div class="cursor-pointer">
           <div class="aspect-video bg-gradient-to-br ${gradient} rounded-2xl relative overflow-hidden mb-5 group-hover:scale-[1.02] transition-transform shadow-lg">
             <div class="absolute inset-0 flex items-center justify-center">
@@ -185,9 +187,10 @@ function createOtherProjectCard(project, index) {
   const category = getCategory(project);
   const year = formatYear(project.date);
   const gradient = getProjectGradient(index + 2);
+  const postUrl = buildPostUrl(project.slug);
 
   return `
-    <a href="post.html?slug=${project.slug}">
+    <a href="${postUrl}">
       <div class="group p-6 bg-background rounded-2xl border border-border hover:border-primary/30 transition-all hover:shadow-lg cursor-pointer h-full">
         <div class="w-12 h-12 bg-gradient-to-br ${gradient} rounded-xl mb-4 flex items-center justify-center">
           <span class="text-white font-display font-bold">${index + 1}</span>
@@ -217,6 +220,7 @@ function createBlogCard(post, index) {
   const date = formatDateShort(post.date);
   const shareLinks = buildShareLinks(post);
   const shareTitle = encodeURIComponent(post.title || '');
+  const postUrl = buildPostUrl(post.slug);
 
   return `
     <article class="group">
@@ -237,13 +241,13 @@ function createBlogCard(post, index) {
               </span>
             </div>
             <h2 class="font-display text-2xl font-semibold mb-2">
-              <a href="post.html?slug=${post.slug}" class="group-hover:text-primary transition-colors">${post.title}</a>
+              <a href="${postUrl}" class="group-hover:text-primary transition-colors">${post.title}</a>
             </h2>
             <p class="text-muted-foreground mb-4">${post.summary || ''}</p>
             <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
               <span class="text-sm text-muted-foreground">${date}</span>
               <div class="flex flex-wrap items-center gap-3">
-                <a href="post.html?slug=${post.slug}" class="text-sm font-medium flex items-center gap-1 text-primary">
+                <a href="${postUrl}" class="text-sm font-medium flex items-center gap-1 text-primary">
                   Read Article
                   <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M5 12h14"></path>
@@ -432,7 +436,16 @@ async function loadSinglePost() {
   if (!container) return;
 
   const params = new URLSearchParams(window.location.search);
-  const slug = params.get('slug');
+  let slug = params.get('slug');
+  if (!slug) {
+    slug = document.body?.dataset?.postSlug || window.POST_SLUG;
+  }
+  if (!slug) {
+    const match = window.location.pathname.match(/\/posts\/([^/]+)\.html$/);
+    if (match) {
+      slug = match[1];
+    }
+  }
 
   if (!slug) {
     container.innerHTML = '<p class="text-muted-foreground">No post specified.</p>';
