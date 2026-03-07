@@ -4,6 +4,7 @@
 - generate per-post HTML pages with Open Graph/Twitter metadata for rich social previews
 - update share links to point at `posts/<slug>.html` for consistent LinkedIn context
 - expand the posts generator workflow to publish the new HTML pages
+- add cover image support with a default fallback for social previews
 
 ## 2026-02-01
 - added iOS home screen icon sizes and wired apple-touch-icon tags on the homepage

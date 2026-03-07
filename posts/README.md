@@ -48,7 +48,7 @@ Regular paragraph text.
 | `slug` | ❌ No | URL-friendly slug (auto-generated from filename if omitted) | `my-awesome-post` |
 | `date` | ✅ Yes | Publication date (YYYY-MM-DD) | `2026-01-05` |
 | `summary` | ✅ Yes | Brief description shown on cards | `A guide to...` |
-| `coverImage` | ❌ No | Path to cover image | `assets/img/cover.jpg` |
+| `coverImage` | ❌ No | Path to cover image (defaults to `opengraph.jpg`) | `assets/img/og/my-post.jpg` |
 
 ## ✍️ Writing Tips
 

@@ -11,6 +11,7 @@ A modern, responsive personal blog and portfolio website built with HTML, CSS, a
 - Computed read time and category pills
 - Social share buttons (X, LinkedIn, Facebook) plus Web Share API + copy link fallback
 - Per-post static pages with Open Graph/Twitter metadata for rich social previews
+- Per-post cover images with fallback to the default Open Graph image
 - PWA support with offline caching
 - iOS home screen icon sizes for proper "Add to Home Screen" rendering
 
@@ -34,6 +35,7 @@ Blog/
   │   │   └── notifications.js # Web notifications helper
   │   └── img/
   │       ├── circuit_infinity_tech_logo.png
+  │       ├── og/
   │       ├── apple-touch-icon-*.png
   │       ├── icon-192.png
   │       └── icon-512.png

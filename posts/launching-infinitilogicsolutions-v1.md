@@ -6,7 +6,7 @@ slug: launching-infinitilogicsolutions-v1
 date: 2026-01-08
 summary: Announcing the initial release of InfinitiLogicSolutions, a lightweight portfolio and blog with PWA and offline support.
 tags: [Announcement, PWA, GitHub Pages, Offline-First, JavaScript]
-coverImage:
+coverImage: assets/img/og/default.jpg
 active: true
 ---
 

@@ -6,7 +6,7 @@ slug: personal-portfolio-website
 date: 2026-01-01
 summary: A lightweight portfolio and blog that runs offline once cached, installs as a PWA, and stays free to host on GitHub Pages.
 tags: [PWA, GitHub Pages, Offline-First, JavaScript, Static Site]
-coverImage: 
+coverImage: assets/img/og/default.jpg
 active: true
 ---
 

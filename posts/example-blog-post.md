@@ -6,7 +6,7 @@ slug: getting-started-modern-javascript
 date: 2026-01-03
 summary: A comprehensive guide to modern JavaScript features including ES6+, async/await, and modules.
 tags: [JavaScript, ES6, Tutorial, Web Development]
-coverImage: 
+coverImage: assets/img/og/default.jpg
 active: false
 ---
 
