@@ -36,6 +36,11 @@ Blog/
   │   │   └── custom.css
   │   ├── js/
   │   │   ├── app.js
+  │   │   ├── visitor-config.js
+  │   │   ├── fingerprint.js
+  │   │   ├── tracker.js
+  │   │   ├── one-tap.js
+  │   │   ├── personalizer.js
   │   │   ├── typewriter.js
   │   │   ├── notifications.js
   │   │   └── pwa.js
@@ -58,15 +63,22 @@ Blog/
 
 ## Runtime Behavior
 - Pages are static HTML: `index.html`, `about.html`, `projects.html`, `blog.html`, `post.html`.
+- `assets/js/visitor-config.js` stores the Apps Script endpoint, Google client ID, localStorage keys, and canonical Sheet field order.
+- `assets/js/fingerprint.js` collects anonymous session, device, preference, network, rendering, performance, and behavioral signals; computes the visitor profile; and derives bot-scoring fields.
+- `assets/js/tracker.js` serializes one ordered payload per page view and sends it to Google Apps Script using `sendBeacon` with `fetch keepalive` fallback.
+- `assets/js/one-tap.js` loads Google Identity Services, restores cached identity, and prompts for consent-based Google profile capture.
+- `assets/js/personalizer.js` applies dark/reduced-motion/touch/perf classes, welcome-back UI, nav identity UI, and footer privacy controls.
 - `assets/js/app.js` loads `data/posts.json` and renders:
   - Home: recent project cards.
   - Projects: featured and additional project grids.
   - Blog: category pills, post list, and social share actions per card.
   - Post: full article view with computed read time and social share links.
+- `assets/js/app.js` also uses the visitor locale/timezone profile to format dates and re-renders once the profile is ready on first load.
 - `post.html` reads a `slug` query parameter and renders a single post/project.
 - `posts/<slug>.html` pages include static meta tags for social previews and set a post slug for client-side rendering.
 - Share buttons generate X/LinkedIn/Facebook share URLs and use the Web Share API with clipboard fallback.
 - Layout styling is provided by the compiled Tailwind output in `assets/css/styles.css` plus local overrides in `assets/css/custom.css`.
+- The footer privacy notice and clear-data control are injected client-side so every shell page and generated post page stays in sync.
 
 ## Data Model
 Each post entry is a JSON object with:
@@ -81,5 +93,7 @@ Each post entry is a JSON object with:
 
 ## Constraints and Assumptions
 - No server-side rendering or database.
+- Analytics persistence depends on Google Sheets + Google Apps Script rather than a traditional backend.
 - No framework dependencies; performance comes from minimal JS and CSS.
 - Content updates require regenerating `data/posts.json` or direct JSON edits.
+- Bot scoring is currently observational only; personalization still runs for every visitor while thresholds are tuned.

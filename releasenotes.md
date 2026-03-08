@@ -1,5 +1,12 @@
 # release notes
 
+## 2026-03-08
+- add visitor intelligence runtime modules for signal capture, bot scoring, Google One Tap, personalization, and Apps Script delivery
+- wire the new telemetry stack into all public pages and the post template so generated post pages inherit it automatically
+- localize rendered dates from the detected visitor locale/timezone and add returning-visitor UI
+- add footer privacy disclosure and local clear-data control
+- document the Google Sheets / Apps Script / Google Identity setup in `README.md` and `architectural.md`
+
 ## 2026-03-07
 - generate per-post HTML pages with Open Graph/Twitter metadata for rich social previews
 - update share links to point at `posts/<slug>.html` for consistent LinkedIn context

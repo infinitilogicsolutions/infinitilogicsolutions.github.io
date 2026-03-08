@@ -12,6 +12,8 @@ A modern, responsive personal blog and portfolio website built with HTML, CSS, a
 - Social share buttons (X, LinkedIn, Facebook) plus Web Share API + copy link fallback
 - Per-post static pages with Open Graph/Twitter metadata for rich social previews
 - Per-post cover images with fallback to the default Open Graph image
+- Visitor intelligence logging to Google Sheets via Google Apps Script
+- Bot scoring, Google One Tap identity capture, and per-visitor UX personalization
 - PWA support with offline caching
 - iOS home screen icon sizes for proper "Add to Home Screen" rendering
 
@@ -30,9 +32,14 @@ Blog/
   │   │   ├── styles.css  # Compiled Tailwind styles (Replit design)
   │   │   └── custom.css  # Local overrides for dynamic content
   │   ├── js/
-  │   │   ├── app.js          # Post rendering logic
-  │   │   ├── pwa.js          # PWA enhancements
-  │   │   └── notifications.js # Web notifications helper
+  │   │   ├── app.js             # Post rendering logic
+  │   │   ├── visitor-config.js  # Apps Script + Google Identity config
+  │   │   ├── fingerprint.js     # Signal capture and bot scoring
+  │   │   ├── tracker.js         # Payload assembly and Google Sheets delivery
+  │   │   ├── one-tap.js         # Google One Tap identity prompt
+  │   │   ├── personalizer.js    # Theme/perf/touch personalization + privacy UI
+  │   │   ├── pwa.js             # PWA enhancements
+  │   │   └── notifications.js   # Web notifications helper
   │   └── img/
   │       ├── circuit_infinity_tech_logo.png
   │       ├── og/
@@ -161,16 +168,32 @@ Use `assets/css/custom.css` for smaller overrides and content styling.
 - Read time computed from content length
 - Back link routes to Blog or Projects based on type
 
+### Visitor Intelligence
+
+- Captures browser, device, network, rendering, and behavioral signals client-side
+- Scores each page view for likely bot behavior before sending a row to Google Sheets
+- Offers optional Google One Tap profile capture after explicit consent
+- Applies dark mode, reduced motion, touch mode, perf mode, locale-aware dates, and returning visitor UI
+- Adds a footer privacy notice plus a one-click local data reset
+
 ## Performance
 
 - No external JS frameworks at runtime
 - Minimal JavaScript
 - Optimized CSS with modern features
 - Fast load times
+- Telemetry runs asynchronously and posts to Apps Script with `sendBeacon`/`fetch keepalive` fallback
+
+## External Setup
+
+- Google Sheet with `Raw Log`, `Human Traffic`, `Bot Traffic`, and `Dashboard` tabs
+- Google Apps Script web app bound to the Sheet for row appends
+- Google OAuth client ID for Google Identity Services / One Tap
+- The Apps Script URL and Google client ID live in `assets/js/visitor-config.js`
 
 ## What's Next
 
-- Device fingerprinting for the site.
+- Validate live traffic quality in Google Sheets and tune bot-score thresholds with real sessions.
 
 ## Future Enhancements (Optional)
 
