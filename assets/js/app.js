@@ -31,26 +31,61 @@ const PROJECT_GRADIENTS = [
 function formatDateLong(dateString) {
   if (!dateString) return '';
   const date = new Date(dateString);
-  return date.toLocaleDateString('en-US', {
+  const profile = getLocaleProfile();
+  return date.toLocaleDateString(profile.locale, {
     year: 'numeric',
     month: 'long',
-    day: 'numeric'
+    day: 'numeric',
+    timeZone: profile.timeZone
   });
 }
 
 function formatDateShort(dateString) {
   if (!dateString) return '';
   const date = new Date(dateString);
-  return date.toLocaleDateString('en-US', {
+  const profile = getLocaleProfile();
+  return date.toLocaleDateString(profile.locale, {
     year: 'numeric',
     month: 'short',
-    day: 'numeric'
+    day: 'numeric',
+    timeZone: profile.timeZone
   });
 }
 
 function formatYear(dateString) {
   if (!dateString) return '';
-  return new Date(dateString).getFullYear();
+  const profile = getLocaleProfile();
+  return new Intl.DateTimeFormat(profile.locale, {
+    year: 'numeric',
+    timeZone: profile.timeZone
+  }).format(new Date(dateString));
+}
+
+function getLocaleProfile() {
+  const namespaceProfile = window.InfinitiVisitor && window.InfinitiVisitor.getState
+    ? window.InfinitiVisitor.getState('profile')
+    : null;
+
+  if (namespaceProfile) {
+    return {
+      locale: namespaceProfile.language || 'en-US',
+      timeZone: namespaceProfile.timezone || undefined
+    };
+  }
+
+  try {
+    const cached = JSON.parse(window.localStorage.getItem('ils_fingerprint_cache') || 'null');
+
+    return {
+      locale: (cached && cached.language) || 'en-US',
+      timeZone: cached && cached.timezone ? cached.timezone : undefined
+    };
+  } catch (error) {
+    return {
+      locale: 'en-US',
+      timeZone: undefined
+    };
+  }
 }
 
 function stripHtml(html) {
@@ -590,3 +625,24 @@ document.addEventListener('DOMContentLoaded', () => {
     loadSinglePost();
   }
 });
+
+if (window.InfinitiVisitor && window.InfinitiVisitor.events) {
+  document.addEventListener(
+    window.InfinitiVisitor.events.fingerprintReady,
+    () => {
+      if (document.getElementById('recentProjectsGrid')) {
+        loadProjects();
+      }
+      if (document.getElementById('featuredProjectsGrid') || document.getElementById('projectsGrid')) {
+        loadProjects();
+      }
+      if (document.getElementById('blogGrid')) {
+        loadBlogPosts();
+      }
+      if (document.getElementById('postContent')) {
+        loadSinglePost();
+      }
+    },
+    { once: true }
+  );
+}
