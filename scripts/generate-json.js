@@ -44,6 +44,7 @@ function rewriteAssetPaths(html) {
         .replace(/href="projects\.html"/g, 'href="/projects.html"')
         .replace(/href="blog\.html"/g, 'href="/blog.html"')
         .replace(/href="post\.html"/g, 'href="/post.html"')
+        .replace(/href="posts\/([^"]+)\.html"/g, 'href="/posts/$1.html"')
         .replace(/href="assets\//g, 'href="/assets/')
         .replace(/src="assets\//g, 'src="/assets/');
 }

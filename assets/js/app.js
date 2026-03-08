@@ -465,6 +465,8 @@ async function loadSinglePost() {
   const date = formatDateShort(post.date);
   const readTime = computeReadTime(post.contentHtml || '');
   const summary = post.summary || '';
+  const backLink = post.type === 'blog' ? '/blog.html' : '/projects.html';
+  const backLabel = post.type === 'blog' ? 'Blog' : 'Projects';
 
   document.title = `${post.title} - InfinitiLogicSolutions`;
 
@@ -473,12 +475,12 @@ async function loadSinglePost() {
 
   container.innerHTML = `
     <div>
-      <a href="${post.type === 'blog' ? 'blog.html' : 'projects.html'}" class="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors mb-8">
+      <a href="${backLink}" class="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors mb-8">
         <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
           <path d="M19 12H5"></path>
           <path d="m12 19-7-7 7-7"></path>
         </svg>
-        Back to ${post.type === 'blog' ? 'Blog' : 'Projects'}
+        Back to ${backLabel}
       </a>
 
       <div class="flex flex-wrap items-center gap-4 mb-6">
