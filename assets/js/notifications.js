@@ -139,8 +139,8 @@ class PostNotificationManager {
 }
 
 // Add notification styles
-const style = document.createElement('style');
-style.textContent = `
+const notificationStyle = document.createElement('style');
+notificationStyle.textContent = `
     .new-post-notification {
         position: fixed;
         top: 80px;
@@ -235,7 +235,7 @@ style.textContent = `
         }
     }
 `;
-document.head.appendChild(style);
+document.head.appendChild(notificationStyle);
 
 // Initialize on load
 const notificationManager = new PostNotificationManager();

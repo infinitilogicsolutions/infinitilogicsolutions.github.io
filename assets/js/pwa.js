@@ -1,17 +1,33 @@
 // Register Service Worker
 if ('serviceWorker' in navigator) {
+  let refreshingForNewWorker = false;
+
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (refreshingForNewWorker) return;
+    refreshingForNewWorker = true;
+    window.location.reload();
+  });
+
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/service-worker.js')
+    navigator.serviceWorker.register('/service-worker.js', { updateViaCache: 'none' })
       .then((registration) => {
         console.log('✅ Service Worker registered:', registration.scope);
-        
-        // Check for updates
+
+        if (registration.waiting && navigator.serviceWorker.controller) {
+          showUpdateNotification(registration);
+        }
+
+        registration.update().catch((error) => {
+          console.log('⚠️ Service Worker update check failed:', error);
+        });
+
         registration.addEventListener('updatefound', () => {
           const newWorker = registration.installing;
+          if (!newWorker) return;
+
           newWorker.addEventListener('statechange', () => {
             if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-              // New version available
-              showUpdateNotification();
+              showUpdateNotification(registration);
             }
           });
         });
@@ -23,7 +39,11 @@ if ('serviceWorker' in navigator) {
 }
 
 // Show update notification
-function showUpdateNotification() {
+function showUpdateNotification(registration) {
+  if (document.getElementById('update-notification')) {
+    return;
+  }
+
   const notification = document.createElement('div');
   notification.id = 'update-notification';
   notification.innerHTML = `
@@ -46,7 +66,7 @@ function showUpdateNotification() {
         <strong>New version available!</strong><br>
         <small>Refresh to update</small>
       </div>
-      <button onclick="window.location.reload()" style="
+      <button data-update-action="refresh" style="
         background: white;
         color: #2662d9;
         border: none;
@@ -55,7 +75,7 @@ function showUpdateNotification() {
         font-weight: 600;
         cursor: pointer;
       ">Refresh</button>
-      <button onclick="this.parentElement.parentElement.remove()" style="
+      <button data-update-action="dismiss" style="
         background: transparent;
         color: white;
         border: 1px solid white;
@@ -65,6 +85,25 @@ function showUpdateNotification() {
       ">Later</button>
     </div>
   `;
+
+  const refreshButton = notification.querySelector('[data-update-action="refresh"]');
+  const dismissButton = notification.querySelector('[data-update-action="dismiss"]');
+
+  refreshButton.addEventListener('click', async () => {
+    const waitingWorker = registration && registration.waiting;
+
+    if (waitingWorker) {
+      waitingWorker.postMessage({ type: 'SKIP_WAITING' });
+      return;
+    }
+
+    window.location.reload();
+  });
+
+  dismissButton.addEventListener('click', () => {
+    notification.remove();
+  });
+
   document.body.appendChild(notification);
 }
 
@@ -295,8 +334,8 @@ window.addEventListener('offline', () => {
 });
 
 // Add CSS animations
-const style = document.createElement('style');
-style.textContent = `
+const pwaStyle = document.createElement('style');
+pwaStyle.textContent = `
   @keyframes slideIn {
     from {
       transform: translateX(400px);
@@ -319,4 +358,4 @@ style.textContent = `
     }
   }
 `;
-document.head.appendChild(style);
+document.head.appendChild(pwaStyle);
