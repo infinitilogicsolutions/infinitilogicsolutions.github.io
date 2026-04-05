@@ -1,5 +1,6 @@
-const CACHE_NAME = 'my-blog-v2';
-const DYNAMIC_CACHE = 'my-blog-dynamic-v2';
+const CACHE_NAME = 'my-blog-v3';
+const POSTS_JSON_PATH = '/data/posts.json';
+const POST_ROUTE_PATTERN = /^\/posts\/[^/]+\.html$/;
 
 // Assets to cache on install
 const STATIC_ASSETS = [
@@ -25,9 +26,27 @@ const STATIC_ASSETS = [
   '/assets/img/icon-512.png',
   '/favicon.png',
   '/opengraph.jpg',
-  '/data/posts.json',
+  POSTS_JSON_PATH,
   '/manifest.json'
 ];
+
+function isCacheableResponse(response) {
+  return Boolean(response && response.status === 200 && response.type !== 'error');
+}
+
+function isGeneratedPostRoute(pathname) {
+  return POST_ROUTE_PATTERN.test(pathname);
+}
+
+async function putInCache(cacheKey, response) {
+  if (!isCacheableResponse(response)) {
+    return response;
+  }
+
+  const cache = await caches.open(CACHE_NAME);
+  await cache.put(cacheKey, response.clone());
+  return response;
+}
 
 // Install event - cache static assets
 self.addEventListener('install', (event) => {
@@ -49,7 +68,7 @@ self.addEventListener('activate', (event) => {
     caches.keys().then((cacheNames) => {
       return Promise.all(
         cacheNames.map((cacheName) => {
-          if (cacheName !== CACHE_NAME && cacheName !== DYNAMIC_CACHE) {
+          if (cacheName !== CACHE_NAME) {
             console.log('[Service Worker] Deleting old cache:', cacheName);
             return caches.delete(cacheName);
           }
@@ -67,52 +86,53 @@ self.addEventListener('fetch', (event) => {
   const isNavigation = event.request.mode === 'navigate';
   const isDocument = isNavigation || event.request.destination === 'document';
   const requestUrl = new URL(event.request.url);
+  const isSameOrigin = requestUrl.origin === self.location.origin;
+  const isPostDocument = isDocument && isGeneratedPostRoute(requestUrl.pathname);
 
-  event.respondWith(
-    (isDocument
-      ? caches.match(event.request, { ignoreSearch: true })
-      : caches.match(event.request))
-      .then((cachedResponse) => {
-        // Return cached version if available
+  if (isSameOrigin && requestUrl.pathname === POSTS_JSON_PATH) {
+    event.respondWith(
+      caches.match(POSTS_JSON_PATH).then((cachedResponse) => {
+        const networkRefresh = fetch(event.request)
+          .then((response) => putInCache(POSTS_JSON_PATH, response))
+          .catch(() => null);
+
+        event.waitUntil(networkRefresh);
+
         if (cachedResponse) {
-          // Update cache in background for dynamic content
-          if (event.request.url.includes('/data/posts.json')) {
-            fetch(event.request).then((response) => {
-              if (response && response.status === 200) {
-                caches.open(DYNAMIC_CACHE).then((cache) => {
-                  cache.put(event.request, response);
-                });
-              }
-            }).catch(() => {
-              // Offline, use cached version
-            });
-          }
           return cachedResponse;
         }
 
-        // Not in cache, fetch from network
-        return fetch(event.request)
-          .then((response) => {
-            // Don't cache if not a valid response
-            if (!response || response.status !== 200 || response.type === 'error') {
-              return response;
-            }
-
-            // Clone the response
-            const responseToCache = response.clone();
-
-            // Cache dynamic content
-            caches.open(DYNAMIC_CACHE)
-              .then((cache) => {
-                cache.put(event.request, responseToCache);
-              });
-
+        return networkRefresh.then((response) => {
+          if (response) {
             return response;
-          })
+          }
+
+          return new Response('[]', {
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          });
+        });
+      })
+    );
+    return;
+  }
+
+  const cacheKey = isPostDocument ? '/post.html' : event.request;
+  const cacheMatchOptions = isDocument && !isPostDocument ? { ignoreSearch: true } : undefined;
+
+  event.respondWith(
+    caches.match(cacheKey, cacheMatchOptions)
+      .then((cachedResponse) => {
+        if (cachedResponse) {
+          return cachedResponse;
+        }
+
+        return fetch(event.request)
+          .then((response) => putInCache(cacheKey, response))
           .catch(() => {
-            // Offline and not cached - return offline page
             if (isDocument) {
-              if (requestUrl.pathname.endsWith('/post.html')) {
+              if (isPostDocument || requestUrl.pathname.endsWith('/post.html')) {
                 return caches.match('/post.html');
               }
               return caches.match('/index.html');

@@ -20,6 +20,7 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: false
+          ref: main
       
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -27,8 +28,7 @@ jobs:
           node-version: '20'
       
       - name: Install dependencies
-        run: |
-          npm install marked js-yaml
+        run: npm ci
       
       - name: Generate posts content
         run: node scripts/generate-json.js
@@ -36,10 +36,10 @@ jobs:
       - name: Check for changes
         id: check_changes
         run: |
-          if git diff --quiet; then
-            echo "changed=false" >> $GITHUB_OUTPUT
-          else
+          if git status --porcelain --untracked-files=all -- data/posts.json posts | grep -q .; then
             echo "changed=true" >> $GITHUB_OUTPUT
+          else
+            echo "changed=false" >> $GITHUB_OUTPUT
           fi
 
       - name: Configure deploy key for push
@@ -58,4 +58,4 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git add -A data/posts.json posts
           git commit -m "🤖 Auto-generate posts content"
-          git push
+          git push origin HEAD:main
