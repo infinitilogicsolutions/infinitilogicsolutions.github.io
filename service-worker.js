@@ -118,27 +118,38 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  const cacheKey = isPostDocument ? '/post.html' : event.request;
-  const cacheMatchOptions = isDocument && !isPostDocument ? { ignoreSearch: true } : undefined;
+  const cacheKey = event.request;
+  const cacheMatchOptions = isDocument ? { ignoreSearch: true } : undefined;
 
   event.respondWith(
-    caches.match(cacheKey, cacheMatchOptions)
-      .then((cachedResponse) => {
-        if (cachedResponse) {
-          return cachedResponse;
-        }
-
-        return fetch(event.request)
+    (isPostDocument
+      ? fetch(event.request)
           .then((response) => putInCache(cacheKey, response))
-          .catch(() => {
-            if (isDocument) {
-              if (isPostDocument || requestUrl.pathname.endsWith('/post.html')) {
-                return caches.match('/post.html');
-              }
-              return caches.match('/index.html');
+          .catch(async () => {
+            const cachedPost = await caches.match(cacheKey, cacheMatchOptions);
+            if (cachedPost) {
+              return cachedPost;
             }
-          });
-      })
+
+            return caches.match('/post.html');
+          })
+      : caches.match(cacheKey, cacheMatchOptions)
+          .then((cachedResponse) => {
+            if (cachedResponse) {
+              return cachedResponse;
+            }
+
+            return fetch(event.request)
+              .then((response) => putInCache(cacheKey, response))
+              .catch(() => {
+                if (isDocument) {
+                  if (requestUrl.pathname.endsWith('/post.html')) {
+                    return caches.match('/post.html');
+                  }
+                  return caches.match('/index.html');
+                }
+              });
+          }))
   );
 });
 
