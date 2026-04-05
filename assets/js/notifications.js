@@ -28,7 +28,7 @@ class PostNotificationManager {
     // Fetch posts and check for new ones
     async checkForNewPosts() {
         try {
-            const response = await fetch('data/posts.json');
+            const response = await fetch('/data/posts.json');
             if (!response.ok) return;
             
             const posts = await response.json();
