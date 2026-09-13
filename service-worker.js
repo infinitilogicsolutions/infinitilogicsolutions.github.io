@@ -1,4 +1,4 @@
-const CACHE_NAME = 'my-blog-v3';
+const CACHE_NAME = 'my-blog-v4';
 const POSTS_JSON_PATH = '/data/posts.json';
 const POST_ROUTE_PATTERN = /^\/posts\/[^/]+\.html$/;
 
@@ -38,6 +38,10 @@ function isGeneratedPostRoute(pathname) {
   return POST_ROUTE_PATTERN.test(pathname);
 }
 
+async function matchBlogCache(request, options) {
+  return (await caches.open(CACHE_NAME)).match(request, options);
+}
+
 async function putInCache(cacheKey, response) {
   if (!isCacheableResponse(response)) {
     return response;
@@ -68,7 +72,7 @@ self.addEventListener('activate', (event) => {
     caches.keys().then((cacheNames) => {
       return Promise.all(
         cacheNames.map((cacheName) => {
-          if (cacheName !== CACHE_NAME) {
+          if (cacheName.startsWith('my-blog-') && cacheName !== CACHE_NAME) {
             console.log('[Service Worker] Deleting old cache:', cacheName);
             return caches.delete(cacheName);
           }
@@ -87,11 +91,13 @@ self.addEventListener('fetch', (event) => {
   const isDocument = isNavigation || event.request.destination === 'document';
   const requestUrl = new URL(event.request.url);
   const isSameOrigin = requestUrl.origin === self.location.origin;
+  if (!isSameOrigin || event.request.headers.has('range') ||
+      requestUrl.pathname === '/dictionary' || requestUrl.pathname.startsWith('/dictionary/')) return;
   const isPostDocument = isDocument && isGeneratedPostRoute(requestUrl.pathname);
 
   if (isSameOrigin && requestUrl.pathname === POSTS_JSON_PATH) {
     event.respondWith(
-      caches.match(POSTS_JSON_PATH).then((cachedResponse) => {
+      matchBlogCache(POSTS_JSON_PATH).then((cachedResponse) => {
         const networkRefresh = fetch(event.request)
           .then((response) => putInCache(POSTS_JSON_PATH, response))
           .catch(() => null);
@@ -126,14 +132,14 @@ self.addEventListener('fetch', (event) => {
       ? fetch(event.request)
           .then((response) => putInCache(cacheKey, response))
           .catch(async () => {
-            const cachedPost = await caches.match(cacheKey, cacheMatchOptions);
+            const cachedPost = await matchBlogCache(cacheKey, cacheMatchOptions);
             if (cachedPost) {
               return cachedPost;
             }
 
-            return caches.match('/post.html');
+            return matchBlogCache('/post.html');
           })
-      : caches.match(cacheKey, cacheMatchOptions)
+      : matchBlogCache(cacheKey, cacheMatchOptions)
           .then((cachedResponse) => {
             if (cachedResponse) {
               return cachedResponse;
@@ -144,9 +150,9 @@ self.addEventListener('fetch', (event) => {
               .catch(() => {
                 if (isDocument) {
                   if (requestUrl.pathname.endsWith('/post.html')) {
-                    return caches.match('/post.html');
+                    return matchBlogCache('/post.html');
                   }
-                  return caches.match('/index.html');
+                  return matchBlogCache('/index.html');
                 }
               });
           }))

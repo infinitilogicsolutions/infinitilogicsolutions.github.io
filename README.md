@@ -193,7 +193,16 @@ Use `assets/css/custom.css` for smaller overrides and content styling.
 
 ## What's Next
 
+- Verify the blog and the planned `/dictionary/` deployment together, including offline reload and blog cache reset.
 - Validate live traffic quality in Google Sheets and tune bot-score thresholds with real sessions.
+
+## Cache isolation
+
+The blog reads only its own `my-blog-v4` cache and removes only outdated
+`my-blog-` caches. Its worker bypasses `/dictionary` and `/dictionary/` paths,
+cross-origin requests, and byte-range requests. The manual cache reset preserves
+other applications' caches and service workers. The `before-cache-isolation` tag
+marks the previous main version. The dictionary itself is not deployed by this change.
 
 ## Future Enhancements (Optional)
 
