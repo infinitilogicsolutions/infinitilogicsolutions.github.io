@@ -1,6 +1,14 @@
 # Architecture
 
 ## Overview
+
+### Cache ownership
+
+The root service worker owns only `my-blog-` caches; cache reads target the current
+version explicitly. Dictionary routes (`/dictionary` and `/dictionary/`), external
+requests, and range requests bypass its fetch handler. Manual reset unregisters
+only the root-scope worker and deletes only blog caches. This preserves a future
+dictionary worker and cache on the same origin without changing existing blog URLs.
 This is a static HTML/CSS/JS blog and portfolio site intended to run from GitHub Pages or any static host. Content is rendered client-side from `data/posts.json`, which is generated from markdown sources or edited directly. The UI is a Replit-inspired layout implemented with compiled Tailwind CSS utilities.
 
 ## File Tree

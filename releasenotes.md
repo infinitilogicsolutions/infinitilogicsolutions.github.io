@@ -1,5 +1,12 @@
 # release notes
 
+## Cache isolation for dictionary hosting
+- limit worker cleanup and manual reset to blog-owned caches and the root worker
+- bypass dictionary routes, external requests, and byte-range requests
+- read only the blog cache and bump its version to `my-blog-v4`
+- validate cleanup, request bypass, scoped reads, and reset using isolated JavaScript checks
+- preserve the previous main commit with the `before-cache-isolation` tag
+
 ## 2026-03-08
 - add visitor intelligence runtime modules for signal capture, bot scoring, Google One Tap, personalization, and Apps Script delivery
 - wire the new telemetry stack into all public pages and the post template so generated post pages inherit it automatically

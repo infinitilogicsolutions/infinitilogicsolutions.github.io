@@ -239,9 +239,10 @@ async function refreshCache() {
       // Get all cache names
       const cacheNames = await caches.keys();
       
-      // Delete all caches
+      // Delete only blog caches; project sites share this origin.
       await Promise.all(
-        cacheNames.map(cacheName => caches.delete(cacheName))
+        cacheNames.filter(cacheName => cacheName.startsWith('my-blog-'))
+          .map(cacheName => caches.delete(cacheName))
       );
       
       console.log('🔄 Cache cleared successfully');
@@ -250,7 +251,9 @@ async function refreshCache() {
       // Unregister service worker and reload
       if (navigator.serviceWorker.controller) {
         const registrations = await navigator.serviceWorker.getRegistrations();
-        await Promise.all(registrations.map(reg => reg.unregister()));
+        const blogScope = new URL('/', location.origin).href;
+        await Promise.all(registrations.filter(reg => reg.scope === blogScope)
+          .map(reg => reg.unregister()));
       }
       
       // Wait a moment then reload
