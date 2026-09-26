@@ -133,7 +133,8 @@ function processMarkdownFile(filePath) {
         contentHtml: contentHtml.trim(),
         coverImage: coverImage || 'opengraph.jpg',
         tags: frontmatter.tags || [],
-        active: isActive
+        active: isActive,
+        featured: frontmatter.featured === true || String(frontmatter.featured).toLowerCase() === 'true'
     };
 }
 
