@@ -6,8 +6,8 @@ on:
     paths:
       - 'posts/**/*.md'
   schedule:
-    # Runs every night at 2 AM UTC (adjust to your timezone)
-    - cron: '0 2 * * *'
+    # Runs nightly at 02:17 UTC; non-zero minute avoids GitHub's peak top-of-hour load
+    - cron: '17 2 * * *'
   workflow_dispatch:
 
 jobs:
