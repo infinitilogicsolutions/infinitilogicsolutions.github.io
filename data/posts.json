@@ -1,5 +1,45 @@
 [
   {
+    "id": 11,
+    "type": "project",
+    "title": "Infiniti Dictionary — A Browser-Native WordNet Experiment",
+    "slug": "infiniti-dictionary-browser-native",
+    "date": "2026-09-25T00:00:00.000Z",
+    "summary": "147,478 searchable WordNet words in a 31.8 MB Parquet file, queried with DuckDB-Wasm in the browser with no application API or database server.",
+    "contentHtml": "<h2>Goal</h2>\n<p>Test a simple architectural question: <strong>how much of a read-heavy application can move into the browser before a traditional backend becomes unnecessary?</strong></p>\n<p>Infiniti Dictionary uses Princeton WordNet 3.1 as a real dataset rather than a toy demo. The dictionary is packaged as one compressed Parquet file and queried by DuckDB-Wasm directly from the browser.</p>\n<p><a href=\"https://infinitilogicsolutions.github.io/dictionary/\">Open Infiniti Dictionary</a></p>\n<h2>The Dataset</h2>\n<p>The generated dictionary manifest contains:</p>\n<ul>\n<li><strong>147,478 unique lookup words</strong></li>\n<li><strong>207,235 word senses</strong></li>\n<li><strong>117,791 synsets</strong></li>\n<li><strong>31.8 MB</strong> Parquet file</li>\n<li>Zstandard compression</li>\n<li>Princeton WordNet 3.1 source data</li>\n</ul>\n<h2>Architecture</h2>\n<p>The application has no application API server and no database server in the lookup path.</p>\n<p>On the first lookup, DuckDB-Wasm runs in the browser and reads the remotely hosted Parquet dataset:</p>\n<pre><code class=\"language-text\">GitHub Pages / static hosting\n          ↓\ndictionary.parquet\n          ↓\n     DuckDB-Wasm\n          ↓\n   Apache Arrow\n          ↓\n         UI\n</code></pre>\n<p>After the first successful result, the application downloads the complete Parquet file, verifies its SHA-256 hash, and stores it in browser-managed local storage. Later searches can query that local file:</p>\n<pre><code class=\"language-text\">Local Parquet → DuckDB-Wasm → Arrow → UI\n</code></pre>\n<h2>The Query</h2>\n<p>The lookup is ordinary SQL executed by DuckDB-Wasm inside the browser:</p>\n<pre><code class=\"language-sql\">SELECT word,\n       pos,\n       sense_number,\n       definition,\n       examples,\n       synonyms\nFROM read_parquet(&#39;dictionary.parquet&#39;)\nWHERE lookup_word = ?\nORDER BY pos, sense_number;\n</code></pre>\n<p>The implementation also checks inflections and simple normalized forms when an exact lookup does not return a result.</p>\n<h2>Technologies and Tools Used</h2>\n<ul>\n<li>Princeton WordNet 3.1</li>\n<li>Apache Parquet</li>\n<li>DuckDB-Wasm</li>\n<li>Apache Arrow</li>\n<li>WebAssembly</li>\n<li>Origin Private File System / browser storage</li>\n<li>Service Worker</li>\n<li>GitHub Pages</li>\n<li>Web Components</li>\n</ul>\n<h2>Why It Is Interesting</h2>\n<p>A traditional implementation might introduce an API, application runtime, database, deployment pipeline, scaling configuration, and recurring hosting costs just to serve a mostly static dictionary.</p>\n<p>This experiment takes a different route: keep the dataset compact, move the query engine to the client, and let static hosting deliver the application and data.</p>\n<p>That does not make backends obsolete. It demonstrates that <strong>some read-heavy, mostly static applications can have a much smaller server-side footprint than we often assume.</strong></p>\n<h2>Result</h2>\n<p>The experiment works with the complete dataset while keeping the lookup architecture static-first and progressively local-first.</p>\n<p>The most interesting result is not the dictionary itself. It is the architectural question it proves is worth asking:</p>\n<p><strong>Before choosing a backend, should we first ask whether this application needs one?</strong></p>",
+    "coverImage": "assets/img/og/default.jpg",
+    "tags": [
+      "DuckDB",
+      "Parquet",
+      "Apache Arrow",
+      "WebAssembly",
+      "Local-First",
+      "GitHub Pages"
+    ],
+    "active": true,
+    "featured": true
+  },
+  {
+    "id": 12,
+    "type": "blog",
+    "title": "I Put 147,478 Words in a Parquet File and Queried It From the Browser",
+    "slug": "querying-wordnet-parquet-duckdb-browser",
+    "date": "2026-09-25T00:00:00.000Z",
+    "summary": "How I built a $0-backend dictionary using Princeton WordNet, Parquet, Apache Arrow, DuckDB-Wasm, browser storage, and GitHub Pages.",
+    "contentHtml": "<p>Do you know you can <strong>query a file hosted on GitHub almost like a database — directly from the browser?</strong></p>\n<p>I wanted to find out whether that idea was useful beyond a small proof of concept.</p>\n<p>So I used the <strong>Princeton WordNet 3.1</strong> dataset and built Infiniti Dictionary around it.</p>\n<p>The resulting Parquet dataset contains <strong>147,478 unique lookup words, 207,235 word senses, and 117,791 synsets</strong> in a <strong>31.8 MB</strong> compressed file.</p>\n<p>And the application does not need an application API server or database server to search it.</p>\n<p><a href=\"https://infinitilogicsolutions.github.io/dictionary/\">Try Infiniti Dictionary</a></p>\n<h2>The Question</h2>\n<p>When we start a web application, architecture conversations often begin with questions such as:</p>\n<ul>\n<li>Which database should we use?</li>\n<li>Where should the API run?</li>\n<li>Do we need containers?</li>\n<li>Should this be serverless?</li>\n<li>How should the backend scale?</li>\n</ul>\n<p>For this experiment I started one step earlier:</p>\n<p><strong>Do I need a backend for this workload at all?</strong></p>\n<p>A dictionary is an interesting test. It is read-heavy, the source data changes infrequently, and the lookup pattern is predictable. That makes it a good candidate for moving more responsibility into the browser.</p>\n<h2>One File Instead of a Database Server</h2>\n<p>I transformed the WordNet data into a single Parquet file.</p>\n<p>Why Parquet rather than shipping a giant JSON document?</p>\n<p>Parquet gives the application a compact, typed, columnar dataset that a query engine can understand directly. Instead of writing JavaScript to download and deserialize an entire JSON structure before searching it, I can let DuckDB query the dataset.</p>\n<p>The file is Zstandard-compressed and is about <strong>31.8 MB</strong>.</p>\n<h2>Put DuckDB in the Browser</h2>\n<p>The next part is what makes the experiment interesting.</p>\n<p><strong>DuckDB-Wasm runs the database query engine inside the browser.</strong></p>\n<p>The lookup itself is SQL:</p>\n<pre><code class=\"language-sql\">SELECT word,\n       pos,\n       sense_number,\n       definition,\n       examples,\n       synonyms\nFROM read_parquet(&#39;dictionary.parquet&#39;)\nWHERE lookup_word = ?\nORDER BY pos, sense_number;\n</code></pre>\n<p>There is no request from my UI to a custom dictionary API. The browser runs DuckDB-Wasm and DuckDB reads the Parquet data.</p>\n<p>The query result is represented through the Arrow-based data path used by DuckDB-Wasm and then rendered by the UI.</p>\n<h2>The First Search Is Remote</h2>\n<p>There is an important detail in the architecture.</p>\n<p>The application does <strong>not</strong> force someone to download the entire dictionary before seeing the first result.</p>\n<p>On the first lookup, the browser registers the remote Parquet file with DuckDB-Wasm and searches the online dataset.</p>\n<p>Conceptually:</p>\n<pre><code class=\"language-text\">GitHub-hosted Parquet\n        ↓\n   DuckDB-Wasm\n        ↓\n  Apache Arrow\n        ↓\n       UI\n</code></pre>\n<p>That gives the user a result before the application turns itself into a local-first dictionary.</p>\n<h2>Then the Dictionary Moves Local</h2>\n<p>After that first result, the application begins downloading the complete Parquet file in the background.</p>\n<p>Before using the local copy, it checks the expected file size and verifies the file using its <strong>SHA-256 hash</strong>.</p>\n<p>Once verified, the browser can register that local file with DuckDB-Wasm.</p>\n<p>The next lookup becomes:</p>\n<pre><code class=\"language-text\">Local Parquet → DuckDB-Wasm → Arrow → UI\n</code></pre>\n<p>At that point the dictionary data no longer needs a network round trip for each search.</p>\n<p>The service worker also caches application assets so the experiment can support offline reload behavior after the necessary resources have been cached.</p>\n<h2>What &quot;$0 Backend&quot; Means</h2>\n<p>I describe this as a <strong>$0-backend experiment</strong>, not &quot;zero infrastructure.&quot;</p>\n<p>There is still infrastructure: GitHub serves the static application and dataset, and the user&#39;s device provides compute and storage.</p>\n<p>What the design removes from this application is the backend infrastructure I would otherwise operate:</p>\n<ul>\n<li>No application API server</li>\n<li>No database server</li>\n<li>No Lambda functions for lookups</li>\n<li>No containers for the dictionary service</li>\n<li>No database connection pool</li>\n<li>No backend autoscaling problem for searches</li>\n</ul>\n<p>Within the hosting limits of the services being used, there is no dedicated backend bill for the dictionary lookup architecture.</p>\n<p>That distinction matters.</p>\n<h2>Why Apache Arrow Is Part of the Story</h2>\n<p>Parquet is the storage format. DuckDB is the query engine.</p>\n<p>Apache Arrow provides the efficient columnar representation used in the query-result path. That combination is particularly interesting because these technologies were once associated mostly with data engineering and analytical systems.</p>\n<p>WebAssembly makes it practical to bring that capability into a browser application.</p>\n<p>The stack becomes:</p>\n<p><strong>Static hosting + Parquet + DuckDB-Wasm + Arrow + browser storage.</strong></p>\n<h2>What This Does Not Mean</h2>\n<p>This experiment does not prove that every application should eliminate its backend.</p>\n<p>Applications with transactional writes, centralized authorization, secrets, cross-user consistency, server-controlled business rules, or frequently changing private data still have strong reasons for server-side architecture.</p>\n<p>The lesson is narrower — and more useful:</p>\n<p><strong>Do not add a backend simply because web applications traditionally have one.</strong></p>\n<p>Start with the workload.</p>\n<p>For a public, read-heavy, relatively static dataset, client-side analytical technology can change the architecture significantly.</p>\n<h2>The Dictionary Is the Proof</h2>\n<p>The part I find most interesting is not that I built another dictionary.</p>\n<p>It is that a browser can work with a real Princeton WordNet dataset containing <strong>207,235 word senses</strong> from a single <strong>31.8 MB Parquet file</strong>, execute SQL over it with DuckDB-Wasm, and progressively move the dataset onto the user&#39;s device.</p>\n<p>That changes the question I want to ask at the beginning of similar projects.</p>\n<p>Not:</p>\n<p><strong>&quot;Which backend should I build?&quot;</strong></p>\n<p>But:</p>\n<p><strong>&quot;Does this workload need a backend in the first place?&quot;</strong></p>\n<p><a href=\"https://infinitilogicsolutions.github.io/dictionary/\">Explore Infiniti Dictionary</a></p>",
+    "coverImage": "assets/img/og/default.jpg",
+    "tags": [
+      "DuckDB",
+      "Parquet",
+      "Apache Arrow",
+      "WebAssembly",
+      "Software Architecture",
+      "Local-First"
+    ],
+    "active": true,
+    "featured": false
+  },
+  {
     "id": 10,
     "type": "blog",
     "title": "Visitor Intelligence v2: 67 Signals, Bot Scoring, and UX Personalization Without a Backend",
@@ -16,7 +56,8 @@
       "Google Sheets",
       "Privacy"
     ],
-    "active": true
+    "active": true,
+    "featured": false
   },
   {
     "id": 9,
@@ -35,7 +76,8 @@
       "Security",
       "Developer Experience"
     ],
-    "active": true
+    "active": true,
+    "featured": false
   },
   {
     "id": 8,
@@ -47,7 +89,8 @@
     "contentHtml": "<p>Today was all about making the blog easier to share and the publishing pipeline more reliable. Here’s the quick rundown.</p>\n<h2>Social sharing on posts</h2>\n<ul>\n<li>Added share actions for <strong>X</strong>, <strong>LinkedIn</strong>, and <strong>Facebook</strong> on blog cards.</li>\n<li>Added a <strong>copy link</strong> button everywhere sharing appears.</li>\n<li>Expanded the post page share section to include Facebook and unified all share URL logic.</li>\n</ul>\n<h2>Safer automation for nightly publishing</h2>\n<ul>\n<li>Updated the GitHub Actions workflow to push <code>data/posts.json</code> using a <strong>deploy key</strong> instead of the default token.</li>\n<li>Documented the <code>DEPLOY_KEY</code> setup so the nightly generator can still push even with strict branch rules enabled.</li>\n</ul>\n<h2>Repo hygiene updates</h2>\n<ul>\n<li>Added a <strong>CODEOWNERS</strong> file to make ownership explicit.</li>\n<li>Updated docs and release notes to reflect the new sharing and automation behavior.</li>\n</ul>\n<h2>What this means for readers</h2>\n<p>Sharing a post is now one click from the blog list or the post itself, and the nightly publishing job should keep content in sync even with branch protections enabled.</p>\n<p>Thanks for following along — more improvements coming soon.</p>",
     "coverImage": "assets/img/og/default.jpg",
     "tags": [],
-    "active": true
+    "active": true,
+    "featured": false
   },
   {
     "id": 7,
@@ -65,7 +108,8 @@
       "Offline-First",
       "JavaScript"
     ],
-    "active": true
+    "active": true,
+    "featured": false
   },
   {
     "id": 1,
@@ -82,7 +126,8 @@
       "Tutorial",
       "Web Development"
     ],
-    "active": false
+    "active": false,
+    "featured": false
   },
   {
     "id": 2,
@@ -100,6 +145,7 @@
       "JavaScript",
       "Static Site"
     ],
-    "active": true
+    "active": true,
+    "featured": false
   }
 ]
