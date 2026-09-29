@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="How I built a $0-backend dictionary using Princeton WordNet, Parquet, Apache Arrow, DuckDB-Wasm, browser storage, and GitHub Pages.">
   <meta name="theme-color" content="#2662d9">
   <title>I Put 147,478 Words in a Parquet File and Queried It From the Browser - InfinitiLogicSolutions</title>
@@ -35,7 +35,7 @@
   <header class="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border/50">
     <nav class="max-w-5xl mx-auto px-6 py-3 flex items-center justify-between">
       <a href="/index.html" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
-        <img src="/assets/img/circuit_infinity_tech_logo.png" alt="InfinitiLogicSolutions" class="w-8 h-8">
+        <img src="/assets/img/logo-small.webp" alt="InfinitiLogicSolutions" class="w-8 h-8" width="32" height="32" decoding="async">
         <span class="font-display text-lg font-bold gradient-text hidden sm:inline brand-text typewriter" data-text="InfinitiLogicSolutions">InfinitiLogicSolutions</span>
       </a>
       <ul class="flex items-center gap-1">
@@ -57,9 +57,176 @@
 
   <main class="flex-1 pt-20">
     <article class="max-w-3xl mx-auto px-6 py-24">
-      <div id="postContent" class="post-detail">
-        <p class="text-muted-foreground">Loading post...</p>
+      <div id="postContent" class="post-detail" data-prerendered="true">
+    <div>
+      <a href="/blog.html" class="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors mb-8">
+        <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 12H5"></path>
+          <path d="m12 19-7-7 7-7"></path>
+        </svg>
+        Back to Blog
+      </a>
+
+      <div class="flex flex-wrap items-center gap-4 mb-6">
+        <span class="inline-flex items-center gap-1.5 text-sm font-mono px-3 py-1.5 bg-primary/10 text-primary rounded-full">
+          <svg viewBox="0 0 24 24" aria-hidden="true" class="w-3.5 h-3.5" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2l3 7h7l-5.5 4.5L18 22l-6-4-6 4 1.5-8.5L2 9h7z"></path>
+          </svg>
+          DuckDB
+        </span>
+        <span class="inline-flex items-center gap-1.5 text-sm text-muted-foreground">
+          <svg viewBox="0 0 24 24" aria-hidden="true" class="w-3.5 h-3.5" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect width="18" height="18" x="3" y="4" rx="2"></rect>
+            <path d="M16 2v4"></path>
+            <path d="M8 2v4"></path>
+            <path d="M3 10h18"></path>
+          </svg>
+          Sep 25, 2026
+        </span>
+        <span class="inline-flex items-center gap-1.5 text-sm text-muted-foreground">
+          <svg viewBox="0 0 24 24" aria-hidden="true" class="w-3.5 h-3.5" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M12 6v6l4 2"></path>
+          </svg>
+          4 min read
+        </span>
       </div>
+
+      <h1 class="text-4xl md:text-5xl font-display font-bold tracking-tight mb-6">I Put 147,478 Words in a Parquet File and Queried It From the Browser</h1>
+
+      <p class="text-xl text-muted-foreground leading-relaxed mb-12 post-summary">How I built a $0-backend dictionary using Princeton WordNet, Parquet, Apache Arrow, DuckDB-Wasm, browser storage, and GitHub Pages.</p>
+
+      <div class="post-content">
+        <p>Do you know you can <strong>query a file hosted on GitHub almost like a database — directly from the browser?</strong></p>
+<p>I wanted to find out whether that idea was useful beyond a small proof of concept.</p>
+<p>So I used the <strong>Princeton WordNet 3.1</strong> dataset and built Infiniti Dictionary around it.</p>
+<p>The resulting Parquet dataset contains <strong>147,478 unique lookup words, 207,235 word senses, and 117,791 synsets</strong> in a <strong>31.8 MB</strong> compressed file.</p>
+<p>And the application does not need an application API server or database server to search it.</p>
+<p><a href="https://infinitilogicsolutions.github.io/dictionary/">Try Infiniti Dictionary</a></p>
+<h2>The Question</h2>
+<p>When we start a web application, architecture conversations often begin with questions such as:</p>
+<ul>
+<li>Which database should we use?</li>
+<li>Where should the API run?</li>
+<li>Do we need containers?</li>
+<li>Should this be serverless?</li>
+<li>How should the backend scale?</li>
+</ul>
+<p>For this experiment I started one step earlier:</p>
+<p><strong>Do I need a backend for this workload at all?</strong></p>
+<p>A dictionary is an interesting test. It is read-heavy, the source data changes infrequently, and the lookup pattern is predictable. That makes it a good candidate for moving more responsibility into the browser.</p>
+<h2>One File Instead of a Database Server</h2>
+<p>I transformed the WordNet data into a single Parquet file.</p>
+<p>Why Parquet rather than shipping a giant JSON document?</p>
+<p>Parquet gives the application a compact, typed, columnar dataset that a query engine can understand directly. Instead of writing JavaScript to download and deserialize an entire JSON structure before searching it, I can let DuckDB query the dataset.</p>
+<p>The file is Zstandard-compressed and is about <strong>31.8 MB</strong>.</p>
+<h2>Put DuckDB in the Browser</h2>
+<p>The next part is what makes the experiment interesting.</p>
+<p><strong>DuckDB-Wasm runs the database query engine inside the browser.</strong></p>
+<p>The lookup itself is SQL:</p>
+<pre><code class="language-sql">SELECT word,
+       pos,
+       sense_number,
+       definition,
+       examples,
+       synonyms
+FROM read_parquet(&#39;dictionary.parquet&#39;)
+WHERE lookup_word = ?
+ORDER BY pos, sense_number;
+</code></pre>
+<p>There is no request from my UI to a custom dictionary API. The browser runs DuckDB-Wasm and DuckDB reads the Parquet data.</p>
+<p>The query result is represented through the Arrow-based data path used by DuckDB-Wasm and then rendered by the UI.</p>
+<h2>The First Search Is Remote</h2>
+<p>There is an important detail in the architecture.</p>
+<p>The application does <strong>not</strong> force someone to download the entire dictionary before seeing the first result.</p>
+<p>On the first lookup, the browser registers the remote Parquet file with DuckDB-Wasm and searches the online dataset.</p>
+<p>Conceptually:</p>
+<pre><code class="language-text">GitHub-hosted Parquet
+        ↓
+   DuckDB-Wasm
+        ↓
+  Apache Arrow
+        ↓
+       UI
+</code></pre>
+<p>That gives the user a result before the application turns itself into a local-first dictionary.</p>
+<h2>Then the Dictionary Moves Local</h2>
+<p>After that first result, the application begins downloading the complete Parquet file in the background.</p>
+<p>Before using the local copy, it checks the expected file size and verifies the file using its <strong>SHA-256 hash</strong>.</p>
+<p>Once verified, the browser can register that local file with DuckDB-Wasm.</p>
+<p>The next lookup becomes:</p>
+<pre><code class="language-text">Local Parquet → DuckDB-Wasm → Arrow → UI
+</code></pre>
+<p>At that point the dictionary data no longer needs a network round trip for each search.</p>
+<p>The service worker also caches application assets so the experiment can support offline reload behavior after the necessary resources have been cached.</p>
+<h2>What &quot;$0 Backend&quot; Means</h2>
+<p>I describe this as a <strong>$0-backend experiment</strong>, not &quot;zero infrastructure.&quot;</p>
+<p>There is still infrastructure: GitHub serves the static application and dataset, and the user&#39;s device provides compute and storage.</p>
+<p>What the design removes from this application is the backend infrastructure I would otherwise operate:</p>
+<ul>
+<li>No application API server</li>
+<li>No database server</li>
+<li>No Lambda functions for lookups</li>
+<li>No containers for the dictionary service</li>
+<li>No database connection pool</li>
+<li>No backend autoscaling problem for searches</li>
+</ul>
+<p>Within the hosting limits of the services being used, there is no dedicated backend bill for the dictionary lookup architecture.</p>
+<p>That distinction matters.</p>
+<h2>Why Apache Arrow Is Part of the Story</h2>
+<p>Parquet is the storage format. DuckDB is the query engine.</p>
+<p>Apache Arrow provides the efficient columnar representation used in the query-result path. That combination is particularly interesting because these technologies were once associated mostly with data engineering and analytical systems.</p>
+<p>WebAssembly makes it practical to bring that capability into a browser application.</p>
+<p>The stack becomes:</p>
+<p><strong>Static hosting + Parquet + DuckDB-Wasm + Arrow + browser storage.</strong></p>
+<h2>What This Does Not Mean</h2>
+<p>This experiment does not prove that every application should eliminate its backend.</p>
+<p>Applications with transactional writes, centralized authorization, secrets, cross-user consistency, server-controlled business rules, or frequently changing private data still have strong reasons for server-side architecture.</p>
+<p>The lesson is narrower — and more useful:</p>
+<p><strong>Do not add a backend simply because web applications traditionally have one.</strong></p>
+<p>Start with the workload.</p>
+<p>For a public, read-heavy, relatively static dataset, client-side analytical technology can change the architecture significantly.</p>
+<h2>The Dictionary Is the Proof</h2>
+<p>The part I find most interesting is not that I built another dictionary.</p>
+<p>It is that a browser can work with a real Princeton WordNet dataset containing <strong>207,235 word senses</strong> from a single <strong>31.8 MB Parquet file</strong>, execute SQL over it with DuckDB-Wasm, and progressively move the dataset onto the user&#39;s device.</p>
+<p>That changes the question I want to ask at the beginning of similar projects.</p>
+<p>Not:</p>
+<p><strong>&quot;Which backend should I build?&quot;</strong></p>
+<p>But:</p>
+<p><strong>&quot;Does this workload need a backend in the first place?&quot;</strong></p>
+<p><a href="https://infinitilogicsolutions.github.io/dictionary/">Explore Infiniti Dictionary</a></p>
+      </div>
+
+      <div class="flex items-center justify-between mt-12 pt-8 border-t border-border">
+        <p class="text-sm text-muted-foreground">Share this article</p>
+        <div class="flex items-center gap-2">
+          <a href="https://twitter.com/intent/tweet?text=I%20Put%20147%2C478%20Words%20in%20a%20Parquet%20File%20and%20Queried%20It%20From%20the%20Browser&url=https%3A%2F%2Finfinitilogicsolutions.github.io%2Fposts%2Fquerying-wordnet-parquet-duckdb-browser.html" target="_blank" rel="noreferrer" class="p-2 rounded-full share-button" aria-label="Share on X">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2-2.3-.1-4.2-1.5-4.9-3.6.7.1 1.5.1 2.2-.1C3 12.7 1.6 10.6 2 8.2c.8.4 1.6.6 2.5.6C2.8 7.7 2 5.1 3.5 3.6 5.8 6.2 9.1 7.7 12.7 7.5c-.7-3.1 2-5.2 4.6-3.8 1.1-.2 2.2-.6 3.1-1.2-.3 1.1-1.1 2-2 2.6 1-.1 2-.4 3-.8z"></path>
+            </svg>
+          </a>
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Finfinitilogicsolutions.github.io%2Fposts%2Fquerying-wordnet-parquet-duckdb-browser.html" target="_blank" rel="noreferrer" class="p-2 rounded-full share-button" aria-label="Share on LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+              <rect width="4" height="12" x="2" y="9"></rect>
+              <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+          </a>
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Finfinitilogicsolutions.github.io%2Fposts%2Fquerying-wordnet-parquet-duckdb-browser.html" target="_blank" rel="noreferrer" class="p-2 rounded-full share-button" aria-label="Share on Facebook">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+            </svg>
+          </a>
+          <button class="p-2 rounded-full share-button" type="button" aria-label="Copy link" data-share-copy="true" data-share-slug="querying-wordnet-parquet-duckdb-browser" data-share-title="I%20Put%20147%2C478%20Words%20in%20a%20Parquet%20File%20and%20Queried%20It%20From%20the%20Browser">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+              <rect x="2" y="2" width="13" height="13" rx="2"></rect>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
     </article>
   </main>
 
@@ -67,7 +234,7 @@
     <div class="max-w-5xl mx-auto px-6 py-12">
       <div class="flex flex-col md:flex-row items-center justify-between gap-6">
         <div class="flex items-center gap-3">
-          <img src="/assets/img/circuit_infinity_tech_logo.png" alt="InfinitiLogicSolutions" class="w-10 h-10">
+          <img src="/assets/img/logo-small.webp" alt="InfinitiLogicSolutions" class="w-10 h-10" width="40" height="40" loading="lazy" decoding="async">
           <div>
             <p class="font-display font-semibold gradient-text">InfinitiLogicSolutions</p>
             <p class="text-sm text-muted-foreground">Weekend projects powered by curiosity and AI</p>
@@ -105,16 +272,19 @@
         <p class="text-sm text-muted-foreground">© 2026 InfinitiLogicSolutions. Built on weekends with AI assistance.</p>
       </div>
     </div>
+  <p class="text-xs text-muted-foreground" style="text-align:center;min-height:1.5rem;padding:0 1rem 1rem" data-page-load>Page load: measuring…</p>
   </footer>
 
-  <script src="/assets/js/visitor-config.js"></script>
-  <script src="/assets/js/fingerprint.js"></script>
-  <script src="/assets/js/one-tap.js"></script>
-  <script src="/assets/js/personalizer.js"></script>
-  <script src="/assets/js/tracker.js"></script>
-  <script src="/assets/js/app.js"></script>
-  <script src="/assets/js/typewriter.js"></script>
-  <script src="/assets/js/pwa.js"></script>
-  <script src="/assets/js/notifications.js"></script>
+  <script defer src="/assets/js/visitor-config.js"></script>
+  <script defer src="/assets/js/fingerprint.js"></script>
+  <script defer src="/assets/js/one-tap.js"></script>
+  <script defer src="/assets/js/personalizer.js"></script>
+  <script defer src="/assets/js/tracker.js"></script>
+  <script defer src="/assets/js/article-renderer.js"></script>
+  <script defer src="/assets/js/app.js"></script>
+  <script defer src="/assets/js/typewriter.js"></script>
+  <script defer src="/assets/js/pwa.js"></script>
+  <script defer src="/assets/js/notifications.js"></script>
+  <script defer src="/assets/js/page-speed.js"></script>
 </body>
 </html>

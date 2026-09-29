@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const { marked } = require('marked');
 const yaml = require('js-yaml');
+const renderArticle = require('../assets/js/article-renderer.js');
 
 const POSTS_DIR = path.join(__dirname, '..', 'posts');
 const OUTPUT_FILE = path.join(__dirname, '..', 'data', 'posts.json');
@@ -79,6 +80,26 @@ function buildPostPage(template, post) {
     html = html.replace('</head>', `${metaBlock}\n</head>`);
     html = html.replace(/<body([^>]*)>/, `<body$1 data-post-slug="${escapeHtml(post.slug)}">`);
 
+    const text = (post.contentHtml || '').replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+    const encodedUrl = encodeURIComponent(postUrl);
+    const shareTitle = encodeURIComponent(post.title || '');
+    const article = renderArticle({
+        post,
+        category: post.category || post.tags?.[0] || (post.type === 'project' ? 'Project' : 'General'),
+        date: new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC' }),
+        readTime: `${Math.max(1, Math.round((text ? text.split(' ').length : 0) / 200))} min read`,
+        summary: post.summary || '',
+        backLink: post.type === 'blog' ? '/blog.html' : '/projects.html',
+        backLabel: post.type === 'blog' ? 'Blog' : 'Projects',
+        shareTitle,
+        shareLinks: {
+            twitter: `https://twitter.com/intent/tweet?text=${shareTitle}&url=${encodedUrl}`,
+            linkedIn: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`,
+            facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`
+        }
+    });
+    html = html.replace(/<div id="postContent" class="post-detail">[\s\S]*?<\/div>/,
+        () => `<div id="postContent" class="post-detail" data-prerendered="true">${article}</div>`);
     return rewriteAssetPaths(html);
 }
 

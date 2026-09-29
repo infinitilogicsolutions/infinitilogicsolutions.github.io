@@ -7,6 +7,7 @@ on:
       - 'posts/**/*.md'
       - 'scripts/generate-json.js'
       - 'post.html'
+      - 'assets/js/article-renderer.js'
   schedule:
     # Runs nightly at 02:17 UTC; non-zero minute avoids GitHub's peak top-of-hour load
     - cron: '17 2 * * *'
