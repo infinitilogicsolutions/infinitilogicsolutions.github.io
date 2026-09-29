@@ -214,6 +214,13 @@ function generatePostsJson() {
     }
     
     fs.writeFileSync(OUTPUT_FILE, JSON.stringify(publishedPosts, null, 2));
+    // Listing pages need metadata, not the complete article bodies.
+    const index = publishedPosts.map(({ contentHtml, ...metadata }) => {
+        const text = (contentHtml || '').replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
+        const words = text ? text.split(' ').length : 0;
+        return { ...metadata, readTime: `${Math.max(1, Math.round(words / 200))} min read` };
+    });
+    fs.writeFileSync(path.join(outputDir, 'posts-index.json'), JSON.stringify(index));
     console.log(`✅ Generated ${OUTPUT_FILE} with ${publishedPosts.length} post(s)`);
     console.log(`📅 Posts are checked nightly for scheduled publishing`);
 }

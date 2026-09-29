@@ -5,6 +5,8 @@ on:
     branches: [ main ]
     paths:
       - 'posts/**/*.md'
+      - 'scripts/generate-json.js'
+      - 'post.html'
   schedule:
     # Runs nightly at 02:17 UTC; non-zero minute avoids GitHub's peak top-of-hour load
     - cron: '17 2 * * *'
@@ -36,7 +38,7 @@ jobs:
       - name: Check for changes
         id: check_changes
         run: |
-          if git status --porcelain --untracked-files=all -- data/posts.json posts | grep -q .; then
+          if git status --porcelain --untracked-files=all -- data/posts.json data/posts-index.json posts | grep -q .; then
             echo "changed=true" >> $GITHUB_OUTPUT
           else
             echo "changed=false" >> $GITHUB_OUTPUT
@@ -56,6 +58,6 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add -A data/posts.json posts
+          git add -A data/posts.json data/posts-index.json posts
           git commit -m "🤖 Auto-generate posts content"
           git push origin HEAD:main

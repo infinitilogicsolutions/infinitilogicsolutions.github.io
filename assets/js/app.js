@@ -1,13 +1,18 @@
-// Fetch posts data
-async function fetchPosts() {
-  try {
-    const response = await fetch('/data/posts.json');
-    if (!response.ok) throw new Error('Failed to load posts');
-    return await response.json();
-  } catch (error) {
-    console.error('Error fetching posts:', error);
-    return [];
+// Share in-flight and completed requests within this page; retry failures.
+const postRequests = new Map();
+function fetchPosts(listing = false) {
+  const url = listing ? '/data/posts-index.json' : '/data/posts.json';
+  if (!postRequests.has(url)) {
+    postRequests.set(url, fetch(url).then((response) => {
+      if (!response.ok) throw new Error('Failed to load posts');
+      return response.json();
+    }).catch((error) => {
+      postRequests.delete(url);
+      console.error('Error fetching posts:', error);
+      return [];
+    }));
   }
+  return postRequests.get(url);
 }
 
 const BLOG_COLORS = [
@@ -251,7 +256,7 @@ function createOtherProjectCard(project, index) {
 function createBlogCard(post, index) {
   const category = getCategory(post);
   const color = getBlogColor(index);
-  const readTime = computeReadTime(post.contentHtml || '');
+  const readTime = post.readTime || computeReadTime(post.contentHtml || '');
   const date = formatDateShort(post.date);
   const shareLinks = buildShareLinks(post);
   const shareTitle = encodeURIComponent(post.title || '');
@@ -426,7 +431,7 @@ function renderBlogPosts(posts, category) {
 }
 
 async function loadProjects() {
-  const posts = await fetchPosts();
+  const posts = await fetchPosts(true);
   const projects = posts.filter((post) => post.type === 'project' && post.active !== false).sort(sortByDateDesc);
 
   if (!projects.length) {
@@ -446,7 +451,7 @@ async function loadProjects() {
 }
 
 async function loadBlogPosts() {
-  const posts = await fetchPosts();
+  const posts = await fetchPosts(true);
   blogPosts = posts.filter((post) => post.type === 'blog' && post.active !== false).sort(sortByDateDesc);
 
   if (!blogPosts.length) {
@@ -498,7 +503,7 @@ async function loadSinglePost() {
 
   const category = getCategory(post);
   const date = formatDateShort(post.date);
-  const readTime = computeReadTime(post.contentHtml || '');
+  const readTime = post.readTime || computeReadTime(post.contentHtml || '');
   const summary = post.summary || '';
   const backLink = post.type === 'blog' ? '/blog.html' : '/projects.html';
   const backLabel = post.type === 'blog' ? 'Blog' : 'Projects';

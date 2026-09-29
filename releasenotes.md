@@ -37,3 +37,8 @@
 - added Replit assets (favicon, opengraph, logo)
 - refreshed PWA theme colors and cache manifest
 - configured the nightly posts generator to push via deploy key when rulesets require bypass
+
+
+## Site efficiency — September 29, 2026
+
+Listing pages now load generated `data/posts-index.json` with metadata and precomputed read times. Full article HTML stays in `data/posts.json` for article views. Requests are shared per page, including personalization refreshes; failed requests can retry. The publishing workflow tracks both data files and reruns for generator/template edits. Service worker v5 precaches both the small index and the full article JSON during installation, preserving offline article access after installation completes. Listing pages use the small index for rendering; the full dataset still downloads in the background. Both JSON endpoints retain the existing offline refresh strategy. Homepage scripts use ordered deferred execution; logo dimensions reserve layout space.

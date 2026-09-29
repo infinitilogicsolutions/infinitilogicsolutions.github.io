@@ -1,5 +1,6 @@
-const CACHE_NAME = 'my-blog-v4';
+const CACHE_NAME = 'my-blog-v5';
 const POSTS_JSON_PATH = '/data/posts.json';
+const POSTS_INDEX_PATH = '/data/posts-index.json';
 const POST_ROUTE_PATTERN = /^\/posts\/[^/]+\.html$/;
 
 // Assets to cache on install
@@ -26,6 +27,7 @@ const STATIC_ASSETS = [
   '/assets/img/icon-512.png',
   '/favicon.png',
   '/opengraph.jpg',
+  POSTS_INDEX_PATH,
   POSTS_JSON_PATH,
   '/manifest.json'
 ];
@@ -95,11 +97,11 @@ self.addEventListener('fetch', (event) => {
       requestUrl.pathname === '/dictionary' || requestUrl.pathname.startsWith('/dictionary/')) return;
   const isPostDocument = isDocument && isGeneratedPostRoute(requestUrl.pathname);
 
-  if (isSameOrigin && requestUrl.pathname === POSTS_JSON_PATH) {
+  if (isSameOrigin && [POSTS_JSON_PATH, POSTS_INDEX_PATH].includes(requestUrl.pathname)) {
     event.respondWith(
-      matchBlogCache(POSTS_JSON_PATH).then((cachedResponse) => {
+      matchBlogCache(requestUrl.pathname).then((cachedResponse) => {
         const networkRefresh = fetch(event.request)
-          .then((response) => putInCache(POSTS_JSON_PATH, response))
+          .then((response) => putInCache(requestUrl.pathname, response))
           .catch(() => null);
 
         event.waitUntil(networkRefresh);
