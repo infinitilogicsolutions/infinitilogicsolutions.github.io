@@ -1,4 +1,4 @@
-const CACHE_NAME = 'my-blog-v5';
+const CACHE_NAME = 'my-blog-v6';
 const POSTS_JSON_PATH = '/data/posts.json';
 const POSTS_INDEX_PATH = '/data/posts-index.json';
 const POST_ROUTE_PATTERN = /^\/posts\/[^/]+\.html$/;
@@ -15,10 +15,12 @@ const STATIC_ASSETS = [
   '/assets/css/styles.css',
   '/assets/css/custom.css',
   '/assets/js/app.js',
+  '/assets/js/page-speed.js',
+  '/assets/js/article-renderer.js',
   '/assets/js/typewriter.js',
   '/assets/js/pwa.js',
   '/assets/js/notifications.js',
-  '/assets/img/circuit_infinity_tech_logo.png',
+  '/assets/img/logo-small.webp',
   '/assets/img/apple-touch-icon-180.png',
   '/assets/img/apple-touch-icon-167.png',
   '/assets/img/apple-touch-icon-152.png',

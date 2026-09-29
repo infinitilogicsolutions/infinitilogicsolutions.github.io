@@ -1,9 +1,10 @@
 // Register Service Worker
 if ('serviceWorker' in navigator) {
   let refreshingForNewWorker = false;
+  const hadControllerAtLoad = Boolean(navigator.serviceWorker.controller);
 
   navigator.serviceWorker.addEventListener('controllerchange', () => {
-    if (refreshingForNewWorker) return;
+    if (!hadControllerAtLoad || refreshingForNewWorker) return;
     refreshingForNewWorker = true;
     window.location.reload();
   });
