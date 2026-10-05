@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A single-file document scanner with editable corners, perspective correction, on-device drafts, and JPEG, PNG, and multipage PDF export. Built for iPhone Safari and hosted on GitHub Pages.">
+  <meta name="theme-color" content="#2662d9">
+  <title>Paperlens — A Document Scanner That Runs in Your Browser - InfinitiLogicSolutions</title>
+
+  <link rel="manifest" href="/manifest.json">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="InfinitiLogicSolutions">
+  <link rel="apple-touch-icon" href="/assets/img/icon-192.png">
+  <link rel="icon" type="image/png" href="/favicon.png">
+
+
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  <link rel="stylesheet" href="/assets/css/custom.css">
+
+  <link rel="canonical" href="https://infinitilogicsolutions.github.io/posts/paperlens-browser-document-scanner.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="InfinitiLogicSolutions">
+  <meta property="og:title" content="Paperlens — A Document Scanner That Runs in Your Browser">
+  <meta property="og:description" content="A single-file document scanner with editable corners, perspective correction, on-device drafts, and JPEG, PNG, and multipage PDF export. Built for iPhone Safari and hosted on GitHub Pages.">
+  <meta property="og:url" content="https://infinitilogicsolutions.github.io/posts/paperlens-browser-document-scanner.html">
+  <meta property="og:image" content="https://infinitilogicsolutions.github.io/assets/img/og/paperlens.jpg">
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Paperlens — A Document Scanner That Runs in Your Browser">
+  <meta name="twitter:description" content="A single-file document scanner with editable corners, perspective correction, on-device drafts, and JPEG, PNG, and multipage PDF export. Built for iPhone Safari and hosted on GitHub Pages.">
+  <meta name="twitter:image" content="https://infinitilogicsolutions.github.io/assets/img/og/paperlens.jpg">
+</head>
+<body class="min-h-screen flex flex-col" data-post-slug="paperlens-browser-document-scanner">
+  <header class="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border/50">
+    <nav class="max-w-5xl mx-auto px-6 py-3 flex items-center justify-between">
+      <a href="/index.html" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
+        <img src="/assets/img/logo-small.webp" alt="InfinitiLogicSolutions" class="w-8 h-8" width="32" height="32" decoding="async">
+        <span class="font-display text-lg font-bold gradient-text hidden sm:inline brand-text typewriter" data-text="InfinitiLogicSolutions">InfinitiLogicSolutions</span>
+      </a>
+      <ul class="flex items-center gap-1">
+        <li>
+          <a href="/index.html" class="relative px-4 py-2 text-sm font-medium transition-colors rounded-full text-muted-foreground hover:text-foreground">Home</a>
+        </li>
+        <li>
+          <a href="/about.html" class="relative px-4 py-2 text-sm font-medium transition-colors rounded-full text-muted-foreground hover:text-foreground">About</a>
+        </li>
+        <li>
+          <a href="/projects.html" class="relative px-4 py-2 text-sm font-medium transition-colors rounded-full text-muted-foreground hover:text-foreground">Projects</a>
+        </li>
+        <li>
+          <a href="/blog.html" class="relative px-4 py-2 text-sm font-medium transition-colors rounded-full text-muted-foreground hover:text-foreground">Blog</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="flex-1 pt-20">
+    <article class="max-w-3xl mx-auto px-6 py-24">
+      <div id="postContent" class="post-detail" data-prerendered="true">
+    <div>
+      <a href="/projects.html" class="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors mb-8">
+        <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 12H5"></path>
+          <path d="m12 19-7-7 7-7"></path>
+        </svg>
+        Back to Projects
+      </a>
+
+      <div class="flex flex-wrap items-center gap-4 mb-6">
+        <span class="inline-flex items-center gap-1.5 text-sm font-mono px-3 py-1.5 bg-primary/10 text-primary rounded-full">
+          <svg viewBox="0 0 24 24" aria-hidden="true" class="w-3.5 h-3.5" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2l3 7h7l-5.5 4.5L18 22l-6-4-6 4 1.5-8.5L2 9h7z"></path>
+          </svg>
+          JavaScript
+        </span>
+        <span class="inline-flex items-center gap-1.5 text-sm text-muted-foreground">
+          <svg viewBox="0 0 24 24" aria-hidden="true" class="w-3.5 h-3.5" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect width="18" height="18" x="3" y="4" rx="2"></rect>
+            <path d="M16 2v4"></path>
+            <path d="M8 2v4"></path>
+            <path d="M3 10h18"></path>
+          </svg>
+          Oct 5, 2026
+        </span>
+        <span class="inline-flex items-center gap-1.5 text-sm text-muted-foreground">
+          <svg viewBox="0 0 24 24" aria-hidden="true" class="w-3.5 h-3.5" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M12 6v6l4 2"></path>
+          </svg>
+          3 min read
+        </span>
+      </div>
+
+      <h1 class="text-4xl md:text-5xl font-display font-bold tracking-tight mb-6">Paperlens — A Document Scanner That Runs in Your Browser</h1>
+
+      <p class="text-xl text-muted-foreground leading-relaxed mb-12 post-summary">A single-file document scanner with editable corners, perspective correction, on-device drafts, and JPEG, PNG, and multipage PDF export. Built for iPhone Safari and hosted on GitHub Pages.</p>
+
+      <div class="post-content">
+        <h2>Goal</h2>
+<p>Build the everyday document-scanning workflow I use on an iPhone: capture a page, adjust its edges, straighten it, and keep a usable copy.</p>
+<p>Paperlens takes that familiar workflow into a browser. The scanner, editing tools, local draft storage, and export logic live in <strong>one HTML file</strong>, hosted at <code>/scan/</code> on GitHub Pages.</p>
+<p><a href="https://infinitilogicsolutions.github.io/scan/">Open Paperlens</a></p>
+<h2>Features</h2>
+<ul>
+<li>Live camera capture with manual and automatic modes, plus photo import</li>
+<li>Automatic corner suggestions for light paper against a contrasting background</li>
+<li>Four draggable corners and real perspective correction</li>
+<li>Color, clean, grayscale, and black-and-white filters</li>
+<li>Brightness, contrast, sharpening, and page rotation</li>
+<li>Multiple pages, page reordering, and draft recovery on the same browser and device</li>
+<li>A larger editing workspace and a full-screen preview with zoom</li>
+<li>JPEG and PNG image export, with detail and file-size presets</li>
+<li>Multipage PDFs with A4, US Letter, or fitted page sizes and configurable margins</li>
+<li>Native sharing when available, with image-preview and download fallbacks</li>
+</ul>
+<p>All studio options are included. There is no paid tier or account registration in the scanner.</p>
+<h2>How It Works</h2>
+<p><strong>Capture or import → adjust corners → straighten → enhance → export.</strong></p>
+<p>The camera frame or imported photo becomes a Canvas image. A lightweight bright-region detector proposes a document outline. The user can correct those suggestions before accepting the scan.</p>
+<p>The four corners define a projective transformation. Paperlens maps that quadrilateral to a rectangular page and uses bilinear interpolation to sample the source pixels. That straightens an angled document rather than simply cropping around it.</p>
+<p>The app then applies the chosen image adjustments and prepares an export file.</p>
+<h2>Technologies and Tools Used</h2>
+<ul>
+<li>HTML, CSS, and vanilla JavaScript</li>
+<li>Canvas 2D for image processing</li>
+<li>Browser camera APIs and file inputs</li>
+<li>IndexedDB for draft pages and image blobs</li>
+<li>localStorage for export preferences</li>
+<li>Web Share API for supported native sharing</li>
+<li>Inline SVG icons</li>
+<li>GitHub Pages for static hosting</li>
+<li>AI-assisted development with Codex</li>
+</ul>
+<p>The application has no third-party runtime dependencies or separate scanning service. Its HTML file is approximately <strong>49 KB uncompressed</strong>.</p>
+<h2>Keeping a Copy on iPhone</h2>
+<p>Select a page and tap <strong>Save to Photos</strong>. Paperlens opens a prepared image preview. Tap <strong>Share image</strong>, then choose <strong>Save Image</strong> in the iPhone share sheet when available. Touching and holding the preview provides another saving path; downloading keeps a copy in Files.</p>
+<p>Photos exports the selected page. PDF export combines all pages in the current draft. Preparing the PDF and sharing it use separate taps.</p>
+<h2>Local Processing and Storage</h2>
+<p>The scanner does not upload captured documents. Image processing and file generation happen on the device. The current draft is stored in IndexedDB; export preferences are stored in localStorage.</p>
+<p>Draft recovery is specific to the browser and site origin. It is not cloud sync, and browser storage can be cleared or evicted. Export important documents before relying on the draft as your only copy.</p>
+<h2>Practical Limits</h2>
+<p>Edge detection is a heuristic. It works best with light paper on a darker background; manual corner adjustment remains available when the detector misses an edge.</p>
+<p>Processing caps the image&#39;s long edge at <strong>2,200 pixels</strong>. Maximum-detail export preserves the available scan resolution; it does not invent extra detail. The PDFs contain page images rather than an OCR-generated text layer.</p>
+<p>Live camera capture needs HTTPS and permission. Torch control and native sharing depend on the device and browser. The app is designed for iPhone Safari, with physical-device verification still needed across camera and sharing paths.</p>
+<h2>Result</h2>
+<p>Paperlens brings a useful scanning workflow to a static website: document straightening, editing, local drafts, and multiple export formats without operating an image-processing backend.</p>
+<p><a href="https://infinitilogicsolutions.github.io/scan/">Try the scanner</a> or <a href="https://infinitilogicsolutions.github.io/posts/building-paperlens-single-html-document-scanner.html">read how it was built</a>.</p>
+      </div>
+
+      <div class="flex items-center justify-between mt-12 pt-8 border-t border-border">
+        <p class="text-sm text-muted-foreground">Share this article</p>
+        <div class="flex items-center gap-2">
+          <a href="https://twitter.com/intent/tweet?text=Paperlens%20%E2%80%94%20A%20Document%20Scanner%20That%20Runs%20in%20Your%20Browser&url=https%3A%2F%2Finfinitilogicsolutions.github.io%2Fposts%2Fpaperlens-browser-document-scanner.html" target="_blank" rel="noreferrer" class="p-2 rounded-full share-button" aria-label="Share on X">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2-2.3-.1-4.2-1.5-4.9-3.6.7.1 1.5.1 2.2-.1C3 12.7 1.6 10.6 2 8.2c.8.4 1.6.6 2.5.6C2.8 7.7 2 5.1 3.5 3.6 5.8 6.2 9.1 7.7 12.7 7.5c-.7-3.1 2-5.2 4.6-3.8 1.1-.2 2.2-.6 3.1-1.2-.3 1.1-1.1 2-2 2.6 1-.1 2-.4 3-.8z"></path>
+            </svg>
+          </a>
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Finfinitilogicsolutions.github.io%2Fposts%2Fpaperlens-browser-document-scanner.html" target="_blank" rel="noreferrer" class="p-2 rounded-full share-button" aria-label="Share on LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+              <rect width="4" height="12" x="2" y="9"></rect>
+              <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+          </a>
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Finfinitilogicsolutions.github.io%2Fposts%2Fpaperlens-browser-document-scanner.html" target="_blank" rel="noreferrer" class="p-2 rounded-full share-button" aria-label="Share on Facebook">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+            </svg>
+          </a>
+          <button class="p-2 rounded-full share-button" type="button" aria-label="Copy link" data-share-copy="true" data-share-slug="paperlens-browser-document-scanner" data-share-title="Paperlens%20%E2%80%94%20A%20Document%20Scanner%20That%20Runs%20in%20Your%20Browser">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+              <rect x="2" y="2" width="13" height="13" rx="2"></rect>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+    </article>
+  </main>
+
+  <footer class="border-t border-border mt-auto">
+    <div class="max-w-5xl mx-auto px-6 py-12">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-3">
+          <img src="/assets/img/logo-small.webp" alt="InfinitiLogicSolutions" class="w-10 h-10" width="40" height="40" loading="lazy" decoding="async">
+          <div>
+            <p class="font-display font-semibold gradient-text">InfinitiLogicSolutions</p>
+            <p class="text-sm text-muted-foreground">Weekend projects powered by curiosity and AI</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-4">
+          <a href="#" class="p-2 text-muted-foreground hover:text-primary transition-colors" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+            </svg>
+          </a>
+          <a href="#" class="p-2 text-muted-foreground hover:text-primary transition-colors" aria-label="Twitter">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2-2.3-.1-4.2-1.5-4.9-3.6.7.1 1.5.1 2.2-.1C3 12.7 1.6 10.6 2 8.2c.8.4 1.6.6 2.5.6C2.8 7.7 2 5.1 3.5 3.6 5.8 6.2 9.1 7.7 12.7 7.5c-.7-3.1 2-5.2 4.6-3.8 1.1-.2 2.2-.6 3.1-1.2-.3 1.1-1.1 2-2 2.6 1-.1 2-.4 3-.8z"></path>
+            </svg>
+          </a>
+          <a href="#" class="p-2 text-muted-foreground hover:text-primary transition-colors" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+              <rect width="4" height="12" x="2" y="9"></rect>
+              <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+          </a>
+          <a href="#" class="p-2 text-muted-foreground hover:text-primary transition-colors" aria-label="Email">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="mt-8 pt-8 border-t border-border text-center">
+        <p class="text-sm text-muted-foreground">© 2026 InfinitiLogicSolutions. Built on weekends with AI assistance.</p>
+      </div>
+    </div>
+  <p class="text-xs text-muted-foreground" style="text-align:center;min-height:1.5rem;padding:0 1rem 1rem" data-page-load>Page load: measuring…</p>
+  </footer>
+
+  <script defer src="/assets/js/visitor-config.js"></script>
+  <script defer src="/assets/js/fingerprint.js"></script>
+  <script defer src="/assets/js/one-tap.js"></script>
+  <script defer src="/assets/js/personalizer.js"></script>
+  <script defer src="/assets/js/tracker.js"></script>
+  <script defer src="/assets/js/article-renderer.js"></script>
+  <script defer src="/assets/js/app.js"></script>
+  <script defer src="/assets/js/typewriter.js"></script>
+  <script defer src="/assets/js/pwa.js"></script>
+  <script defer src="/assets/js/notifications.js"></script>
+  <script defer src="/assets/js/page-speed.js"></script>
+</body>
+</html>
+

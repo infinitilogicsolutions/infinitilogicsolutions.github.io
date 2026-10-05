@@ -59,3 +59,9 @@ The footer displays this visit’s navigation-to-load duration using Navigation 
 - prepare files before native sharing; include image-preview and download fallbacks for Photos saving
 - bypass scanner routes in the root blog worker and advance its cache version to prevent stale basic-scanner responses
 - update README and architecture; validate processing/export using canvas fixtures and parsed PDFs
+
+## 2026-10-05 — Paperlens project and blog
+
+- add the Paperlens project entry and the one-file document scanner build story using the existing Markdown/frontmatter conventions
+- publish the supplied iPhone screenshot as the shared cover image and show it within the blog
+- generate both content feeds and static pages with scanner links and social metadata; validate IDs, slugs, image references, and output

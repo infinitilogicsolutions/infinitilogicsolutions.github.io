@@ -240,3 +240,7 @@ Open [Paperlens](https://infinitilogicsolutions.github.io/scan/) in Safari. The 
 Use the sliders icon for maximum-detail/balanced/small-file output, photo format, PDF A4/US Letter/fit-to-scan sizing, and margins. Maximum detail preserves the captured scan resolution rather than upscaling. Save to Photos opens an image preview; tap Share image and choose Save Image in the iPhone share sheet, or touch and hold the preview. PDF preparation uses a separate Save PDF tap to preserve user activation for sharing.
 
 Images and draft pages are processed on-device. IndexedDB stores the current draft; localStorage keeps export preferences. Camera access requires HTTPS and permission. All studio options are included without a paid tier. The root blog worker bypasses the scanner route to avoid serving the old basic scanner from its cache.
+
+## Paperlens project and build story — October 5, 2026
+
+The [Paperlens project](https://infinitilogicsolutions.github.io/posts/paperlens-browser-document-scanner.html) describes the scanner, feature set, usage, and constraints. [I Built a Document Scanner in One HTML File](https://infinitilogicsolutions.github.io/posts/building-paperlens-single-html-document-scanner.html) explains the architecture and implementation. Both use the existing Markdown publishing pipeline, share the supplied iPhone screenshot at `assets/img/og/paperlens.jpg`, and link to the live `/scan/` app. The build story also shows the complete screenshot within the article.
