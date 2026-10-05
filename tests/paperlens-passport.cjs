@@ -14,9 +14,14 @@ vm.runInContext("decode=async blob=>loadImage(Buffer.from(await blob.arrayBuffer
 const run=code=>vm.runInContext(code,sandbox);
 
 (async()=>{
+ run("$('#passportPreset').value='us';$('#passportLayout').value='max';$('#passportZoom').value=100;$('#passportX').value=0;$('#passportY').value=0");
  assert.equal(run('options.developer'),false);
- run("$('#openPassport').onclick()");assert.equal(document.querySelector('#passportDialog').hidden,true);
- nodes.get('#developerMode').checked=true;run('saveDeveloper()');assert.equal(run('options.developer'),true);assert.equal(nodes.get('#developerTools').hidden,false);
+ run("$('#openPassport').onclick()");assert.equal(document.querySelector('#passportStudio').hidden,true);
+ nodes.get('#developerMode').checked=true;run('saveDeveloper()');assert.equal(run('options.developer'),true);assert.equal(nodes.get('#developerTools').hidden,false);assert.equal(nodes.get('#passportStudio').hidden,false);
+ nodes.get('#developerMode').checked=false;run('saveDeveloper()');assert.equal(nodes.get('#passportStudio').hidden,true);
+ nodes.get('#developerMode').checked=true;run('saveDeveloper()');assert.equal(nodes.get('#passportStudio').hidden,false);
+ assert(html.indexOf('id="passportStudio"')<html.indexOf('</main>'));
+ assert(!html.includes('id="passportDialog"'));
  run("$('#passportPreset').value='us';$('#passportLayout').value='max';$('#passportZoom').value=100;$('#passportX').value=0;$('#passportY').value=0");
  assert.equal(run('passportPlan().count'),6);
  assert.equal(run("passportPlan(passportPresets.india,false).count"),6);

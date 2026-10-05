@@ -255,7 +255,7 @@ What's next? The current requested enhancement is front/back ID composition. Fol
 
 ## Developer passport-photo studio — October 5, 2026
 
-Open Studio (sliders icon), enable **Developer mode**, then choose **Passport photo sheet**. Developer mode defaults off and is remembered locally. Upload a portrait, select U.S. 2 × 2 inches or India overseas 2 × 2 inches, and use zoom/position sliders or drag the crop. Exact 51 × 51 mm and conditional 35 × 45 mm presets are also available; follow the specific application instructions rather than assuming one Indian size applies everywhere.
+Open Studio (sliders icon) and enable **Developer mode**. The complete **Passport photo sheet** workspace appears at the top of the main page; Apply options closes settings. The saved toggle restores the workspace after reload. Developer mode defaults off and is remembered locally. Upload a portrait, select U.S. 2 × 2 inches or India overseas 2 × 2 inches, and use zoom/position sliders or drag the crop. Exact 51 × 51 mm and conditional 35 × 45 mm presets are also available; follow the specific application instructions rather than assuming one Indian size applies everywhere.
 
 Maximum layout packs six 2 × 2-inch copies on a 6 × 4-inch sheet with no gaps or border allowance. The spaced layout leaves trimming room and therefore fits fewer copies. Exact 51 mm exceeds 2 inches slightly and fits fewer copies without shrinking the required size. The tool shows the count before exporting.
 
@@ -266,3 +266,9 @@ The tool crops/resamples only: no background replacement, filters, retouching, f
 Optional regression test: install @napi-rs/canvas in your development environment and run `node tests/paperlens-passport.cjs`. It is not a production dependency.
 
 What's next? This requested enhancement adds developer-gated passport-photo resizing/duplication. Follow-up choice is pending; verify Safari layout/Photos sharing and measure a real 6 × 4 lab print.
+
+## Pastel main-page studio — October 5, 2026
+
+The app uses a light pastel palette: lavender actions, mint photo/export controls, peach ID/PDF accents and sky-blue scan tools. Developer mode reveals the full portrait workspace directly on the main page above a compact scanner start card. Turning it off hides the workspace; Escape closes overlays without hiding the enabled main-page tools.
+
+What's next? The requested main-page placement and pastel theme are implemented. Follow-up choice is pending; verify the layout and colors on your iPhone.
