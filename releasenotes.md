@@ -84,3 +84,10 @@ The footer displays this visit’s navigation-to-load duration using Navigation 
 - prepare 1800 × 1200 JPEGs tagged at 300 ppi and exact 6 × 4-inch PDFs, independent of document settings
 - keep portraits local and memory-only; omit filters/retouching and flag print scaling/overscan risks
 - test layouts, cropping, exports, metadata and existing document/ID behavior; update usage and architectural docs
+
+## 2026-10-05 — Pastel theme and main-page photo studio
+
+- show the complete passport-photo workspace on the main page when Developer mode is enabled, including after reload
+- remove its popup/Close interaction; keep settings navigation and compact the scanner start card
+- replace dark app chrome with pastel lavender, mint, peach and sky-blue surfaces and readable dark text
+- preserve existing crop/export logic and rerun passport plus document/ID/draft regression tests
