@@ -74,3 +74,13 @@ The footer displays this visit’s navigation-to-load duration using Navigation 
 - save unfinished ID drafts locally and restore them alongside existing documents; add scoped draft discard
 - reuse the existing image pipeline, cap composition resolution, and add no production dependencies
 - validate canvas output, exports, cancellation, editing, normal scans and draft recovery; update usage and architecture docs
+
+## 2026-10-05 — Developer passport-photo print studio
+
+- add a default-off, locally remembered Developer mode switch in Studio settings
+- reveal passport-photo upload, ratio-locked crop, pan/zoom and repeat-sheet controls
+- add U.S./India overseas 2-inch presets, exact 51 mm and conditional 35 × 45 mm sizes with application-specific warnings
+- pack a landscape 6 × 4 sheet with maximum or spaced copies, preserving required dimensions
+- prepare 1800 × 1200 JPEGs tagged at 300 ppi and exact 6 × 4-inch PDFs, independent of document settings
+- keep portraits local and memory-only; omit filters/retouching and flag print scaling/overscan risks
+- test layouts, cropping, exports, metadata and existing document/ID behavior; update usage and architectural docs

@@ -1,0 +1,42 @@
+const fs=require('fs'),vm=require('vm'),assert=require('assert');
+const {createCanvas,loadImage}=require('@napi-rs/canvas');
+const {File}=require('buffer');
+const nodes=new Map();
+const node=()=>({value:'Test',hidden:true,style:{},dataset:{},classList:{toggle(){}},setAttribute(){},removeAttribute(){},replaceChildren(){},append(){},addEventListener(){},getBoundingClientRect(){return {width:500,height:500}},click(){}});
+const document={querySelector(s){if(!nodes.has(s))nodes.set(s,node());return nodes.get(s)},querySelectorAll(){return []},addEventListener(){},createElement(type){if(type!=='canvas')return node();const c=createCanvas(1,1);c.toBlob=(cb,type='image/jpeg',quality=.94)=>cb(new Blob([c.toBuffer(type,quality*100)],{type}));return c}};
+const sandbox={document,window:{addEventListener(){}},navigator:{},localStorage:{getItem(){return null},setItem(){}},Blob,File,URL,TextEncoder,Uint8Array,Uint8ClampedArray,Float32Array,Uint32Array,Int32Array,setTimeout,clearTimeout,setInterval,clearInterval,requestAnimationFrame(){},console};
+vm.createContext(sandbox);
+const html=fs.readFileSync(__dirname+'/../scan/index.html','utf8');
+const script=html.match(/<script>([\s\S]*?)<\/script>/)[1].replace(/initStorage\(\);\s*$/,'');
+new vm.Script(script);
+vm.runInContext(script,sandbox);
+vm.runInContext("decode=async blob=>loadImage(Buffer.from(await blob.arrayBuffer()))",Object.assign(sandbox,{loadImage,Buffer}));
+const run=code=>vm.runInContext(code,sandbox);
+
+(async()=>{
+ assert.equal(run('options.developer'),false);
+ run("$('#openPassport').onclick()");assert.equal(document.querySelector('#passportDialog').hidden,true);
+ nodes.get('#developerMode').checked=true;run('saveDeveloper()');assert.equal(run('options.developer'),true);assert.equal(nodes.get('#developerTools').hidden,false);
+ run("$('#passportPreset').value='us';$('#passportLayout').value='max';$('#passportZoom').value=100;$('#passportX').value=0;$('#passportY').value=0");
+ assert.equal(run('passportPlan().count'),6);
+ assert.equal(run("passportPlan(passportPresets.india,false).count"),6);
+ assert.equal(run("passportPlan(passportPresets.india51,false).count"),2);
+ assert.equal(run("passportPlan(passportPresets.us,true).count"),2);
+ assert.equal(run("passportPlan(passportPresets.small,false).count"),8);
+ const photo=createCanvas(900,1200),ctx=photo.getContext('2d');ctx.fillStyle='#ff0000';ctx.fillRect(0,0,900,1200);ctx.fillStyle='#0000ff';ctx.fillRect(0,0,900,150);
+ sandbox.photo=photo;run('portrait=photo');
+ const r=run('portraitRect()');assert.equal(r.w,900);assert.equal(r.h,900);assert.equal(r.y,150);
+ run("$('#passportZoom').value=300;$('#passportX').value=-100;$('#passportY').value=100");const zoom=run('portraitRect()');assert.equal(zoom.w,300);assert.equal(zoom.x,0);assert.equal(zoom.y,900);
+ run("$('#passportZoom').value=100;$('#passportX').value=0;$('#passportY').value=0");
+ const c=run('passportCanvas()');assert.equal(c.width,1800);assert.equal(c.height,1200);
+ for(const [x,y] of [[10,10],[610,10],[1210,10],[10,610],[610,610],[1210,610]])assert.equal(c.getContext('2d').getImageData(x,y,1,1).data[0],255);
+ // Upload/crop pixels only: document enhancements and export-quality options do not affect this sheet.
+ run("options.quality='small';options.paper='letter';options.margin=36");
+ await run('buildPassport()');assert.equal(run('passportFiles.jpg.type'),'image/jpeg');assert.equal(run('passportFiles.pdf.type'),'application/pdf');
+ fs.writeFileSync('/tmp/passport-6x4.jpg',Buffer.from(await run('passportFiles.jpg.arrayBuffer()')));
+ fs.writeFileSync('/tmp/passport-6x4.pdf',Buffer.from(await run('passportFiles.pdf.arrayBuffer()')));
+ run("$('#passportX').value=20;changePassport()");assert.equal(run('passportFiles'),null);assert.equal(nodes.get('#passportResult').hidden,true);
+ run("$('#passportPreset').value='small'");const rect=run('portraitRect()');assert(Math.abs(rect.w/rect.h-35/45)<1e-9);
+ run('clearPortrait()');assert.equal(run('portrait'),null);assert.equal(nodes.get('#passportBuild').disabled,true);
+ console.log('PASS: developer gating, layout counts, crop ratios/pan/zoom, 1800x1200 sheet, exports, invalidation and clear.');
+})().catch(e=>{console.error(e);process.exitCode=1});

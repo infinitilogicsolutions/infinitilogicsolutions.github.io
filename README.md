@@ -252,3 +252,17 @@ Choose **Scan ID / license** on the home screen or **Add page → ID / license**
 Both sides and unfinished ID drafts remain in IndexedDB on this device. Closing the ID dialog keeps the draft; Discard ID draft removes only that unfinished ID. Existing document scans remain compatible. No new production dependencies, network processing, automatic ID classification, or OCR were added.
 
 What's next? The current requested enhancement is front/back ID composition. Follow-up choice is pending; real iPhone camera permissions and native Save Image still need device verification.
+
+## Developer passport-photo studio — October 5, 2026
+
+Open Studio (sliders icon), enable **Developer mode**, then choose **Passport photo sheet**. Developer mode defaults off and is remembered locally. Upload a portrait, select U.S. 2 × 2 inches or India overseas 2 × 2 inches, and use zoom/position sliders or drag the crop. Exact 51 × 51 mm and conditional 35 × 45 mm presets are also available; follow the specific application instructions rather than assuming one Indian size applies everywhere.
+
+Maximum layout packs six 2 × 2-inch copies on a 6 × 4-inch sheet with no gaps or border allowance. The spaced layout leaves trimming room and therefore fits fewer copies. Exact 51 mm exceeds 2 inches slightly and fits fewer copies without shrinking the required size. The tool shows the count before exporting.
+
+Prepare the sheet, then share/download its 1800 × 1200 JPEG tagged at 300 ppi, or download its single-page 432 × 288-point PDF. Document compression, filters, paper and margin settings never change this sheet. Order a landscape 6 × 4 photo print with no crop/zoom; print the PDF at 100% / Actual size on 6 × 4 paper. Measure the finished photos: printer overscan or automatic fitting can change physical size.
+
+The tool crops/resamples only: no background replacement, filters, retouching, face recognition or approval guarantee. It is for printed photos, not digital application uploads. Portraits stay in memory (not IndexedDB) and Clear photo releases them. Rules: [U.S.](https://travel.state.gov/en/passports/apply/help/photos.html) · [India overseas example](https://www.indianembassynetherlands.gov.in/page/basic-requirements-and-photo-specifications/).
+
+Optional regression test: install @napi-rs/canvas in your development environment and run `node tests/paperlens-passport.cjs`. It is not a production dependency.
+
+What's next? This requested enhancement adds developer-gated passport-photo resizing/duplication. Follow-up choice is pending; verify Safari layout/Photos sharing and measure a real 6 × 4 lab print.
