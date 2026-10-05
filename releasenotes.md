@@ -49,3 +49,13 @@ Listing pages now load generated `data/posts-index.json` with metadata and preco
 Generated article pages include complete HTML from a renderer shared with the dynamic offline fallback. Prerendered articles only bind share controls; personalization does not rebuild them. Published dates are stable UTC dates. The existing logo has a 140px WebP delivery variant with explicit dimensions. Source pages allow zoom and use ordered deferred scripts. Service-worker v6 preserves full JSON precaching and includes the shared renderer and small logo. Initial service-worker activation no longer reloads a first-time visit; updates for existing controlled sessions retain the existing refresh behavior.
 
 The footer displays this visit’s navigation-to-load duration using Navigation Timing, with reserved space and an unavailable fallback. It is a real visit measurement, not a Lighthouse score.
+
+## 2026-10-05 — Paperlens scanner upgrade
+
+- replace the basic `scan/index.html` with the upgraded single-page scanner, preserving `/scan/`
+- add edge detection, draggable corners, perspective correction, automatic/manual capture, multiple pages, and on-device draft recovery
+- enlarge the workspace and camera overlays; replace text symbols with inline SVG icons; add full-screen zoom
+- add brightness, contrast, sharpening, page reordering, JPEG/PNG quality presets, and A4/Letter/fitted PDF export with configurable margins
+- prepare files before native sharing; include image-preview and download fallbacks for Photos saving
+- bypass scanner routes in the root blog worker and advance its cache version to prevent stale basic-scanner responses
+- update README and architecture; validate processing/export using canvas fixtures and parsed PDFs

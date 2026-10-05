@@ -193,6 +193,8 @@ Use `assets/css/custom.css` for smaller overrides and content styling.
 
 ## What's Next
 
+- Current scanner request: publish the upgraded Paperlens app at `/scan/index.html`, keeping `/scan/` as its public address; verify camera capture and Save Image on iPhone Safari.
+
 - Verify the blog and the planned `/dictionary/` deployment together, including offline reload and blog cache reset.
 - Validate live traffic quality in Google Sheets and tune bot-score thresholds with real sessions.
 
@@ -230,3 +232,11 @@ Listing pages now load generated `data/posts-index.json` with metadata and preco
 Generated article pages include complete HTML from a renderer shared with the dynamic offline fallback. Prerendered articles only bind share controls; personalization does not rebuild them. Published dates are stable UTC dates. The existing logo has a 140px WebP delivery variant with explicit dimensions. Source pages allow zoom and use ordered deferred scripts. Service-worker v6 preserves full JSON precaching and includes the shared renderer and small logo. Initial service-worker activation no longer reloads a first-time visit; updates for existing controlled sessions retain the existing refresh behavior.
 
 The footer displays this visit’s navigation-to-load duration using Navigation Timing, with reserved space and an unavailable fallback. It is a real visit measurement, not a Lighthouse score.
+
+## Paperlens document scanner — October 5, 2026
+
+Open [Paperlens](https://infinitilogicsolutions.github.io/scan/) in Safari. The standalone `scan/index.html` replaces the basic scanner while preserving its address. It includes bright-paper edge detection with manual corner adjustment, projective perspective correction, auto/manual capture, multipage drafts, filters, brightness/contrast/sharpening, page rotation and reordering, full-screen zoom, and JPEG/PNG/PDF export.
+
+Use the sliders icon for maximum-detail/balanced/small-file output, photo format, PDF A4/US Letter/fit-to-scan sizing, and margins. Maximum detail preserves the captured scan resolution rather than upscaling. Save to Photos opens an image preview; tap Share image and choose Save Image in the iPhone share sheet, or touch and hold the preview. PDF preparation uses a separate Save PDF tap to preserve user activation for sharing.
+
+Images and draft pages are processed on-device. IndexedDB stores the current draft; localStorage keeps export preferences. Camera access requires HTTPS and permission. All studio options are included without a paid tier. The root blog worker bypasses the scanner route to avoid serving the old basic scanner from its cache.
