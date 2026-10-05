@@ -131,3 +131,11 @@ The footer displays this visit’s navigation-to-load duration using Navigation 
 ## Paperlens content publication — October 5, 2026
 
 Project ID 13 and blog ID 14 are defined in `posts/paperlens-browser-document-scanner.md` and `posts/building-paperlens-single-html-document-scanner.md`. The existing generator publishes them into both JSON feeds and static article pages. Both entries use `assets/img/og/paperlens.jpg` for card/social metadata; the blog also includes a responsive, full-aspect screenshot with alternative text and intrinsic dimensions. Generated output uses the existing template and shared article renderer. Scanner code, runtime dependencies, and publishing workflow are unchanged by the content publication.
+
+## Paperlens two-sided ID composition — October 5, 2026
+
+- Explicit ID mode reuses camera/import, four-corner cropping, and perspective correction; it does not attempt unreliable automatic ID classification.
+- Each side retains original/base Blob and corner coordinates. A guided dialog selects the side, supports retakes and re-cropping, and enables composition only with both sides present. Fresh retakes detect new corners instead of reusing coordinates from a different image.
+- Composition decodes two sides in parallel, scales them to a common width while preserving aspect ratios, and draws them vertically with white padding/gap. The canvas longest dimension is capped at 2200 pixels. A lossless PNG base is generated only when accepted; normal rendering and JPEG/PNG/PDF export reuse the existing pipeline.
+- Composite pages retain cardSides so editing replaces the same page. Reordering/deletion adjust the pending edit target. Draft snapshots include cardSides and pendingId, excluding object URLs; older page-only records remain compatible. Object URLs are released on preview refresh/completion/discard.
+- Validation: real canvas fixtures confirm white spacing, front/back order, aspect-preserving size, JPEG/PNG output and small-file limits, single-page embedded-image PDF, side-edit replacement, fresh capture corners, cancellation, ordinary document scans, IndexedDB serialization and recovery. Browser layout, live camera and native Photos sharing require actual-device QA.
