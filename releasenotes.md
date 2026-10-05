@@ -65,3 +65,12 @@ The footer displays this visit’s navigation-to-load duration using Navigation 
 - add the Paperlens project entry and the one-file document scanner build story using the existing Markdown/frontmatter conventions
 - publish the supplied iPhone screenshot as the shared cover image and show it within the blog
 - generate both content feeds and static pages with scanner links and social metadata; validate IDs, slugs, image references, and output
+
+## 2026-10-05 — Paperlens front/back ID mode
+
+- add guided ID/license camera or photo capture from the home screen and Add page menu
+- crop each side independently, retake or re-crop it, and combine front/back on one white export page
+- export the composite through existing Photos JPEG/PNG and single-page PDF actions; preserve side originals for later edits
+- save unfinished ID drafts locally and restore them alongside existing documents; add scoped draft discard
+- reuse the existing image pipeline, cap composition resolution, and add no production dependencies
+- validate canvas output, exports, cancellation, editing, normal scans and draft recovery; update usage and architecture docs

@@ -244,3 +244,11 @@ Images and draft pages are processed on-device. IndexedDB stores the current dra
 ## Paperlens project and build story — October 5, 2026
 
 The [Paperlens project](https://infinitilogicsolutions.github.io/posts/paperlens-browser-document-scanner.html) describes the scanner, feature set, usage, and constraints. [I Built a Document Scanner in One HTML File](https://infinitilogicsolutions.github.io/posts/building-paperlens-single-html-document-scanner.html) explains the architecture and implementation. Both use the existing Markdown publishing pipeline, share the supplied iPhone screenshot at `assets/img/og/paperlens.jpg`, and link to the live `/scan/` app. The build story also shows the complete screenshot within the article.
+
+## Paperlens ID / license scans — October 5, 2026
+
+Choose **Scan ID / license** on the home screen or **Add page → ID / license**. Capture or import the front, adjust its corners, then repeat for the back. Tap **Combine on one page** to place both sides on one white page; the existing Save to Photos and PDF actions export that page. Select a side to retake it or adjust its crop. Completed IDs expose **Edit ID front / back** without creating duplicate pages.
+
+Both sides and unfinished ID drafts remain in IndexedDB on this device. Closing the ID dialog keeps the draft; Discard ID draft removes only that unfinished ID. Existing document scans remain compatible. No new production dependencies, network processing, automatic ID classification, or OCR were added.
+
+What's next? The current requested enhancement is front/back ID composition. Follow-up choice is pending; real iPhone camera permissions and native Save Image still need device verification.

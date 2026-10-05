@@ -1,0 +1,47 @@
+const fs=require('fs'),vm=require('vm'),assert=require('assert');
+const {createCanvas,loadImage}=require('@napi-rs/canvas');
+const {File}=require('buffer');
+const nodes=new Map();
+const node=()=>({value:'Test',hidden:true,style:{},dataset:{},classList:{toggle(){}},setAttribute(){},removeAttribute(){},replaceChildren(){},append(){},addEventListener(){},getBoundingClientRect(){return {width:500,height:500}},click(){}});
+const document={querySelector(s){if(!nodes.has(s))nodes.set(s,node());return nodes.get(s)},querySelectorAll(){return []},addEventListener(){},createElement(type){if(type!=='canvas')return node();const c=createCanvas(1,1);c.toBlob=(cb,type='image/jpeg',quality=.94)=>cb(new Blob([c.toBuffer(type,quality*100)],{type}));return c}};
+const sandbox={document,window:{addEventListener(){}},navigator:{},localStorage:{getItem(){return null},setItem(){}},Blob,File,URL,TextEncoder,Uint8Array,Uint8ClampedArray,Float32Array,Uint32Array,Int32Array,setTimeout,clearTimeout,setInterval,clearInterval,requestAnimationFrame(){},console};
+vm.createContext(sandbox);
+const html=fs.readFileSync(__dirname+'/../scan/index.html','utf8');
+const script=html.match(/<script>([\s\S]*?)<\/script>/)[1].replace(/initStorage\(\);\s*$/,'');
+new vm.Script(script);
+vm.runInContext(script,sandbox);
+vm.runInContext("decode=async blob=>loadImage(Buffer.from(await blob.arrayBuffer()))",Object.assign(sandbox,{loadImage,Buffer}));
+const run=code=>vm.runInContext(code,sandbox);
+(async()=>{
+ const front=createCanvas(600,380),back=createCanvas(800,500);
+ front.getContext('2d').fillStyle='#ff0000';front.getContext('2d').fillRect(0,0,600,380);
+ back.getContext('2d').fillStyle='#0000ff';back.getContext('2d').fillRect(0,0,800,500);
+ sandbox.front=new Blob([front.toBuffer('image/png')]);sandbox.back=new Blob([back.toBuffer('image/png')]);
+ await run("idDraft=[{base:front,original:front,corners:[[0,0],[599,0],[599,379],[0,379]]},{base:back,original:back,corners:[[0,0],[799,0],[799,499],[0,499]]}];");
+ const c=await run('combineId(idDraft)');
+ assert(c.width===896);assert(c.height===1167);
+ const rgb=(x,y)=>Array.from(c.getContext('2d').getImageData(x,y,1,1).data).slice(0,3);
+ assert.deepEqual(rgb(1,1),[255,255,255]);assert.deepEqual(rgb(400,100),[255,0,0]);assert.deepEqual(rgb(400,850),[0,0,255]);
+ await run('finishId()');assert.equal(run('pages.length'),1);assert.equal(run('pages[0].cardSides.length'),2);assert.equal(run('idDraft'),null);
+ assert.equal(run('saveFile.type'),'image/jpeg');
+ await run("options.format='png';options.quality='small';render()");
+ assert.equal(run('saveFile.type'),'image/png');
+ const png=await loadImage(Buffer.from(await run('saveFile.arrayBuffer()')));assert(Math.max(png.width,png.height)<=1200);
+ await run("$('#editId').onclick();");assert.equal(run('idEditIndex'),0);
+ await run('finishId()');assert.equal(run('pages.length'),1);
+ const pdf=await run('makePdf()');fs.writeFileSync('/tmp/id-scan-test.pdf',Buffer.from(await pdf.arrayBuffer()));
+ // Fresh captures must detect their own corners; re-cropping uses saved corners.
+ await run("startId();idCapture=true;idRecrop=false;idDraft[0]={base:front,original:front,corners:[[1,1],[2,1],[2,2],[1,2]]};beginCrop(makeCanvas(600,380),-1)");
+ assert.equal(run('corners[1][0]'),599);
+ await run('cancelCrop()');assert.equal(run('idCapture'),false);
+ await run('idDraft=null;idCapture=false;beginCrop(makeCanvas(600,380),-1);applyCrop()');
+ assert.equal(run('pages.length'),2);
+ // IndexedDB snapshot includes both sides and pending front, not object URLs.
+ let saved;sandbox.dbStub={transaction(){const tx={objectStore(){return {put(value){saved=value;setTimeout(()=>tx.oncomplete(),0)}}}};return tx}};
+ await run('db=dbStub;idDraft=[pages[0].cardSides[0],null];persist();persistChain');
+ assert(saved.pages[0].cardSides);assert(saved.pendingId.sides[0]);assert.equal(saved.pendingId.sides[1],null);
+ sandbox.indexedDB={open(){const req={result:{transaction(){return {objectStore(){return {get(){const get={result:saved};setTimeout(()=>get.onsuccess(),0);return get}}}}}}};setTimeout(()=>req.onsuccess(),0);return req}};
+ await run('pages=[];idDraft=null;initStorage()');
+ assert.equal(run('pages.length'),2);assert(run('idDraft[0]'));assert.equal(run('idDraft[1]'),null);assert.equal(nodes.get('#idDialog').hidden,false);
+ console.log('PASS: composition, image export, PDF creation, side editing, crop cancellation, normal scans, and draft serialization.');
+})().catch(e=>{console.error(e);process.exitCode=1});
