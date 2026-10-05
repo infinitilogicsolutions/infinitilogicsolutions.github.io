@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="How Paperlens brings editable document corners, perspective correction, local drafts, and image/PDF export to iPhone Safari without an image-processing backend.">
+  <meta name="description" content="How Paperlens grew from a one-file iPhone document scanner into a local-first tool for two-sided IDs and passport/visa photo print sheets—with exact print sizing and a pastel studio.">
   <meta name="theme-color" content="#2662d9">
   <title>I Built a Document Scanner in One HTML File - InfinitiLogicSolutions</title>
 
@@ -22,13 +22,13 @@
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="InfinitiLogicSolutions">
   <meta property="og:title" content="I Built a Document Scanner in One HTML File">
-  <meta property="og:description" content="How Paperlens brings editable document corners, perspective correction, local drafts, and image/PDF export to iPhone Safari without an image-processing backend.">
+  <meta property="og:description" content="How Paperlens grew from a one-file iPhone document scanner into a local-first tool for two-sided IDs and passport/visa photo print sheets—with exact print sizing and a pastel studio.">
   <meta property="og:url" content="https://infinitilogicsolutions.github.io/posts/building-paperlens-single-html-document-scanner.html">
   <meta property="og:image" content="https://infinitilogicsolutions.github.io/assets/img/og/paperlens.jpg">
   <meta property="article:published_time" content="2026-10-05T00:00:00.000Z">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="I Built a Document Scanner in One HTML File">
-  <meta name="twitter:description" content="How Paperlens brings editable document corners, perspective correction, local drafts, and image/PDF export to iPhone Safari without an image-processing backend.">
+  <meta name="twitter:description" content="How Paperlens grew from a one-file iPhone document scanner into a local-first tool for two-sided IDs and passport/visa photo print sheets—with exact print sizing and a pastel studio.">
   <meta name="twitter:image" content="https://infinitilogicsolutions.github.io/assets/img/og/paperlens.jpg">
 </head>
 <body class="min-h-screen flex flex-col" data-post-slug="building-paperlens-single-html-document-scanner">
@@ -88,20 +88,20 @@
             <circle cx="12" cy="12" r="10"></circle>
             <path d="M12 6v6l4 2"></path>
           </svg>
-          5 min read
+          9 min read
         </span>
       </div>
 
       <h1 class="text-4xl md:text-5xl font-display font-bold tracking-tight mb-6">I Built a Document Scanner in One HTML File</h1>
 
-      <p class="text-xl text-muted-foreground leading-relaxed mb-12 post-summary">How Paperlens brings editable document corners, perspective correction, local drafts, and image/PDF export to iPhone Safari without an image-processing backend.</p>
+      <p class="text-xl text-muted-foreground leading-relaxed mb-12 post-summary">How Paperlens grew from a one-file iPhone document scanner into a local-first tool for two-sided IDs and passport/visa photo print sheets—with exact print sizing and a pastel studio.</p>
 
       <div class="post-content">
         <p>I wanted a simple thing: open a page on my iPhone, scan a document, straighten it, and save the result to Photos.</p>
 <p>The reference was the scanning experience in the iPhone Notes app. A camera button alone would not be enough. The useful part is turning an angled photograph into a page you can read, share, and keep.</p>
-<p>That became <strong>Paperlens</strong>: a browser-based document scanner built with AI assistance and delivered as one HTML file.</p>
+<p>That became <strong>Paperlens</strong>: a browser-based document scanner built with AI assistance and delivered as one HTML file. It now also combines front/back ID scans and prepares passport or visa-size portraits on a 6 × 4-inch photo sheet.</p>
 <p><a href="https://infinitilogicsolutions.github.io/scan/">Try Paperlens</a></p>
-<figure style="margin:2rem 0"><img src="/assets/img/og/paperlens.jpg" alt="Paperlens on iPhone, showing Scan document and Import photo controls" width="1170" height="1896" loading="lazy" decoding="async" style="display:block;width:100%;max-width:390px;height:auto;margin:0 auto;border-radius:18px"><figcaption style="text-align:center;margin-top:1rem">Paperlens running on iPhone: capture a document or import a photo.</figcaption></figure>
+<figure style="margin:2rem 0"><img src="/assets/img/og/paperlens.jpg" alt="Paperlens on iPhone, showing Scan document and Import photo controls" width="1170" height="1896" loading="lazy" decoding="async" style="display:block;width:100%;max-width:390px;height:auto;margin:0 auto;border-radius:18px"><figcaption style="text-align:center;margin-top:1rem">The original Paperlens interface on iPhone. The current version uses a pastel theme and adds ID and photo-print tools.</figcaption></figure>
 
 <h2>Start With the Whole Workflow</h2>
 <p>The first version could capture a photo, rotate it, apply a filter, and open a share sheet. It still behaved more like a camera app than a document scanner.</p>
@@ -130,10 +130,38 @@
 <p>Canvas handles the image transformations and pixel adjustments. Paperlens offers color, clean, grayscale, and black-and-white treatments, plus brightness, contrast, sharpening, and rotation.</p>
 <p>The clean treatment uses a local brightness estimate to help normalize uneven illumination. It is an image-processing heuristic, not a guarantee that every shadow disappears.</p>
 <p>The interface also matters. A larger page preview, recognizable SVG icons, a persistent save toolbar, and a full-screen zoom view make the result easier to inspect on a phone.</p>
-<p>The complete scanner is approximately <strong>49 KB of uncompressed HTML, CSS, and JavaScript</strong>, with no third-party runtime dependencies. The page images themselves are separate in-memory or locally stored data, so that figure is the app size, not the size of a scanning session.</p>
+<p>The document scanner, ID composer, and portrait studio remain in one HTML file with no third-party runtime dependencies. Page images are separate in-memory or locally stored data; their size depends on the scanning session.</p>
+<h2>Front and Back Belong Together</h2>
+<p>An ID or license has two sides, but its useful exported copy often needs to be one page.</p>
+<p>Paperlens adds an explicit <strong>Scan ID / license</strong> flow. Each side uses the same camera/import path, four-corner editor, and perspective correction as a document. After accepting the front, the interface prompts for the back.</p>
+<p>The composition step decodes both cropped sides, scales them to a common width while preserving aspect ratios, and draws them vertically on a white canvas with padding. That canvas becomes an ordinary page in the existing export pipeline: one Photos image or one PDF page.</p>
+<p>Keeping the two side originals matters. A completed ID can be reopened to edit or retake either side, then replace the existing composite. Fresh captures detect their own corners; a retake must not inherit coordinates from a different photograph.</p>
+<p>Unfinished ID drafts survive a reload in the same browser. This adds a second kind of draft state without requiring a second processing system.</p>
+<h2>Passport and Visa Photos Make Pixels Physical</h2>
+<p>The next request was practical: upload a portrait, crop it to a requested passport or visa size, and repeat it on a 6 × 4-inch sheet for a regular photo print.</p>
+<p>This is a different geometry problem. A document needs perspective correction; a portrait needs a crop with a fixed aspect ratio and predictable physical dimensions.</p>
+<p>The photo studio supports:</p>
+<ul>
+<li>U.S. 2 × 2-inch photos</li>
+<li>India overseas nominal 2 × 2-inch photos</li>
+<li>Exact 51 × 51 mm when the application explicitly requests millimetres</li>
+<li>35 × 45 mm only when the specific application requests that format</li>
+</ul>
+<p>The 2-inch preset also matches the printed photo size described in the <a href="https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/photos.html">U.S. visa requirements</a>. Indian passport and visa instructions vary by application and location; the preset is not a universal compliance promise. Check <a href="https://travel.state.gov/en/passports/apply/help/photos.html">passport instructions</a> and the <a href="https://www.indianembassynetherlands.gov.in/page/basic-requirements-and-photo-specifications/">relevant consulate’s guidance</a> before printing.</p>
+<p>The crop is a source-space rectangle, not a perspective transform. Zoom changes its dimensions; dragging or position sliders move it within the source image. No scanner filter, background replacement, or face retouching runs on this path.</p>
+<p>The sheet is <strong>1800 × 1200 pixels</strong>. At <strong>300 pixels per inch</strong>, that is <strong>6 × 4 inches</strong>. A nominal 2-inch square occupies 600 × 600 pixels, so six copies fill the sheet in three columns and two rows.</p>
+<p>That arithmetic also reveals a useful limit: six squares leave no cutting margin. The spaced layout deliberately fits fewer copies. An exact 51 mm square is slightly larger than 2 inches, so it also fits fewer copies rather than being silently reduced to fit.</p>
+<p>JPEG metadata matters here. Browser Canvas encoders commonly use a default density unrelated to the intended print. Paperlens writes a <strong>300-ppi JFIF density</strong> into the output JPG. The existing PDF writer accepts the same sheet with a fixed <strong>432 × 288-point</strong> page—six by four inches at 72 PDF points per inch.</p>
+<p>Neither format can control the printer. Photo-lab auto-cropping, fit-to-page options, or borderless overscan can change the result. The interface tells the user to print at actual size, disable enlargement/cropping, and measure the finished photos.</p>
+<p>These are print-sheet exports, not files prepared for digital passport or visa submission. Correct dimensions alone do not establish acceptance.</p>
+<h2>A Pastel Studio on the Main Page</h2>
+<p>The photo-print tool is experimental, so it sits behind a <strong>Developer mode</strong> toggle in Studio settings. Turning the toggle on reveals all photo controls directly at the top of the main page; localStorage remembers that preference after reload.</p>
+<p>The interface now uses pastel lavender, mint, peach, and sky blue with dark text. The scan start card becomes compact when the portrait workspace is visible, and the tools use ordinary page scrolling instead of another popup.</p>
+<p>This is a visibility switch, not an authentication boundary. Its purpose is to keep the everyday scanner focused while making the complete photo workflow available when needed.</p>
 <h2>A Draft Belongs on the Device</h2>
-<p>A multipage scan needs state. Paperlens stores its current draft in IndexedDB, including image blobs, corner coordinates, filters, and adjustments. Export preferences use localStorage.</p>
-<p>That lets the same browser restore a draft after a reload. Captured documents are not uploaded to an application server.</p>
+<p>A multipage scan needs state. Paperlens stores its current draft in IndexedDB, including image blobs, corner coordinates, filters, adjustments, and the original sides of an ID. An unfinished ID capture is saved alongside the document draft. Export preferences and the Developer toggle use localStorage.</p>
+<p>Portraits in the print studio stay in memory and are not added to IndexedDB. <strong>Clear photo</strong> releases the portrait and prepared files.</p>
+<p>That lets the same browser restore a document or ID draft after a reload. Captured documents are not uploaded to an application server.</p>
 <p>There are limits to that promise. Drafts do not sync between devices, browsers, or hosting origins. Browser storage can disappear after a reset or eviction. Exported files are the copies to keep.</p>
 <p>Processing locally also does not automatically make the website offline-installable. The scanner does not register its own service worker. Once loaded, its processing uses local code and data, but a fresh offline visit is a separate concern.</p>
 <h2>Saving to Photos Is a User Action</h2>
@@ -146,12 +174,14 @@
 <p>The resulting PDF combines the draft&#39;s pages without sending them to a conversion service.</p>
 <p>It is an image-based PDF. There is no OCR pipeline, searchable text layer, or claim of full Notes feature parity. Keeping that boundary clear matters more than calling every export a complete document platform.</p>
 <h2>Choose Detail Deliberately</h2>
-<p>The scanner caps the long edge at <strong>2,200 pixels</strong> to bound processing work on a phone. Maximum-detail export keeps that available resolution; balanced and small-file presets can reduce dimensions and JPEG quality.</p>
+<p>Document scanning and ID composition cap the long edge at <strong>2,200 pixels</strong> to bound processing work on a phone. Maximum-detail export keeps that available resolution; balanced and small-file presets can reduce dimensions and JPEG quality.</p>
 <p>PNG is also available for image export. Its usefulness and file size depend on the page content, so a lossless format is not automatically the smallest choice.</p>
+<p>The portrait source canvas is bounded to 3,500 pixels, while the print sheet always exports at 1800 × 1200. Document quality presets do not change the photo sheet’s dimensions or density.</p>
 <p>This is a practical client-side tradeoff: the user&#39;s device supplies the CPU and memory. Removing a backend changes where the work happens; it does not eliminate the work.</p>
 <h2>What I Checked</h2>
 <p>Validation covered JavaScript syntax and real Canvas fixtures for corner detection, perspective resampling, filters, contrast, sharpening, rotation, page ordering, and JPEG/PNG encoding. Generated two-page PDFs were parsed to confirm page sizes and embedded images.</p>
-<p>The actual iPhone camera, torch support, share-sheet choices, and layout still need device testing. Those browser and OS interactions deserve their own verification beyond processing checks.</p>
+<p>The newer checks cover front/back placement, replacement of an edited ID page, retakes, cancellation, ID draft recovery, portrait crop ratios and pan/zoom, duplication counts, Developer mode visibility, and stale-export invalidation. The print JPG was inspected for 1800 × 1200 pixels and 300-ppi metadata; its PDF was parsed for one embedded image on a 432 × 288-point page.</p>
+<p>The actual iPhone camera, torch support, share-sheet choices, and layout still need device testing. Those browser and OS interactions deserve their own verification beyond processing checks. A physical lab print also needs a ruler check; a correct file does not prove the printer preserved its size.</p>
 <h2>The Architectural Lesson</h2>
 <p>This workload has a small operating footprint because the document does not need to leave the device. Static hosting delivers the app; the browser captures, processes, stores the draft, and generates the files.</p>
 <p>For Paperlens, the useful architectural question was: <strong>can the place where the document is captured also be the place where it is processed?</strong></p>

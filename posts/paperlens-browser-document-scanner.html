@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="A single-file document scanner with editable corners, perspective correction, on-device drafts, and JPEG, PNG, and multipage PDF export. Built for iPhone Safari and hosted on GitHub Pages.">
+  <meta name="description" content="A local-first browser scanner with editable document corners, front/back ID capture, passport and visa photo print sizes, and 6 × 4-inch photo sheets. One HTML file, hosted on GitHub Pages.">
   <meta name="theme-color" content="#2662d9">
-  <title>Paperlens — A Document Scanner That Runs in Your Browser - InfinitiLogicSolutions</title>
+  <title>Paperlens — Document Scans, Two-Sided IDs, and Passport Photo Sheets - InfinitiLogicSolutions</title>
 
   <link rel="manifest" href="/manifest.json">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -21,14 +21,14 @@
   <link rel="canonical" href="https://infinitilogicsolutions.github.io/posts/paperlens-browser-document-scanner.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="InfinitiLogicSolutions">
-  <meta property="og:title" content="Paperlens — A Document Scanner That Runs in Your Browser">
-  <meta property="og:description" content="A single-file document scanner with editable corners, perspective correction, on-device drafts, and JPEG, PNG, and multipage PDF export. Built for iPhone Safari and hosted on GitHub Pages.">
+  <meta property="og:title" content="Paperlens — Document Scans, Two-Sided IDs, and Passport Photo Sheets">
+  <meta property="og:description" content="A local-first browser scanner with editable document corners, front/back ID capture, passport and visa photo print sizes, and 6 × 4-inch photo sheets. One HTML file, hosted on GitHub Pages.">
   <meta property="og:url" content="https://infinitilogicsolutions.github.io/posts/paperlens-browser-document-scanner.html">
   <meta property="og:image" content="https://infinitilogicsolutions.github.io/assets/img/og/paperlens.jpg">
   
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Paperlens — A Document Scanner That Runs in Your Browser">
-  <meta name="twitter:description" content="A single-file document scanner with editable corners, perspective correction, on-device drafts, and JPEG, PNG, and multipage PDF export. Built for iPhone Safari and hosted on GitHub Pages.">
+  <meta name="twitter:title" content="Paperlens — Document Scans, Two-Sided IDs, and Passport Photo Sheets">
+  <meta name="twitter:description" content="A local-first browser scanner with editable document corners, front/back ID capture, passport and visa photo print sizes, and 6 × 4-inch photo sheets. One HTML file, hosted on GitHub Pages.">
   <meta name="twitter:image" content="https://infinitilogicsolutions.github.io/assets/img/og/paperlens.jpg">
 </head>
 <body class="min-h-screen flex flex-col" data-post-slug="paperlens-browser-document-scanner">
@@ -88,17 +88,17 @@
             <circle cx="12" cy="12" r="10"></circle>
             <path d="M12 6v6l4 2"></path>
           </svg>
-          3 min read
+          6 min read
         </span>
       </div>
 
-      <h1 class="text-4xl md:text-5xl font-display font-bold tracking-tight mb-6">Paperlens — A Document Scanner That Runs in Your Browser</h1>
+      <h1 class="text-4xl md:text-5xl font-display font-bold tracking-tight mb-6">Paperlens — Document Scans, Two-Sided IDs, and Passport Photo Sheets</h1>
 
-      <p class="text-xl text-muted-foreground leading-relaxed mb-12 post-summary">A single-file document scanner with editable corners, perspective correction, on-device drafts, and JPEG, PNG, and multipage PDF export. Built for iPhone Safari and hosted on GitHub Pages.</p>
+      <p class="text-xl text-muted-foreground leading-relaxed mb-12 post-summary">A local-first browser scanner with editable document corners, front/back ID capture, passport and visa photo print sizes, and 6 × 4-inch photo sheets. One HTML file, hosted on GitHub Pages.</p>
 
       <div class="post-content">
         <h2>Goal</h2>
-<p>Build the everyday document-scanning workflow I use on an iPhone: capture a page, adjust its edges, straighten it, and keep a usable copy.</p>
+<p>Build the everyday document-scanning workflow I use on an iPhone, then extend it to two related tasks: keeping both sides of an ID together and preparing passport or visa photos for an inexpensive photo print.</p>
 <p>Paperlens takes that familiar workflow into a browser. The scanner, editing tools, local draft storage, and export logic live in <strong>one HTML file</strong>, hosted at <code>/scan/</code> on GitHub Pages.</p>
 <p><a href="https://infinitilogicsolutions.github.io/scan/">Open Paperlens</a></p>
 <h2>Features</h2>
@@ -113,8 +113,54 @@
 <li>JPEG and PNG image export, with detail and file-size presets</li>
 <li>Multipage PDFs with A4, US Letter, or fitted page sizes and configurable margins</li>
 <li>Native sharing when available, with image-preview and download fallbacks</li>
+<li>Guided front/back ID or license capture, separate cropping, and a combined single-page export</li>
+<li>Later retakes or crop edits for either ID side, plus unfinished ID draft recovery</li>
+<li>Developer-gated passport/visa photo sizing, portrait crop, pan, zoom, and automatic duplication</li>
+<li>Landscape 6 × 4-inch print sheets as a 300-ppi JPG or a PDF with exact physical dimensions</li>
+<li>A pastel lavender, mint, peach, and sky-blue interface; enabled photo tools appear directly on the main page</li>
 </ul>
 <p>All studio options are included. There is no paid tier or account registration in the scanner.</p>
+<h2>Two Sides of an ID, One Page</h2>
+<p>Choose <strong>Scan ID / license</strong> from the start screen or <strong>Add page → ID / license</strong>. Capture or import the front, adjust its four corners, then flip the card and repeat for the back.</p>
+<p><strong>Combine on one page</strong> places both cropped sides vertically on a white canvas, keeping their aspect ratios. The combined ID exports as one image or one PDF page through the existing save actions. <strong>Edit ID front / back</strong> reopens either side for a retake or crop adjustment without creating a duplicate document page.</p>
+<p>Unfinished ID drafts are saved on the device. Closing the ID dialog keeps the draft; <strong>Discard ID draft</strong> removes only that unfinished ID. Selecting ID mode is explicit—the app does not identify license types or extract identity details.</p>
+<h2>Passport and Visa Photo Print Sheets</h2>
+<p>Open <strong>Studio</strong> using the sliders icon and turn on <strong>Developer mode</strong>. The complete photo studio appears at the top of the main page, and the preference remains enabled after reload.</p>
+<p>Upload a portrait, choose the requested size, and position it with drag, zoom, and horizontal/vertical controls. The crop stays at the selected aspect ratio.</p>
+<table>
+<thead>
+<tr>
+<th>Preset</th>
+<th>Output size</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>U.S.</td>
+<td>2 × 2 inches</td>
+<td>Printed passport photos; also the printed U.S. visa format when the application requests it</td>
+</tr>
+<tr>
+<td>India overseas</td>
+<td>2 × 2 inches</td>
+<td>Nominal overseas passport format; check the specific consulate/application</td>
+</tr>
+<tr>
+<td>India exact millimetres</td>
+<td>51 × 51 mm</td>
+<td>When the instructions explicitly specify this measurement</td>
+</tr>
+<tr>
+<td>Smaller document format</td>
+<td>35 × 45 mm</td>
+<td>Only when the particular passport, visa, or document application requests it</td>
+</tr>
+</tbody></table>
+<p><a href="https://travel.state.gov/en/passports/apply/help/photos.html">U.S. passport rules</a>, <a href="https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/photos.html">U.S. visa photo rules</a>, and <a href="https://www.indianembassynetherlands.gov.in/page/basic-requirements-and-photo-specifications/">an Indian overseas passport example</a> provide reference requirements. These presets are dimensions, not a claim that every passport or visa application uses the same rules.</p>
+<p>The studio repeats the crop on a <strong>6 × 4-inch landscape sheet</strong>. Maximum layout fits six nominal 2-inch square photos without gaps. A spaced layout reserves trimming room and fits fewer copies. Exact 51 mm is slightly larger than 2 inches, so fewer copies fit; the tool preserves the requested size instead of shrinking it.</p>
+<p>Prepare the sheet, then share/download a <strong>1800 × 1200-pixel JPG tagged at 300 ppi</strong> or download a PDF whose page is exactly <strong>6 × 4 inches</strong>. These exports ignore document filters, compression presets, PDF paper selection, and document margins.</p>
+<p>Order a landscape 6 × 4-inch print with no automatic crop or enlargement. For the PDF, select <strong>100% / Actual size</strong> on 6 × 4-inch paper. Check the cut photos with a ruler: borderless overscan or fit-to-page settings can change the dimensions. The sheet can be sent to a photo lab as an ordinary print; pricing depends on the provider.</p>
+<p>This tool crops and resizes an existing portrait. It does not retouch a face, replace a background, check passport compliance, or prepare a digital visa-application upload. Start with a suitable unaltered photo and follow the receiving authority’s requirements.</p>
 <h2>How It Works</h2>
 <p><strong>Capture or import → adjust corners → straighten → enhance → export.</strong></p>
 <p>The camera frame or imported photo becomes a Canvas image. A lightweight bright-region detector proposes a document outline. The user can correct those suggestions before accepting the scan.</p>
@@ -132,26 +178,26 @@
 <li>GitHub Pages for static hosting</li>
 <li>AI-assisted development with Codex</li>
 </ul>
-<p>The application has no third-party runtime dependencies or separate scanning service. Its HTML file is approximately <strong>49 KB uncompressed</strong>.</p>
+<p>The application has no third-party runtime dependencies or separate scanning service. The document scanner, ID composer, and photo-print studio remain in the same HTML file.</p>
 <h2>Keeping a Copy on iPhone</h2>
 <p>Select a page and tap <strong>Save to Photos</strong>. Paperlens opens a prepared image preview. Tap <strong>Share image</strong>, then choose <strong>Save Image</strong> in the iPhone share sheet when available. Touching and holding the preview provides another saving path; downloading keeps a copy in Files.</p>
 <p>Photos exports the selected page. PDF export combines all pages in the current draft. Preparing the PDF and sharing it use separate taps.</p>
 <h2>Local Processing and Storage</h2>
-<p>The scanner does not upload captured documents. Image processing and file generation happen on the device. The current draft is stored in IndexedDB; export preferences are stored in localStorage.</p>
+<p>The scanner does not upload captured documents. Image processing and file generation happen on the device. Document pages, completed ID sides, and unfinished ID drafts are stored in IndexedDB; export preferences and the Developer toggle are stored in localStorage. Portraits in the photo-print studio stay in memory rather than the draft database; <strong>Clear photo</strong> releases the portrait and prepared output.</p>
 <p>Draft recovery is specific to the browser and site origin. It is not cloud sync, and browser storage can be cleared or evicted. Export important documents before relying on the draft as your only copy.</p>
 <h2>Practical Limits</h2>
 <p>Edge detection is a heuristic. It works best with light paper on a darker background; manual corner adjustment remains available when the detector misses an edge.</p>
-<p>Processing caps the image&#39;s long edge at <strong>2,200 pixels</strong>. Maximum-detail export preserves the available scan resolution; it does not invent extra detail. The PDFs contain page images rather than an OCR-generated text layer.</p>
+<p>Document scans and combined IDs cap the image&#39;s long edge at <strong>2,200 pixels</strong>. The portrait studio bounds its source canvas to <strong>3,500 pixels</strong> and produces a fixed <strong>1800 × 1200-pixel</strong> sheet. Maximum-detail export preserves the available scan resolution; it does not invent extra detail. The PDFs contain page images rather than an OCR-generated text layer.</p>
 <p>Live camera capture needs HTTPS and permission. Torch control and native sharing depend on the device and browser. The app is designed for iPhone Safari, with physical-device verification still needed across camera and sharing paths.</p>
 <h2>Result</h2>
-<p>Paperlens brings a useful scanning workflow to a static website: document straightening, editing, local drafts, and multiple export formats without operating an image-processing backend.</p>
+<p>Paperlens brings three useful image workflows to a static website: document scanning, two-sided ID composition, and passport/visa-size photo print sheets. Capture, cropping, draft storage, and file generation stay on the device without an image-processing backend.</p>
 <p><a href="https://infinitilogicsolutions.github.io/scan/">Try the scanner</a> or <a href="https://infinitilogicsolutions.github.io/posts/building-paperlens-single-html-document-scanner.html">read how it was built</a>.</p>
       </div>
 
       <div class="flex items-center justify-between mt-12 pt-8 border-t border-border">
         <p class="text-sm text-muted-foreground">Share this article</p>
         <div class="flex items-center gap-2">
-          <a href="https://twitter.com/intent/tweet?text=Paperlens%20%E2%80%94%20A%20Document%20Scanner%20That%20Runs%20in%20Your%20Browser&url=https%3A%2F%2Finfinitilogicsolutions.github.io%2Fposts%2Fpaperlens-browser-document-scanner.html" target="_blank" rel="noreferrer" class="p-2 rounded-full share-button" aria-label="Share on X">
+          <a href="https://twitter.com/intent/tweet?text=Paperlens%20%E2%80%94%20Document%20Scans%2C%20Two-Sided%20IDs%2C%20and%20Passport%20Photo%20Sheets&url=https%3A%2F%2Finfinitilogicsolutions.github.io%2Fposts%2Fpaperlens-browser-document-scanner.html" target="_blank" rel="noreferrer" class="p-2 rounded-full share-button" aria-label="Share on X">
             <svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2-2.3-.1-4.2-1.5-4.9-3.6.7.1 1.5.1 2.2-.1C3 12.7 1.6 10.6 2 8.2c.8.4 1.6.6 2.5.6C2.8 7.7 2 5.1 3.5 3.6 5.8 6.2 9.1 7.7 12.7 7.5c-.7-3.1 2-5.2 4.6-3.8 1.1-.2 2.2-.6 3.1-1.2-.3 1.1-1.1 2-2 2.6 1-.1 2-.4 3-.8z"></path>
             </svg>
@@ -168,7 +214,7 @@
               <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
             </svg>
           </a>
-          <button class="p-2 rounded-full share-button" type="button" aria-label="Copy link" data-share-copy="true" data-share-slug="paperlens-browser-document-scanner" data-share-title="Paperlens%20%E2%80%94%20A%20Document%20Scanner%20That%20Runs%20in%20Your%20Browser">
+          <button class="p-2 rounded-full share-button" type="button" aria-label="Copy link" data-share-copy="true" data-share-slug="paperlens-browser-document-scanner" data-share-title="Paperlens%20%E2%80%94%20Document%20Scans%2C%20Two-Sided%20IDs%2C%20and%20Passport%20Photo%20Sheets">
             <svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <rect x="9" y="9" width="13" height="13" rx="2"></rect>
               <rect x="2" y="2" width="13" height="13" rx="2"></rect>
