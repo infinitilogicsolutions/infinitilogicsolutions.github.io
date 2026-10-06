@@ -169,3 +169,11 @@ Project ID 13 and blog ID 14 are defined in `posts/paperlens-browser-document-sc
 - JSON imports validate bounded schemas, duplicate IDs and timers, then confirm replacement. Rendered user content uses textContent. Storage failures expose an export warning.
 - Root blog service worker v8 bypasses `/cards` and `/cards/`, matching existing scanner/dictionary isolation and retaining blog-owned cache cleanup.
 - Functional checks cover title persistence, independent URL reloads and stores, previous-board preservation, empty-name normalization and named exports. Actual iOS shortcut/install behavior still needs device verification.
+
+
+## Dayboard content publishing — October 6, 2026
+
+- Add active Markdown project/blog entries with unique IDs 15/16, existing frontmatter conventions and links to the deployed `/cards/?board=dayboard-default` app.
+- Use separate aspect-preserving JPEG copies of the supplied desktop and mobile screenshots as covers and in-body figures; retain originals unchanged. Figures specify dimensions, lazy loading and asynchronous decoding.
+- The existing push-triggered Generate Posts JSON workflow renders both content feeds and static article pages with cover/social metadata; no runtime app changes or new production dependencies.
+- Copy distinguishes localStorage persistence and bookmark identity from cloud sync, sharing or offline installation; countdown recovery does not imply background alerts.

@@ -101,3 +101,11 @@ The footer displays this visit’s navigation-to-load duration using Navigation 
 - add separate bookmarkable board URLs with independent local saving
 - preserve JSON import/export and HTML export with board-specific filenames and an independent copied board
 - isolate the cards route from the root blog worker; update documentation and functional checks
+
+
+## 2026-10-06 — Dayboard project and blog
+
+- add the Dayboard project entry and local-first Kanban build story in the existing Markdown style
+- use distinct supplied desktop and mobile screenshots for project and blog covers and in-body figures
+- link both entries to the live app and explain local saving, editable titles, independent board URLs, timers and portable backups without claiming sync or background notifications
+- publish immediately through the existing content generator and GitHub Pages pipeline; disable the prior one-time nighttime task to avoid duplicate work
