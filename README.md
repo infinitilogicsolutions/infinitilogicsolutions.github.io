@@ -272,3 +272,14 @@ What's next? This requested enhancement adds developer-gated passport-photo resi
 The app uses a light pastel palette: lavender actions, mint photo/export controls, peach ID/PDF accents and sky-blue scan tools. Developer mode reveals the full portrait workspace directly on the main page above a compact scanner start card. Turning it off hides the workspace; Escape closes overlays without hiding the enabled main-page tools.
 
 What's next? The requested main-page placement and pastel theme are implemented. Follow-up choice is pending; verify the layout and colors on your iPhone.
+
+
+## Dayboard Kanban — October 6, 2026
+
+Open [Dayboard](https://infinitilogicsolutions.github.io/cards/). `cards/index.html` is a standalone, dependency-free Kanban app with To do / Doing / Done columns, expandable card notes, due dates, countdown timers, drag-and-drop and a mobile-friendly status selector.
+
+Click the page title to rename it. The name saves locally and updates the browser title and iOS bookmark-title metadata. **New board** creates a separate `?board=<id>` URL with isolated localStorage. Rename each board, then bookmark its current URL or use Safari Share → Add to Home Screen; review the suggested shortcut name before adding it. Existing shortcuts may need renaming or recreating after title changes. Boards are local to the current browser/device; links do not share or sync board contents.
+
+Export JSON backs up the current board; Import JSON validates it and asks before replacing that board. Download HTML produces a named, standalone copy with the current data and its own board ID. Timers keep a wall-clock deadline across reloads, but only alert while the page is open. Export regularly: clearing browser data removes local boards.
+
+What's next? The current request publishes the editable-title app at `/cards/index.html`. Follow-up choice is pending; verify separate shortcuts on your iPhone.
