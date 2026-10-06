@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A simple browser Kanban board with expandable cards, due dates, persistent timers, separate bookmarkable boards, and JSON or HTML backups. Your tasks stay on your device.">
+  <meta name="theme-color" content="#2662d9">
+  <title>Dayboard — A Local-First Kanban Board in One HTML File - InfinitiLogicSolutions</title>
+
+  <link rel="manifest" href="/manifest.json">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="InfinitiLogicSolutions">
+  <link rel="apple-touch-icon" href="/assets/img/icon-192.png">
+  <link rel="icon" type="image/png" href="/favicon.png">
+
+
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  <link rel="stylesheet" href="/assets/css/custom.css">
+
+  <link rel="canonical" href="https://infinitilogicsolutions.github.io/posts/dayboard-local-kanban.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="InfinitiLogicSolutions">
+  <meta property="og:title" content="Dayboard — A Local-First Kanban Board in One HTML File">
+  <meta property="og:description" content="A simple browser Kanban board with expandable cards, due dates, persistent timers, separate bookmarkable boards, and JSON or HTML backups. Your tasks stay on your device.">
+  <meta property="og:url" content="https://infinitilogicsolutions.github.io/posts/dayboard-local-kanban.html">
+  <meta property="og:image" content="https://infinitilogicsolutions.github.io/assets/img/og/dayboard-project.jpg">
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Dayboard — A Local-First Kanban Board in One HTML File">
+  <meta name="twitter:description" content="A simple browser Kanban board with expandable cards, due dates, persistent timers, separate bookmarkable boards, and JSON or HTML backups. Your tasks stay on your device.">
+  <meta name="twitter:image" content="https://infinitilogicsolutions.github.io/assets/img/og/dayboard-project.jpg">
+</head>
+<body class="min-h-screen flex flex-col" data-post-slug="dayboard-local-kanban">
+  <header class="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border/50">
+    <nav class="max-w-5xl mx-auto px-6 py-3 flex items-center justify-between">
+      <a href="/index.html" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
+        <img src="/assets/img/logo-small.webp" alt="InfinitiLogicSolutions" class="w-8 h-8" width="32" height="32" decoding="async">
+        <span class="font-display text-lg font-bold gradient-text hidden sm:inline brand-text typewriter" data-text="InfinitiLogicSolutions">InfinitiLogicSolutions</span>
+      </a>
+      <ul class="flex items-center gap-1">
+        <li>
+          <a href="/index.html" class="relative px-4 py-2 text-sm font-medium transition-colors rounded-full text-muted-foreground hover:text-foreground">Home</a>
+        </li>
+        <li>
+          <a href="/about.html" class="relative px-4 py-2 text-sm font-medium transition-colors rounded-full text-muted-foreground hover:text-foreground">About</a>
+        </li>
+        <li>
+          <a href="/projects.html" class="relative px-4 py-2 text-sm font-medium transition-colors rounded-full text-muted-foreground hover:text-foreground">Projects</a>
+        </li>
+        <li>
+          <a href="/blog.html" class="relative px-4 py-2 text-sm font-medium transition-colors rounded-full text-muted-foreground hover:text-foreground">Blog</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="flex-1 pt-20">
+    <article class="max-w-3xl mx-auto px-6 py-24">
+      <div id="postContent" class="post-detail" data-prerendered="true">
+    <div>
+      <a href="/projects.html" class="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors mb-8">
+        <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 12H5"></path>
+          <path d="m12 19-7-7 7-7"></path>
+        </svg>
+        Back to Projects
+      </a>
+
+      <div class="flex flex-wrap items-center gap-4 mb-6">
+        <span class="inline-flex items-center gap-1.5 text-sm font-mono px-3 py-1.5 bg-primary/10 text-primary rounded-full">
+          <svg viewBox="0 0 24 24" aria-hidden="true" class="w-3.5 h-3.5" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2l3 7h7l-5.5 4.5L18 22l-6-4-6 4 1.5-8.5L2 9h7z"></path>
+          </svg>
+          JavaScript
+        </span>
+        <span class="inline-flex items-center gap-1.5 text-sm text-muted-foreground">
+          <svg viewBox="0 0 24 24" aria-hidden="true" class="w-3.5 h-3.5" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect width="18" height="18" x="3" y="4" rx="2"></rect>
+            <path d="M16 2v4"></path>
+            <path d="M8 2v4"></path>
+            <path d="M3 10h18"></path>
+          </svg>
+          Oct 6, 2026
+        </span>
+        <span class="inline-flex items-center gap-1.5 text-sm text-muted-foreground">
+          <svg viewBox="0 0 24 24" aria-hidden="true" class="w-3.5 h-3.5" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M12 6v6l4 2"></path>
+          </svg>
+          3 min read
+        </span>
+      </div>
+
+      <h1 class="text-4xl md:text-5xl font-display font-bold tracking-tight mb-6">Dayboard — A Local-First Kanban Board in One HTML File</h1>
+
+      <p class="text-xl text-muted-foreground leading-relaxed mb-12 post-summary">A simple browser Kanban board with expandable cards, due dates, persistent timers, separate bookmarkable boards, and JSON or HTML backups. Your tasks stay on your device.</p>
+
+      <div class="post-content">
+        <h2>Goal</h2>
+<p>Build a small personal Kanban board that I can open in a browser, use immediately, and keep without an account or a backend.</p>
+<p><strong>Dayboard</strong> brings the familiar <strong>To do → Doing → Done</strong> workflow into one self-contained HTML file. GitHub Pages delivers the application; the browser owns the board data.</p>
+<p><a href="https://infinitilogicsolutions.github.io/cards/?board=dayboard-default">Open Dayboard</a></p>
+<figure style="margin:2rem 0"><img src="/assets/img/og/dayboard-project.jpg" alt="Dayboard desktop view with To do, Doing and Done columns, editable title and backup controls" width="1600" height="739" loading="lazy" decoding="async" style="display:block;width:100%;height:auto;border-radius:18px"><figcaption style="text-align:center;margin-top:1rem">Three columns, expandable cards, and a board saved in this browser.</figcaption></figure>
+
+<h2>Features</h2>
+<ul>
+<li>To do, Doing, and Done columns with card counts</li>
+<li>Click any card to open its title, notes, status, due date, and countdown timer</li>
+<li>Automatic local saving as you edit</li>
+<li>Desktop drag-and-drop between columns, plus a status selector for touch devices</li>
+<li>Start, pause, reset, and restart a timer on each card</li>
+<li>Due date/time badges and overdue indicators for unfinished cards</li>
+<li>Editable page titles that also update browser and iOS bookmark-title metadata</li>
+<li>Independent boards with separate bookmarkable URLs and local storage</li>
+<li>JSON export and validated import with a replacement confirmation</li>
+<li>Downloadable standalone HTML copies containing the current board</li>
+<li>A responsive, light interface with blue, amber, and mint columns</li>
+</ul>
+<h2>Separate Boards, Separate Bookmarks</h2>
+<p>Click the title to rename a board—for example, <strong>Work tasks</strong> or <strong>Home tasks</strong>. Choose <strong>New board</strong> to create another board with its own <code>?board=&lt;id&gt;</code> URL.</p>
+<p>Bookmark that exact URL. On iPhone, use Safari&#39;s Share menu and <strong>Add to Home Screen</strong>, reviewing the shortcut name before saving it. A shortcut already on the Home Screen may need renaming or recreating after the title changes.</p>
+<p>The URL identifies the board; it does not contain the tasks. Opening the link on another device does not transfer or sync its contents.</p>
+<h2>Keep a Backup You Can Take With You</h2>
+<p><strong>Export JSON</strong> saves the current board&#39;s data. <strong>Import JSON</strong> validates the backup and asks before replacing the board you are viewing.</p>
+<p><strong>Download HTML</strong> carries the application and a snapshot of your board together. The downloaded copy gets its own board ID, so it can work independently from the original. Export filenames use the board&#39;s name.</p>
+<p>Local saving is convenient, but it is not permanent storage. Browser resets, storage eviction, or clearing site data can remove your boards. Export important work regularly.</p>
+<h2>Tech Stack</h2>
+<ul>
+<li>One HTML file containing CSS and vanilla JavaScript</li>
+<li>CSS Grid for the board and native dialogs for card details</li>
+<li><code>localStorage</code> for versioned board data</li>
+<li>URL query parameters for board identity</li>
+<li>Absolute timer deadlines for countdown recovery after reloads</li>
+<li>Blob downloads for JSON and standalone HTML export</li>
+<li>GitHub Pages for static hosting</li>
+</ul>
+<p>There is no application server, account system, cloud task database, or third-party runtime dependency in Dayboard.</p>
+<h2>Boundaries</h2>
+<p>Boards stay in the current browser&#39;s storage. They do not sync automatically between devices or browsers, and bookmarks are not collaboration links.</p>
+<p>Timers recover their remaining time from a saved deadline, but alerts happen only while the page is open. Dayboard does not schedule background notifications or calendar events.</p>
+<p>Local-first also does not mean that the hosted page is offline-installable. The app does not register its own service worker. A downloaded HTML copy is self-contained; a fresh offline visit to the hosted URL is a different concern.</p>
+<h2>Build Story</h2>
+<p><a href="https://infinitilogicsolutions.github.io/posts/building-dayboard-local-kanban.html">Read how I built a Kanban board that keeps its data in the browser</a>.</p>
+      </div>
+
+      <div class="flex items-center justify-between mt-12 pt-8 border-t border-border">
+        <p class="text-sm text-muted-foreground">Share this article</p>
+        <div class="flex items-center gap-2">
+          <a href="https://twitter.com/intent/tweet?text=Dayboard%20%E2%80%94%20A%20Local-First%20Kanban%20Board%20in%20One%20HTML%20File&url=https%3A%2F%2Finfinitilogicsolutions.github.io%2Fposts%2Fdayboard-local-kanban.html" target="_blank" rel="noreferrer" class="p-2 rounded-full share-button" aria-label="Share on X">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2-2.3-.1-4.2-1.5-4.9-3.6.7.1 1.5.1 2.2-.1C3 12.7 1.6 10.6 2 8.2c.8.4 1.6.6 2.5.6C2.8 7.7 2 5.1 3.5 3.6 5.8 6.2 9.1 7.7 12.7 7.5c-.7-3.1 2-5.2 4.6-3.8 1.1-.2 2.2-.6 3.1-1.2-.3 1.1-1.1 2-2 2.6 1-.1 2-.4 3-.8z"></path>
+            </svg>
+          </a>
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Finfinitilogicsolutions.github.io%2Fposts%2Fdayboard-local-kanban.html" target="_blank" rel="noreferrer" class="p-2 rounded-full share-button" aria-label="Share on LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+              <rect width="4" height="12" x="2" y="9"></rect>
+              <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+          </a>
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Finfinitilogicsolutions.github.io%2Fposts%2Fdayboard-local-kanban.html" target="_blank" rel="noreferrer" class="p-2 rounded-full share-button" aria-label="Share on Facebook">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+            </svg>
+          </a>
+          <button class="p-2 rounded-full share-button" type="button" aria-label="Copy link" data-share-copy="true" data-share-slug="dayboard-local-kanban" data-share-title="Dayboard%20%E2%80%94%20A%20Local-First%20Kanban%20Board%20in%20One%20HTML%20File">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+              <rect x="2" y="2" width="13" height="13" rx="2"></rect>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+    </article>
+  </main>
+
+  <footer class="border-t border-border mt-auto">
+    <div class="max-w-5xl mx-auto px-6 py-12">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-3">
+          <img src="/assets/img/logo-small.webp" alt="InfinitiLogicSolutions" class="w-10 h-10" width="40" height="40" loading="lazy" decoding="async">
+          <div>
+            <p class="font-display font-semibold gradient-text">InfinitiLogicSolutions</p>
+            <p class="text-sm text-muted-foreground">Weekend projects powered by curiosity and AI</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-4">
+          <a href="#" class="p-2 text-muted-foreground hover:text-primary transition-colors" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+            </svg>
+          </a>
+          <a href="#" class="p-2 text-muted-foreground hover:text-primary transition-colors" aria-label="Twitter">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2-2.3-.1-4.2-1.5-4.9-3.6.7.1 1.5.1 2.2-.1C3 12.7 1.6 10.6 2 8.2c.8.4 1.6.6 2.5.6C2.8 7.7 2 5.1 3.5 3.6 5.8 6.2 9.1 7.7 12.7 7.5c-.7-3.1 2-5.2 4.6-3.8 1.1-.2 2.2-.6 3.1-1.2-.3 1.1-1.1 2-2 2.6 1-.1 2-.4 3-.8z"></path>
+            </svg>
+          </a>
+          <a href="#" class="p-2 text-muted-foreground hover:text-primary transition-colors" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+              <rect width="4" height="12" x="2" y="9"></rect>
+              <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+          </a>
+          <a href="#" class="p-2 text-muted-foreground hover:text-primary transition-colors" aria-label="Email">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="mt-8 pt-8 border-t border-border text-center">
+        <p class="text-sm text-muted-foreground">© 2026 InfinitiLogicSolutions. Built on weekends with AI assistance.</p>
+      </div>
+    </div>
+  <p class="text-xs text-muted-foreground" style="text-align:center;min-height:1.5rem;padding:0 1rem 1rem" data-page-load>Page load: measuring…</p>
+  </footer>
+
+  <script defer src="/assets/js/visitor-config.js"></script>
+  <script defer src="/assets/js/fingerprint.js"></script>
+  <script defer src="/assets/js/one-tap.js"></script>
+  <script defer src="/assets/js/personalizer.js"></script>
+  <script defer src="/assets/js/tracker.js"></script>
+  <script defer src="/assets/js/article-renderer.js"></script>
+  <script defer src="/assets/js/app.js"></script>
+  <script defer src="/assets/js/typewriter.js"></script>
+  <script defer src="/assets/js/pwa.js"></script>
+  <script defer src="/assets/js/notifications.js"></script>
+  <script defer src="/assets/js/page-speed.js"></script>
+</body>
+</html>
