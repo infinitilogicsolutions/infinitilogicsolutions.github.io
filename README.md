@@ -283,3 +283,10 @@ Click the page title to rename it. The name saves locally and updates the browse
 Export JSON backs up the current board; Import JSON validates it and asks before replacing that board. Download HTML produces a named, standalone copy with the current data and its own board ID. Timers keep a wall-clock deadline across reloads, but only alert while the page is open. Export regularly: clearing browser data removes local boards.
 
 What's next? The current request publishes the editable-title app at `/cards/index.html`. Follow-up choice is pending; verify separate shortcuts on your iPhone.
+
+
+## Dayboard project and build story — October 6, 2026
+
+The [Dayboard project](https://infinitilogicsolutions.github.io/posts/dayboard-local-kanban.html) documents the local-first Kanban app, usage, backups and boundaries. [I Built a Kanban Board That Keeps Its Data in the Browser](https://infinitilogicsolutions.github.io/posts/building-dayboard-local-kanban.html) explains board identity, bookmark titles, timer deadlines and portable exports. The project uses the supplied desktop screenshot at `assets/img/og/dayboard-project.jpg`; the post uses the supplied phone screenshot at `assets/img/og/dayboard-blog.jpg`. Both use the existing Markdown publishing pipeline and link to `/cards/?board=dayboard-default`.
+
+What's next? The user requested publication now instead of tonight. The one-time scheduled publishing task was disabled to avoid duplicates; follow-up choice is pending.
