@@ -1,4 +1,4 @@
-const CACHE_NAME = 'my-blog-v7';
+const CACHE_NAME = 'my-blog-v8';
 const POSTS_JSON_PATH = '/data/posts.json';
 const POSTS_INDEX_PATH = '/data/posts-index.json';
 const POST_ROUTE_PATTERN = /^\/posts\/[^/]+\.html$/;
@@ -97,7 +97,8 @@ self.addEventListener('fetch', (event) => {
   const isSameOrigin = requestUrl.origin === self.location.origin;
   if (!isSameOrigin || event.request.headers.has('range') ||
       requestUrl.pathname === '/dictionary' || requestUrl.pathname.startsWith('/dictionary/') ||
-      requestUrl.pathname === '/scan' || requestUrl.pathname.startsWith('/scan/')) return;
+      requestUrl.pathname === '/scan' || requestUrl.pathname.startsWith('/scan/') ||
+      requestUrl.pathname === '/cards' || requestUrl.pathname.startsWith('/cards/')) return;
   const isPostDocument = isDocument && isGeneratedPostRoute(requestUrl.pathname);
 
   if (isSameOrigin && [POSTS_JSON_PATH, POSTS_INDEX_PATH].includes(requestUrl.pathname)) {

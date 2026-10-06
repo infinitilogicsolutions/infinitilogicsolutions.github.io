@@ -91,3 +91,13 @@ The footer displays this visit’s navigation-to-load duration using Navigation 
 - remove its popup/Close interaction; keep settings navigation and compact the scanner start card
 - replace dark app chrome with pastel lavender, mint, peach and sky-blue surfaces and readable dark text
 - preserve existing crop/export logic and rerun passport plus document/ID/draft regression tests
+
+
+## 2026-10-06 — Dayboard Kanban at /cards/
+
+- publish the standalone Kanban application as `cards/index.html`
+- include expandable notes, due date/time, persistent countdown timers, status changes and desktop drag-and-drop
+- make the page title editable and synchronize browser/iOS shortcut title metadata
+- add separate bookmarkable board URLs with independent local saving
+- preserve JSON import/export and HTML export with board-specific filenames and an independent copied board
+- isolate the cards route from the root blog worker; update documentation and functional checks

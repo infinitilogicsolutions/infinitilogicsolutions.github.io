@@ -157,3 +157,15 @@ Project ID 13 and blog ID 14 are defined in `posts/paperlens-browser-document-sc
 - Append one shared light-theme stylesheet using lavender, mint, peach and sky-blue surfaces with dark foregrounds. It covers document inputs, dialogs, settings selects, scanner controls, thumbnail/preview surfaces, overlays, save toolbar and status feedback; actual document pixels and live image overlays retain appropriate contrast.
 - Responsive portrait section uses normal page scrolling with no modal height cap and mobile stacked selectors. Existing image processing, draft storage and exports are unchanged.
 - Validation: existing document/ID/draft and passport canvas tests pass. Updated passport regression checks inline main membership, toggle on/off/on visibility and removal of the old modal. Browser layout and device visual QA remain pending.
+
+
+## Dayboard Kanban — October 6, 2026
+
+- `cards/index.html` contains its own HTML/CSS/JavaScript with no backend, telemetry, runtime dependencies or external requests.
+- Board model: version 1, stable ID, editable name, cards with title, description, status, local due date/time and timer duration/remaining/absolute deadline.
+- `?board=<id>` selects localStorage `dayboard.v1.<id>`. New board creates a UUID URL and independent store, preserving prior boards. Existing default board data remains compatible. Bookmark URLs identify a board but do not transmit its contents.
+- Title input synchronizes document.title and apple-mobile-web-app-title; blur normalizes empty names. JSON export filenames and HTML copies derive from the name. HTML export uses a fresh board ID, escaped embedded JSON, and serialized title metadata.
+- Timer countdown derives from Date.now rather than trusting interval ticks. Reload/visibility catch-up detects expiry. Page-open alerts only; no background notification scheduling.
+- JSON imports validate bounded schemas, duplicate IDs and timers, then confirm replacement. Rendered user content uses textContent. Storage failures expose an export warning.
+- Root blog service worker v8 bypasses `/cards` and `/cards/`, matching existing scanner/dictionary isolation and retaining blog-owned cache cleanup.
+- Functional checks cover title persistence, independent URL reloads and stores, previous-board preservation, empty-name normalization and named exports. Actual iOS shortcut/install behavior still needs device verification.
