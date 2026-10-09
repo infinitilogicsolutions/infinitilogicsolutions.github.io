@@ -214,3 +214,11 @@ Project ID 13 and blog ID 14 are defined in `posts/paperlens-browser-document-sc
 - Blog shells and post.html declare absolute versioned 16/32px favicon and 180px Apple-touch URLs. The existing generator carries those static tags to every article, so link-preview crawlers need no JavaScript. Root favicon.png/favicon.ico/apple-touch-icon.png and legacy touch/PWA assets are refreshed for fallback paths.
 - Manifest declares regular any icons separately from a more padded 512px maskable icon. Worker v10 precaches new asset paths while preserving existing app bypasses, blog ownership and offline datasets.
 - Validation checks PNG opacity/dimensions, whole-mark centered bounds and padding, manifest declarations, shell references, all generated article metadata and live asset availability. These checks do not emulate the Messages client or its preview cache.
+
+
+## QR Lab voluntary support — October 9, 2026
+
+- Add a plain `/support/` navigation anchor below existing QR footer guidance. It is in document flow, keyboard focusable, responsive, and hidden when printing. No popup, sticky banner, QR logic change, or runtime dependency is introduced.
+- Serve the self-contained support HTML as `support/index.html`, with the existing logo embedded. $1/$5/$10 presets and a validated custom amount are local UI state only.
+- Public Stripe Payment Links remain empty. Unconfigured actions show a coming-soon dialog and explicitly state that no payment was taken. Fixed-amount links must match their labels; a custom link requires entering/confirming the amount on hosted checkout. Source-code purchases require separate license/delivery setup.
+- Verify exact preservation of QR scripts, valid support JavaScript, link target, and print suppression. Browser visual QA is limited by the unavailable local browser runtime.

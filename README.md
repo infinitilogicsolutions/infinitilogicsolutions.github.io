@@ -332,3 +332,10 @@ Shared pages now use consistent, centered PNG site icons generated from the exis
 Validation: image dimensions, opacity, centered full-logo bounds, safe padding, icon references and generated-page metadata. Actual Messages preview rendering still requires an iPhone check; existing previews may retain old imagery.
 
 What's next? The requested fix addresses the partial-icon report for shared pages. Verify a newly shared link in Messages; follow-up choice is pending.
+
+
+## QR Lab support link — October 9, 2026
+
+QR Lab has a small, non-sticky coffee link in its footer pointing to `/support/`. The cream-and-red support page includes the existing logo, Santosh's weekend/AI-teammate introduction, $1/$5/$10 presets, a custom amount field, and a source-code purchase tab. Payments are explicitly coming soon until public Stripe links are configured. No secret keys, payment backend, or automatic code delivery are added.
+
+What's next? Santosh plans to configure Stripe later today or over the weekend. Configure amount-matched links plus a customer-chooses-amount link; confirm code pricing, license terms and delivery before enabling code purchases.
