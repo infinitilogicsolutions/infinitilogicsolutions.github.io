@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Generate and read QR codes for Wi-Fi, contacts, links, locations and more. Customize colors and characters, export PNG or SVG, and keep the QR processing on your device.">
+  <meta name="theme-color" content="#2662d9">
+  <title>QR Lab — A Private QR Generator and Reader in One HTML File - InfinitiLogicSolutions</title>
+
+  <link rel="manifest" href="/manifest.json">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="InfinitiLogicSolutions">
+  <link rel="apple-touch-icon" href="/assets/img/icon-192.png">
+  <link rel="icon" type="image/png" href="/favicon.png">
+
+
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  <link rel="stylesheet" href="/assets/css/custom.css">
+
+  <link rel="canonical" href="https://infinitilogicsolutions.github.io/posts/qr-lab-offline-generator-reader.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="InfinitiLogicSolutions">
+  <meta property="og:title" content="QR Lab — A Private QR Generator and Reader in One HTML File">
+  <meta property="og:description" content="Generate and read QR codes for Wi-Fi, contacts, links, locations and more. Customize colors and characters, export PNG or SVG, and keep the QR processing on your device.">
+  <meta property="og:url" content="https://infinitilogicsolutions.github.io/posts/qr-lab-offline-generator-reader.html">
+  <meta property="og:image" content="https://infinitilogicsolutions.github.io/assets/img/og/default.jpg">
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="QR Lab — A Private QR Generator and Reader in One HTML File">
+  <meta name="twitter:description" content="Generate and read QR codes for Wi-Fi, contacts, links, locations and more. Customize colors and characters, export PNG or SVG, and keep the QR processing on your device.">
+  <meta name="twitter:image" content="https://infinitilogicsolutions.github.io/assets/img/og/default.jpg">
+</head>
+<body class="min-h-screen flex flex-col" data-post-slug="qr-lab-offline-generator-reader">
+  <header class="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border/50">
+    <nav class="max-w-5xl mx-auto px-6 py-3 flex items-center justify-between">
+      <a href="/index.html" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
+        <img src="/assets/img/logo-small.webp" alt="InfinitiLogicSolutions" class="w-8 h-8" width="32" height="32" decoding="async">
+        <span class="font-display text-lg font-bold gradient-text hidden sm:inline brand-text typewriter" data-text="InfinitiLogicSolutions">InfinitiLogicSolutions</span>
+      </a>
+      <ul class="flex items-center gap-1">
+        <li>
+          <a href="/index.html" class="relative px-4 py-2 text-sm font-medium transition-colors rounded-full text-muted-foreground hover:text-foreground">Home</a>
+        </li>
+        <li>
+          <a href="/about.html" class="relative px-4 py-2 text-sm font-medium transition-colors rounded-full text-muted-foreground hover:text-foreground">About</a>
+        </li>
+        <li>
+          <a href="/projects.html" class="relative px-4 py-2 text-sm font-medium transition-colors rounded-full text-muted-foreground hover:text-foreground">Projects</a>
+        </li>
+        <li>
+          <a href="/blog.html" class="relative px-4 py-2 text-sm font-medium transition-colors rounded-full text-muted-foreground hover:text-foreground">Blog</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="flex-1 pt-20">
+    <article class="max-w-3xl mx-auto px-6 py-24">
+      <div id="postContent" class="post-detail" data-prerendered="true">
+    <div>
+      <a href="/projects.html" class="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors mb-8">
+        <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 12H5"></path>
+          <path d="m12 19-7-7 7-7"></path>
+        </svg>
+        Back to Projects
+      </a>
+
+      <div class="flex flex-wrap items-center gap-4 mb-6">
+        <span class="inline-flex items-center gap-1.5 text-sm font-mono px-3 py-1.5 bg-primary/10 text-primary rounded-full">
+          <svg viewBox="0 0 24 24" aria-hidden="true" class="w-3.5 h-3.5" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2l3 7h7l-5.5 4.5L18 22l-6-4-6 4 1.5-8.5L2 9h7z"></path>
+          </svg>
+          JavaScript
+        </span>
+        <span class="inline-flex items-center gap-1.5 text-sm text-muted-foreground">
+          <svg viewBox="0 0 24 24" aria-hidden="true" class="w-3.5 h-3.5" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect width="18" height="18" x="3" y="4" rx="2"></rect>
+            <path d="M16 2v4"></path>
+            <path d="M8 2v4"></path>
+            <path d="M3 10h18"></path>
+          </svg>
+          Oct 9, 2026
+        </span>
+        <span class="inline-flex items-center gap-1.5 text-sm text-muted-foreground">
+          <svg viewBox="0 0 24 24" aria-hidden="true" class="w-3.5 h-3.5" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M12 6v6l4 2"></path>
+          </svg>
+          4 min read
+        </span>
+      </div>
+
+      <h1 class="text-4xl md:text-5xl font-display font-bold tracking-tight mb-6">QR Lab — A Private QR Generator and Reader in One HTML File</h1>
+
+      <p class="text-xl text-muted-foreground leading-relaxed mb-12 post-summary">Generate and read QR codes for Wi-Fi, contacts, links, locations and more. Customize colors and characters, export PNG or SVG, and keep the QR processing on your device.</p>
+
+      <div class="post-content">
+        <h2>Goal</h2>
+<p>Build a QR tool I can open on my phone, use immediately, and keep as a single HTML file.</p>
+<p><strong>QR Lab</strong> combines a generator and reader with a simple pastel interface. GitHub Pages delivers the application; QR encoding, image decoding and exports happen in the browser.</p>
+<p><a href="https://infinitilogicsolutions.github.io/qr/">Open QR Lab</a></p>
+<h2>Features</h2>
+<ul>
+<li>Eleven QR types: links, contacts, Wi-Fi, text, email, SMS, phone calls, WhatsApp, locations, calendar events and UPI</li>
+<li>Wi-Fi selected by default, with network name, security, password and hidden-network support</li>
+<li>A compact type selector and editable fields</li>
+<li>A top-right gear for custom code/background colors and optional character badges</li>
+<li>Save/Cancel customization with locally remembered appearance preferences</li>
+<li>PNG and SVG downloads, printing, and image sharing where supported</li>
+<li>A reader for uploaded QR images or live camera frames</li>
+<li>Contact selection from the device where the browser supports it, plus local <code>.vcf</code> import</li>
+<li>A current-location button with browser-managed permission and editable coordinates</li>
+<li>No QR-processing backend, account requirement or runtime library download</li>
+</ul>
+<h2>A Simple Main Page</h2>
+<p>Choose a QR type, fill its fields, and tap <strong>Generate QR code</strong>.</p>
+<p>For Wi-Fi, enter the exact network name, choose its security type, and add the password. A generated Wi-Fi QR contains those credentials, so share it with the same care as the password itself. Personal networks are supported; enterprise networks requiring a username are outside this form.</p>
+<p>Customization stays inside the <strong>gear</strong>. Pick a dark code color, a light background and, optionally, a character. <strong>Save customization</strong> closes the picker and remembers the appearance. Cancel restores the saved style.</p>
+<p>Generated designs keep a white or light quiet zone, use higher error correction for character badges, and pass a check with the embedded reader. Test the final export with the phone or scanner that will actually use it.</p>
+<h2>Contacts Without Re-Typing</h2>
+<p>Choose <strong>Contact</strong>, then <strong>Choose from device</strong>. A supporting browser opens its contact picker and returns only the contact details you select.</p>
+<p>When direct picking is unavailable, <strong>Import .vcf</strong> reads a contact file locally. The form includes iPhone guidance for saving a shared contact to Files. Files with several contacts show a selector so you can choose one.</p>
+<p>Imported details remain editable. Review the name, phone, email and address before generating the contact QR. Selecting a device contact is browser-dependent; importing a vCard is the portable fallback.</p>
+<h2>A QR for Your Current Location</h2>
+<p>Choose <strong>Location</strong> and tap <strong>Use current location</strong>.</p>
+<p>The browser asks for location permission when needed. QR Lab fills latitude and longitude and shows the accuracy reported by the device. Review the values, then Generate.</p>
+<p>Permission denial, unavailable location or a timeout leaves manual entry available. This is a one-time request, not continuous tracking.</p>
+<h2>Read Before You Open</h2>
+<p>Switch to <strong>Read QR</strong>, then start the camera or choose an image. Decoded content appears for review.</p>
+<p>The reader does not automatically open websites, join Wi-Fi, add contacts or make payments. For HTTP(S) links, an explicit <strong>Open scanned link</strong> action is available. Other payloads appear as text that you can copy or turn back into a QR code.</p>
+<p>Live camera requires HTTPS or localhost and camera permission. Image import also provides a fallback when the camera is unavailable.</p>
+<h2>Tech Stack</h2>
+<ul>
+<li>One HTML file with CSS and vanilla JavaScript</li>
+<li>An embedded QR encoder with UTF-8 support</li>
+<li>Embedded jsQR decoding for images, camera frames and generated-code checks</li>
+<li>SVG for vector output and Canvas for PNG export and decoding</li>
+<li>Native browser contact, geolocation, camera and sharing APIs where available</li>
+<li><code>localStorage</code> for appearance preferences only</li>
+<li>GitHub Pages for static hosting</li>
+</ul>
+<h2>Privacy and Boundaries</h2>
+<p>QR Lab does not upload or save contact fields, Wi-Fi passwords, scanned images or location coordinates. Its working data stays in memory; saved colors and character choices stay in the browser.</p>
+<p>Browser and device location services may use their own positioning provider. A link, WhatsApp chat or UPI destination can require another app or an internet connection.</p>
+<p>The self-contained HTML file can run offline once you have downloaded it. The hosted page does not register its own service worker, so a fresh offline visit is not guaranteed. Browser support for contact picking, sharing and specialized QR payloads varies.</p>
+<p>Static QR codes have no built-in expiration, but the website or destination they point to can change.</p>
+<h2>Build Story</h2>
+<p><a href="https://infinitilogicsolutions.github.io/posts/building-qr-lab-one-html-file.html">Read how I built a QR generator and reader that work in one HTML file</a>.</p>
+      </div>
+
+      <div class="flex items-center justify-between mt-12 pt-8 border-t border-border">
+        <p class="text-sm text-muted-foreground">Share this article</p>
+        <div class="flex items-center gap-2">
+          <a href="https://twitter.com/intent/tweet?text=QR%20Lab%20%E2%80%94%20A%20Private%20QR%20Generator%20and%20Reader%20in%20One%20HTML%20File&url=https%3A%2F%2Finfinitilogicsolutions.github.io%2Fposts%2Fqr-lab-offline-generator-reader.html" target="_blank" rel="noreferrer" class="p-2 rounded-full share-button" aria-label="Share on X">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2-2.3-.1-4.2-1.5-4.9-3.6.7.1 1.5.1 2.2-.1C3 12.7 1.6 10.6 2 8.2c.8.4 1.6.6 2.5.6C2.8 7.7 2 5.1 3.5 3.6 5.8 6.2 9.1 7.7 12.7 7.5c-.7-3.1 2-5.2 4.6-3.8 1.1-.2 2.2-.6 3.1-1.2-.3 1.1-1.1 2-2 2.6 1-.1 2-.4 3-.8z"></path>
+            </svg>
+          </a>
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Finfinitilogicsolutions.github.io%2Fposts%2Fqr-lab-offline-generator-reader.html" target="_blank" rel="noreferrer" class="p-2 rounded-full share-button" aria-label="Share on LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+              <rect width="4" height="12" x="2" y="9"></rect>
+              <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+          </a>
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Finfinitilogicsolutions.github.io%2Fposts%2Fqr-lab-offline-generator-reader.html" target="_blank" rel="noreferrer" class="p-2 rounded-full share-button" aria-label="Share on Facebook">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+            </svg>
+          </a>
+          <button class="p-2 rounded-full share-button" type="button" aria-label="Copy link" data-share-copy="true" data-share-slug="qr-lab-offline-generator-reader" data-share-title="QR%20Lab%20%E2%80%94%20A%20Private%20QR%20Generator%20and%20Reader%20in%20One%20HTML%20File">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+              <rect x="2" y="2" width="13" height="13" rx="2"></rect>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+    </article>
+  </main>
+
+  <footer class="border-t border-border mt-auto">
+    <div class="max-w-5xl mx-auto px-6 py-12">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-3">
+          <img src="/assets/img/logo-small.webp" alt="InfinitiLogicSolutions" class="w-10 h-10" width="40" height="40" loading="lazy" decoding="async">
+          <div>
+            <p class="font-display font-semibold gradient-text">InfinitiLogicSolutions</p>
+            <p class="text-sm text-muted-foreground">Weekend projects powered by curiosity and AI</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-4">
+          <a href="#" class="p-2 text-muted-foreground hover:text-primary transition-colors" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+            </svg>
+          </a>
+          <a href="#" class="p-2 text-muted-foreground hover:text-primary transition-colors" aria-label="Twitter">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2-2.3-.1-4.2-1.5-4.9-3.6.7.1 1.5.1 2.2-.1C3 12.7 1.6 10.6 2 8.2c.8.4 1.6.6 2.5.6C2.8 7.7 2 5.1 3.5 3.6 5.8 6.2 9.1 7.7 12.7 7.5c-.7-3.1 2-5.2 4.6-3.8 1.1-.2 2.2-.6 3.1-1.2-.3 1.1-1.1 2-2 2.6 1-.1 2-.4 3-.8z"></path>
+            </svg>
+          </a>
+          <a href="#" class="p-2 text-muted-foreground hover:text-primary transition-colors" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+              <rect width="4" height="12" x="2" y="9"></rect>
+              <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+          </a>
+          <a href="#" class="p-2 text-muted-foreground hover:text-primary transition-colors" aria-label="Email">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="w-5 h-5" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="mt-8 pt-8 border-t border-border text-center">
+        <p class="text-sm text-muted-foreground">© 2026 InfinitiLogicSolutions. Built on weekends with AI assistance.</p>
+      </div>
+    </div>
+  <p class="text-xs text-muted-foreground" style="text-align:center;min-height:1.5rem;padding:0 1rem 1rem" data-page-load>Page load: measuring…</p>
+  </footer>
+
+  <script defer src="/assets/js/visitor-config.js"></script>
+  <script defer src="/assets/js/fingerprint.js"></script>
+  <script defer src="/assets/js/one-tap.js"></script>
+  <script defer src="/assets/js/personalizer.js"></script>
+  <script defer src="/assets/js/tracker.js"></script>
+  <script defer src="/assets/js/article-renderer.js"></script>
+  <script defer src="/assets/js/app.js"></script>
+  <script defer src="/assets/js/typewriter.js"></script>
+  <script defer src="/assets/js/pwa.js"></script>
+  <script defer src="/assets/js/notifications.js"></script>
+  <script defer src="/assets/js/page-speed.js"></script>
+</body>
+</html>
