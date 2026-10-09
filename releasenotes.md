@@ -118,3 +118,19 @@ The footer displays this visit’s navigation-to-load duration using Navigation 
 - export PNG/SVG, share or print; enforce scan-friendly contrast and decode generated designs before export
 - read uploaded images or live camera frames on device, with explicit link opening and camera cleanup
 - isolate the QR route from the root blog cache; document use, architecture and validation limits
+
+
+## 2026-10-09 — QR Lab contact picker
+
+- add Choose from device for Contact QR forms, using the native contact picker where supported
+- add private .vcf import fallback with iPhone guidance and multi-contact choice
+- fill editable contact fields without storing/uploading them; preserve data on picker cancellation
+- add bounded UTF-8 vCard parsing and regression tests; document browser limitations
+
+
+## 2026-10-09 — QR Lab current location
+
+- add Use current location to Location QR forms with browser-managed permission on tap
+- fill editable coordinates and report device accuracy; keep manual entry on denial, timeout or unavailable location
+- avoid continuous tracking/storage and ignore stale asynchronous fixes
+- add geolocation regressions and retain contact-picker/import coverage

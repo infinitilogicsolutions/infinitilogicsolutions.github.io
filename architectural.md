@@ -188,3 +188,21 @@ Project ID 13 and blog ID 14 are defined in `posts/paperlens-browser-document-sc
 - Camera uses getUserMedia with an environment-camera preference. Bounded canvas frames decode locally; tracks stop on success, mode switch, page hide or explicit Stop. Image import releases object URLs and guards stale asynchronous results. Scanned text is displayed as text; only reviewed HTTP(S) links receive an explicit Open action.
 - Root blog worker v9 bypasses `/qr` and `/qr/`, matching the independent scanner/cards routes. Existing blog cache ownership and offline datasets remain intact; QR Lab does not claim offline installation.
 - Validation covers 33 SVG/payload round-trips across 11 types, all nine characters, six palettes, script syntax, Save/close persistence and Wi-Fi default. Headless browser installation was unavailable; live camera, visual layout and native sharing remain device checks.
+
+
+## QR Lab contact selection — October 9, 2026
+
+- Contact-only controls feature-detect secure-context navigator.contacts.select. A preliminary supported-property query chooses name/email/tel/address without requesting contacts; select runs directly in the click handler with multiple:false.
+- The native selection fills the contact form, retaining the returned full name rather than guessing its first/last split. Existing fields clear to avoid mixing contacts; the user reviews and explicitly generates. Cancellation/denial leaves fields unchanged; generation guards ignore results after type switch or clear.
+- Unsupported browsers use an ordinary local file input for .vcf. UTF-8 parsing unfolds continued lines, respects escaped delimiters and handles grouped property names, structured names/addresses and common text fields. Photos and irrelevant fields are skipped. Encoded text fields are rejected rather than decoded incorrectly. Size/card limits bound parsing; multi-card imports use a textContent-only selector.
+- Contact data stays in memory and is not added to localStorage. No server, cloud-contact integration or new runtime dependency. Existing QR generation, style persistence and reader behavior remain unchanged.
+- Regression tests use built-in Node VM/assert to cover native selection, cancellation, empty selection, file fallback, field replacement, Unicode/folding/escaping, photo skipping, multi-card selection, malformed/encoded/oversized rejection and script syntax. Real browser/contact-provider checks remain device QA.
+
+
+## QR Lab current-location capture — October 9, 2026
+
+- Location-only Use current location calls navigator.geolocation.getCurrentPosition from a button tap. No automatic call on page load/type selection, no permission preflight and no watchPosition.
+- Request enableHighAccuracy:true, timeout:10000, maximumAge:0. Browser-managed permission handles first use; insecure/unsupported contexts fall back to typed coordinates. Browser/OS location-service networking is outside QR Lab's on-device QR processing.
+- Validate coordinate bounds and finiteness, fill to six decimal places and show reported accuracy without claiming GPS precision. Clear the prior QR and require explicit Generate. Denial/unavailable/timeout preserve existing typed fields.
+- Sequence tokens ignore late results after type change, clear or page hide. Coordinates remain in memory, never in appearance localStorage. Contact controls and picker/import tests stay intact.
+- Regression tests cover no unsolicited permission request, successful fill/rounding/accuracy, permission denial, unavailable fixes, timeout, stale success, invalid coordinates and insecure/unsupported fallback. Real-device permission and geolocation quality remain device QA.
