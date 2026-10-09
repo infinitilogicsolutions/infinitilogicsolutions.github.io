@@ -142,3 +142,10 @@ The footer displays this visit’s navigation-to-load duration using Navigation 
 - unify shell/article metadata with new versioned icon URLs and root fallbacks
 - use separate regular/maskable manifest icons and refresh the blog worker cache
 - preserve article/social cover images; validate pixels, references and generated pages
+
+
+## 2026-10-09 — Subtle QR Lab support
+
+- add a small optional coffee link beneath QR Lab footer guidance
+- add `/support/` with cream/red design, existing logo, weekend AI-team story, $1/$5/$10 and custom support amount, and a code-purchase tab
+- keep payments clearly marked coming soon until Stripe is configured; hide the footer link when printing
