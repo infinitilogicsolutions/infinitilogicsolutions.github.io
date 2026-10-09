@@ -339,3 +339,10 @@ What's next? The requested fix addresses the partial-icon report for shared page
 QR Lab has a small, non-sticky coffee link in its footer pointing to `/support/`. The cream-and-red support page includes the existing logo, Santosh's weekend/AI-teammate introduction, $1/$5/$10 presets, a custom amount field, and a source-code purchase tab. Payments are explicitly coming soon until public Stripe links are configured. No secret keys, payment backend, or automatic code delivery are added.
 
 What's next? Santosh plans to configure Stripe later today or over the weekend. Configure amount-matched links plus a customer-chooses-amount link; confirm code pricing, license terms and delivery before enabling code purchases.
+
+
+## Support links across apps — October 9, 2026
+
+Add the same small optional coffee link to Dayboard, Paperlens, Staylight, and X Calendar. QR Lab already has the link. Links point to the shared `/support/` page, remain in normal document flow, and disappear when printing. App behavior and storage are unchanged.
+
+What's next? Santosh will set up Stripe later today or over the weekend; the shared page still clearly marks payments as coming soon.

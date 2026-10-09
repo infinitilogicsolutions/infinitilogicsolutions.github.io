@@ -222,3 +222,8 @@ Project ID 13 and blog ID 14 are defined in `posts/paperlens-browser-document-sc
 - Serve the self-contained support HTML as `support/index.html`, with the existing logo embedded. $1/$5/$10 presets and a validated custom amount are local UI state only.
 - Public Stripe Payment Links remain empty. Unconfigured actions show a coming-soon dialog and explicitly state that no payment was taken. Fixed-amount links must match their labels; a custom link requires entering/confirming the amount on hosted checkout. Source-code purchases require separate license/delivery setup.
 - Verify exact preservation of QR scripts, valid support JavaScript, link target, and print suppression. Browser visual QA is limited by the unavailable local browser runtime.
+
+
+## Shared app support navigation — October 9, 2026
+
+Each single-file app embeds a small cream/red footer-style anchor to the absolute support-page URL, so downloaded copies keep a correct destination. Dayboard, Staylight, and X Calendar use their existing footers; Paperlens places it after the main studio footnote, outside camera/viewer overlays. Styling is scoped to app-support classes, uses document flow, supports keyboard focus and wrapping, and hides on print. All existing app scripts are preserved byte-for-byte. No shared dependency, popup, storage change, or payment integration is added.

@@ -149,3 +149,10 @@ The footer displays this visit’s navigation-to-load duration using Navigation 
 - add a small optional coffee link beneath QR Lab footer guidance
 - add `/support/` with cream/red design, existing logo, weekend AI-team story, $1/$5/$10 and custom support amount, and a code-purchase tab
 - keep payments clearly marked coming soon until Stripe is configured; hide the footer link when printing
+
+
+## 2026-10-09 — Support links across project apps
+
+- add subtle optional coffee links to Dayboard, Paperlens, Staylight, and X Calendar
+- reuse the shared support page and keep links correct in downloaded HTML copies
+- preserve app scripts and hide support links from printed output

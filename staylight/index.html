@@ -16,6 +16,8 @@ main{width:min(100%,480px);padding:36px;border:1px solid #fff;border-radius:30px
 .status{text-align:center;font-weight:700;margin-top:24px}.clock{font-size:44px;font-variant-numeric:tabular-nums;text-align:center;letter-spacing:1px;margin:12px 0 4px}.caption{text-align:center;font-size:13px;margin:0 0 28px}
 label{display:block;font-size:13px;font-weight:600;margin-bottom:8px}select,button{font:inherit;border-radius:14px;min-height:50px;width:100%}select{background:#faf9fd;border:1px solid #e4dfec;padding:12px;color:#302e45}button{margin-top:16px;background:#7761a7;color:white;border:0;cursor:pointer;font-weight:650}button:hover{background:#685296}button:disabled{opacity:.5;cursor:wait}button:focus-visible,select:focus-visible{outline:3px solid #b5dcca;outline-offset:3px}.note{font-size:13px;padding:16px;background:#f5f2fb;border-radius:16px;margin-top:24px}.note p{margin:5px 0 0}.message{font-size:13px;min-height:42px;margin-bottom:0}a{color:#70559f}footer{font-size:11px;color:#8c8598;margin-top:22px}
 @media(max-width:420px){main{padding:26px}h1{font-size:34px}}
+
+.app-support-row{text-align:center;margin:18px 0 8px}.app-support-link{display:inline-flex;align-items:center;gap:7px;padding:9px 13px;border:1px solid #ddd3e1;border-radius:999px;background:#fffaf2;color:#80504b;text-decoration:none;font:12px/1.4 system-ui,-apple-system,sans-serif;max-width:100%;white-space:normal}.app-support-link:hover{background:#f8eee2;border-color:#b98780;color:#733c36}.app-support-link:focus-visible{outline:3px solid #a590d9;outline-offset:3px}@media print{.app-support-row{display:none!important}}
 </style>
 </head>
 <body>
@@ -36,7 +38,7 @@ label{display:block;font-size:13px;font-weight:600;margin-bottom:8px}select,butt
 <div class="note"><strong id="device">Checking your device…</strong><p id="deviceHelp"></p></div>
 <div class="note"><strong>About Microsoft Teams</strong><p>This keeps the screen awake only. Teams can still mark you Away when you are inactive. This page cannot control Teams or generate real mouse and keyboard activity.</p></div>
 <footer>Single file · No downloads or accounts · Run over HTTPS or localhost.
-<br><a href="https://developer.mozilla.org/en-US/docs/Web/API/Screen_Wake_Lock_API" target="_blank" rel="noopener">Screen wake lock</a> · <a href="https://learn.microsoft.com/en-us/microsoftteams/presence-admins" target="_blank" rel="noopener">Teams presence</a></footer>
+<br><a href="https://developer.mozilla.org/en-US/docs/Web/API/Screen_Wake_Lock_API" target="_blank" rel="noopener">Screen wake lock</a> · <a href="https://learn.microsoft.com/en-us/microsoftteams/presence-admins" target="_blank" rel="noopener">Teams presence</a><div class="app-support-row"><a class="app-support-link" href="https://infinitilogicsolutions.github.io/support/" aria-label="Support Santosh’s weekend projects"><span aria-hidden="true">☕</span> Enjoy Staylight? Buy me a coffee</a></div></footer>
 </main>
 <script>
 (() => {
