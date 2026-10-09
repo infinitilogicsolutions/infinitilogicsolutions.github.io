@@ -134,3 +134,11 @@ The footer displays this visit’s navigation-to-load duration using Navigation 
 - fill editable coordinates and report device accuracy; keep manual entry on denial, timeout or unavailable location
 - avoid continuous tracking/storage and ignore stale asynchronous fixes
 - add geolocation regressions and retain contact-picker/import coverage
+
+
+## 2026-10-09 — Shared-link icon repair
+
+- rebuild favicon, Apple-touch and PWA icon sizes from the existing full infinity logo, centered on opaque square canvases
+- unify shell/article metadata with new versioned icon URLs and root fallbacks
+- use separate regular/maskable manifest icons and refresh the blog worker cache
+- preserve article/social cover images; validate pixels, references and generated pages
