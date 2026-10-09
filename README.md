@@ -290,3 +290,16 @@ What's next? The current request publishes the editable-title app at `/cards/ind
 The [Dayboard project](https://infinitilogicsolutions.github.io/posts/dayboard-local-kanban.html) documents the local-first Kanban app, usage, backups and boundaries. [I Built a Kanban Board That Keeps Its Data in the Browser](https://infinitilogicsolutions.github.io/posts/building-dayboard-local-kanban.html) explains board identity, bookmark titles, timer deadlines and portable exports. The project uses the supplied desktop screenshot at `assets/img/og/dayboard-project.jpg`; the post uses the supplied phone screenshot at `assets/img/og/dayboard-blog.jpg`. Both use the existing Markdown publishing pipeline and link to `/cards/?board=dayboard-default`.
 
 What's next? The user requested publication now instead of tonight. The one-time scheduled publishing task was disabled to avoid duplicates; follow-up choice is pending.
+
+
+## QR Lab — October 9, 2026
+
+`qr/index.html` is a standalone QR generator and reader at `/qr/`. Wi-Fi is selected by default: enter the network name, security and password, then Generate. The QR type dropdown also supports links, contacts, text, email, SMS, calls, WhatsApp, locations, calendar events and UPI.
+
+The top-right gear opens color and optional character customization. Save closes the picker and remembers appearance preferences locally; Cancel restores the saved style. QR payloads and Wi-Fi passwords are never stored. Download PNG/SVG, share a PNG where supported, or print. Generated designs retain a four-module quiet zone, require dark-on-light contrast, and are checked with the embedded reader. Characters select High error correction automatically.
+
+Read QR accepts image uploads or a live camera. Camera access requires HTTPS/localhost and permission; image import works from a downloaded HTML file. Review decoded contents before opening a link. Processing is local with embedded encoders/decoder and no external runtime requests. The downloaded file works offline; adding a new service worker/installable PWA is outside this change.
+
+Validation: all 11 payload types round-trip through exported SVGs and the embedded reader; Unicode, character badges and six palettes pass. Script syntax, Save behavior and the default Wi-Fi flow were checked. Live camera, browser layout and native iPhone sharing need device verification.
+
+What's next? The current request is to push this app under `/qr/`. Review the pull request, then merge to make it available through GitHub Pages; follow-up features are pending.

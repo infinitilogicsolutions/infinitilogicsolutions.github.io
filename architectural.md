@@ -177,3 +177,14 @@ Project ID 13 and blog ID 14 are defined in `posts/paperlens-browser-document-sc
 - Use separate aspect-preserving JPEG copies of the supplied desktop and mobile screenshots as covers and in-body figures; retain originals unchanged. Figures specify dimensions, lazy loading and asynchronous decoding.
 - The existing push-triggered Generate Posts JSON workflow renders both content feeds and static article pages with cover/social metadata; no runtime app changes or new production dependencies.
 - Copy distinguishes localStorage persistence and bookmark identity from cloud sync, sharing or offline installation; countdown recovery does not imply background alerts.
+
+
+## QR Lab — October 9, 2026
+
+- `qr/index.html` contains the full light-theme UI, QR encoder and jsQR 1.4.0 decoder, including license notices. No build step, backend, CDN fetches or telemetry.
+- Typed payload builders create HTTP(S) links, vCard 3.0, Wi-Fi, text, mailto, SMSTO, tel, WhatsApp, geo, UTC iCalendar events and UPI URIs. UTF-8 byte encoding supports Unicode. Native form validation plus scheme/number/date checks constrain inputs.
+- SVG and PNG preserve four quiet-zone modules and square QR modules. Optional small emoji badges select H correction; a local decoder round-trip rejects unverified designs. Color pairs require at least 7:1 dark-on-light contrast and a light background.
+- A modal gear picker drafts appearance settings. Save stores only validated character/foreground/background in `qr-lab-style`; close/Escape/backdrop restore saved settings. Payload fields exist only in memory. Home defaults to Wi-Fi and uses one type selector.
+- Camera uses getUserMedia with an environment-camera preference. Bounded canvas frames decode locally; tracks stop on success, mode switch, page hide or explicit Stop. Image import releases object URLs and guards stale asynchronous results. Scanned text is displayed as text; only reviewed HTTP(S) links receive an explicit Open action.
+- Root blog worker v9 bypasses `/qr` and `/qr/`, matching the independent scanner/cards routes. Existing blog cache ownership and offline datasets remain intact; QR Lab does not claim offline installation.
+- Validation covers 33 SVG/payload round-trips across 11 types, all nine characters, six palettes, script syntax, Save/close persistence and Wi-Fi default. Headless browser installation was unavailable; live camera, visual layout and native sharing remain device checks.
