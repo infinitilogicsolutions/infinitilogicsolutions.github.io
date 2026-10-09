@@ -1,7 +1,7 @@
 const fs=require('fs'),vm=require('vm'),assert=require('assert');
 const html=fs.readFileSync(require('path').join(__dirname,'../qr/index.html'),'utf8'),scripts=[...html.matchAll(/<script>([\s\S]*?)<\/script>/g)].map(m=>m[1]);
 for(const s of scripts)new vm.Script(s);
-const extra=scripts.at(-1);
+const extra=scripts.find(s=>s.includes('const contactKeys='));
 function env(native=true){
 const nodes={};function node(id){return nodes[id]??=( {value:'',hidden:false,disabled:false,textContent:'',files:[],children:[],replaceChildren(){this.children=[]},append(x){this.children.push(x)},focus(){},click(){this.clicked=true}});}
 const ctx={window:{isSecureContext:true},navigator:{contacts:native?{getProperties:async()=>['name','email','tel','address'],select:async()=>[{name:['Jane Doe'],tel:['+15551234567'],email:['jane@example.com'],address:[{city:'Aldie',region:'VA',country:'USA'}]}]}:undefined},document:{createElement:()=>({})},active:'contact',$:node,capture(){ctx.captured=true},clearPreview(){ctx.cleared=true},console};

@@ -197,3 +197,12 @@ Project ID 13 and blog ID 14 are defined in `posts/paperlens-browser-document-sc
 - Unsupported browsers use an ordinary local file input for .vcf. UTF-8 parsing unfolds continued lines, respects escaped delimiters and handles grouped property names, structured names/addresses and common text fields. Photos and irrelevant fields are skipped. Encoded text fields are rejected rather than decoded incorrectly. Size/card limits bound parsing; multi-card imports use a textContent-only selector.
 - Contact data stays in memory and is not added to localStorage. No server, cloud-contact integration or new runtime dependency. Existing QR generation, style persistence and reader behavior remain unchanged.
 - Regression tests use built-in Node VM/assert to cover native selection, cancellation, empty selection, file fallback, field replacement, Unicode/folding/escaping, photo skipping, multi-card selection, malformed/encoded/oversized rejection and script syntax. Real browser/contact-provider checks remain device QA.
+
+
+## QR Lab current-location capture — October 9, 2026
+
+- Location-only Use current location calls navigator.geolocation.getCurrentPosition from a button tap. No automatic call on page load/type selection, no permission preflight and no watchPosition.
+- Request enableHighAccuracy:true, timeout:10000, maximumAge:0. Browser-managed permission handles first use; insecure/unsupported contexts fall back to typed coordinates. Browser/OS location-service networking is outside QR Lab's on-device QR processing.
+- Validate coordinate bounds and finiteness, fill to six decimal places and show reported accuracy without claiming GPS precision. Clear the prior QR and require explicit Generate. Denial/unavailable/timeout preserve existing typed fields.
+- Sequence tokens ignore late results after type change, clear or page hide. Coordinates remain in memory, never in appearance localStorage. Contact controls and picker/import tests stay intact.
+- Regression tests cover no unsolicited permission request, successful fill/rounding/accuracy, permission denial, unavailable fixes, timeout, stale success, invalid coordinates and insecure/unsupported fallback. Real-device permission and geolocation quality remain device QA.

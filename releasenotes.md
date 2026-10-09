@@ -126,3 +126,11 @@ The footer displays this visit’s navigation-to-load duration using Navigation 
 - add private .vcf import fallback with iPhone guidance and multi-contact choice
 - fill editable contact fields without storing/uploading them; preserve data on picker cancellation
 - add bounded UTF-8 vCard parsing and regression tests; document browser limitations
+
+
+## 2026-10-09 — QR Lab current location
+
+- add Use current location to Location QR forms with browser-managed permission on tap
+- fill editable coordinates and report device accuracy; keep manual entry on denial, timeout or unavailable location
+- avoid continuous tracking/storage and ignore stale asynchronous fixes
+- add geolocation regressions and retain contact-picker/import coverage

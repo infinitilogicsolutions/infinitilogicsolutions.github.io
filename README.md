@@ -314,3 +314,12 @@ Browsers without the Contact Picker API, including normal iPhone browser configu
 Run `node tests/qr-contacts.cjs` for mocked contact-picker/fallback and vCard parsing checks. Real-device picker, export/share-sheet options and layout still need verification.
 
 What's next? The requested enhancement is implemented on a new feature branch for review; merge the PR to deploy. Follow-up choice is pending.
+
+
+## QR Lab current location — October 9, 2026
+
+Select **Location**, then **Use current location**. The browser requests location permission when needed, fills latitude/longitude, and shows the device-reported accuracy. Review the coordinates and Generate. Location access runs only after the button tap; it does not track continuously, save coordinates, or upload them. HTTPS and device/browser Location Services are required. Denial, unavailable fixes and timeouts show a manual-entry fallback. Browser/device positioning may use its own location service.
+
+Run `node tests/qr-location.cjs` for mocked geolocation checks. Real-device permission prompts and accuracy still need verification.
+
+What's next? Both requested enhancements are included in PR #37; merge it to deploy. Follow-up choice is pending.
