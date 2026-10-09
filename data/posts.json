@@ -1,5 +1,41 @@
 [
   {
+    "id": 18,
+    "type": "blog",
+    "title": "Building a Daily Habit Chain With One HTML File",
+    "slug": "building-x-calendar-habit-chain",
+    "date": "2026-10-09T00:00:00.000Z",
+    "summary": "Why I built a distraction-free, mobile-first streak calendar with plain JavaScript, localStorage and static hosting instead of another account-based habit tracker.",
+    "contentHtml": "<p>I wanted a habit tracker with one job: open a calendar, tap a day, and see a growing chain of X marks. No account, no dashboard, and no subscription.</p><p>That became <strong>X Calendar</strong>, a tiny web app built with HTML, CSS, and vanilla JavaScript.</p><p><a href=\"/x-calendar/\">Try X Calendar</a></p><h2>The Interface Is the Motivation</h2><p>The month grid makes progress visible without a complicated scoring system. A tap marks a day with an X; another tap corrects a mistake. The current date is outlined, and previous months remain accessible.</p><h2>Why a Single HTML File?</h2><p>All the styling and interaction logic live in <code>/x-calendar/index.html</code>. GitHub Pages serves it as static content. There is no application server, user account, or database.</p><h2>Saving Without an Account</h2><p>Completed dates are keyed by local calendar date in <code>YYYY-MM-DD</code> format and stored in browser <code>localStorage</code>. A local date key avoids accidental UTC date shifts when a user marks a day near midnight.</p><p>The app counts completed days and calculates the current consecutive-day streak, allowing yesterday to count while today is still unfinished.</p><h2>Mobile-First, Not Native</h2><p>Large touch targets, a seven-column grid, and iPhone Home Screen metadata help the page feel at home on a phone. In Safari, open the page and choose Share → Add to Home Screen.</p><p>This is still a website: the current version has no service worker, so a fresh offline launch is not guaranteed. Browser storage can also be cleared, and marks do not sync across devices.</p><h2>Small Tools Can Be Enough</h2><p>The lesson is to build for the actual workflow. When the goal is to keep a daily promise visible, the right interface can be a calendar, an X, and almost nothing else.</p><p><a href=\"/posts/x-calendar-habit-chain.html\">View the project</a> or <a href=\"/x-calendar/\">open the app</a>.</p>",
+    "coverImage": "assets/img/og/default.jpg",
+    "tags": [
+      "JavaScript",
+      "Local-First",
+      "Software Architecture",
+      "GitHub Pages"
+    ],
+    "active": true,
+    "featured": false
+  },
+  {
+    "id": 17,
+    "type": "project",
+    "title": "X Calendar — Don't Break the Chain",
+    "slug": "x-calendar-habit-chain",
+    "date": "2026-10-09T00:00:00.000Z",
+    "summary": "A lightweight habit calendar for iPhone and desktop. Tap a day to mark an X, follow your streak, and keep progress locally without an account.",
+    "contentHtml": "<h2>Goal</h2><p>Make habit tracking as simple as tapping a date and seeing the chain grow. X Calendar is a mobile-first, single-page web app inspired by the don't-break-the-chain method.</p><p><a href=\"/x-calendar/\">Launch X Calendar</a></p><h2>Features</h2><ul><li>Tap any calendar date to add or remove an X</li><li>Browse previous and future months</li><li>Highlight today's date</li><li>Show the current consecutive-day streak and total completed days</li><li>Automatically save changes to local browser storage</li><li>Responsive pastel interface with iPhone Home Screen support</li></ul><h2>How to Use</h2><p>Open <a href=\"/x-calendar/\">X Calendar</a> in Safari. Tap a date to mark completion. Use the month arrows to review your progress. On iPhone, select Share → Add to Home Screen for a convenient shortcut.</p><h2>Architecture</h2><p>One HTML file contains semantic markup, CSS Grid styling, and vanilla JavaScript. Completed dates are stored under a single <code>localStorage</code> key using local date strings. GitHub Pages hosts the static app with no backend or third-party runtime dependencies.</p><h2>Limitations</h2><p>Progress belongs to the browser where it was saved; it does not automatically sync or back up to another device. Clearing site data can erase the chain. The hosted page has no dedicated offline service worker.</p><h2>Build Story</h2><p><a href=\"/posts/building-x-calendar-habit-chain.html\">Read how X Calendar was built</a>.</p>",
+    "coverImage": "assets/img/og/default.jpg",
+    "tags": [
+      "JavaScript",
+      "Local-First",
+      "GitHub Pages",
+      "Productivity"
+    ],
+    "active": true,
+    "featured": true
+  },
+  {
     "id": 16,
     "type": "blog",
     "title": "I Built a Kanban Board That Keeps Its Data in the Browser",
