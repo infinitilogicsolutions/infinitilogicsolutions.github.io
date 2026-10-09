@@ -303,3 +303,14 @@ Read QR accepts image uploads or a live camera. Camera access requires HTTPS/loc
 Validation: all 11 payload types round-trip through exported SVGs and the embedded reader; Unicode, character badges and six palettes pass. Script syntax, Save behavior and the default Wi-Fi flow were checked. Live camera, browser layout and native iPhone sharing need device verification.
 
 What's next? The current request is to push this app under `/qr/`. Review the pull request, then merge to make it available through GitHub Pages; follow-up features are pending.
+
+
+## QR Lab device contacts — October 9, 2026
+
+Select **Contact** from the QR type dropdown, then **Choose from device**. Supporting browsers (for example Chrome on Android over HTTPS) show their native contact picker; only the selected contact and approved properties are returned. Review/edit the filled name, phone, email and address, then Generate. Cancellation preserves the form.
+
+Browsers without the Contact Picker API, including normal iPhone browser configurations, use the local **Import .vcf** fallback. In iPhone Contacts, select a contact, use Share Contact and save its vCard to Files, then choose it here. Multi-contact files show a contact selector. The importer supports plain UTF-8 vCards, folded lines, escaped values and grouped properties; it skips photo data, rejects encoded text fields it cannot safely interpret, and limits imports to 1 MB/100 contacts. QR Lab does not scan the whole address book, upload the contact, or store imported fields.
+
+Run `node tests/qr-contacts.cjs` for mocked contact-picker/fallback and vCard parsing checks. Real-device picker, export/share-sheet options and layout still need verification.
+
+What's next? The requested enhancement is implemented on a new feature branch for review; merge the PR to deploy. Follow-up choice is pending.
