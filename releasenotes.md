@@ -109,3 +109,12 @@ The footer displays this visit’s navigation-to-load duration using Navigation 
 - use distinct supplied desktop and mobile screenshots for project and blog covers and in-body figures
 - link both entries to the live app and explain local saving, editable titles, independent board URLs, timers and portable backups without claiming sync or background notifications
 - publish immediately through the existing content generator and GitHub Pages pipeline; disable the prior one-time nighttime task to avoid duplicate work
+
+
+## 2026-10-09 — QR Lab at /qr/
+
+- add one-file QR generation and reading at `qr/index.html`, with Wi-Fi selected by default and 11 supported payload types
+- add gear-only color/character configuration with Save/Cancel and local appearance preferences
+- export PNG/SVG, share or print; enforce scan-friendly contrast and decode generated designs before export
+- read uploaded images or live camera frames on device, with explicit link opening and camera cleanup
+- isolate the QR route from the root blog cache; document use, architecture and validation limits
