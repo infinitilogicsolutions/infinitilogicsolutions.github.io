@@ -206,3 +206,11 @@ Project ID 13 and blog ID 14 are defined in `posts/paperlens-browser-document-sc
 - Validate coordinate bounds and finiteness, fill to six decimal places and show reported accuracy without claiming GPS precision. Clear the prior QR and require explicit Generate. Denial/unavailable/timeout preserve existing typed fields.
 - Sequence tokens ignore late results after type change, clear or page hide. Coordinates remain in memory, never in appearance localStorage. Contact controls and picker/import tests stay intact.
 - Regression tests cover no unsolicited permission request, successful fill/rounding/accuracy, permission denial, unavailable fixes, timeout, stale success, invalid coordinates and insecure/unsupported fallback. Real-device permission and geolocation quality remain device QA.
+
+
+## Shared-page icon consistency — October 9, 2026
+
+- Generate opaque square PNG sizes from the existing circuit-infinity raster mark, preserving its full aspect ratio and centering it with margins. Avoid the old differently rendered text-pattern Apple/PWA icon. Original artwork and Open Graph covers are retained.
+- Blog shells and post.html declare absolute versioned 16/32px favicon and 180px Apple-touch URLs. The existing generator carries those static tags to every article, so link-preview crawlers need no JavaScript. Root favicon.png/favicon.ico/apple-touch-icon.png and legacy touch/PWA assets are refreshed for fallback paths.
+- Manifest declares regular any icons separately from a more padded 512px maskable icon. Worker v10 precaches new asset paths while preserving existing app bypasses, blog ownership and offline datasets.
+- Validation checks PNG opacity/dimensions, whole-mark centered bounds and padding, manifest declarations, shell references, all generated article metadata and live asset availability. These checks do not emulate the Messages client or its preview cache.

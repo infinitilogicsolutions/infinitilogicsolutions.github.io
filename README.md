@@ -323,3 +323,12 @@ Select **Location**, then **Use current location**. The browser requests locatio
 Run `node tests/qr-location.cjs` for mocked geolocation checks. Real-device permission prompts and accuracy still need verification.
 
 What's next? Both requested enhancements are included in PR #37; merge it to deploy. Follow-up choice is pending.
+
+
+## Messages preview icons — October 9, 2026
+
+Shared pages now use consistent, centered PNG site icons generated from the existing circuit-infinity logo. The article template no longer points to the differently rendered legacy 192px Apple icon. All blog shells/generated articles use explicit 16/32px favicons and a 180px Apple touch icon at new v2 asset URLs. Root favicon and Apple-touch fallbacks and legacy app icons are refreshed; the manifest uses separate regular and padded maskable assets. The blog worker cache advances to v10. Open Graph article covers remain unchanged.
+
+Validation: image dimensions, opacity, centered full-logo bounds, safe padding, icon references and generated-page metadata. Actual Messages preview rendering still requires an iPhone check; existing previews may retain old imagery.
+
+What's next? The requested fix addresses the partial-icon report for shared pages. Verify a newly shared link in Messages; follow-up choice is pending.

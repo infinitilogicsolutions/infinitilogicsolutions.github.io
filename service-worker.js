@@ -1,4 +1,4 @@
-const CACHE_NAME = 'my-blog-v9';
+const CACHE_NAME = 'my-blog-v10';
 const POSTS_JSON_PATH = '/data/posts.json';
 const POSTS_INDEX_PATH = '/data/posts-index.json';
 const POST_ROUTE_PATTERN = /^\/posts\/[^/]+\.html$/;
@@ -28,6 +28,12 @@ const STATIC_ASSETS = [
   '/assets/img/icon-192.png',
   '/assets/img/icon-512.png',
   '/favicon.png',
+  '/assets/img/site-icon-16-v2.png',
+  '/assets/img/site-icon-32-v2.png',
+  '/assets/img/site-icon-180-v2.png',
+  '/assets/img/site-icon-192-v2.png',
+  '/assets/img/site-icon-512-v2.png',
+  '/assets/img/site-icon-maskable-512-v2.png',
   '/opengraph.jpg',
   POSTS_INDEX_PATH,
   POSTS_JSON_PATH,
