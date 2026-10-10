@@ -346,3 +346,12 @@ What's next? Santosh plans to configure Stripe later today or over the weekend. 
 Add the same small optional coffee link to Dayboard, Paperlens, Staylight, and X Calendar. QR Lab already has the link. Links point to the shared `/support/` page, remain in normal document flow, and disappear when printing. App behavior and storage are unchanged.
 
 What's next? Santosh will set up Stripe later today or over the weekend; the shared page still clearly marks payments as coming soon.
+
+## Canvas Lab Studio · October 10, 2026
+
+- Open the editor at `/canvas-lab/`: pastel, mobile-friendly photo composition without a backend.
+- Includes photos, manual cutouts, backgrounds, text, drawing, stickers, layer management, crop/resize, local saving, project backups and PNG/JPG export.
+- Premium AI is a future-phase placeholder behind the gear; the footer links to `/support/`.
+- Independent code inspired by creative composition workflows; no ArtCraft or Photoroom code is included.
+- Companion service worker caches the app's own shell only; projects remain in IndexedDB and can be exported as JSON.
+- What's next: device verification on iPhone, followed by evaluating suitably licensed local background-removal models for Premium AI.

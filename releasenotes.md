@@ -156,3 +156,12 @@ The footer displays this visit’s navigation-to-load duration using Navigation 
 - add subtle optional coffee links to Dayboard, Paperlens, Staylight, and X Calendar
 - reuse the shared support page and keep links correct in downloaded HTML copies
 - preserve app scripts and hide support links from printed output
+
+## 2026-10-10 · Canvas Lab Studio 1.0
+
+- Added `/canvas-lab/`, a pastel local-first photo editor with independent code.
+- Added photo layers, manual masks, backdrops, text, stickers, drawing, transforms, shadow/outline, crop, resize, undo and redo.
+- Added auto-save, portable project JSON import/export, PNG/JPG exports, sharing fallback and a scoped offline app shell.
+- Added Premium AI Coming soon behind the gear and the subtle Buy me a coffee footer link.
+- Added matching project and blog articles.
+- Passed runtime checks for rendering, masking, history, project restore/validation, export, crop/resize and local save. iPhone device checks remain.

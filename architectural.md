@@ -227,3 +227,15 @@ Project ID 13 and blog ID 14 are defined in `posts/paperlens-browser-document-sc
 ## Shared app support navigation — October 9, 2026
 
 Each single-file app embeds a small cream/red footer-style anchor to the absolute support-page URL, so downloaded copies keep a correct destination. Dayboard, Staylight, and X Calendar use their existing footers; Paperlens places it after the main studio footnote, outside camera/viewer overlays. Styling is scoped to app-support classes, uses document flow, supports keyboard focus and wrapping, and hides on print. All existing app scripts are preserved byte-for-byte. No shared dependency, popup, storage change, or payment integration is added.
+
+## Canvas Lab Studio
+
+The `/canvas-lab/index.html` editor embeds all CSS and vanilla JavaScript with no runtime library dependencies. A Canvas 2D scene renderer owns artwork, while a second canvas owns editing overlays. Independent photo, text, drawing and sticker layers carry transforms and styles. Photo source pixels are preserved alongside a separate alpha mask for manual erase/restore. Drawing layers receive independent canvases when duplicated.
+
+Scene snapshots support bounded undo/redo (12 entries). Serialized IndexedDB writes auto-save the single current project after edits. Portable JSON exports contain image sources and masks. Import validates types, dimensions and embedded raster sources; failed asset hydration restores the prior scene. Files are processed locally and never uploaded by the app.
+
+Canvas sizes, export sizes, layer counts and import sizes are bounded. Imported photo rasters are reduced to a 1600-pixel long edge and backdrops to 2000 pixels. PNG supports transparency; JPG composites onto white. Native file sharing is progressive enhancement with download fallback. Cropping translates layers and captures gradient/image backdrop framing. Resize scales content uniformly or changes the canvas around it.
+
+The scoped `/canvas-lab/sw.js` owns only `canvas-lab-` caches and serves app-shell fallbacks after a successful online visit. Its manifest uses standalone display. No root caching logic is modified. Core editing in the single HTML can also operate without its hosted companion files.
+
+Premium AI is explicitly labeled Coming soon inside settings; no inference library, API key or paid provider is connected. Support opens the existing `/support/` page. Functional verification uses a simulated DOM and native Canvas; actual mobile touch, installation and sharing remain device checks.
