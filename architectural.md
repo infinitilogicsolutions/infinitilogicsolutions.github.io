@@ -249,3 +249,13 @@ Premium AI is explicitly labeled Coming soon inside settings; no inference libra
 - Hosted HTML registers the worker with updateViaCache none and reports readiness only when an activated Cards worker controls the page. File downloads skip worker registration; support links and unrelated apps are unchanged.
 - No board data is stored in Cache Storage and no localStorage keys/schema are changed. First installation still needs a connection; eviction/site-data clearing can remove both cached code and saved board data. This supersedes the original no-offline-delivery limitation.
 - Isolated worker checks cover multi-board offline reload, canonical shell reuse, background refresh, response validation, cache ownership, route boundaries, missing-shell fallback and syntax. Actual iPhone shortcut/airplane-mode behavior remains device QA.
+
+
+## QR Lab offline shell — October 11, 2026
+
+- `/qr/sw.js` owns only `/qr/` registration scope and `qr-lab-offline-*` caches. The existing root worker already bypasses QR routes; no other apps' worker registrations, caches or local data are changed.
+- Install fetches and validates the generic index HTML (including app marker), manifest and three icon assets before populating the versioned cache. It activates/claims after successful installation and deletes only outdated QR caches. No query strings or form data enter cache keys.
+- Navigation to `/qr/` or `/qr/index.html` (including query variants) uses the canonical index response. Fresh network has a 2.5-second bound; valid HTML refreshes cache, while errors, bad responses or slow network fall back to the saved shell. No cache returns an honest 503. Non-GET, range, external and unrelated routes pass through.
+- Inline registration works only in secure web contexts, never downloaded file URLs. A message-channel readiness handshake confirms every required asset exists before displaying Offline ready. Manifest scopes Home Screen launches to `/qr/`; no forced reload interrupts working form data.
+- UI and published articles explain the mandatory first online visit, browser/profile isolation and storage-eviction limits. Offline QR processing does not imply network-independent linked destinations or OS positioning.
+- Node regressions cover installation, activation/cache ownership, offline reopen and query variants, fresh shell updates, failed/slow/invalid response fallback, readiness, first-use failure and request bypasses; contact/location tests remain passing. Actual browser and iPhone airplane-mode checks remain device QA.

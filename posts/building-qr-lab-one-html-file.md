@@ -60,7 +60,7 @@ SVG represents the module grid for vector output. Canvas creates PNG images and 
 
 GitHub Pages serves the file; there is no application endpoint receiving a password or generating an image.
 
-The distinction matters: downloading a self-contained HTML file provides offline QR processing. Opening a hosted URL for the first time without a connection is a separate delivery problem. QR Lab does not register its own service worker.
+The distinction matters: downloading a self-contained HTML file provides offline QR processing. The hosted app now adds a small, dedicated service worker under `/qr/` so it can reopen offline too. Open it online once and wait for **Offline ready**; the worker saves the generic HTML shell, manifest and icons, not form contents or scanned data. Subsequent visits can use the saved shell if the network fails or is slow. A first-ever visit still needs internet, and clearing browser storage can remove that saved copy.
 
 ## Device Features Need a Fallback
 
