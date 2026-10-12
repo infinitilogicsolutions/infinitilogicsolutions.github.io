@@ -239,3 +239,13 @@ Canvas sizes, export sizes, layer counts and import sizes are bounded. Imported 
 The scoped `/canvas-lab/sw.js` owns only `canvas-lab-` caches and serves app-shell fallbacks after a successful online visit. Its manifest uses standalone display. No root caching logic is modified. Core editing in the single HTML can also operate without its hosted companion files.
 
 Premium AI is explicitly labeled Coming soon inside settings; no inference library, API key or paid provider is connected. Support opens the existing `/support/` page. Functional verification uses a simulated DOM and native Canvas; actual mobile touch, installation and sharing remain device checks.
+
+
+## Dayboard offline shell — October 11, 2026
+
+- `cards/service-worker.js` owns only the `/cards/` scope and `dayboard-shell-` caches. Installation fetches and validates `/cards/index.html` as HTML, caches it before skipWaiting, and activation removes only older Dayboard shell caches before claiming clients.
+- GET navigations to `/cards/` or `/cards/index.html`, including arbitrary board query parameters, reuse one canonical cached HTML shell. The browser retains the requested URL so existing board selection/localStorage logic loads the correct board. Non-navigation requests, other routes and other origins are not intercepted.
+- Cached navigations return immediately, with event-bound background network refresh. Failed/non-HTML responses never replace the cached shell. Uncached offline navigation produces an explanatory 503 response rather than a blog homepage.
+- Hosted HTML registers the worker with updateViaCache none and reports readiness only when an activated Cards worker controls the page. File downloads skip worker registration; support links and unrelated apps are unchanged.
+- No board data is stored in Cache Storage and no localStorage keys/schema are changed. First installation still needs a connection; eviction/site-data clearing can remove both cached code and saved board data. This supersedes the original no-offline-delivery limitation.
+- Isolated worker checks cover multi-board offline reload, canonical shell reuse, background refresh, response validation, cache ownership, route boundaries, missing-shell fallback and syntax. Actual iPhone shortcut/airplane-mode behavior remains device QA.

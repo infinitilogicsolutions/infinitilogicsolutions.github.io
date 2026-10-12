@@ -355,3 +355,12 @@ What's next? Santosh will set up Stripe later today or over the weekend; the sha
 - Independent code inspired by creative composition workflows; no ArtCraft or Photoroom code is included.
 - Companion service worker caches the app's own shell only; projects remain in IndexedDB and can be exported as JSON.
 - What's next: device verification on iPhone, followed by evaluating suitably licensed local background-removal models for Premium AI.
+
+
+## Dayboard offline access — October 11, 2026
+
+Open `/cards/` once with internet and wait for **Ready offline** beside the saved-board status. The app caches its generic HTML shell with a dedicated `/cards/` service worker. You can then reopen `/cards/?board=<id>` or `/cards/index.html?board=<id>` without internet in the same browser/profile, including existing board bookmarks. The first visit still needs internet. Browser cache/site-data removal can remove offline access; reopen online to prepare it again. Board data remains in the existing `dayboard.v1.<id>` localStorage keys; exports are still important backups. Online visits refresh the shell in the background, visible on a subsequent opening. Downloaded HTML copies do not register a service worker and remain self-contained.
+
+Run `node tests/dayboard-offline.cjs` for isolated service-worker behavior checks. Actual iPhone Home Screen airplane-mode reopening should be verified on the device.
+
+What's next? Offline reopening is the current requested enhancement; follow-up choice is pending.
