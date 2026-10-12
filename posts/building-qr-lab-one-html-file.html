@@ -89,7 +89,7 @@
             <circle cx="12" cy="12" r="10"></circle>
             <path d="M12 6v6l4 2"></path>
           </svg>
-          5 min read
+          6 min read
         </span>
       </div>
 
@@ -123,7 +123,7 @@
 <p>QR Lab embeds its QR encoder and jsQR decoder, with their license notices. The CSS, UI, payload builders and export logic are in the same file.</p>
 <p>SVG represents the module grid for vector output. Canvas creates PNG images and supplies pixel data to the reader. The app maintains integer-sized modules when rasterizing the code.</p>
 <p>GitHub Pages serves the file; there is no application endpoint receiving a password or generating an image.</p>
-<p>The distinction matters: downloading a self-contained HTML file provides offline QR processing. Opening a hosted URL for the first time without a connection is a separate delivery problem. QR Lab does not register its own service worker.</p>
+<p>The distinction matters: downloading a self-contained HTML file provides offline QR processing. The hosted app now adds a small, dedicated service worker under <code>/qr/</code> so it can reopen offline too. Open it online once and wait for <strong>Offline ready</strong>; the worker saves the generic HTML shell, manifest and icons, not form contents or scanned data. Subsequent visits can use the saved shell if the network fails or is slow. A first-ever visit still needs internet, and clearing browser storage can remove that saved copy.</p>
 <h2>Device Features Need a Fallback</h2>
 <p>A <strong>Choose from device</strong> button sounds simple. Browser support makes it more complicated.</p>
 <p>Where the Contact Picker API is available, a button tap opens the browser&#39;s picker. The page receives the selected contact properties, not unrestricted access to the address book.</p>

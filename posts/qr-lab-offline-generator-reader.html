@@ -145,7 +145,7 @@
 <h2>Privacy and Boundaries</h2>
 <p>QR Lab does not upload or save contact fields, Wi-Fi passwords, scanned images or location coordinates. Its working data stays in memory; saved colors and character choices stay in the browser.</p>
 <p>Browser and device location services may use their own positioning provider. A link, WhatsApp chat or UPI destination can require another app or an internet connection.</p>
-<p>The self-contained HTML file can run offline once you have downloaded it. The hosted page does not register its own service worker, so a fresh offline visit is not guaranteed. Browser support for contact picking, sharing and specialized QR payloads varies.</p>
+<p>The self-contained HTML file can run offline once downloaded. The hosted app now also has a dedicated offline service worker: open <code>/qr/</code> online once and wait for <strong>Offline ready</strong> before disconnecting. Then reopen the same URL or a Home Screen shortcut in the same browser/profile without internet. The first visit still needs connectivity, and clearing browser data or storage eviction can remove offline access. Links, payments and device positioning may need connectivity; browser support for contact picking, sharing and specialized QR payloads varies.</p>
 <p>Static QR codes have no built-in expiration, but the website or destination they point to can change.</p>
 <h2>Build Story</h2>
 <p><a href="https://infinitilogicsolutions.github.io/posts/building-qr-lab-one-html-file.html">Read how I built a QR generator and reader that work in one HTML file</a>.</p>
