@@ -298,7 +298,7 @@ What's next? The user requested publication now instead of tonight. The one-time
 
 The top-right gear opens color and optional character customization. Save closes the picker and remembers appearance preferences locally; Cancel restores the saved style. QR payloads and Wi-Fi passwords are never stored. Download PNG/SVG, share a PNG where supported, or print. Generated designs retain a four-module quiet zone, require dark-on-light contrast, and are checked with the embedded reader. Characters select High error correction automatically.
 
-Read QR accepts image uploads or a live camera. Camera access requires HTTPS/localhost and permission; image import works from a downloaded HTML file. Review decoded contents before opening a link. Processing is local with embedded encoders/decoder and no external runtime requests. The downloaded file works offline; adding a new service worker/installable PWA is outside this change.
+Read QR accepts image uploads or a live camera. Camera access requires HTTPS/localhost and permission; image import works from a downloaded HTML file. Review decoded contents before opening a link. Processing is local with embedded encoders/decoder and no external runtime requests. The downloaded file works offline. The hosted app also supports offline reopening after one online visit; see the QR Lab offline-opening section below.
 
 Validation: all 11 payload types round-trip through exported SVGs and the embedded reader; Unicode, character badges and six palettes pass. Script syntax, Save behavior and the default Wi-Fi flow were checked. Live camera, browser layout and native iPhone sharing need device verification.
 
@@ -364,3 +364,14 @@ Open `/cards/` once with internet and wait for **Ready offline** beside the save
 Run `node tests/dayboard-offline.cjs` for isolated service-worker behavior checks. Actual iPhone Home Screen airplane-mode reopening should be verified on the device.
 
 What's next? Offline reopening is the current requested enhancement; follow-up choice is pending.
+
+
+## QR Lab offline opening — October 11, 2026
+
+Open [QR Lab](https://infinitilogicsolutions.github.io/qr/) once while online and wait for **Offline ready** in the header. Then reopen `/qr/`, `/qr/index.html` or a bookmark with query parameters in the same browser/profile without internet. Safari Share → Add to Home Screen can create a standalone QR Lab shortcut; open that shortcut online once and check its readiness too. First-ever opening still needs internet. Clearing site data, browser eviction or private-session changes can remove the offline copy.
+
+The app caches its generic shell, manifest and site icons under a dedicated `/qr/` service worker. QR fields, Wi-Fi passwords, contacts, scanned images and coordinates are not cached. Online navigation refreshes the shell; failed or slow network falls back to the saved copy. Downloaded HTML files skip service-worker registration and stay self-contained. QR generation/reading/export work offline, while linked destinations, payments, support links and device location may need connectivity.
+
+Run `node tests/qr-offline.cjs`, `node tests/qr-location.cjs` and `node tests/qr-contacts.cjs`. Service-worker lifecycle/network behavior is validated using Node fixtures; actual iPhone airplane-mode and Home Screen behavior still needs device verification.
+
+What's next? The requested QR Lab offline-opening enhancement is implemented. Verify opening the saved app in airplane mode; follow-up choice is pending.

@@ -82,7 +82,7 @@ QR Lab does not upload or save contact fields, Wi-Fi passwords, scanned images o
 
 Browser and device location services may use their own positioning provider. A link, WhatsApp chat or UPI destination can require another app or an internet connection.
 
-The self-contained HTML file can run offline once you have downloaded it. The hosted page does not register its own service worker, so a fresh offline visit is not guaranteed. Browser support for contact picking, sharing and specialized QR payloads varies.
+The self-contained HTML file can run offline once downloaded. The hosted app now also has a dedicated offline service worker: open `/qr/` online once and wait for **Offline ready** before disconnecting. Then reopen the same URL or a Home Screen shortcut in the same browser/profile without internet. The first visit still needs connectivity, and clearing browser data or storage eviction can remove offline access. Links, payments and device positioning may need connectivity; browser support for contact picking, sharing and specialized QR payloads varies.
 
 Static QR codes have no built-in expiration, but the website or destination they point to can change.
 

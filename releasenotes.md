@@ -174,3 +174,12 @@ The footer displays this visit’s navigation-to-load duration using Navigation 
 - show Preparing offline access / Ready offline / Offline status near the title
 - keep shell updates in the background and cache cleanup limited to Dayboard-owned caches
 - retain standalone HTML behavior and the support link; add isolated worker regression checks and setup/eviction documentation
+
+
+## 2026-10-11 — QR Lab offline opening
+
+- add a QR-scoped service worker and standalone manifest to save the generic app shell/icons after the first online visit
+- show verified Offline ready/Offline mode status and preserve downloaded-file behavior
+- reopen cached QR routes and query variants when offline; refresh valid online HTML and bound slow-network waits
+- keep private QR data out of caches and preserve all other apps' cache ownership
+- add offline regressions and update project/blog/usage documentation with first-visit and storage limits
