@@ -17,6 +17,7 @@
 <dialog id="editor" aria-labelledby="editor-heading"><div class="dialog-head"><h2 id="editor-heading">Card details</h2><button class="close" id="close" aria-label="Close card">×</button></div><label for="card-title">Title</label><input id="card-title" maxlength="200" placeholder="What needs to get done?"><label for="description">Notes</label><textarea id="description" maxlength="20000" placeholder="Details, ideas, links…"></textarea><div class="row"><div><label for="status">Column</label><select id="status"><option value="todo">To do</option><option value="doing">Doing</option><option value="done">Done</option></select></div><div><label for="due">Due date & time</label><input id="due" type="datetime-local"></div></div><section class="timer" aria-label="Card timer"><div class="timer-top"><div><label for="minutes">Timer minutes</label><input id="minutes" type="number" min="1" max="10080" step="1" value="25"></div><output id="clock" class="clock" aria-label="Time remaining">25:00</output></div><div class="timer-actions"><button id="timer-toggle" class="primary">Start timer</button><button id="timer-reset">Reset</button><span id="timer-state" class="caption"></span></div></section><p class="caption" style="margin-top:16px">Changes save automatically.</p><div class="dialog-foot"><button id="delete" class="danger">Delete card</button><button id="done" class="primary">Done</button></div></dialog>
 <dialog id="confirm-dialog" aria-labelledby="confirm-heading"><h2 id="confirm-heading">Confirm</h2><p id="confirm-text"></p><div class="dialog-foot"><button id="cancel-confirm">Cancel</button><button id="accept-confirm" class="primary">Continue</button></div></dialog>
 <div id="toast" class="toast" role="status" hidden></div>
+<p id="offline-status" class="caption" role="status" style="max-width:1184px;margin:0 auto;padding:0 28px 20px">Offline access not prepared yet. Open once online.</p>
 <script id="initial-data" type="application/json">null</script>
 <script>
 'use strict';
@@ -82,5 +83,29 @@ $('import').onclick=()=>$('file').click();$('file').onchange=async()=>{const f=$
 function tick(){let changed=false;const timers=new Map();state.cards.forEach(c=>{if(c.timer.end!==null&&left(c.timer)===0){c.timer.end=null;c.timer.remaining=0;changed=true;toast('Timer finished: '+(c.title||'Untitled card'))}timers.set(c.id,c.timer)});if(changed){save();render()}else document.querySelectorAll('[data-timer]').forEach(n=>{const t=timers.get(n.dataset.timer);if(t)n.textContent='◷ '+format(left(t))});updateClock()}
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)tick()});render();tick();save();setInterval(tick,1000);
 </script>
+<script>
+// Only the hosted Cards app registers a worker; downloaded HTML stays standalone.
+(async function prepareOffline(){
+ const status=document.getElementById('offline-status');
+ document.getElementById('save-status').after(status);status.style.cssText='max-width:280px;margin:4px 0 0';
+ if(location.protocol==='file:'){status.textContent='Standalone copy · Opens without internet';return;}
+ if(!['/cards/','/cards/index.html'].includes(location.pathname)){status.textContent='Download HTML for an offline copy.';return;}
+ if(!('serviceWorker' in navigator)||!window.isSecureContext){status.textContent='Offline access is unavailable here. Download HTML for an offline copy.';return;}
+ status.textContent='Preparing offline access…';
+ try{
+  const registration=await navigator.serviceWorker.register('/cards/service-worker.js',{scope:'/cards/',updateViaCache:'none'});
+  function showStatus(){
+   const worker=registration.active,controller=navigator.serviceWorker.controller;
+   if(worker?.state==='activated'&&controller?.scriptURL===worker.scriptURL)status.textContent=navigator.onLine?'Ready offline · You can close and reopen this board without internet.':'Offline · Your board is saved on this device.';
+  }
+  function watch(worker){if(!worker)return;worker.addEventListener('statechange',()=>{showStatus();if(worker.state==='redundant'&&!registration.active)status.textContent='Offline setup failed. Reopen online or download HTML.';});}
+  watch(registration.installing);watch(registration.waiting);
+  registration.addEventListener('updatefound',()=>watch(registration.installing));
+  navigator.serviceWorker.addEventListener('controllerchange',showStatus);
+  window.addEventListener('online',showStatus);window.addEventListener('offline',showStatus);showStatus();
+ }catch{status.textContent='Offline setup failed. Reopen online or download HTML.';}
+})();
+</script>
 </body>
 </html>
+

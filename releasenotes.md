@@ -165,3 +165,12 @@ The footer displays this visit’s navigation-to-load duration using Navigation 
 - Added Premium AI Coming soon behind the gear and the subtle Buy me a coffee footer link.
 - Added matching project and blog articles.
 - Passed runtime checks for rendering, masking, history, project restore/validation, export, crop/resize and local save. iPhone device checks remain.
+
+
+## 2026-10-11 — Dayboard offline reopening
+
+- add a dedicated Cards service worker that caches the application shell after one online visit
+- reopen saved-board URLs offline without changing board identity, storage or exports
+- show Preparing offline access / Ready offline / Offline status near the title
+- keep shell updates in the background and cache cleanup limited to Dayboard-owned caches
+- retain standalone HTML behavior and the support link; add isolated worker regression checks and setup/eviction documentation
