@@ -1,4 +1,4 @@
-const CACHE_NAME = 'my-blog-v10';
+const CACHE_NAME = 'my-blog-v11';
 const POSTS_JSON_PATH = '/data/posts.json';
 const POSTS_INDEX_PATH = '/data/posts-index.json';
 const POST_ROUTE_PATTERN = /^\/posts\/[^/]+\.html$/;

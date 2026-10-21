@@ -321,3 +321,37 @@
     max-width: none;
   }
 }
+
+/* Mobile clarity and touch: shared by static and generated article pages. */
+header nav a { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; }
+header nav > a { min-width: 44px; flex-shrink: 0; }
+header nav ul { flex-wrap: wrap; justify-content: flex-end; }
+.hero-title { font-size: clamp(2.5rem, 7vw, 4.5rem); line-height: 1.08; max-width: 13ch; }
+.project-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.project-actions a { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 10px 16px; border: 1px solid hsl(var(--border)); border-radius: 12px; font-size: .875rem; font-weight: 600; }
+.project-actions .project-open { background: hsl(var(--primary)); color: white; border-color: transparent; }
+.project-actions a:focus-visible, header nav a:focus-visible { outline: 3px solid hsl(var(--primary)); outline-offset: 3px; }
+.project-card h2, .project-card h3 { overflow-wrap: anywhere; }
+.share-button, .blog-category-pill { min-height: 44px; min-width: 44px; }
+@media (max-width: 639px) {
+  header nav { padding: 8px 12px; gap: 4px; }
+  header nav ul { gap: 0; }
+  header nav ul a { padding: 10px 9px; }
+  main > section > .py-24 { padding-top: 48px; padding-bottom: 48px; }
+  .post-detail h1 { font-size: clamp(1.875rem, 8vw, 3rem); overflow-wrap: anywhere; }
+  .brand-text { min-width: 0; max-width: 100%; }
+  .typewriter-text { white-space: normal; overflow-wrap: anywhere; }
+  .project-actions a { flex: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}
+
+.project-preview { display: block; overflow: hidden; border: 1px solid hsl(var(--border)); border-radius: 20px; margin-bottom: 20px; background: linear-gradient(135deg, #e7e6fb, #e1f3ed); }
+.project-cover { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+.project-symbol { min-height: 160px; display: flex; align-items: center; justify-content: center; padding: 24px; font-size: clamp(1.25rem, 3vw, 2rem); font-weight: 650; color: #39445c; }
+@media (max-width: 639px) { .project-cover { max-height: 190px; } .project-symbol { min-height: 120px; } }
+
+@media (max-width:639px){header nav > a .brand-text{display:none}header nav ul{flex-wrap:nowrap}header nav > a{min-width:36px}.hero-title{font-size:clamp(2.25rem,9vw,3rem)}footer a[aria-label]{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px}}
+
+#recentProjectsGrid{min-width:0}main a[href="projects.html"]{flex-shrink:0}a[href="projects.html"].text-sm{white-space:nowrap}

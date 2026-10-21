@@ -183,3 +183,16 @@ The footer displays this visit’s navigation-to-load duration using Navigation 
 - reopen cached QR routes and query variants when offline; refresh valid online HTML and bound slow-network waits
 - keep private QR data out of caches and preserve all other apps' cache ownership
 - add offline regressions and update project/blog/usage documentation with first-visit and storage limits
+
+
+## 2026-10-21 — Mobile and touch polish
+
+- Stable, wrapping home headline; featured apps appear before implementation details. The brand no longer types/deletes itself.
+- Shared CSS gives navigation and sharing controls larger hit areas, preserves reduced-motion preferences, and prevents the mobile brand from crowding navigation.
+- Recent/featured project cards separate direct app launch from the existing article. Routes are explicitly mapped for Canvas Lab, QR Lab, Dayboard, and Paperlens; unknown projects retain article navigation. Existing project covers are reused where available.
+- QR Lab retains its embedded encoder/decoder, contact/location logic and offline worker. Touch controls are at least 44px, forms stack on phones, safe-area padding is respected, and explicit successful generation announces and scrolls to the preview. Background generation does not move the page.
+- Dayboard adds optional mobile column filters with counts. All remains the default; saved board schema, keys, timers, JSON import/export, standalone HTML and desktop columns are preserved. New-board/import reset the view; closing a moved card follows its destination.
+- Portfolio cache advances to v11 so the matching shared CSS and JavaScript refresh together. Dedicated QR/Dayboard cache ownership and algorithms are unchanged.
+- Validation: existing QR contacts, location and offline regressions pass; inline JavaScript parses. Browser checks cover 320px layouts for home, projects, QR article, QR and Dayboard; QR generation/settings and Dayboard create/move/reload persistence pass. Physical iPhone Safari, keyboard, camera and Home Screen testing remain device checks.
+
+What's next? The user's requested next step is safe mobile/touch improvement. This branch is ready for PR review; physical-device acceptance precedes release.
