@@ -103,7 +103,7 @@
     }
 
     if (!identity || !identity.googleSubId) {
-      container.innerHTML = '<span class="nav-identity-placeholder">Anonymous visitor</span>';
+      container.innerHTML = ns.config.oneTapEnabled && ns.config.googleClientId ? '<button type="button" class="nav-signin" data-request-signin>Personalize your visit</button>' : '<span class="nav-identity-placeholder">Anonymous visitor</span>';
       return;
     }
 
@@ -190,7 +190,7 @@
         analyze traffic, and detect automated bots. If you sign in with Google, your name and email are stored after consent.
         Data is held in a private Google Sheet and is never shared with third parties.
       </p>
-      <button type="button" class="privacy-clear-button" data-clear-visitor-data="true">Clear my data</button>
+      <div><button type="button" class="privacy-clear-button" data-clear-visitor-data="true">Clear my data</button> <button type="button" data-request-signin>Personalize your visit</button></div>
     `;
 
     const footerInner = footer.querySelector('.max-w-5xl');

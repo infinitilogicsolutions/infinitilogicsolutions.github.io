@@ -1,12 +1,6 @@
-(function bootstrapOneTap() {
-  const ns = window.InfinitiVisitor;
-
-  if (!ns) {
-    return;
-  }
-
-  const DISMISS_WINDOW_MS = 7 * 24 * 60 * 60 * 1000;
-
+// Restore cached identity immediately; load Google only after an explicit request.
+(function bootstrapSignIn(){
+ const ns=window.InfinitiVisitor;if(!ns)return;
   function readStorage(key, fallback) {
     try {
       const value = window.localStorage.getItem(key);
@@ -22,38 +16,6 @@
     } catch (error) {
       return;
     }
-  }
-
-  function isFirefox() {
-    return /firefox/i.test(navigator.userAgent || '');
-  }
-
-  function loadCachedIdentity() {
-    const cached = ns.parseJson(readStorage(ns.storageKeys.googleProfile, ''), null);
-
-    if (cached && cached.googleSubId) {
-      ns.setState('identity', cached, ns.events.identityReady);
-    }
-  }
-
-  function shouldSuppressPrompt() {
-    if (!ns.config.oneTapEnabled || !ns.config.googleClientId || isFirefox()) {
-      return true;
-    }
-
-    const cachedIdentity = ns.getState('identity');
-
-    if (cachedIdentity && cachedIdentity.googleSubId) {
-      return true;
-    }
-
-    const dismissedAt = Number(readStorage(ns.storageKeys.oneTapDismissed, '0'));
-
-    return Number.isFinite(dismissedAt) && dismissedAt > 0 && Date.now() - dismissedAt < DISMISS_WINDOW_MS;
-  }
-
-  function storeDismissal() {
-    writeStorage(ns.storageKeys.oneTapDismissed, String(Date.now()));
   }
 
   function decodeJwt(credential) {
@@ -89,75 +51,44 @@
     };
   }
 
-  function loadGoogleScript() {
-    return new Promise((resolve, reject) => {
-      if (window.google && window.google.accounts && window.google.accounts.id) {
-        resolve();
-        return;
-      }
 
-      const existing = document.querySelector('script[data-google-one-tap="true"]');
-
-      if (existing) {
-        existing.addEventListener('load', resolve, { once: true });
-        existing.addEventListener('error', reject, { once: true });
-        return;
-      }
-
-      const script = document.createElement('script');
-      script.src = 'https://accounts.google.com/gsi/client';
-      script.async = true;
-      script.defer = true;
-      script.dataset.googleOneTap = 'true';
-      script.addEventListener('load', resolve, { once: true });
-      script.addEventListener('error', reject, { once: true });
-      document.head.appendChild(script);
-    });
-  }
-
-  async function initializeOneTap() {
-    if (shouldSuppressPrompt()) {
-      return;
-    }
-
-    try {
-      await loadGoogleScript();
-    } catch (error) {
-      console.error('Failed to load Google Identity Services:', error);
-      return;
-    }
-
-    if (!window.google || !window.google.accounts || !window.google.accounts.id) {
-      return;
-    }
-
-    window.google.accounts.id.initialize({
-      client_id: ns.config.googleClientId,
-      callback(response) {
-        const tokenPayload = decodeJwt(response.credential || '');
-
-        if (!tokenPayload) {
-          return;
-        }
-
-        const identity = buildIdentityProfile(tokenPayload);
-        writeStorage(ns.storageKeys.googleProfile, JSON.stringify(identity));
-        ns.setState('identity', identity, ns.events.identityReady);
-      },
-      cancel_on_tap_outside: true,
-      auto_select: false
-    });
-
-    window.google.accounts.id.prompt((notification) => {
-      if (notification.isDismissedMoment && notification.isDismissedMoment()) {
-        storeDismissal();
-      }
-    });
-  }
-
-  loadCachedIdentity();
-
-  window.addEventListener('DOMContentLoaded', () => {
-    window.setTimeout(initializeOneTap, ns.config.oneTapDelayMs);
-  });
+ let sdkPromise,initialized=false,dialog;
+ function getDialog(){
+  if(dialog)return dialog;
+  dialog=document.createElement('dialog');dialog.className='signin-dialog';dialog.setAttribute('aria-labelledby','signin-heading');
+  dialog.innerHTML='<h2 id="signin-heading">Personalize your visit</h2><p>Your tools work without signing in. Continue with Google to personalize your profile.</p><p role="status" data-signin-status></p><div data-google-button></div><button type="button" data-close-signin>Close</button>';
+  dialog.querySelector('[data-close-signin]').addEventListener('click',()=>dialog.close());
+  document.body.appendChild(dialog);return dialog;
+ }
+ function loadGoogleScript(){
+  if(window.google?.accounts?.id)return Promise.resolve();
+  if(sdkPromise)return sdkPromise;
+  sdkPromise=new Promise((resolve,reject)=>{
+   const script=document.createElement('script');script.src='https://accounts.google.com/gsi/client';script.async=true;script.dataset.googleOneTap='true';
+   script.onload=resolve;script.onerror=()=>{script.remove();sdkPromise=null;reject(new Error('Google sign-in could not load.'))};
+   document.head.appendChild(script);
+  });return sdkPromise;
+ }
+ async function requestSignIn(){
+  const view=getDialog(),status=view.querySelector('[data-signin-status]');
+  if(!view.open)view.showModal();
+  if(!ns.config.oneTapEnabled||!ns.config.googleClientId){status.textContent='Sign-in is unavailable. You can keep using the site.';return}
+  if(ns.getState('identity')?.googleSubId){status.textContent='You are already signed in.';return}
+  status.textContent='Loading Google sign-in…';
+  try{
+   await loadGoogleScript();
+   if(!initialized){
+    window.google.accounts.id.initialize({client_id:ns.config.googleClientId,auto_select:false,callback(response){
+     const payload=decodeJwt(response.credential||'');if(!payload){status.textContent='Google returned an invalid response. Please try again.';return}
+     const identity=buildIdentityProfile(payload);writeStorage(ns.storageKeys.googleProfile,JSON.stringify(identity));ns.setState('identity',identity,ns.events.identityReady);view.close();
+    }});initialized=true;
+   }
+   const host=view.querySelector('[data-google-button]');host.replaceChildren();
+   window.google.accounts.id.renderButton(host,{theme:'outline',size:'large',text:'continue_with',width:280});status.textContent='';
+  }catch(error){status.textContent='Google sign-in is unavailable right now. Close this dialog and try again later.';}
+ }
+ ns.requestSignIn=requestSignIn;
+ const cached=ns.parseJson(readStorage(ns.storageKeys.googleProfile,''),null);
+ if(cached?.googleSubId)ns.setState('identity',cached,ns.events.identityReady);
+ document.addEventListener('click',event=>{if(event.target.closest?.('[data-request-signin]'))requestSignIn()});
 })();

@@ -8,6 +8,17 @@ on:
       - 'scripts/generate-json.js'
       - 'post.html'
       - 'assets/js/article-renderer.js'
+      - 'assets/js/listing-renderer.js'
+      - 'assets/css/custom.css'
+      - 'assets/js/notifications.js'
+      - 'scripts/generate-thumbnails.js'
+      - 'scripts/build-css.js'
+      - 'scripts/styles-source.css'
+      - 'assets/img/og/**'
+      - 'package.json'
+      - 'index.html'
+      - 'projects.html'
+      - 'blog.html'
   schedule:
     # Runs nightly at 02:17 UTC; non-zero minute avoids GitHub's peak top-of-hour load
     - cron: '17 2 * * *'
@@ -34,12 +45,12 @@ jobs:
         run: npm install --no-audit --no-fund
       
       - name: Generate posts content
-        run: node scripts/generate-json.js
+        run: npm run generate
       
       - name: Check for changes
         id: check_changes
         run: |
-          if git status --porcelain --untracked-files=all -- data/posts.json data/posts-index.json posts | grep -q .; then
+          if git status --porcelain --untracked-files=all -- data/posts.json data/posts-index.json data/thumbnails.json posts index.html projects.html blog.html assets/css/styles.css assets/css/site.css assets/img/thumbs | grep -q .; then
             echo "changed=true" >> $GITHUB_OUTPUT
           else
             echo "changed=false" >> $GITHUB_OUTPUT
@@ -59,6 +70,6 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add -A data/posts.json data/posts-index.json posts
+          git add -A data/posts.json data/posts-index.json data/thumbnails.json posts index.html projects.html blog.html assets/css/styles.css assets/css/site.css assets/img/thumbs
           git commit -m "🤖 Auto-generate posts content"
           git push origin HEAD:main

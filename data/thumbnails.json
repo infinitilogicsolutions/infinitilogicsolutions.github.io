@@ -1,0 +1,38 @@
+{
+  "assets/img/og/dayboard-blog.jpg": {
+    "src": "/assets/img/thumbs/dayboard-blog-5095ef153e-480.webp",
+    "srcset": "/assets/img/thumbs/dayboard-blog-5095ef153e-160.webp 160w, /assets/img/thumbs/dayboard-blog-5095ef153e-480.webp 480w, /assets/img/thumbs/dayboard-blog-5095ef153e-960.webp 960w",
+    "width": 960,
+    "height": 540
+  },
+  "assets/img/og/dayboard-project.jpg": {
+    "src": "/assets/img/thumbs/dayboard-project-fe9cafc03d-480.webp",
+    "srcset": "/assets/img/thumbs/dayboard-project-fe9cafc03d-160.webp 160w, /assets/img/thumbs/dayboard-project-fe9cafc03d-480.webp 480w, /assets/img/thumbs/dayboard-project-fe9cafc03d-960.webp 960w",
+    "width": 960,
+    "height": 540
+  },
+  "assets/img/og/default.jpg": {
+    "src": "/assets/img/thumbs/default-24b9305099-480.webp",
+    "srcset": "/assets/img/thumbs/default-24b9305099-160.webp 160w, /assets/img/thumbs/default-24b9305099-480.webp 480w, /assets/img/thumbs/default-24b9305099-960.webp 960w",
+    "width": 960,
+    "height": 540
+  },
+  "assets/img/og/paperlens.jpg": {
+    "src": "/assets/img/thumbs/paperlens-e2fb876f59-480.webp",
+    "srcset": "/assets/img/thumbs/paperlens-e2fb876f59-160.webp 160w, /assets/img/thumbs/paperlens-e2fb876f59-480.webp 480w, /assets/img/thumbs/paperlens-e2fb876f59-960.webp 960w",
+    "width": 960,
+    "height": 540
+  },
+  "assets/img/og/visitor-intelligence-v2.png": {
+    "src": "/assets/img/thumbs/visitor-intelligence-v2-19ea19cf02-480.webp",
+    "srcset": "/assets/img/thumbs/visitor-intelligence-v2-19ea19cf02-160.webp 160w, /assets/img/thumbs/visitor-intelligence-v2-19ea19cf02-480.webp 480w, /assets/img/thumbs/visitor-intelligence-v2-19ea19cf02-960.webp 960w",
+    "width": 960,
+    "height": 540
+  },
+  "assets/img/og/webmcp.png": {
+    "src": "/assets/img/thumbs/webmcp-6243f8e71b-480.webp",
+    "srcset": "/assets/img/thumbs/webmcp-6243f8e71b-160.webp 160w, /assets/img/thumbs/webmcp-6243f8e71b-480.webp 480w, /assets/img/thumbs/webmcp-6243f8e71b-960.webp 960w",
+    "width": 960,
+    "height": 540
+  }
+}

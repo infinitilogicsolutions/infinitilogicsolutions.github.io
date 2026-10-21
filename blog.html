@@ -13,8 +13,7 @@
   <meta name="apple-mobile-web-app-title" content="InfinitiLogicSolutions">
 
 
-  <link rel="stylesheet" href="assets/css/styles.css">
-  <link rel="stylesheet" href="assets/css/custom.css">
+  <link rel="stylesheet" href="assets/css/site.css">
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/site-icon-32-v2.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/site-icon-16-v2.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/site-icon-180-v2.png">
@@ -40,6 +39,7 @@
           <a href="blog.html" class="relative px-4 py-2 text-sm font-medium transition-colors rounded-full text-primary bg-primary/10" aria-current="page">Blog</a>
         </li>
       </ul>
+    <div class="nav-identity" data-nav-identity="true"><span class="nav-identity-placeholder">Anonymous visitor</span></div>
     </nav>
   </header>
 
@@ -56,15 +56,578 @@
         </p>
       </div>
 
-      <div id="blogCategories" class="flex flex-wrap gap-3 mt-8">
-        <span class="text-muted-foreground">Loading categories...</span>
-      </div>
+      <div id="blogCategories" class="flex flex-wrap gap-3 mt-8" data-prerendered="true"><button type="button" class="blog-category-pill px-4 py-2 text-sm font-medium rounded-full transition-all" data-blog-category="All" data-active="true" aria-pressed="true">All (9)</button><button type="button" class="blog-category-pill px-4 py-2 text-sm font-medium rounded-full transition-all" data-blog-category="Announcement" data-active="false" aria-pressed="false">Announcement (1)</button><button type="button" class="blog-category-pill px-4 py-2 text-sm font-medium rounded-full transition-all" data-blog-category="DuckDB" data-active="false" aria-pressed="false">DuckDB (1)</button><button type="button" class="blog-category-pill px-4 py-2 text-sm font-medium rounded-full transition-all" data-blog-category="General" data-active="false" aria-pressed="false">General (1)</button><button type="button" class="blog-category-pill px-4 py-2 text-sm font-medium rounded-full transition-all" data-blog-category="Software Architecture" data-active="false" aria-pressed="false">Software Architecture (4)</button><button type="button" class="blog-category-pill px-4 py-2 text-sm font-medium rounded-full transition-all" data-blog-category="Visitor Intelligence" data-active="false" aria-pressed="false">Visitor Intelligence (1)</button><button type="button" class="blog-category-pill px-4 py-2 text-sm font-medium rounded-full transition-all" data-blog-category="WebMCP" data-active="false" aria-pressed="false">WebMCP (1)</button></div><!-- /listing:blogCategories -->
     </section>
 
     <section class="max-w-5xl mx-auto px-6 pb-24">
-      <div id="blogGrid" class="grid gap-6">
-        <p class="text-muted-foreground">Loading posts...</p>
+      <div id="blogGrid" class="grid gap-6" data-prerendered="true">
+    <article class="group" data-blog-category="Software Architecture">
+      <div class="p-6 bg-card rounded-2xl border border-border hover:border-primary/30 transition-all hover:shadow-xl hover:shadow-primary/5">
+        <div class="flex flex-col md:flex-row md:items-start gap-6">
+          <div class="blog-cover">
+            <img src="/assets/img/thumbs/default-24b9305099-480.webp" srcset="/assets/img/thumbs/default-24b9305099-160.webp 160w, /assets/img/thumbs/default-24b9305099-480.webp 480w, /assets/img/thumbs/default-24b9305099-960.webp 960w" sizes="(max-width:640px) 72px, (min-width:1024px) 200px, 160px" width="960" height="540" alt="" class="blog-cover-img" loading="lazy" decoding="async">
+          </div>
+          <div class="flex-1">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="text-xs font-mono px-2 py-1 bg-primary/10 text-primary rounded-full uppercase tracking-wider">Software Architecture</span>
+              <span class="text-sm text-muted-foreground flex items-center gap-1">
+                <svg viewBox="0 0 24 24" aria-hidden="true" class="w-3.5 h-3.5" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path d="M12 6v6l4 2"></path>
+                </svg>
+                4 min read
+              </span>
+            </div>
+            <h2 class="font-display text-2xl font-semibold mb-2">
+              <a href="https://infinitilogicsolutions.github.io/posts/building-canvas-lab-studio.html" class="group-hover:text-primary transition-colors">I Built a Little Photo Studio That Keeps the Editing in Your Browser</a>
+            </h2>
+            <p class="text-muted-foreground mb-4">Canvas Lab Studio combines Photoroom-inspired photo workflows with visual composition ideas from ArtCraft, using independent code and a local-first first release.</p>
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+              <span class="text-sm text-muted-foreground">Oct 10, 2026</span>
+              <div class="flex flex-wrap items-center gap-3">
+                <a href="https://infinitilogicsolutions.github.io/posts/building-canvas-lab-studio.html" class="text-sm font-medium flex items-center gap-1 text-primary">
+                  Read Article
+                  <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12h14"></path>
+                    <path d="m13 6 6 6-6 6"></path>
+                  </svg>
+                </a>
+                <div class="flex items-center gap-2">
+                  <a href="https://twitter.com/intent/tweet?text=I%20Built%20a%20Little%20Photo%20Studio%20That%20Keeps%20the%20Editing%20in%20Your%20Browser&url=https%3A%2F%2Finfinitilogicsolutions.github.io%2Fposts%2Fbuilding-canvas-lab-studio.html" target="_blank" rel="noreferrer" class="p-2 rounded-full share-button" aria-label="Share on X">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2-2.3-.1-4.2-1.5-4.9-3.6.7.1 1.5.1 2.2-.1C3 12.7 1.6 10.6 2 8.2c.8.4 1.6.6 2.5.6C2.8 7.7 2 5.1 3.5 3.6 5.8 6.2 9.1 7.7 12.7 7.5c-.7-3.1 2-5.2 4.6-3.8 1.1-.2 2.2-.6 3.1-1.2-.3 1.1-1.1 2-2 2.6 1-.1 2-.4 3-.8z"></path>
+                    </svg>
+                  </a>
+                  <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Finfinitilogicsolutions.github.io%2Fposts%2Fbuilding-canvas-lab-studio.html" target="_blank" rel="noreferrer" class="p-2 rounded-full share-button" aria-label="Share on LinkedIn">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                      <rect width="4" height="12" x="2" y="9"></rect>
+                      <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
+                  </a>
+                  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Finfinitilogicsolutions.github.io%2Fposts%2Fbuilding-canvas-lab-studio.html" target="_blank" rel="noreferrer" class="p-2 rounded-full share-button" aria-label="Share on Facebook">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                    </svg>
+                  </a>
+                  <button class="p-2 rounded-full share-button" type="button" aria-label="Copy link" data-share-copy="true" data-share-slug="building-canvas-lab-studio" data-share-title="I%20Built%20a%20Little%20Photo%20Studio%20That%20Keeps%20the%20Editing%20in%20Your%20Browser">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                      <rect x="2" y="2" width="13" height="13" rx="2"></rect>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+    </article>
+
+    <article class="group" data-blog-category="Software Architecture">
+      <div class="p-6 bg-card rounded-2xl border border-border hover:border-primary/30 transition-all hover:shadow-xl hover:shadow-primary/5">
+        <div class="flex flex-col md:flex-row md:items-start gap-6">
+          <div class="blog-cover">
+            <img src="/assets/img/thumbs/default-24b9305099-480.webp" srcset="/assets/img/thumbs/default-24b9305099-160.webp 160w, /assets/img/thumbs/default-24b9305099-480.webp 480w, /assets/img/thumbs/default-24b9305099-960.webp 960w" sizes="(max-width:640px) 72px, (min-width:1024px) 200px, 160px" width="960" height="540" alt="" class="blog-cover-img" loading="lazy" decoding="async">
+          </div>
+          <div class="flex-1">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="text-xs font-mono px-2 py-1 bg-primary/10 text-primary rounded-full uppercase tracking-wider">Software Architecture</span>
+              <span class="text-sm text-muted-foreground flex items-center gap-1">
+                <svg viewBox="0 0 24 24" aria-hidden="true" class="w-3.5 h-3.5" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path d="M12 6v6l4 2"></path>
+                </svg>
+                6 min read
+              </span>
+            </div>
+            <h2 class="font-display text-2xl font-semibold mb-2">
+              <a href="https://infinitilogicsolutions.github.io/posts/building-qr-lab-one-html-file.html" class="group-hover:text-primary transition-colors">I Built a QR Generator and Reader That Work in One HTML File</a>
+            </h2>
+            <p class="text-muted-foreground mb-4">How QR Lab keeps QR generation, reading and image exports inside the browser, while using device APIs carefully for contacts and current location.</p>
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+              <span class="text-sm text-muted-foreground">Oct 9, 2026</span>
+              <div class="flex flex-wrap items-center gap-3">
+                <a href="https://infinitilogicsolutions.github.io/posts/building-qr-lab-one-html-file.html" class="text-sm font-medium flex items-center gap-1 text-primary">
+                  Read Article
+                  <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12h14"></path>
+                    <path d="m13 6 6 6-6 6"></path>
+                  </svg>
+                </a>
+                <div class="flex items-center gap-2">
+                  <a href="https://twitter.com/intent/tweet?text=I%20Built%20a%20QR%20Generator%20and%20Reader%20That%20Work%20in%20One%20HTML%20File&url=https%3A%2F%2Finfinitilogicsolutions.github.io%2Fposts%2Fbuilding-qr-lab-one-html-file.html" target="_blank" rel="noreferrer" class="p-2 rounded-full share-button" aria-label="Share on X">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2-2.3-.1-4.2-1.5-4.9-3.6.7.1 1.5.1 2.2-.1C3 12.7 1.6 10.6 2 8.2c.8.4 1.6.6 2.5.6C2.8 7.7 2 5.1 3.5 3.6 5.8 6.2 9.1 7.7 12.7 7.5c-.7-3.1 2-5.2 4.6-3.8 1.1-.2 2.2-.6 3.1-1.2-.3 1.1-1.1 2-2 2.6 1-.1 2-.4 3-.8z"></path>
+                    </svg>
+                  </a>
+                  <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Finfinitilogicsolutions.github.io%2Fposts%2Fbuilding-qr-lab-one-html-file.html" target="_blank" rel="noreferrer" class="p-2 rounded-full share-button" aria-label="Share on LinkedIn">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                      <rect width="4" height="12" x="2" y="9"></rect>
+                      <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
+                  </a>
+                  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Finfinitilogicsolutions.github.io%2Fposts%2Fbuilding-qr-lab-one-html-file.html" target="_blank" rel="noreferrer" class="p-2 rounded-full share-button" aria-label="Share on Facebook">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                    </svg>
+                  </a>
+                  <button class="p-2 rounded-full share-button" type="button" aria-label="Copy link" data-share-copy="true" data-share-slug="building-qr-lab-one-html-file" data-share-title="I%20Built%20a%20QR%20Generator%20and%20Reader%20That%20Work%20in%20One%20HTML%20File">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                      <rect x="2" y="2" width="13" height="13" rx="2"></rect>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="group" data-blog-category="Software Architecture">
+      <div class="p-6 bg-card rounded-2xl border border-border hover:border-primary/30 transition-all hover:shadow-xl hover:shadow-primary/5">
+        <div class="flex flex-col md:flex-row md:items-start gap-6">
+          <div class="blog-cover">
+            <img src="/assets/img/thumbs/dayboard-blog-5095ef153e-480.webp" srcset="/assets/img/thumbs/dayboard-blog-5095ef153e-160.webp 160w, /assets/img/thumbs/dayboard-blog-5095ef153e-480.webp 480w, /assets/img/thumbs/dayboard-blog-5095ef153e-960.webp 960w" sizes="(max-width:640px) 72px, (min-width:1024px) 200px, 160px" width="960" height="540" alt="" class="blog-cover-img" loading="lazy" decoding="async">
+          </div>
+          <div class="flex-1">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="text-xs font-mono px-2 py-1 bg-primary/10 text-primary rounded-full uppercase tracking-wider">Software Architecture</span>
+              <span class="text-sm text-muted-foreground flex items-center gap-1">
+                <svg viewBox="0 0 24 24" aria-hidden="true" class="w-3.5 h-3.5" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path d="M12 6v6l4 2"></path>
+                </svg>
+                5 min read
+              </span>
+            </div>
+            <h2 class="font-display text-2xl font-semibold mb-2">
+              <a href="https://infinitilogicsolutions.github.io/posts/building-dayboard-local-kanban.html" class="group-hover:text-primary transition-colors">I Built a Kanban Board That Keeps Its Data in the Browser</a>
+            </h2>
+            <p class="text-muted-foreground mb-4">How a simple one-file Kanban app combines local saving, card timers, independent bookmarkable boards, and portable backups without a task-management backend.</p>
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+              <span class="text-sm text-muted-foreground">Oct 6, 2026</span>
+              <div class="flex flex-wrap items-center gap-3">
+                <a href="https://infinitilogicsolutions.github.io/posts/building-dayboard-local-kanban.html" class="text-sm font-medium flex items-center gap-1 text-primary">
+                  Read Article
+                  <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12h14"></path>
+                    <path d="m13 6 6 6-6 6"></path>
+                  </svg>
+                </a>
+                <div class="flex items-center gap-2">
+                  <a href="https://twitter.com/intent/tweet?text=I%20Built%20a%20Kanban%20Board%20That%20Keeps%20Its%20Data%20in%20the%20Browser&url=https%3A%2F%2Finfinitilogicsolutions.github.io%2Fposts%2Fbuilding-dayboard-local-kanban.html" target="_blank" rel="noreferrer" class="p-2 rounded-full share-button" aria-label="Share on X">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2-2.3-.1-4.2-1.5-4.9-3.6.7.1 1.5.1 2.2-.1C3 12.7 1.6 10.6 2 8.2c.8.4 1.6.6 2.5.6C2.8 7.7 2 5.1 3.5 3.6 5.8 6.2 9.1 7.7 12.7 7.5c-.7-3.1 2-5.2 4.6-3.8 1.1-.2 2.2-.6 3.1-1.2-.3 1.1-1.1 2-2 2.6 1-.1 2-.4 3-.8z"></path>
+                    </svg>
+                  </a>
+                  <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Finfinitilogicsolutions.github.io%2Fposts%2Fbuilding-dayboard-local-kanban.html" target="_blank" rel="noreferrer" class="p-2 rounded-full share-button" aria-label="Share on LinkedIn">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                      <rect width="4" height="12" x="2" y="9"></rect>
+                      <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
+                  </a>
+                  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Finfinitilogicsolutions.github.io%2Fposts%2Fbuilding-dayboard-local-kanban.html" target="_blank" rel="noreferrer" class="p-2 rounded-full share-button" aria-label="Share on Facebook">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                    </svg>
+                  </a>
+                  <button class="p-2 rounded-full share-button" type="button" aria-label="Copy link" data-share-copy="true" data-share-slug="building-dayboard-local-kanban" data-share-title="I%20Built%20a%20Kanban%20Board%20That%20Keeps%20Its%20Data%20in%20the%20Browser">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                      <rect x="2" y="2" width="13" height="13" rx="2"></rect>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="group" data-blog-category="Software Architecture">
+      <div class="p-6 bg-card rounded-2xl border border-border hover:border-primary/30 transition-all hover:shadow-xl hover:shadow-primary/5">
+        <div class="flex flex-col md:flex-row md:items-start gap-6">
+          <div class="blog-cover">
+            <img src="/assets/img/thumbs/paperlens-e2fb876f59-480.webp" srcset="/assets/img/thumbs/paperlens-e2fb876f59-160.webp 160w, /assets/img/thumbs/paperlens-e2fb876f59-480.webp 480w, /assets/img/thumbs/paperlens-e2fb876f59-960.webp 960w" sizes="(max-width:640px) 72px, (min-width:1024px) 200px, 160px" width="960" height="540" alt="" class="blog-cover-img" loading="lazy" decoding="async">
+          </div>
+          <div class="flex-1">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="text-xs font-mono px-2 py-1 bg-primary/10 text-primary rounded-full uppercase tracking-wider">Software Architecture</span>
+              <span class="text-sm text-muted-foreground flex items-center gap-1">
+                <svg viewBox="0 0 24 24" aria-hidden="true" class="w-3.5 h-3.5" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path d="M12 6v6l4 2"></path>
+                </svg>
+                9 min read
+              </span>
+            </div>
+            <h2 class="font-display text-2xl font-semibold mb-2">
+              <a href="https://infinitilogicsolutions.github.io/posts/building-paperlens-single-html-document-scanner.html" class="group-hover:text-primary transition-colors">I Built a Document Scanner in One HTML File</a>
+            </h2>
+            <p class="text-muted-foreground mb-4">How Paperlens grew from a one-file iPhone document scanner into a local-first tool for two-sided IDs and passport/visa photo print sheets—with exact print sizing and a pastel studio.</p>
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+              <span class="text-sm text-muted-foreground">Oct 5, 2026</span>
+              <div class="flex flex-wrap items-center gap-3">
+                <a href="https://infinitilogicsolutions.github.io/posts/building-paperlens-single-html-document-scanner.html" class="text-sm font-medium flex items-center gap-1 text-primary">
+                  Read Article
+                  <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12h14"></path>
+                    <path d="m13 6 6 6-6 6"></path>
+                  </svg>
+                </a>
+                <div class="flex items-center gap-2">
+                  <a href="https://twitter.com/intent/tweet?text=I%20Built%20a%20Document%20Scanner%20in%20One%20HTML%20File&url=https%3A%2F%2Finfinitilogicsolutions.github.io%2Fposts%2Fbuilding-paperlens-single-html-document-scanner.html" target="_blank" rel="noreferrer" class="p-2 rounded-full share-button" aria-label="Share on X">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2-2.3-.1-4.2-1.5-4.9-3.6.7.1 1.5.1 2.2-.1C3 12.7 1.6 10.6 2 8.2c.8.4 1.6.6 2.5.6C2.8 7.7 2 5.1 3.5 3.6 5.8 6.2 9.1 7.7 12.7 7.5c-.7-3.1 2-5.2 4.6-3.8 1.1-.2 2.2-.6 3.1-1.2-.3 1.1-1.1 2-2 2.6 1-.1 2-.4 3-.8z"></path>
+                    </svg>
+                  </a>
+                  <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Finfinitilogicsolutions.github.io%2Fposts%2Fbuilding-paperlens-single-html-document-scanner.html" target="_blank" rel="noreferrer" class="p-2 rounded-full share-button" aria-label="Share on LinkedIn">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                      <rect width="4" height="12" x="2" y="9"></rect>
+                      <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
+                  </a>
+                  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Finfinitilogicsolutions.github.io%2Fposts%2Fbuilding-paperlens-single-html-document-scanner.html" target="_blank" rel="noreferrer" class="p-2 rounded-full share-button" aria-label="Share on Facebook">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                    </svg>
+                  </a>
+                  <button class="p-2 rounded-full share-button" type="button" aria-label="Copy link" data-share-copy="true" data-share-slug="building-paperlens-single-html-document-scanner" data-share-title="I%20Built%20a%20Document%20Scanner%20in%20One%20HTML%20File">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                      <rect x="2" y="2" width="13" height="13" rx="2"></rect>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="group" data-blog-category="DuckDB">
+      <div class="p-6 bg-card rounded-2xl border border-border hover:border-primary/30 transition-all hover:shadow-xl hover:shadow-primary/5">
+        <div class="flex flex-col md:flex-row md:items-start gap-6">
+          <div class="blog-cover">
+            <img src="/assets/img/thumbs/default-24b9305099-480.webp" srcset="/assets/img/thumbs/default-24b9305099-160.webp 160w, /assets/img/thumbs/default-24b9305099-480.webp 480w, /assets/img/thumbs/default-24b9305099-960.webp 960w" sizes="(max-width:640px) 72px, (min-width:1024px) 200px, 160px" width="960" height="540" alt="" class="blog-cover-img" loading="lazy" decoding="async">
+          </div>
+          <div class="flex-1">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="text-xs font-mono px-2 py-1 bg-primary/10 text-primary rounded-full uppercase tracking-wider">DuckDB</span>
+              <span class="text-sm text-muted-foreground flex items-center gap-1">
+                <svg viewBox="0 0 24 24" aria-hidden="true" class="w-3.5 h-3.5" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path d="M12 6v6l4 2"></path>
+                </svg>
+                4 min read
+              </span>
+            </div>
+            <h2 class="font-display text-2xl font-semibold mb-2">
+              <a href="https://infinitilogicsolutions.github.io/posts/querying-wordnet-parquet-duckdb-browser.html" class="group-hover:text-primary transition-colors">I Put 147,478 Words in a Parquet File and Queried It From the Browser</a>
+            </h2>
+            <p class="text-muted-foreground mb-4">How I built a $0-backend dictionary using Princeton WordNet, Parquet, Apache Arrow, DuckDB-Wasm, browser storage, and GitHub Pages.</p>
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+              <span class="text-sm text-muted-foreground">Sep 25, 2026</span>
+              <div class="flex flex-wrap items-center gap-3">
+                <a href="https://infinitilogicsolutions.github.io/posts/querying-wordnet-parquet-duckdb-browser.html" class="text-sm font-medium flex items-center gap-1 text-primary">
+                  Read Article
+                  <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12h14"></path>
+                    <path d="m13 6 6 6-6 6"></path>
+                  </svg>
+                </a>
+                <div class="flex items-center gap-2">
+                  <a href="https://twitter.com/intent/tweet?text=I%20Put%20147%2C478%20Words%20in%20a%20Parquet%20File%20and%20Queried%20It%20From%20the%20Browser&url=https%3A%2F%2Finfinitilogicsolutions.github.io%2Fposts%2Fquerying-wordnet-parquet-duckdb-browser.html" target="_blank" rel="noreferrer" class="p-2 rounded-full share-button" aria-label="Share on X">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2-2.3-.1-4.2-1.5-4.9-3.6.7.1 1.5.1 2.2-.1C3 12.7 1.6 10.6 2 8.2c.8.4 1.6.6 2.5.6C2.8 7.7 2 5.1 3.5 3.6 5.8 6.2 9.1 7.7 12.7 7.5c-.7-3.1 2-5.2 4.6-3.8 1.1-.2 2.2-.6 3.1-1.2-.3 1.1-1.1 2-2 2.6 1-.1 2-.4 3-.8z"></path>
+                    </svg>
+                  </a>
+                  <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Finfinitilogicsolutions.github.io%2Fposts%2Fquerying-wordnet-parquet-duckdb-browser.html" target="_blank" rel="noreferrer" class="p-2 rounded-full share-button" aria-label="Share on LinkedIn">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                      <rect width="4" height="12" x="2" y="9"></rect>
+                      <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
+                  </a>
+                  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Finfinitilogicsolutions.github.io%2Fposts%2Fquerying-wordnet-parquet-duckdb-browser.html" target="_blank" rel="noreferrer" class="p-2 rounded-full share-button" aria-label="Share on Facebook">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                    </svg>
+                  </a>
+                  <button class="p-2 rounded-full share-button" type="button" aria-label="Copy link" data-share-copy="true" data-share-slug="querying-wordnet-parquet-duckdb-browser" data-share-title="I%20Put%20147%2C478%20Words%20in%20a%20Parquet%20File%20and%20Queried%20It%20From%20the%20Browser">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                      <rect x="2" y="2" width="13" height="13" rx="2"></rect>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="group" data-blog-category="Visitor Intelligence">
+      <div class="p-6 bg-card rounded-2xl border border-border hover:border-primary/30 transition-all hover:shadow-xl hover:shadow-primary/5">
+        <div class="flex flex-col md:flex-row md:items-start gap-6">
+          <div class="blog-cover">
+
+          </div>
+          <div class="flex-1">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="text-xs font-mono px-2 py-1 bg-primary/10 text-primary rounded-full uppercase tracking-wider">Visitor Intelligence</span>
+              <span class="text-sm text-muted-foreground flex items-center gap-1">
+                <svg viewBox="0 0 24 24" aria-hidden="true" class="w-3.5 h-3.5" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path d="M12 6v6l4 2"></path>
+                </svg>
+                3 min read
+              </span>
+            </div>
+            <h2 class="font-display text-2xl font-semibold mb-2">
+              <a href="https://infinitilogicsolutions.github.io/posts/visitor-intelligence-v2.html" class="group-hover:text-primary transition-colors">Visitor Intelligence v2: 67 Signals, Bot Scoring, and UX Personalization Without a Backend</a>
+            </h2>
+            <p class="text-muted-foreground mb-4">How the Visitor Intelligence system logs 67 client signals, scores bots, and personalizes UX on a static site using Google Sheets.</p>
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+              <span class="text-sm text-muted-foreground">Mar 12, 2026</span>
+              <div class="flex flex-wrap items-center gap-3">
+                <a href="https://infinitilogicsolutions.github.io/posts/visitor-intelligence-v2.html" class="text-sm font-medium flex items-center gap-1 text-primary">
+                  Read Article
+                  <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12h14"></path>
+                    <path d="m13 6 6 6-6 6"></path>
+                  </svg>
+                </a>
+                <div class="flex items-center gap-2">
+                  <a href="https://twitter.com/intent/tweet?text=Visitor%20Intelligence%20v2%3A%2067%20Signals%2C%20Bot%20Scoring%2C%20and%20UX%20Personalization%20Without%20a%20Backend&url=https%3A%2F%2Finfinitilogicsolutions.github.io%2Fposts%2Fvisitor-intelligence-v2.html" target="_blank" rel="noreferrer" class="p-2 rounded-full share-button" aria-label="Share on X">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2-2.3-.1-4.2-1.5-4.9-3.6.7.1 1.5.1 2.2-.1C3 12.7 1.6 10.6 2 8.2c.8.4 1.6.6 2.5.6C2.8 7.7 2 5.1 3.5 3.6 5.8 6.2 9.1 7.7 12.7 7.5c-.7-3.1 2-5.2 4.6-3.8 1.1-.2 2.2-.6 3.1-1.2-.3 1.1-1.1 2-2 2.6 1-.1 2-.4 3-.8z"></path>
+                    </svg>
+                  </a>
+                  <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Finfinitilogicsolutions.github.io%2Fposts%2Fvisitor-intelligence-v2.html" target="_blank" rel="noreferrer" class="p-2 rounded-full share-button" aria-label="Share on LinkedIn">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                      <rect width="4" height="12" x="2" y="9"></rect>
+                      <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
+                  </a>
+                  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Finfinitilogicsolutions.github.io%2Fposts%2Fvisitor-intelligence-v2.html" target="_blank" rel="noreferrer" class="p-2 rounded-full share-button" aria-label="Share on Facebook">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                    </svg>
+                  </a>
+                  <button class="p-2 rounded-full share-button" type="button" aria-label="Copy link" data-share-copy="true" data-share-slug="visitor-intelligence-v2" data-share-title="Visitor%20Intelligence%20v2%3A%2067%20Signals%2C%20Bot%20Scoring%2C%20and%20UX%20Personalization%20Without%20a%20Backend">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                      <rect x="2" y="2" width="13" height="13" rx="2"></rect>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="group" data-blog-category="WebMCP">
+      <div class="p-6 bg-card rounded-2xl border border-border hover:border-primary/30 transition-all hover:shadow-xl hover:shadow-primary/5">
+        <div class="flex flex-col md:flex-row md:items-start gap-6">
+          <div class="blog-cover">
+            <img src="/assets/img/thumbs/webmcp-6243f8e71b-480.webp" srcset="/assets/img/thumbs/webmcp-6243f8e71b-160.webp 160w, /assets/img/thumbs/webmcp-6243f8e71b-480.webp 480w, /assets/img/thumbs/webmcp-6243f8e71b-960.webp 960w" sizes="(max-width:640px) 72px, (min-width:1024px) 200px, 160px" width="960" height="540" alt="" class="blog-cover-img" loading="lazy" decoding="async">
+          </div>
+          <div class="flex-1">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="text-xs font-mono px-2 py-1 bg-primary/10 text-primary rounded-full uppercase tracking-wider">WebMCP</span>
+              <span class="text-sm text-muted-foreground flex items-center gap-1">
+                <svg viewBox="0 0 24 24" aria-hidden="true" class="w-3.5 h-3.5" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path d="M12 6v6l4 2"></path>
+                </svg>
+                2 min read
+              </span>
+            </div>
+            <h2 class="font-display text-2xl font-semibold mb-2">
+              <a href="https://infinitilogicsolutions.github.io/posts/webmcp-future-or-hype-not-production-ready-yet.html" class="group-hover:text-primary transition-colors">WebMCP: The Future of Web Interaction or Just Hype? Why It's Not Production-Ready Yet</a>
+            </h2>
+            <p class="text-muted-foreground mb-4">WebMCP makes websites feel like native tools for AI agents, but as of March 2026 it's still an early preview with serious browser, security, and scalability gaps.</p>
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+              <span class="text-sm text-muted-foreground">Mar 7, 2026</span>
+              <div class="flex flex-wrap items-center gap-3">
+                <a href="https://infinitilogicsolutions.github.io/posts/webmcp-future-or-hype-not-production-ready-yet.html" class="text-sm font-medium flex items-center gap-1 text-primary">
+                  Read Article
+                  <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12h14"></path>
+                    <path d="m13 6 6 6-6 6"></path>
+                  </svg>
+                </a>
+                <div class="flex items-center gap-2">
+                  <a href="https://twitter.com/intent/tweet?text=WebMCP%3A%20The%20Future%20of%20Web%20Interaction%20or%20Just%20Hype%3F%20Why%20It's%20Not%20Production-Ready%20Yet&url=https%3A%2F%2Finfinitilogicsolutions.github.io%2Fposts%2Fwebmcp-future-or-hype-not-production-ready-yet.html" target="_blank" rel="noreferrer" class="p-2 rounded-full share-button" aria-label="Share on X">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2-2.3-.1-4.2-1.5-4.9-3.6.7.1 1.5.1 2.2-.1C3 12.7 1.6 10.6 2 8.2c.8.4 1.6.6 2.5.6C2.8 7.7 2 5.1 3.5 3.6 5.8 6.2 9.1 7.7 12.7 7.5c-.7-3.1 2-5.2 4.6-3.8 1.1-.2 2.2-.6 3.1-1.2-.3 1.1-1.1 2-2 2.6 1-.1 2-.4 3-.8z"></path>
+                    </svg>
+                  </a>
+                  <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Finfinitilogicsolutions.github.io%2Fposts%2Fwebmcp-future-or-hype-not-production-ready-yet.html" target="_blank" rel="noreferrer" class="p-2 rounded-full share-button" aria-label="Share on LinkedIn">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                      <rect width="4" height="12" x="2" y="9"></rect>
+                      <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
+                  </a>
+                  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Finfinitilogicsolutions.github.io%2Fposts%2Fwebmcp-future-or-hype-not-production-ready-yet.html" target="_blank" rel="noreferrer" class="p-2 rounded-full share-button" aria-label="Share on Facebook">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                    </svg>
+                  </a>
+                  <button class="p-2 rounded-full share-button" type="button" aria-label="Copy link" data-share-copy="true" data-share-slug="webmcp-future-or-hype-not-production-ready-yet" data-share-title="WebMCP%3A%20The%20Future%20of%20Web%20Interaction%20or%20Just%20Hype%3F%20Why%20It's%20Not%20Production-Ready%20Yet">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                      <rect x="2" y="2" width="13" height="13" rx="2"></rect>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="group" data-blog-category="General">
+      <div class="p-6 bg-card rounded-2xl border border-border hover:border-primary/30 transition-all hover:shadow-xl hover:shadow-primary/5">
+        <div class="flex flex-col md:flex-row md:items-start gap-6">
+          <div class="blog-cover">
+            <img src="/assets/img/thumbs/default-24b9305099-480.webp" srcset="/assets/img/thumbs/default-24b9305099-160.webp 160w, /assets/img/thumbs/default-24b9305099-480.webp 480w, /assets/img/thumbs/default-24b9305099-960.webp 960w" sizes="(max-width:640px) 72px, (min-width:1024px) 200px, 160px" width="960" height="540" alt="" class="blog-cover-img" loading="lazy" decoding="async">
+          </div>
+          <div class="flex-1">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="text-xs font-mono px-2 py-1 bg-primary/10 text-primary rounded-full uppercase tracking-wider">General</span>
+              <span class="text-sm text-muted-foreground flex items-center gap-1">
+                <svg viewBox="0 0 24 24" aria-hidden="true" class="w-3.5 h-3.5" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path d="M12 6v6l4 2"></path>
+                </svg>
+                1 min read
+              </span>
+            </div>
+            <h2 class="font-display text-2xl font-semibold mb-2">
+              <a href="https://infinitilogicsolutions.github.io/posts/daily-changelog-2026-02-02.html" class="group-hover:text-primary transition-colors">Daily Change Log — February 2, 2026</a>
+            </h2>
+            <p class="text-muted-foreground mb-4">A quick recap of today’s updates: social sharing, CODEOWNERS, and automated post generation.</p>
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+              <span class="text-sm text-muted-foreground">Feb 2, 2026</span>
+              <div class="flex flex-wrap items-center gap-3">
+                <a href="https://infinitilogicsolutions.github.io/posts/daily-changelog-2026-02-02.html" class="text-sm font-medium flex items-center gap-1 text-primary">
+                  Read Article
+                  <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12h14"></path>
+                    <path d="m13 6 6 6-6 6"></path>
+                  </svg>
+                </a>
+                <div class="flex items-center gap-2">
+                  <a href="https://twitter.com/intent/tweet?text=Daily%20Change%20Log%20%E2%80%94%20February%202%2C%202026&url=https%3A%2F%2Finfinitilogicsolutions.github.io%2Fposts%2Fdaily-changelog-2026-02-02.html" target="_blank" rel="noreferrer" class="p-2 rounded-full share-button" aria-label="Share on X">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2-2.3-.1-4.2-1.5-4.9-3.6.7.1 1.5.1 2.2-.1C3 12.7 1.6 10.6 2 8.2c.8.4 1.6.6 2.5.6C2.8 7.7 2 5.1 3.5 3.6 5.8 6.2 9.1 7.7 12.7 7.5c-.7-3.1 2-5.2 4.6-3.8 1.1-.2 2.2-.6 3.1-1.2-.3 1.1-1.1 2-2 2.6 1-.1 2-.4 3-.8z"></path>
+                    </svg>
+                  </a>
+                  <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Finfinitilogicsolutions.github.io%2Fposts%2Fdaily-changelog-2026-02-02.html" target="_blank" rel="noreferrer" class="p-2 rounded-full share-button" aria-label="Share on LinkedIn">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                      <rect width="4" height="12" x="2" y="9"></rect>
+                      <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
+                  </a>
+                  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Finfinitilogicsolutions.github.io%2Fposts%2Fdaily-changelog-2026-02-02.html" target="_blank" rel="noreferrer" class="p-2 rounded-full share-button" aria-label="Share on Facebook">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                    </svg>
+                  </a>
+                  <button class="p-2 rounded-full share-button" type="button" aria-label="Copy link" data-share-copy="true" data-share-slug="daily-changelog-2026-02-02" data-share-title="Daily%20Change%20Log%20%E2%80%94%20February%202%2C%202026">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                      <rect x="2" y="2" width="13" height="13" rx="2"></rect>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="group" data-blog-category="Announcement">
+      <div class="p-6 bg-card rounded-2xl border border-border hover:border-primary/30 transition-all hover:shadow-xl hover:shadow-primary/5">
+        <div class="flex flex-col md:flex-row md:items-start gap-6">
+          <div class="blog-cover">
+            <img src="/assets/img/thumbs/default-24b9305099-480.webp" srcset="/assets/img/thumbs/default-24b9305099-160.webp 160w, /assets/img/thumbs/default-24b9305099-480.webp 480w, /assets/img/thumbs/default-24b9305099-960.webp 960w" sizes="(max-width:640px) 72px, (min-width:1024px) 200px, 160px" width="960" height="540" alt="" class="blog-cover-img" loading="lazy" decoding="async">
+          </div>
+          <div class="flex-1">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="text-xs font-mono px-2 py-1 bg-primary/10 text-primary rounded-full uppercase tracking-wider">Announcement</span>
+              <span class="text-sm text-muted-foreground flex items-center gap-1">
+                <svg viewBox="0 0 24 24" aria-hidden="true" class="w-3.5 h-3.5" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path d="M12 6v6l4 2"></path>
+                </svg>
+                1 min read
+              </span>
+            </div>
+            <h2 class="font-display text-2xl font-semibold mb-2">
+              <a href="https://infinitilogicsolutions.github.io/posts/launching-infinitilogicsolutions-v1.html" class="group-hover:text-primary transition-colors">Launching InfinitiLogicSolutions v1</a>
+            </h2>
+            <p class="text-muted-foreground mb-4">Announcing the initial release of InfinitiLogicSolutions, a lightweight portfolio and blog with PWA and offline support.</p>
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+              <span class="text-sm text-muted-foreground">Jan 8, 2026</span>
+              <div class="flex flex-wrap items-center gap-3">
+                <a href="https://infinitilogicsolutions.github.io/posts/launching-infinitilogicsolutions-v1.html" class="text-sm font-medium flex items-center gap-1 text-primary">
+                  Read Article
+                  <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12h14"></path>
+                    <path d="m13 6 6 6-6 6"></path>
+                  </svg>
+                </a>
+                <div class="flex items-center gap-2">
+                  <a href="https://twitter.com/intent/tweet?text=Launching%20InfinitiLogicSolutions%20v1&url=https%3A%2F%2Finfinitilogicsolutions.github.io%2Fposts%2Flaunching-infinitilogicsolutions-v1.html" target="_blank" rel="noreferrer" class="p-2 rounded-full share-button" aria-label="Share on X">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2-2.3-.1-4.2-1.5-4.9-3.6.7.1 1.5.1 2.2-.1C3 12.7 1.6 10.6 2 8.2c.8.4 1.6.6 2.5.6C2.8 7.7 2 5.1 3.5 3.6 5.8 6.2 9.1 7.7 12.7 7.5c-.7-3.1 2-5.2 4.6-3.8 1.1-.2 2.2-.6 3.1-1.2-.3 1.1-1.1 2-2 2.6 1-.1 2-.4 3-.8z"></path>
+                    </svg>
+                  </a>
+                  <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Finfinitilogicsolutions.github.io%2Fposts%2Flaunching-infinitilogicsolutions-v1.html" target="_blank" rel="noreferrer" class="p-2 rounded-full share-button" aria-label="Share on LinkedIn">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                      <rect width="4" height="12" x="2" y="9"></rect>
+                      <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
+                  </a>
+                  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Finfinitilogicsolutions.github.io%2Fposts%2Flaunching-infinitilogicsolutions-v1.html" target="_blank" rel="noreferrer" class="p-2 rounded-full share-button" aria-label="Share on Facebook">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                    </svg>
+                  </a>
+                  <button class="p-2 rounded-full share-button" type="button" aria-label="Copy link" data-share-copy="true" data-share-slug="launching-infinitilogicsolutions-v1" data-share-title="Launching%20InfinitiLogicSolutions%20v1">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                      <rect x="2" y="2" width="13" height="13" rx="2"></rect>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div><!-- /listing:blogGrid -->
     </section>
 
     <section class="border-t border-border bg-gradient-to-br from-primary/5 via-secondary/5 to-blue-500/5">
@@ -144,11 +707,13 @@
   <script defer src="assets/js/one-tap.js"></script>
   <script defer src="assets/js/personalizer.js"></script>
   <script defer src="assets/js/tracker.js"></script>
-  <script defer src="assets/js/article-renderer.js"></script>
+  <script defer src="assets/js/listing-renderer.js"></script>
   <script defer src="assets/js/app.js"></script>
   <script defer src="assets/js/typewriter.js"></script>
   <script defer src="assets/js/pwa.js"></script>
   <script defer src="assets/js/notifications.js"></script>
   <script defer src="/assets/js/page-speed.js"></script>
+<script id="blogListingData" type="application/json">[{"id":20,"type":"blog","title":"I Built a Little Photo Studio That Keeps the Editing in Your Browser","slug":"building-canvas-lab-studio","date":"2026-10-10T00:00:00.000Z","summary":"Canvas Lab Studio combines Photoroom-inspired photo workflows with visual composition ideas from ArtCraft, using independent code and a local-first first release.","coverImage":"assets/img/og/default.jpg","thumbnail":{"src":"/assets/img/thumbs/default-24b9305099-480.webp","srcset":"/assets/img/thumbs/default-24b9305099-160.webp 160w, /assets/img/thumbs/default-24b9305099-480.webp 480w, /assets/img/thumbs/default-24b9305099-960.webp 960w","width":960,"height":540},"tags":["Software Architecture","JavaScript","Local-First","Canvas"],"active":true,"featured":false,"readTime":"4 min read"},{"id":18,"type":"blog","title":"I Built a QR Generator and Reader That Work in One HTML File","slug":"building-qr-lab-one-html-file","date":"2026-10-09T00:00:00.000Z","summary":"How QR Lab keeps QR generation, reading and image exports inside the browser, while using device APIs carefully for contacts and current location.","coverImage":"assets/img/og/default.jpg","thumbnail":{"src":"/assets/img/thumbs/default-24b9305099-480.webp","srcset":"/assets/img/thumbs/default-24b9305099-160.webp 160w, /assets/img/thumbs/default-24b9305099-480.webp 480w, /assets/img/thumbs/default-24b9305099-960.webp 960w","width":960,"height":540},"tags":["Software Architecture","JavaScript","Local-First","GitHub Pages"],"active":true,"featured":false,"readTime":"6 min read"},{"id":16,"type":"blog","title":"I Built a Kanban Board That Keeps Its Data in the Browser","slug":"building-dayboard-local-kanban","date":"2026-10-06T00:00:00.000Z","summary":"How a simple one-file Kanban app combines local saving, card timers, independent bookmarkable boards, and portable backups without a task-management backend.","coverImage":"assets/img/og/dayboard-blog.jpg","thumbnail":{"src":"/assets/img/thumbs/dayboard-blog-5095ef153e-480.webp","srcset":"/assets/img/thumbs/dayboard-blog-5095ef153e-160.webp 160w, /assets/img/thumbs/dayboard-blog-5095ef153e-480.webp 480w, /assets/img/thumbs/dayboard-blog-5095ef153e-960.webp 960w","width":960,"height":540},"tags":["Software Architecture","JavaScript","Local-First","GitHub Pages"],"active":true,"featured":false,"readTime":"5 min read"},{"id":14,"type":"blog","title":"I Built a Document Scanner in One HTML File","slug":"building-paperlens-single-html-document-scanner","date":"2026-10-05T00:00:00.000Z","summary":"How Paperlens grew from a one-file iPhone document scanner into a local-first tool for two-sided IDs and passport/visa photo print sheets—with exact print sizing and a pastel studio.","coverImage":"assets/img/og/paperlens.jpg","thumbnail":{"src":"/assets/img/thumbs/paperlens-e2fb876f59-480.webp","srcset":"/assets/img/thumbs/paperlens-e2fb876f59-160.webp 160w, /assets/img/thumbs/paperlens-e2fb876f59-480.webp 480w, /assets/img/thumbs/paperlens-e2fb876f59-960.webp 960w","width":960,"height":540},"tags":["Software Architecture","JavaScript","Canvas","Local-First","GitHub Pages"],"active":true,"featured":false,"readTime":"9 min read"},{"id":12,"type":"blog","title":"I Put 147,478 Words in a Parquet File and Queried It From the Browser","slug":"querying-wordnet-parquet-duckdb-browser","date":"2026-09-25T00:00:00.000Z","summary":"How I built a $0-backend dictionary using Princeton WordNet, Parquet, Apache Arrow, DuckDB-Wasm, browser storage, and GitHub Pages.","coverImage":"assets/img/og/default.jpg","thumbnail":{"src":"/assets/img/thumbs/default-24b9305099-480.webp","srcset":"/assets/img/thumbs/default-24b9305099-160.webp 160w, /assets/img/thumbs/default-24b9305099-480.webp 480w, /assets/img/thumbs/default-24b9305099-960.webp 960w","width":960,"height":540},"tags":["DuckDB","Parquet","Apache Arrow","WebAssembly","Software Architecture","Local-First"],"active":true,"featured":false,"readTime":"4 min read"},{"id":10,"type":"blog","title":"Visitor Intelligence v2: 67 Signals, Bot Scoring, and UX Personalization Without a Backend","slug":"visitor-intelligence-v2","date":"2026-03-12T00:00:00.000Z","summary":"How the Visitor Intelligence system logs 67 client signals, scores bots, and personalizes UX on a static site using Google Sheets.","coverImage":"/assets/img/og/visitor-intelligence-v2.png","thumbnail":null,"tags":["Visitor Intelligence","Analytics","Bot Detection","UX Personalization","Google Sheets","Privacy"],"active":true,"featured":false,"readTime":"3 min read"},{"id":9,"type":"blog","title":"WebMCP: The Future of Web Interaction or Just Hype? Why It's Not Production-Ready Yet","slug":"webmcp-future-or-hype-not-production-ready-yet","date":"2026-03-07T00:00:00.000Z","summary":"WebMCP makes websites feel like native tools for AI agents, but as of March 2026 it's still an early preview with serious browser, security, and scalability gaps.","coverImage":"assets/img/og/webmcp.png","thumbnail":{"src":"/assets/img/thumbs/webmcp-6243f8e71b-480.webp","srcset":"/assets/img/thumbs/webmcp-6243f8e71b-160.webp 160w, /assets/img/thumbs/webmcp-6243f8e71b-480.webp 480w, /assets/img/thumbs/webmcp-6243f8e71b-960.webp 960w","width":960,"height":540},"tags":["WebMCP","AI Agents","Web Standards","Browser APIs","Security","Developer Experience"],"active":true,"featured":false,"readTime":"2 min read"},{"id":8,"type":"blog","title":"Daily Change Log — February 2, 2026","slug":"daily-changelog-2026-02-02","date":"2026-02-02T00:00:00.000Z","summary":"A quick recap of today’s updates: social sharing, CODEOWNERS, and automated post generation.","coverImage":"assets/img/og/default.jpg","thumbnail":{"src":"/assets/img/thumbs/default-24b9305099-480.webp","srcset":"/assets/img/thumbs/default-24b9305099-160.webp 160w, /assets/img/thumbs/default-24b9305099-480.webp 480w, /assets/img/thumbs/default-24b9305099-960.webp 960w","width":960,"height":540},"tags":[],"active":true,"featured":false,"readTime":"1 min read"},{"id":7,"type":"blog","title":"Launching InfinitiLogicSolutions v1","slug":"launching-infinitilogicsolutions-v1","date":"2026-01-08T00:00:00.000Z","summary":"Announcing the initial release of InfinitiLogicSolutions, a lightweight portfolio and blog with PWA and offline support.","coverImage":"assets/img/og/default.jpg","thumbnail":{"src":"/assets/img/thumbs/default-24b9305099-480.webp","srcset":"/assets/img/thumbs/default-24b9305099-160.webp 160w, /assets/img/thumbs/default-24b9305099-480.webp 480w, /assets/img/thumbs/default-24b9305099-960.webp 960w","width":960,"height":540},"tags":["Announcement","PWA","GitHub Pages","Offline-First","JavaScript"],"active":true,"featured":false,"readTime":"1 min read"}]</script>
+<script id="postNotificationData" type="application/json">[{"type":"blog","title":"I Built a Little Photo Studio That Keeps the Editing in Your Browser","summary":"Canvas Lab Studio combines Photoroom-inspired photo workflows with visual composition ideas from ArtCraft, using independent code and a local-first first release.","date":"2026-10-10T00:00:00.000Z"},{"type":"project","title":"Canvas Lab Studio — A Little Creative Studio in Your Browser","summary":"Layer photos, make manual cutouts, style backgrounds, add text and drawings, and export images with a mobile-friendly editor that keeps your project on your device.","date":"2026-10-10T00:00:00.000Z"},{"type":"blog","title":"I Built a QR Generator and Reader That Work in One HTML File","summary":"How QR Lab keeps QR generation, reading and image exports inside the browser, while using device APIs carefully for contacts and current location.","date":"2026-10-09T00:00:00.000Z"},{"type":"project","title":"QR Lab — A Private QR Generator and Reader in One HTML File","summary":"Generate and read QR codes for Wi-Fi, contacts, links, locations and more. Customize colors and characters, export PNG or SVG, and keep the QR processing on your device.","date":"2026-10-09T00:00:00.000Z"},{"type":"blog","title":"I Built a Kanban Board That Keeps Its Data in the Browser","summary":"How a simple one-file Kanban app combines local saving, card timers, independent bookmarkable boards, and portable backups without a task-management backend.","date":"2026-10-06T00:00:00.000Z"},{"type":"project","title":"Dayboard — A Local-First Kanban Board in One HTML File","summary":"A simple browser Kanban board with expandable cards, due dates, persistent timers, separate bookmarkable boards, and JSON or HTML backups. Your tasks stay on your device.","date":"2026-10-06T00:00:00.000Z"},{"type":"blog","title":"I Built a Document Scanner in One HTML File","summary":"How Paperlens grew from a one-file iPhone document scanner into a local-first tool for two-sided IDs and passport/visa photo print sheets—with exact print sizing and a pastel studio.","date":"2026-10-05T00:00:00.000Z"},{"type":"project","title":"Paperlens — Document Scans, Two-Sided IDs, and Passport Photo Sheets","summary":"A local-first browser scanner with editable document corners, front/back ID capture, passport and visa photo print sizes, and 6 × 4-inch photo sheets. One HTML file, hosted on GitHub Pages.","date":"2026-10-05T00:00:00.000Z"},{"type":"project","title":"Infiniti Dictionary — A Browser-Native WordNet Experiment","summary":"147,478 searchable WordNet words in a 31.8 MB Parquet file, queried with DuckDB-Wasm in the browser with no application API or database server.","date":"2026-09-25T00:00:00.000Z"},{"type":"blog","title":"I Put 147,478 Words in a Parquet File and Queried It From the Browser","summary":"How I built a $0-backend dictionary using Princeton WordNet, Parquet, Apache Arrow, DuckDB-Wasm, browser storage, and GitHub Pages.","date":"2026-09-25T00:00:00.000Z"},{"type":"blog","title":"Visitor Intelligence v2: 67 Signals, Bot Scoring, and UX Personalization Without a Backend","summary":"How the Visitor Intelligence system logs 67 client signals, scores bots, and personalizes UX on a static site using Google Sheets.","date":"2026-03-12T00:00:00.000Z"},{"type":"blog","title":"WebMCP: The Future of Web Interaction or Just Hype? Why It's Not Production-Ready Yet","summary":"WebMCP makes websites feel like native tools for AI agents, but as of March 2026 it's still an early preview with serious browser, security, and scalability gaps.","date":"2026-03-07T00:00:00.000Z"},{"type":"blog","title":"Daily Change Log — February 2, 2026","summary":"A quick recap of today’s updates: social sharing, CODEOWNERS, and automated post generation.","date":"2026-02-02T00:00:00.000Z"},{"type":"blog","title":"Launching InfinitiLogicSolutions v1","summary":"Announcing the initial release of InfinitiLogicSolutions, a lightweight portfolio and blog with PWA and offline support.","date":"2026-01-08T00:00:00.000Z"},{"type":"blog","title":"Getting Started with Modern JavaScript","summary":"A comprehensive guide to modern JavaScript features including ES6+, async/await, and modules.","date":"2026-01-03T00:00:00.000Z"},{"type":"project","title":"Personal Portfolio Website","summary":"A lightweight portfolio and blog that runs offline once cached, installs as a PWA, and stays free to host on GitHub Pages.","date":"2026-01-01T00:00:00.000Z"}]</script>
 </body>
 </html>
