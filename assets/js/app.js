@@ -161,67 +161,37 @@ function bindShareCopyButtons(container) {
   });
 }
 
-function createRecentProjectCard(project, index) {
-  const category = getCategory(project);
-  const year = formatYear(project.date);
-  const gradient = getProjectGradient(index);
-  const postUrl = buildPostUrl(project.slug);
-
-  return `
-    <a href="${postUrl}">
-      <div class="cursor-pointer">
-        <div class="aspect-[4/3] bg-gradient-to-br ${gradient} rounded-2xl mb-4 flex items-center justify-center relative overflow-hidden group-hover:scale-[1.02] transition-transform">
-          <span class="font-display text-6xl font-bold text-white/20">${String(index + 1).padStart(2, '0')}</span>
-          <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors"></div>
-        </div>
-        <div class="flex items-center gap-2 mb-2">
-          <span class="text-xs font-mono px-2 py-1 bg-muted rounded-full text-muted-foreground">${category}</span>
-          <span class="text-xs text-muted-foreground">${year}</span>
-        </div>
-        <h3 class="font-display text-xl font-medium group-hover:text-primary transition-colors">${project.title}</h3>
-      </div>
-    </a>
-  `;
+// Explicit routes only: unknown/future projects retain the article fallback.
+const PROJECT_APPS = {
+  'canvas-lab-studio': ['/canvas-lab/', 'Canvas Lab Studio'],
+  'qr-lab-offline-generator-reader': ['/qr/', 'QR Lab'],
+  'dayboard-local-kanban': ['/cards/', 'Dayboard'],
+  'paperlens-browser-document-scanner': ['/scan/', 'Paperlens']
+};
+function projectText(value) {
+  return String(value || '').replace(/[&<>"']/g, char => ({'&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'}[char]));
 }
-
-function createFeaturedProjectCard(project, index) {
-  const category = getCategory(project);
-  const year = formatYear(project.date);
-  const gradient = getProjectGradient(index);
-  const postUrl = buildPostUrl(project.slug);
-
-  return `
-    <article class="group">
-      <a href="${postUrl}">
-        <div class="cursor-pointer">
-          <div class="aspect-video bg-gradient-to-br ${gradient} rounded-2xl relative overflow-hidden mb-5 group-hover:scale-[1.02] transition-transform shadow-lg">
-            <div class="absolute inset-0 flex items-center justify-center">
-              <span class="font-display text-8xl font-bold text-white/20">${String(index + 1).padStart(2, '0')}</span>
-            </div>
-            <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-          </div>
-          <div>
-            <div class="flex items-start justify-between mb-3">
-              <div>
-                <span class="text-xs font-mono text-primary uppercase tracking-wider px-2 py-1 bg-primary/10 rounded-full">${category}</span>
-                <h2 class="font-display text-2xl font-semibold mt-3 group-hover:text-primary transition-colors">${project.title}</h2>
-              </div>
-              <span class="font-mono text-sm text-muted-foreground mt-1">${year}</span>
-            </div>
-            <p class="text-muted-foreground mb-4 line-clamp-2">${project.summary || ''}</p>
-            <div class="flex items-center gap-1 text-sm font-medium text-primary">
-              View Project
-              <svg viewBox="0 0 24 24" aria-hidden="true" class="w-4 h-4" stroke="currentColor" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M5 12h14"></path>
-                <path d="m13 6 6 6-6 6"></path>
-              </svg>
-            </div>
-          </div>
-        </div>
-      </a>
-    </article>
-  `;
+function createProjectCard(project, index, featured) {
+  const app = PROJECT_APPS[project.slug];
+  const title = projectText(app ? app[1] : project.title);
+  const articleUrl = buildPostUrl(project.slug);
+  const destination = app ? app[0] : articleUrl;
+  const cover = String(project.coverImage || '');
+  // Use existing project imagery when available, retaining a compact fallback.
+  const image = /^assets\/img\/[a-zA-Z0-9_./-]+$/.test(cover) && !cover.endsWith('/default.jpg') && !cover.includes('..')
+    ? `<img src="/${cover}" alt="" width="640" height="360" loading="lazy" decoding="async" class="project-cover">`
+    : `<div class="project-symbol" aria-hidden="true">${projectText(app ? app[1] : getCategory(project))}</div>`;
+  const heading = featured ? 'h2' : 'h3';
+  return `<article class="project-card group">
+    <a href="${destination}" class="project-preview" aria-label="${app ? 'Open ' : 'Read about '}${title}">${image}</a>
+    <div class="flex items-center gap-2 mb-2"><span class="text-xs font-mono text-primary">${projectText(getCategory(project))}</span><span class="text-xs text-muted-foreground">${formatYear(project.date)}</span></div>
+    <${heading} class="font-display text-2xl font-semibold"><a href="${destination}">${title}</a></${heading}>
+    <p class="text-muted-foreground mt-2 line-clamp-2">${projectText(project.summary)}</p>
+    <div class="project-actions">${app ? `<a class="project-open" href="${app[0]}" aria-label="Open ${title}">Open app <span aria-hidden="true">↗</span></a>` : ''}<a href="${articleUrl}" aria-label="Read about ${title}">${app ? 'About this app' : 'View project'}</a></div>
+  </article>`;
 }
+function createRecentProjectCard(project, index) { return createProjectCard(project, index, false); }
+function createFeaturedProjectCard(project, index) { return createProjectCard(project, index, true); }
 
 function createOtherProjectCard(project, index) {
   const category = getCategory(project);
