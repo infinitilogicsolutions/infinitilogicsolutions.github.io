@@ -196,3 +196,19 @@ The footer displays this visit’s navigation-to-load duration using Navigation 
 - Validation: existing QR contacts, location and offline regressions pass; inline JavaScript parses. Browser checks cover 320px layouts for home, projects, QR article, QR and Dayboard; QR generation/settings and Dayboard create/move/reload persistence pass. Physical iPhone Safari, keyboard, camera and Home Screen testing remain device checks.
 
 What's next? The user's requested next step is safe mobile/touch improvement. This branch is ready for PR review; physical-device acceptance precedes release.
+
+
+## 2026-10-21 — Stable, lighter portfolio listings
+
+- Preserve the Apple-inspired direction: clear hierarchy, pastel surfaces, readable contrast, 44px touch controls, reduced-motion support and predictable layouts.
+- Generate home project cards, featured/other projects, blog articles and category counts directly into HTML using `assets/js/listing-renderer.js`. JavaScript enhances existing blog rows by toggling visibility; profile detection no longer replaces listings or resets the selected category. Publish dates use UTC calendar dates consistently.
+- `npm run generate` now creates hashed 160/480/960px WebP thumbnails with Sharp, rebuilds article and listing HTML/metadata, and trims unused compiled CSS conservatively. Original article/social images remain available. The 2.35MB Visitor Intelligence image now has 4.4KB/32KB/87KB variants.
+- Preserve the original compiled stylesheet in `scripts/styles-source.css`; the PostCSS build removes only unreferenced utility selectors, retaining base styles, theme variables, keyframes, properties and dynamic classes found in source templates. Pages load one combined `assets/css/site.css`; utility CSS falls from 109,803 to 39,903 bytes. Native app files keep their standalone styles and data logic.
+- Media slots reserve dimensions; decorative glows cannot enlarge the viewport. Blog metadata wraps on narrow screens. Introductory text colors are darker while maintaining the pastel palette. The navigation identity slot reserves equal geometry before/after personalization.
+- Cached identity restores without loading Google. An explicit Personalize control opens a dialog containing Google's official rendered sign-in button; no automatic SDK load or FedCM prompt during ordinary page loads. Provider load failure is retryable, and credential storage/event handling remains unchanged. OAuth provider configuration and real-account consent require production verification.
+- New-post notification checks use embedded initial metadata on listing pages and the small index on subsequent checks, rather than downloading full article bodies. Notifications and offline functionality remain available.
+- Advance the portfolio cache to v12, precaching the combined stylesheet and shared listing renderer; preserve project-specific cache ownership. GitHub Pages controls HTTP cache lifetimes; versioned thumbnail names and the existing service worker improve repeat access without claiming custom response headers.
+- Nightly/push generation now commits updated listings, thumbnails and CSS. A PR validation workflow runs generation, listing/sign-in tests, existing QR regressions and checks that generated artifacts match tracked outputs.
+- Validation includes repeatable generation, initial HTML content/thumbnail references, category filtering without DOM replacement, profile-event stability, no initial listing fetch, lazy SDK loading/retry/cache restoration, existing QR contact/location/offline suites and browser width checks. Actual PageSpeed scores must be measured after deployment; local responsive frames are not physical iPhone Safari tests.
+
+What's next? The user's requested next step is performance improvement while retaining Apple design principles. Review the PR, then rerun the provided mobile/desktop PageSpeed reports after deployment.

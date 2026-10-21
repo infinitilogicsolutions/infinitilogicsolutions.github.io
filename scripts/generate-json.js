@@ -3,6 +3,9 @@ const path = require('path');
 const { marked } = require('marked');
 const yaml = require('js-yaml');
 const renderArticle = require('../assets/js/article-renderer.js');
+const listings = require('../assets/js/listing-renderer.js');
+const thumbnails = JSON.parse(fs.readFileSync(path.join(__dirname,'../data/thumbnails.json'),'utf8'));
+
 
 const POSTS_DIR = path.join(__dirname, '..', 'posts');
 const OUTPUT_FILE = path.join(__dirname, '..', 'data', 'posts.json');
@@ -153,10 +156,49 @@ function processMarkdownFile(filePath) {
         summary: frontmatter.summary || '',
         contentHtml: contentHtml.trim(),
         coverImage: coverImage || 'opengraph.jpg',
+        thumbnail: thumbnails[coverImage] || null,
         tags: frontmatter.tags || [],
         active: isActive,
         featured: frontmatter.featured === true || String(frontmatter.featured).toLowerCase() === 'true'
     };
+}
+
+// Named end markers make regeneration safe even when cards contain nested divs.
+function replaceListing(html,id,markup) {
+ const opening=new RegExp('<div id="'+id+'"[^>]*>').exec(html);
+ if(!opening)throw new Error('Missing listing container: '+id);
+ const start=opening.index,endMarker='<!-- /listing:'+id+' -->';
+ const markedEnd=html.indexOf(endMarker,start);
+ const end=markedEnd>=0?markedEnd+endMarker.length:html.indexOf('</div>',start)+6;
+ const tag=opening[0].replace(/ data-prerendered="[^"]*"/g,'').replace(/>$/,' data-prerendered="true">');
+ return html.slice(0,start)+tag+markup+'</div>'+endMarker+html.slice(end);
+}
+function generateListings(index) {
+ const projects=index.filter(post=>post.type==='project'&&post.active!==false);
+ const explicit=projects.filter(post=>post.featured===true);
+ const featured=explicit.length?explicit:projects.slice(0,2);
+ const others=projects.filter(post=>!featured.includes(post));
+ const blog=index.filter(post=>post.type==='blog'&&post.active!==false);
+ const counts={};blog.forEach(post=>{const category=listings.getCategory(post);counts[category]=(counts[category]||0)+1});
+ const categories=[['All',blog.length],...Object.keys(counts).sort().map(name=>[name,counts[name]])];
+ for(const name of ['index.html','projects.html','blog.html']) {
+  const file=path.join(__dirname,'..',name);let html=fs.readFileSync(file,'utf8');
+  if(name==='index.html')html=replaceListing(html,'recentProjectsGrid',projects.slice(0,3).map((post,i)=>listings.createRecentProjectCard(post,i)).join(''));
+  if(name==='projects.html'){
+   html=replaceListing(html,'featuredProjectsGrid',featured.map((post,i)=>listings.createFeaturedProjectCard(post,i)).join(''));
+   html=replaceListing(html,'projectsGrid',others.map((post,i)=>listings.createOtherProjectCard(post,i)).join(''));
+  }
+  if(name==='blog.html'){
+   html=replaceListing(html,'blogCategories',categories.map(([name,count])=>`<button type="button" class="blog-category-pill px-4 py-2 text-sm font-medium rounded-full transition-all" data-blog-category="${escapeHtml(name)}" data-active="${name==='All'}" aria-pressed="${name==='All'}">${escapeHtml(name)} (${count})</button>`).join(''));
+   html=replaceListing(html,'blogGrid',blog.map((post,i)=>listings.createBlogCard(post,i)).join(''));
+   html=html.replace(/<script id="blogListingData" type="application\/json">[\s\S]*?<\/script>\n?/,'');
+   html=html.replace('</body>',`<script id="blogListingData" type="application/json">${JSON.stringify(blog).replace(/</g,'\\u003c')}</script>\n</body>`);
+  }
+  html=html.replace(/<script id="postNotificationData" type="application\/json">[\s\S]*?<\/script>\n?/,'');
+  const notifications=index.map(({type,title,summary,date})=>({type,title,summary,date}));
+  html=html.replace('</body>',`<script id="postNotificationData" type="application/json">${JSON.stringify(notifications).replace(/</g,'\\u003c')}</script>\n</body>`);
+  fs.writeFileSync(file,html.replace(/[ \t]+$/gm,''));
+ }
 }
 
 // Main function
@@ -171,7 +213,7 @@ function generatePostsJson() {
     }
     
     const files = fs.readdirSync(POSTS_DIR)
-        .filter(file => file.endsWith('.md'))
+        .filter(file => file.endsWith('.md') && file !== 'README.md')
         .map(file => path.join(POSTS_DIR, file));
     
     if (files.length === 0) {
@@ -242,6 +284,7 @@ function generatePostsJson() {
         return { ...metadata, readTime: `${Math.max(1, Math.round(words / 200))} min read` };
     });
     fs.writeFileSync(path.join(outputDir, 'posts-index.json'), JSON.stringify(index));
+    generateListings(index);
     console.log(`✅ Generated ${OUTPUT_FILE} with ${publishedPosts.length} post(s)`);
     console.log(`📅 Posts are checked nightly for scheduled publishing`);
 }

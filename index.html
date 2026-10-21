@@ -21,8 +21,7 @@
   <meta name="apple-mobile-web-app-title" content="InfinitiLogicSolutions">
 
 
-  <link rel="stylesheet" href="assets/css/styles.css">
-  <link rel="stylesheet" href="assets/css/custom.css">
+  <link rel="stylesheet" href="assets/css/site.css">
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/site-icon-32-v2.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/site-icon-16-v2.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/site-icon-180-v2.png">
@@ -48,6 +47,7 @@
           <a href="blog.html" class="relative px-4 py-2 text-sm font-medium transition-colors rounded-full text-muted-foreground hover:text-foreground">Blog</a>
         </li>
       </ul>
+    <div class="nav-identity" data-nav-identity="true"><span class="nav-identity-placeholder">Anonymous visitor</span></div>
     </nav>
   </header>
 
@@ -112,9 +112,25 @@
             </a>
           </div>
 
-          <div id="recentProjectsGrid" class="grid md:grid-cols-3 gap-6">
-            <p class="text-muted-foreground">Loading projects...</p>
-          </div>
+          <div id="recentProjectsGrid" class="grid md:grid-cols-3 gap-6" data-prerendered="true"><article class="project-card group">
+    <a href="/canvas-lab/" class="project-preview" aria-label="Open Canvas Lab Studio"><div class="project-symbol" aria-hidden="true">Canvas Lab Studio</div></a>
+    <div class="flex items-center gap-2 mb-2"><span class="text-xs font-mono text-primary">JavaScript</span><span class="text-xs text-muted-foreground">2026</span></div>
+    <h3 class="font-display text-2xl font-semibold"><a href="/canvas-lab/">Canvas Lab Studio</a></h3>
+    <p class="text-muted-foreground mt-2 line-clamp-2">Layer photos, make manual cutouts, style backgrounds, add text and drawings, and export images with a mobile-friendly editor that keeps your project on your device.</p>
+    <div class="project-actions"><a class="project-open" href="/canvas-lab/" aria-label="Open Canvas Lab Studio">Open app <span aria-hidden="true">↗</span></a><a href="https://infinitilogicsolutions.github.io/posts/canvas-lab-studio.html" aria-label="Read about Canvas Lab Studio">About this app</a></div>
+  </article><article class="project-card group">
+    <a href="/qr/" class="project-preview" aria-label="Open QR Lab"><div class="project-symbol" aria-hidden="true">QR Lab</div></a>
+    <div class="flex items-center gap-2 mb-2"><span class="text-xs font-mono text-primary">JavaScript</span><span class="text-xs text-muted-foreground">2026</span></div>
+    <h3 class="font-display text-2xl font-semibold"><a href="/qr/">QR Lab</a></h3>
+    <p class="text-muted-foreground mt-2 line-clamp-2">Generate and read QR codes for Wi-Fi, contacts, links, locations and more. Customize colors and characters, export PNG or SVG, and keep the QR processing on your device.</p>
+    <div class="project-actions"><a class="project-open" href="/qr/" aria-label="Open QR Lab">Open app <span aria-hidden="true">↗</span></a><a href="https://infinitilogicsolutions.github.io/posts/qr-lab-offline-generator-reader.html" aria-label="Read about QR Lab">About this app</a></div>
+  </article><article class="project-card group">
+    <a href="/cards/" class="project-preview" aria-label="Open Dayboard"><img src="/assets/img/thumbs/dayboard-project-fe9cafc03d-480.webp" srcset="/assets/img/thumbs/dayboard-project-fe9cafc03d-160.webp 160w, /assets/img/thumbs/dayboard-project-fe9cafc03d-480.webp 480w, /assets/img/thumbs/dayboard-project-fe9cafc03d-960.webp 960w" sizes="(max-width:767px) calc(100vw - 48px), 470px" width="960" height="540" alt="" class="project-cover" loading="lazy" decoding="async"></a>
+    <div class="flex items-center gap-2 mb-2"><span class="text-xs font-mono text-primary">JavaScript</span><span class="text-xs text-muted-foreground">2026</span></div>
+    <h3 class="font-display text-2xl font-semibold"><a href="/cards/">Dayboard</a></h3>
+    <p class="text-muted-foreground mt-2 line-clamp-2">A simple browser Kanban board with expandable cards, due dates, persistent timers, separate bookmarkable boards, and JSON or HTML backups. Your tasks stay on your device.</p>
+    <div class="project-actions"><a class="project-open" href="/cards/" aria-label="Open Dayboard">Open app <span aria-hidden="true">↗</span></a><a href="https://infinitilogicsolutions.github.io/posts/dayboard-local-kanban.html" aria-label="Read about Dayboard">About this app</a></div>
+  </article></div><!-- /listing:recentProjectsGrid -->
         </div>
       </div>
     </section>
@@ -236,11 +252,12 @@
   <script defer src="assets/js/one-tap.js"></script>
   <script defer src="assets/js/personalizer.js"></script>
   <script defer src="assets/js/tracker.js"></script>
-  <script defer src="assets/js/article-renderer.js"></script>
+  <script defer src="assets/js/listing-renderer.js"></script>
   <script defer src="assets/js/app.js"></script>
   <script defer src="assets/js/typewriter.js"></script>
   <script defer src="assets/js/pwa.js"></script>
   <script defer src="assets/js/notifications.js"></script>
   <script defer src="/assets/js/page-speed.js"></script>
+<script id="postNotificationData" type="application/json">[{"type":"blog","title":"I Built a Little Photo Studio That Keeps the Editing in Your Browser","summary":"Canvas Lab Studio combines Photoroom-inspired photo workflows with visual composition ideas from ArtCraft, using independent code and a local-first first release.","date":"2026-10-10T00:00:00.000Z"},{"type":"project","title":"Canvas Lab Studio — A Little Creative Studio in Your Browser","summary":"Layer photos, make manual cutouts, style backgrounds, add text and drawings, and export images with a mobile-friendly editor that keeps your project on your device.","date":"2026-10-10T00:00:00.000Z"},{"type":"blog","title":"I Built a QR Generator and Reader That Work in One HTML File","summary":"How QR Lab keeps QR generation, reading and image exports inside the browser, while using device APIs carefully for contacts and current location.","date":"2026-10-09T00:00:00.000Z"},{"type":"project","title":"QR Lab — A Private QR Generator and Reader in One HTML File","summary":"Generate and read QR codes for Wi-Fi, contacts, links, locations and more. Customize colors and characters, export PNG or SVG, and keep the QR processing on your device.","date":"2026-10-09T00:00:00.000Z"},{"type":"blog","title":"I Built a Kanban Board That Keeps Its Data in the Browser","summary":"How a simple one-file Kanban app combines local saving, card timers, independent bookmarkable boards, and portable backups without a task-management backend.","date":"2026-10-06T00:00:00.000Z"},{"type":"project","title":"Dayboard — A Local-First Kanban Board in One HTML File","summary":"A simple browser Kanban board with expandable cards, due dates, persistent timers, separate bookmarkable boards, and JSON or HTML backups. Your tasks stay on your device.","date":"2026-10-06T00:00:00.000Z"},{"type":"blog","title":"I Built a Document Scanner in One HTML File","summary":"How Paperlens grew from a one-file iPhone document scanner into a local-first tool for two-sided IDs and passport/visa photo print sheets—with exact print sizing and a pastel studio.","date":"2026-10-05T00:00:00.000Z"},{"type":"project","title":"Paperlens — Document Scans, Two-Sided IDs, and Passport Photo Sheets","summary":"A local-first browser scanner with editable document corners, front/back ID capture, passport and visa photo print sizes, and 6 × 4-inch photo sheets. One HTML file, hosted on GitHub Pages.","date":"2026-10-05T00:00:00.000Z"},{"type":"project","title":"Infiniti Dictionary — A Browser-Native WordNet Experiment","summary":"147,478 searchable WordNet words in a 31.8 MB Parquet file, queried with DuckDB-Wasm in the browser with no application API or database server.","date":"2026-09-25T00:00:00.000Z"},{"type":"blog","title":"I Put 147,478 Words in a Parquet File and Queried It From the Browser","summary":"How I built a $0-backend dictionary using Princeton WordNet, Parquet, Apache Arrow, DuckDB-Wasm, browser storage, and GitHub Pages.","date":"2026-09-25T00:00:00.000Z"},{"type":"blog","title":"Visitor Intelligence v2: 67 Signals, Bot Scoring, and UX Personalization Without a Backend","summary":"How the Visitor Intelligence system logs 67 client signals, scores bots, and personalizes UX on a static site using Google Sheets.","date":"2026-03-12T00:00:00.000Z"},{"type":"blog","title":"WebMCP: The Future of Web Interaction or Just Hype? Why It's Not Production-Ready Yet","summary":"WebMCP makes websites feel like native tools for AI agents, but as of March 2026 it's still an early preview with serious browser, security, and scalability gaps.","date":"2026-03-07T00:00:00.000Z"},{"type":"blog","title":"Daily Change Log — February 2, 2026","summary":"A quick recap of today’s updates: social sharing, CODEOWNERS, and automated post generation.","date":"2026-02-02T00:00:00.000Z"},{"type":"blog","title":"Launching InfinitiLogicSolutions v1","summary":"Announcing the initial release of InfinitiLogicSolutions, a lightweight portfolio and blog with PWA and offline support.","date":"2026-01-08T00:00:00.000Z"},{"type":"blog","title":"Getting Started with Modern JavaScript","summary":"A comprehensive guide to modern JavaScript features including ES6+, async/await, and modules.","date":"2026-01-03T00:00:00.000Z"},{"type":"project","title":"Personal Portfolio Website","summary":"A lightweight portfolio and blog that runs offline once cached, installs as a PWA, and stays free to host on GitHub Pages.","date":"2026-01-01T00:00:00.000Z"}]</script>
 </body>
 </html>

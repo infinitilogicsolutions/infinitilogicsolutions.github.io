@@ -1,0 +1,26 @@
+name: Validate site generation and behavior
+on:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm install --no-audit --no-fund
+      - run: npm run generate
+      - name: Validate stable listings and optional sign-in
+        run: |
+          node tests/pagespeed-listings.cjs
+          node tests/signin-lazy.cjs
+          node tests/notification-metadata.cjs
+      - name: Preserve QR contact, location and offline behavior
+        run: |
+          node tests/qr-contacts.cjs
+          node tests/qr-location.cjs
+          node tests/qr-offline.cjs
+      - name: Confirm generated artifacts are committed
+        run: git diff --exit-code -- data index.html projects.html blog.html posts assets/css/styles.css assets/css/site.css assets/img/thumbs

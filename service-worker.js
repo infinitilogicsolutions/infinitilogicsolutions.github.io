@@ -1,4 +1,4 @@
-const CACHE_NAME = 'my-blog-v11';
+const CACHE_NAME = 'my-blog-v12';
 const POSTS_JSON_PATH = '/data/posts.json';
 const POSTS_INDEX_PATH = '/data/posts-index.json';
 const POST_ROUTE_PATTERN = /^\/posts\/[^/]+\.html$/;
@@ -12,9 +12,9 @@ const STATIC_ASSETS = [
   '/projects.html',
   '/post.html',
   '/404.html',
-  '/assets/css/styles.css',
-  '/assets/css/custom.css',
+  '/assets/css/site.css',
   '/assets/js/app.js',
+  '/assets/js/listing-renderer.js',
   '/assets/js/page-speed.js',
   '/assets/js/article-renderer.js',
   '/assets/js/typewriter.js',

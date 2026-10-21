@@ -9,7 +9,7 @@ class PostNotificationManager {
     // Initialize notification checking
     async init() {
         // Check on app load
-        await this.checkForNewPosts();
+        await this.checkForNewPosts(true);
         
         // Set up periodic checks (when app is open)
         setInterval(() => this.checkForNewPosts(), this.CHECK_INTERVAL);
@@ -26,12 +26,17 @@ class PostNotificationManager {
     }
 
     // Fetch posts and check for new ones
-    async checkForNewPosts() {
+    async checkForNewPosts(useInitialData = false) {
         try {
-            const response = await fetch('/data/posts.json');
-            if (!response.ok) return;
-            
-            const posts = await response.json();
+            const initial = useInitialData && document.getElementById('postNotificationData');
+            let posts;
+            if (initial) {
+                posts = JSON.parse(initial.textContent);
+            } else {
+                const response = await fetch('/data/posts-index.json');
+                if (!response.ok) return;
+                posts = await response.json();
+            }
             const currentCount = posts.length;
             const lastKnownCount = parseInt(localStorage.getItem(this.STORAGE_KEY) || '0');
             
